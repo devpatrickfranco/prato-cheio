@@ -99,4 +99,16 @@ Execute os comandos diretamente no container `web`:
 
 ## 🔒 Regras de Git
 
-A SER DEFINIDAS.
+| Tipo | Descrição |
+|---|---|
+| `feat` | Nova funcionalidade |
+| `fix` | Correção de bug |
+| `refactor` | Melhorar/reorganizar código |
+| `perf` | Melhorar performance |
+| `docs` | Documentação |
+| `test` | Testes |
+| `style` | Formatação/estilo |
+| `build` | Dependências/build |
+| `ci` | CI/CD |
+| `chore` | Manutenção geral |
+| `revert` | Desfazer commit |
