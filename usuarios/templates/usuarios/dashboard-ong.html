@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="pt-BR">
 
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Prato Cheio — plataforma de combate ao desperdício de alimentos">
     <title>Painel de Impacto | Prato Cheio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
 </head>
 
 <body class="">
@@ -14,19 +15,18 @@
         <aside class="sidebar">
             <div>
                 <div class="sidebar-brand"><span>🌿</span><span class="brand">Prato Cheio</span></div>
-                <nav class="nav"><a class="active" href="dashboard-pf.html">▦ Painel de Impacto</a><a class=""
-                        href="explore.html">▣ Explorar Lotes</a></nav>
+                <nav class="nav"><a class="active" href="{% url 'usuarios:dashboard_ong' %}">▦ Painel de Impacto</a><a class=""
+                        href="{% url 'usuarios:explore' %}">▣ Explorar Lotes</a></nav>
             </div>
             <div class="profile">
                 <div class="profile-row">
-                    <div class="avatar">JS</div>
+                    <div class="avatar">IE</div>
                     <div>
-                        <div class="profile-name">João Silva</div>
-                        <div class="profile-type">Consumidor</div>
+                        <div class="profile-name">Instituto Esperança</div>
+                        <div class="profile-type">Instituição</div>
                     </div>
                 </div>
-                <div class="profile-actions"><a class="btn btn-secondary" href="dashboard-pj.html">⇄ Alternar para
-                        Doador</a><a class="btn btn-danger" href="index.html">↪ Sair da conta</a></div>
+                <div class="profile-actions"><a class="btn btn-danger" href="{% url 'usuarios:index' %}">↪ Sair da conta</a></div>
             </div>
         </aside>
         <main class="main">

@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="pt-BR">
 
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Prato Cheio — plataforma de combate ao desperdício de alimentos">
     <title>Acessar plataforma | Prato Cheio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
 </head>
 
 <body class="">
@@ -30,7 +31,7 @@
             <section class="login-panel">
                 <h2>Acessar plataforma</h2>
                 <p class="muted">Selecione o seu perfil para continuar.</p>
-                <div class="role-list"><a class="role-card" href="login-pj.html">
+                <div class="role-list"><a class="role-card" href="{% url 'usuarios:login_pj' %}">
                         <div class="role-info">
                             <div class="role-icon">🏢</div>
                             <div>
@@ -38,7 +39,7 @@
                                 <p>Cadastre lotes e acompanhe seu impacto</p>
                             </div>
                         </div><span>→</span>
-                    </a><a class="role-card" href="login-ong.html">
+                    </a><a class="role-card" href="{% url 'usuarios:login_ong' %}">
                         <div class="role-info">
                             <div class="role-icon">♥</div>
                             <div>
@@ -46,7 +47,7 @@
                                 <p>Reserve alimentos para sua causa</p>
                             </div>
                         </div><span>→</span>
-                    </a><a class="role-card" href="login-pf.html">
+                    </a><a class="role-card" href="{% url 'usuarios:login_pf' %}">
                         <div class="role-info">
                             <div class="role-icon">●</div>
                             <div>

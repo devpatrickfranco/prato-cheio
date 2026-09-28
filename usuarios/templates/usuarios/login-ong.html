@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="pt-BR">
 
@@ -5,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Prato Cheio — plataforma de combate ao desperdício de alimentos">
-    <title>Login Consumidor | Prato Cheio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Login Instituição | Prato Cheio</title>
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
 </head>
 
 <body class="">
@@ -27,10 +28,10 @@
                     <div class="benefit">♥ <span>Impacto social e ambiental direto</span></div>
                 </div>
             </div>
-            <section class="login-panel"><a class="back" href="index.html">← Voltar aos perfis</a>
-                <h2>Acesso Consumidor</h2>
+            <section class="login-panel"><a class="back" href="{% url 'usuarios:index' %}">← Voltar aos perfis</a>
+                <h2>Acesso Instituição</h2>
                 <p class="muted">Insira suas credenciais para continuar.</p>
-                <form class="form" action="dashboard-pf.html" method="get">
+                <form class="form" action="{% url 'usuarios:dashboard_ong' %}" method="get">
                     <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email"
                             required placeholder="seu@email.com"></div>
                     <div class="field"><label for="senha">Senha</label><input id="senha" name="senha" type="password"

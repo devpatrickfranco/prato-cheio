@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="pt-BR">
 
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Prato Cheio — plataforma de combate ao desperdício de alimentos">
     <title>Painel de Impacto | Prato Cheio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
 </head>
 
 <body class="">
@@ -14,19 +15,19 @@
         <aside class="sidebar">
             <div>
                 <div class="sidebar-brand"><span>🌿</span><span class="brand">Prato Cheio</span></div>
-                <nav class="nav"><a class="active" href="dashboard-pj.html">▦ Painel de Impacto</a><a class=""
-                        href="meus-lotes.html">□ Meus Lotes</a><a href="meus-lotes.html">＋ Anunciar Lote</a></nav>
+                <nav class="nav"><a class="active" href="{% url 'usuarios:dashboard_pf' %}">▦ Painel de Impacto</a><a class=""
+                        href="{% url 'usuarios:explore' %}">▣ Explorar Lotes</a></nav>
             </div>
             <div class="profile">
                 <div class="profile-row">
-                    <div class="avatar">SC</div>
+                    <div class="avatar">JS</div>
                     <div>
-                        <div class="profile-name">Supermercado Central</div>
-                        <div class="profile-type">Doador</div>
+                        <div class="profile-name">João Silva</div>
+                        <div class="profile-type">Consumidor</div>
                     </div>
                 </div>
-                <div class="profile-actions"><a class="btn btn-secondary" href="dashboard-pf.html">⇄ Alternar para
-                        Consumidor</a><a class="btn btn-danger" href="index.html">↪ Sair da conta</a></div>
+                <div class="profile-actions"><a class="btn btn-secondary" href="{% url 'usuarios:dashboard_pj' %}">⇄ Alternar para
+                        Doador</a><a class="btn btn-danger" href="{% url 'usuarios:index' %}">↪ Sair da conta</a></div>
             </div>
         </aside>
         <main class="main">
@@ -40,21 +41,21 @@
                             <div class="metric-icon">◌</div><span class="trend">+12% este mês</span>
                         </div>
                         <div><span class="metric-value">450</span> <span class="metric-unit">kg</span></div>
-                        <p class="metric-label">CO₂ Evitado</p>
+                        <p class="metric-label">CO₂ Evitado (Sua contribuição)</p>
                     </article>
                     <article class="metric">
                         <div class="metric-head">
                             <div class="metric-icon">□</div><span class="trend">+3% este mês</span>
                         </div>
                         <div><span class="metric-value">1.2</span> <span class="metric-unit">t</span></div>
-                        <p class="metric-label">Alimentos Salvos</p>
+                        <p class="metric-label">Alimentos Salvos (Sua contribuição)</p>
                     </article>
                     <article class="metric">
                         <div class="metric-head">
                             <div class="metric-icon">🌿</div><span class="trend">+8% este mês</span>
                         </div>
                         <div><span class="metric-value">3,600</span> <span class="metric-unit"></span></div>
-                        <p class="metric-label">Refeições Estimadas</p>
+                        <p class="metric-label">Refeições Estimadas (Sua contribuição)</p>
                     </article>
                 </section>
                 <section class="dashboard-grid">
@@ -67,20 +68,20 @@
                     </article>
                     <article class="panel">
                         <div class="panel-title">
-                            <h3>Últimas Retiradas</h3>
+                            <h3>Seus Resgates</h3>
                         </div>
                         <div class="activity">
                             <div class="activity-item"><span class="dot"></span>
-                                <div><strong>Retirada confirmada</strong><span>Instituição Esperança retirou 15kg de
-                                        hortifruti.</span><span>Há 2 horas</span></div>
+                                <div><strong>Lote resgatado</strong><span>Você resgatou 15kg de hortifruti no Mercado
+                                        Bem Te Vi.</span><span>Há 2 horas</span></div>
                             </div>
                             <div class="activity-item"><span class="dot"></span>
-                                <div><strong>Retirada confirmada</strong><span>Instituição Esperança retirou 15kg de
-                                        hortifruti.</span><span>Há 4 horas</span></div>
+                                <div><strong>Lote resgatado</strong><span>Você resgatou 15kg de hortifruti no Mercado
+                                        Bem Te Vi.</span><span>Há 4 horas</span></div>
                             </div>
                             <div class="activity-item"><span class="dot"></span>
-                                <div><strong>Retirada confirmada</strong><span>Instituição Esperança retirou 15kg de
-                                        hortifruti.</span><span>Há 6 horas</span></div>
+                                <div><strong>Lote resgatado</strong><span>Você resgatou 15kg de hortifruti no Mercado
+                                        Bem Te Vi.</span><span>Há 6 horas</span></div>
                             </div>
                         </div>
                     </article>
