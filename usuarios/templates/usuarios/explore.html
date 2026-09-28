@@ -1,0 +1,87 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Prato Cheio — plataforma de combate ao desperdício de alimentos">
+    <title>Lotes Disponíveis | Prato Cheio</title>
+    <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
+</head>
+
+<body class="">
+    <div class="app">
+        <aside class="sidebar">
+            <div>
+                <div class="sidebar-brand"><span>🌿</span><span class="brand">Prato Cheio</span></div>
+                <nav class="nav"><a class="" href="{% url 'usuarios:dashboard_pf' %}">▦ Painel de Impacto</a><a class="active"
+                        href="{% url 'usuarios:explore' %}">▣ Explorar Lotes</a></nav>
+            </div>
+            <div class="profile">
+                <div class="profile-row">
+                    <div class="avatar">JS</div>
+                    <div>
+                        <div class="profile-name">João Silva</div>
+                        <div class="profile-type">Consumidor</div>
+                    </div>
+                </div>
+                <div class="profile-actions"><a class="btn btn-secondary" href="{% url 'usuarios:dashboard_pj' %}">⇄ Alternar para
+                        Doador</a><a class="btn btn-danger" href="{% url 'usuarios:index' %}">↪ Sair da conta</a></div>
+            </div>
+        </aside>
+        <main class="main">
+            <header class="topbar">
+                <h1>Lotes Disponíveis</h1>
+                <div class="search-wrap"><input class="search" type="search" placeholder="Buscar alimentos..."></div>
+            </header>
+            <div class="content">
+                <div class="section-head">
+                    <h2>Alimentos Próximos do Vencimento</h2>
+                    <div class="actions"><button class="btn btn-secondary" type="button">Filtros</button><button
+                            class="btn btn-secondary" type="button">● Bairro</button></div>
+                </div>
+                <section class="cards">
+                    <article class="food-card"><img class="food-img"
+                            src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&h=500&fit=crop&auto=format"
+                            alt="Tomates e cenouras">
+                        <div class="food-body">
+                            <div class="food-title">
+                                <h3>Kit Hortifruti (Tomates e Cenouras)</h3><span class="quantity">15kg</span>
+                            </div>
+                            <div class="food-meta"><span>● Mercado Bem Te Vi</span><span>□ Vence: <strong>Hoje,
+                                        20:00</strong></span><span>◷ Retirada: 18:00 - 19:30</span></div><a
+                                class="btn btn-primary" href="#">Reservar Lote</a>
+                        </div>
+                    </article>
+                    <article class="food-card"><img class="food-img"
+                            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=500&fit=crop&auto=format"
+                            alt="Pães artesanais">
+                        <div class="food-body">
+                            <div class="food-title">
+                                <h3>Pães Artesanais (Misto)</h3><span class="quantity">5kg</span>
+                            </div>
+                            <div class="food-meta"><span>● Padaria Sabor do Trigo</span><span>□ Vence: <strong>Amanhã,
+                                        10:00</strong></span><span>◷ Retirada: 08:00 - 09:30</span></div><a
+                                class="btn btn-primary" href="#">Reservar Lote</a>
+                        </div>
+                    </article>
+                    <article class="food-card"><img class="food-img"
+                            src="https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=800&h=500&fit=crop&auto=format"
+                            alt="Laticínios e iogurtes">
+                        <div class="food-body">
+                            <div class="food-title">
+                                <h3>Laticínios e Iogurtes</h3><span class="quantity">20un</span>
+                            </div>
+                            <div class="food-meta"><span>● Supermercado Central</span><span>□ Vence: <strong>Amanhã,
+                                        14:00</strong></span><span>◷ Retirada: 10:00 - 12:00</span></div><a
+                                class="btn btn-primary" href="#">Reservar Lote</a>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
