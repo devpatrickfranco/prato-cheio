@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Prato Cheio — plataforma de combate ao desperdício de alimentos">
+    <meta name="description" content="Gerenciamento dos lotes de alimentos publicados pelo estabelecimento doador, com status e edição rápida.">
     <title>Gerenciar Meus Lotes | Prato Cheio</title>
     <link rel="stylesheet" href="{% static 'usuarios/css/style.css' %}">
 </head>
@@ -15,8 +15,7 @@
         <aside class="sidebar">
             <div>
                 <div class="sidebar-brand"><span>🌿</span><span class="brand">Prato Cheio</span></div>
-                <nav class="nav"><a class="" href="{% url 'usuarios:dashboard_pj' %}">▦ Painel de Impacto</a><a class="active"
-                        href="{% url 'usuarios:meus_lotes' %}">□ Meus Lotes</a><a href="{% url 'usuarios:meus_lotes' %}">＋ Anunciar Lote</a></nav>
+                <nav class="nav"><a class="" href="{% url 'usuarios:dashboard_pj' %}"><span aria-hidden="true">▦</span> Painel de Impacto</a><a class="active" href="{% url 'usuarios:meus_lotes' %}"><span aria-hidden="true">□</span> Meus Lotes</a><a href="{% url 'usuarios:meus_lotes' %}"><span aria-hidden="true">＋</span> Anunciar Lote</a></nav>
             </div>
             <div class="profile">
                 <div class="profile-row">
@@ -26,8 +25,7 @@
                         <div class="profile-type">Doador</div>
                     </div>
                 </div>
-                <div class="profile-actions"><a class="btn btn-secondary" href="{% url 'usuarios:dashboard_pf' %}">⇄ Alternar para
-                        Consumidor</a><a class="btn btn-danger" href="{% url 'usuarios:index' %}">↪ Sair da conta</a></div>
+                <div class="profile-actions"><a class="btn btn-secondary" href="{% url 'usuarios:dashboard_pf' %}"><span aria-hidden="true">⇄</span> Alternar para Consumidor</a><a class="btn btn-danger" href="{% url 'usuarios:index' %}"><span aria-hidden="true">↪</span> Sair da conta</a></div>
             </div>
         </aside>
         <main class="main">
@@ -40,13 +38,14 @@
                 </div>
                 <div class="table-wrap">
                     <table>
+                        <caption class="sr-only">Lotes ativos publicados pelo estabelecimento</caption>
                         <thead>
                             <tr>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Vencimento</th>
-                                <th>Status</th>
-                                <th>Ações</th>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Vencimento</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
