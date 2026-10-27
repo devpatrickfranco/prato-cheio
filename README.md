@@ -76,7 +76,7 @@ core/        base dos templates, CSS, JS e filtros de template compartilhados
 usuarios/    Usuario, Estabelecimento, JWT, cadastro e login
 produtos/    Categoria, Lote, Reserva, vitrine e regras de reserva
 metricas/    painel e relatório de impacto (CO₂, kg, refeições)
-database/    esquema SQL original, DER e dicionário de dados do grupo
+database/    DER e dicionário de dados do grupo (o esquema real vem dos models)
 docs/        documentação e protótipos
 ```
 

@@ -2,7 +2,7 @@
 
 **Projeto Integrador** | Bancos de Dados Relacionais + Programação Web
 **Grupo PAGAFARRA** — Turma 102 — PUC-Campinas
-**SGBD:** MySQL 8.0 | **Banco:** `prato_cheio`
+**SGBD:** definido pelo Django (SQLite local ou PostgreSQL) — esquema criado pelos models e migrations, não por script SQL. Este dicionário é a modelagem original do grupo; o esquema atual está em `usuarios/models.py` e `produtos/models.py`.
 
 **Resumo:** 5 tabelas · 45 atributos · 5 relacionamentos
 
