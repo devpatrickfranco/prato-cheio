@@ -1,0 +1,81 @@
+{% extends 'core/base_app.html' %}
+{% load pratocheio %}
+
+{% block title %}Relatório de Impacto{% endblock %}
+{% block description %}Relatório completo de impacto ambiental com evolução mensal e totais por categoria de alimento.{% endblock %}
+{% block heading %}Relatório de Impacto{% endblock %}
+
+{% block content %}
+<section>
+  <div class="section-head">
+    <h2>Evolução mensal</h2>
+    <a class="text-link" href="{% url 'metricas:painel' %}"><span aria-hidden="true">←</span> Voltar ao painel</a>
+  </div>
+  <div class="tabela-wrap">
+    <table>
+      <caption>Retiradas confirmadas e impacto gerado em cada um dos últimos 6 meses</caption>
+      <thead>
+        <tr>
+          <th scope="col">Mês</th>
+          <th scope="col">Lotes</th>
+          <th scope="col">Alimentos salvos</th>
+          <th scope="col">CO₂ evitado</th>
+          <th scope="col">Refeições</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in serie %}
+        <tr>
+          <th scope="row">{{ item.mes|date:"F/Y" }}</th>
+          <td>{{ item.lotes }}</td>
+          <td>{{ item.kg|peso }}</td>
+          <td>{{ item.co2|floatformat:1 }} kg</td>
+          <td>{{ item.refeicoes }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">Total geral</th>
+          <td>{{ total.lotes }}</td>
+          <td>{{ total.kg|peso }}</td>
+          <td>{{ total.co2|floatformat:1 }} kg</td>
+          <td>{{ total.refeicoes }}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Por categoria</h2>
+  </div>
+  <div class="tabela-wrap">
+    <table>
+      <caption>Impacto acumulado agrupado por categoria de alimento</caption>
+      <thead>
+        <tr>
+          <th scope="col">Categoria</th>
+          <th scope="col">Lotes</th>
+          <th scope="col">Alimentos salvos</th>
+          <th scope="col">CO₂ evitado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for categoria in categorias %}
+        <tr>
+          <th scope="row">{{ categoria.nome }}</th>
+          <td>{{ categoria.lotes }}</td>
+          <td>{{ categoria.kg|peso }}</td>
+          <td>{{ categoria.co2|floatformat:1 }} kg</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Nenhuma retirada confirmada ainda.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="muted nota">O CO₂ é estimado multiplicando o peso de cada lote pelo fator da sua categoria.</p>
+</section>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% load static %}<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <title>{% block title %}{% endblock %} | Prato Cheio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap">
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-topo">
+        <div class="sidebar-brand">
+          <span aria-hidden="true">🌿</span>
+          <span class="brand">Prato Cheio</span>
+        </div>
+        {% with rota=request.resolver_match.view_name %}
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="{% url 'metricas:painel' %}"{% if rota == 'metricas:painel' %} class="active" aria-current="page"{% endif %}><span aria-hidden="true">▦</span> Painel de Impacto</a>
+          {% if usuario.tipo_perfil == 'pj' %}
+          <a href="{% url 'produtos:meus_lotes' %}"{% if rota == 'produtos:meus_lotes' %} class="active" aria-current="page"{% endif %}><span aria-hidden="true">□</span> Meus Lotes</a>
+          <a href="{% url 'produtos:lote_novo' %}"{% if rota == 'produtos:lote_novo' %} class="active" aria-current="page"{% endif %}><span aria-hidden="true">＋</span> Anunciar Lote</a>
+          {% endif %}
+          <a href="{% url 'produtos:explorar' %}"{% if rota == 'produtos:explorar' %} class="active" aria-current="page"{% endif %}><span aria-hidden="true">▣</span> Explorar Lotes</a>
+          <a href="{% url 'produtos:minhas_reservas' %}"{% if rota == 'produtos:minhas_reservas' %} class="active" aria-current="page"{% endif %}><span aria-hidden="true">✓</span> Minhas Reservas</a>
+        </nav>
+        {% endwith %}
+      </div>
+      <div class="profile">
+        <div class="profile-row">
+          <div class="avatar" aria-hidden="true">{{ usuario.iniciais }}</div>
+          <div class="profile-dados">
+            <p class="profile-name">{{ usuario.nome }}</p>
+            <p class="profile-type">{{ usuario.get_tipo_perfil_display }}</p>
+          </div>
+        </div>
+        <form class="profile-actions" method="post" action="{% url 'usuarios:sair' %}">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit"><span aria-hidden="true">↪</span> Sair da conta</button>
+        </form>
+      </div>
+    </aside>
+
+    <main class="main" id="conteudo">
+      <header class="topbar">
+        <h1>{% block heading %}{% endblock %}</h1>
+      </header>
+      <div class="content">
+        <div class="mensagens" aria-live="polite">
+          {% for mensagem in messages %}
+          <p class="mensagem mensagem--{{ mensagem.tags }}">{{ mensagem }}</p>
+          {% endfor %}
+        </div>
+        {% block content %}{% endblock %}
+      </div>
+      <footer class="rodape">
+        <p>Prato Cheio · Projeto Integrador · PUC-Campinas</p>
+      </footer>
+    </main>
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

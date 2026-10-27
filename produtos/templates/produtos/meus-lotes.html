@@ -1,0 +1,101 @@
+{% extends 'core/base_app.html' %}
+{% load pratocheio %}
+
+{% block title %}Gerenciar Meus Lotes{% endblock %}
+{% block description %}Gerenciamento dos lotes de alimentos publicados pelo estabelecimento doador, com status, reservas e edição rápida.{% endblock %}
+{% block heading %}Gerenciar Meus Lotes{% endblock %}
+
+{% block content %}
+<section>
+  <div class="section-head">
+    <h2>Lotes ativos</h2>
+    <a class="btn btn-primary" href="{% url 'produtos:lote_novo' %}"><span aria-hidden="true">＋</span> Anunciar lote</a>
+  </div>
+  <div class="tabela-wrap">
+    <table>
+      <caption>Lotes disponíveis ou reservados, com as ações de cada um</caption>
+      <thead>
+        <tr>
+          <th scope="col">Produto</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Vencimento</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Status</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lote in ativos %}
+        <tr>
+          <th scope="row">{{ lote.descricao }}</th>
+          <td>{{ lote|quantidade }}</td>
+          <td><time datetime="{{ lote.data_validade|date:'Y-m-d' }}">{{ lote.data_validade|date:"d/m/Y" }}</time></td>
+          <td>{% if lote.eh_venda %}Venda · {{ lote.preco|dinheiro }}{% else %}Doação{% endif %}</td>
+          <td><span class="status status--{{ lote.status }}">{{ lote.get_status_display }}</span></td>
+          <td>
+            {% if lote.editavel %}
+            <div class="acoes-linha">
+              <a class="text-link" href="{% url 'produtos:lote_editar' lote.pk %}">Editar</a>
+              <form method="post" action="{% url 'produtos:lote_remover' lote.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-danger btn-sm" type="submit">Remover</button>
+              </form>
+            </div>
+            {% else %}
+            {% for reserva in lote.reservas_ativas %}
+            <p class="reservado-por">Reservado por <strong>{{ reserva.usuario.nome }}</strong>{% if reserva.usuario.telefone %} · {{ reserva.usuario.telefone }}{% endif %}</p>
+            <div class="acoes-linha">
+              <form method="post" action="{% url 'produtos:confirmar_retirada' reserva.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-primary btn-sm" type="submit">Confirmar retirada</button>
+              </form>
+              <form method="post" action="{% url 'produtos:nao_retirado' reserva.pk %}">
+                {% csrf_token %}
+                <button class="btn btn-secondary btn-sm" type="submit">Não retirado</button>
+              </form>
+            </div>
+            {% endfor %}
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">Você não tem lotes ativos. Que tal anunciar o primeiro?</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Histórico</h2>
+  </div>
+  <div class="tabela-wrap">
+    <table>
+      <caption>Lotes já retirados, não retirados ou expirados</caption>
+      <thead>
+        <tr>
+          <th scope="col">Produto</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Vencimento</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lote in historico %}
+        <tr>
+          <th scope="row">{{ lote.descricao }}</th>
+          <td>{{ lote|quantidade }}</td>
+          <td><time datetime="{{ lote.data_validade|date:'Y-m-d' }}">{{ lote.data_validade|date:"d/m/Y" }}</time></td>
+          <td>{% if lote.eh_venda %}Venda · {{ lote.preco|dinheiro }}{% else %}Doação{% endif %}</td>
+          <td><span class="status status--{{ lote.status }}">{{ lote.get_status_display }}</span></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">O histórico aparece aqui depois das primeiras retiradas.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

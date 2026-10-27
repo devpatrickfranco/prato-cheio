@@ -1,0 +1,95 @@
+{% extends 'core/base_app.html' %}
+{% load l10n pratocheio %}
+
+{% block title %}{{ textos.titulo }}{% endblock %}
+{% block description %}{{ textos.descricao }}{% endblock %}
+{% block heading %}Painel de Impacto{% endblock %}
+
+{% block content %}
+<section class="metrics" aria-label="Indicadores de impacto">
+  <article class="metric">
+    <div class="metric-head">
+      <span class="metric-icon" aria-hidden="true">◌</span>
+      {% if variacoes.co2 is not None %}<span class="trend">{{ variacoes.co2|sinal }} este mês</span>{% endif %}
+    </div>
+    <p class="metric-linha"><span class="metric-value">{{ total.co2|floatformat:1 }}</span> <span class="metric-unit">kg</span></p>
+    <p class="metric-label">CO₂ evitado{{ textos.sufixo }}</p>
+  </article>
+  <article class="metric">
+    <div class="metric-head">
+      <span class="metric-icon" aria-hidden="true">□</span>
+      {% if variacoes.kg is not None %}<span class="trend">{{ variacoes.kg|sinal }} este mês</span>{% endif %}
+    </div>
+    <p class="metric-linha"><span class="metric-value">{{ total.kg|peso }}</span></p>
+    <p class="metric-label">Alimentos salvos{{ textos.sufixo }}</p>
+  </article>
+  <article class="metric">
+    <div class="metric-head">
+      <span class="metric-icon" aria-hidden="true">🌿</span>
+      {% if variacoes.refeicoes is not None %}<span class="trend">{{ variacoes.refeicoes|sinal }} este mês</span>{% endif %}
+    </div>
+    <p class="metric-linha"><span class="metric-value">{{ total.refeicoes }}</span></p>
+    <p class="metric-label">Refeições estimadas{{ textos.sufixo }}</p>
+  </article>
+</section>
+
+<section class="dashboard-grid">
+  <article class="panel painel-grafico">
+    <div class="panel-title">
+      <h2>Impacto ambiental histórico</h2>
+      <a class="text-link" href="{% url 'metricas:relatorio' %}">Ver relatório completo <span aria-hidden="true">▥</span></a>
+    </div>
+    <p class="muted" id="legenda-grafico">CO₂ evitado por mês (em kg), nos últimos 6 meses.</p>
+    <ul class="grafico" aria-describedby="legenda-grafico">
+      {% for item in serie %}
+      <li class="grafico-linha">
+        <span class="grafico-mes">{{ item.mes|date:"M/y" }}</span>
+        <meter class="grafico-barra" min="0" max="{{ maximo_co2|unlocalize }}" value="{{ item.co2|unlocalize }}">{{ item.co2|floatformat:1 }} kg</meter>
+        <span class="grafico-valor">{{ item.co2|floatformat:1 }} kg</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </article>
+
+  <article class="panel painel-atividade">
+    <div class="panel-title">
+      <h2>{{ textos.atividade }}</h2>
+    </div>
+    <ul class="activity">
+      {% for reserva in ultimas %}
+      <li class="activity-item">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <p class="activity-titulo">{% if usuario.tipo_perfil == 'pf' or usuario.tipo_perfil == 'ong' %}Lote resgatado{% else %}Retirada confirmada{% endif %}</p>
+          <p class="activity-texto">
+            {% if usuario.tipo_perfil == 'pj' %}
+            {{ reserva.usuario.nome }} retirou {{ reserva.lote.peso_kg|peso }} de {{ reserva.lote.categoria.nome|lower }}.
+            {% else %}
+            Você resgatou {{ reserva.lote.peso_kg|peso }} de {{ reserva.lote.categoria.nome|lower }} em {{ reserva.lote.estabelecimento.usuario.nome }}.
+            {% endif %}
+          </p>
+          <p class="activity-texto"><time datetime="{{ reserva.data_confirmacao|date:'c' }}">{{ reserva.data_confirmacao|dia_relativo }}</time></p>
+        </div>
+      </li>
+      {% empty %}
+      <li class="vazio">Nenhuma retirada confirmada ainda.</li>
+      {% endfor %}
+    </ul>
+  </article>
+
+  {% if nivel %}
+  <article class="panel painel-nivel">
+    <div class="panel-title">
+      <h2>Seu nível de impacto</h2>
+    </div>
+    <p class="nivel-nome"><span aria-hidden="true">🌱</span> {{ nivel.nome }}</p>
+    {% if nivel.proximo %}
+    <meter class="nivel-barra" min="0" max="{{ nivel.meta|unlocalize }}" value="{{ nivel.progresso|unlocalize }}">{{ nivel.progresso|floatformat:1 }} kg</meter>
+    <p class="muted">Faltam {{ nivel.faltam|floatformat:1 }} kg salvos para o nível {{ nivel.proximo }}.</p>
+    {% else %}
+    <p class="muted">Você chegou ao nível máximo. Obrigado por salvar tanto alimento!</p>
+    {% endif %}
+  </article>
+  {% endif %}
+</section>
+{% endblock %}

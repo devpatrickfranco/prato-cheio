@@ -10,22 +10,40 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
+from decimal import Decimal
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+def env_bool(nome, padrao=False):
+    """Le uma variavel de ambiente booleana (1, true, yes, sim)."""
+    valor = os.environ.get(nome)
+    if valor is None:
+        return padrao
+    return valor.strip().lower() in ('1', 'true', 'yes', 'sim')
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ce6*-^wyot92cbo06rnd47j1(a4a!tyh^f@96%2l2qd)k5p0=p'
+# O valor padrao serve apenas para desenvolvimento local.
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-ce6*-^wyot92cbo06rnd47j1(a4a!tyh^f@96%2l2qd)k5p0=p',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env_bool('DJANGO_DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+    if host.strip()
+]
 
 
 # Application definition
@@ -38,7 +56,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'usuarios'
+    'usuarios',
+    'produtos',
+    'metricas',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +69,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Autenticacao por JWT (cookie HttpOnly); vem depois dos middlewares do Django.
+    'usuarios.middleware.JWTAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -63,6 +85,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'usuarios.context_processors.usuario_logado',
             ],
         },
     },
@@ -73,13 +96,30 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
+# PostgreSQL quando POSTGRES_DB esta definido; caso contrario SQLite local.
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.environ.get('POSTGRES_DB'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['POSTGRES_DB'],
+            'USER': os.environ.get('POSTGRES_USER', ''),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+            'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+            'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.environ.get('SQLITE_PATH', BASE_DIR / 'db.sqlite3'),
+        }
+    }
+
+
+# Custom user model: login por e-mail, com perfil (PF, PJ, ONG ou admin)
+AUTH_USER_MODEL = 'usuarios.Usuario'
 
 
 # Password validation
@@ -104,9 +144,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -117,6 +157,33 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Uploads (fotos dos lotes)
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# JWT
+# Os tokens ficam em cookies HttpOnly: o JavaScript da pagina nao consegue le-los.
+JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or SECRET_KEY
+JWT_ALGORITHM = 'HS256'
+JWT_ACCESS_MINUTOS = int(os.environ.get('JWT_ACCESS_MINUTOS', '15'))
+JWT_REFRESH_DIAS = int(os.environ.get('JWT_REFRESH_DIAS', '7'))
+JWT_COOKIE_ACCESS = 'pratocheio_access'
+JWT_COOKIE_REFRESH = 'pratocheio_refresh'
+JWT_COOKIE_SECURE = not DEBUG
+
+# CSRF continua ativo: a autenticacao por cookie exige protecao contra CSRF.
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = not DEBUG
+
+
+# Regras de negocio
+# Comissao cobrada sobre as vendas, em porcentagem.
+COMISSAO_PERCENTUAL = Decimal(os.environ.get('COMISSAO_PERCENTUAL', '8'))
+# Peso medio de uma refeicao, em kg (usado para estimar refeicoes salvas).
+KG_POR_REFEICAO = Decimal('0.4')
 
 
 # Email
@@ -127,3 +194,5 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

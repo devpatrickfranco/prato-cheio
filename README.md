@@ -1,103 +1,109 @@
-# PAGAFARRA
+# Prato Cheio
 
-Projeto base em Django executado com Docker.
+Plataforma web que conecta estabelecimentos com excedente de alimentos a quem pode
+aproveitá-los: ONGs (doação) e consumidores (venda com desconto). Cada retirada
+confirmada gera indicadores de impacto: CO₂ evitado, alimentos salvos e refeições.
 
----
+Projeto Integrador · PUC-Campinas · Grupo PAGAFARRA.
 
-## 📋 Pré-requisitos
+## Stack
 
-Antes de começar, instale o **Docker** e o **Docker Compose** no seu sistema:
+- Back-end: Python + Django 6 (Django Templates), autenticação por **JWT**
+- Banco: PostgreSQL via Django ORM (SQLite local quando `POSTGRES_DB` não está definido)
+- Front-end: HTML5 semântico, CSS e JavaScript escritos à mão, sem frameworks
 
-### Windows
-1. Baixe o [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/).
-2. Execute o instalador e siga as instruções.
-3. Certifique-se de que a virtualização (WSL 2 ou Hyper-V) esteja habilitada.
-4. Após a instalação, reinicie a máquina se necessário.
-5. Abra o **PowerShell** ou **Prompt de Comando** e verifique:
-   ```bash
-   docker --version
-   docker compose version
-   ```
+## Perfis
 
-### Linux
-1. Atualize o gerenciador de pacotes e instale o Docker:
-   ```bash
-   sudo apt update
-   sudo apt install docker.io docker-compose-plugin
-   ```
-2. Inicie o serviço do Docker (e habilite para iniciar junto com o sistema):
-   ```bash
-   sudo systemctl start docker
-   sudo systemctl enable docker
-   ```
-3. (Opcional) Adicione seu usuário ao grupo `docker` para não usar `sudo`:
-   ```bash
-   sudo usermod -aG docker $USER
-   ```
-   Faça logout e login novamente para aplicar.
-4. Verifique a instalação:
-   ```bash
-   docker --version
-   docker compose version
-   ```
+| Perfil | Papel | Cadastro |
+|---|---|---|
+| **PJ** (doador) | Publica lotes para doação ou venda, confirma retiradas, vê seu impacto e nível | Aguarda aprovação da equipe |
+| **ONG** | Reserva lotes de **doação** | Aguarda aprovação da equipe |
+| **PF** (consumidor) | Compra lotes de **venda** | Aprovado na hora |
+| **Admin** | Aprova contas e gerencia dados em `/admin/` | `createsuperuser` |
 
-### macOS
-1. Baixe o [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/).
-2. Arraste o Docker.app para a pasta **Aplicativos**.
-3. Abra o Docker Desktop e aguarde o motor do Docker iniciar.
-4. Abra o **Terminal** e verifique:
-   ```bash
-   docker --version
-   docker compose version
-   ```
+Comissão: cada venda registra a comissão da plataforma (`COMISSAO_PERCENTUAL`, padrão 8%).
 
----
+## Como executar
 
-## 🚀 Como Executar
+### Com Docker
 
-### 1. Iniciar a aplicação
-Construa as imagens e inicie os containers em segundo plano:
 ```bash
+cp .env.example .env        # defina DJANGO_SECRET_KEY e POSTGRES_PASSWORD
 docker compose up -d --build
+docker compose exec web python manage.py migrate
+docker compose exec web python manage.py seed_demo   # dados de demonstração (opcional)
 ```
 
-Acesse a aplicação no navegador em: **http://localhost:8000**
+Acesse **http://localhost:8000**.
 
-### 2. Parar a aplicação
-Para encerrar os containers em execução:
+### Sem Docker (SQLite)
+
 ```bash
-docker compose down
+python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py seed_demo
+python manage.py runserver
 ```
 
----
+### Dados de demonstração
 
-## ⚙️ Comandos Úteis do Django
+`seed_demo` cria usuários de cada perfil (senha padrão `prato-cheio-123`), lotes à venda,
+doações, reservas e histórico de retiradas.
 
-Execute os comandos diretamente no container `web`:
-
-| Comando | Descrição |
+| Perfil | E-mail |
 |---|---|
-| `docker compose exec web python manage.py migrate` | Executar migrations |
-| `docker compose exec web python manage.py createsuperuser` | Criar superusuário |
-| `docker compose exec web python manage.py shell` | Abrir o Django Shell |
+| Doador | `contato@bompreco.com.br` |
+| ONG | `contato@mesasolidaria.org.br` |
+| Consumidor | `joao@exemplo.com.br` |
+| Admin | `admin@pratocheio.com.br` |
 
----
+## Autenticação (JWT)
 
-## 📁 Estrutura de Diretórios
+- O login valida e-mail e senha e grava dois cookies **HttpOnly** (`SameSite=Lax`):
+  `access` (15 min) e `refresh` (7 dias). O JavaScript da página não consegue lê-los.
+- `usuarios.middleware.JWTAuthMiddleware` lê o cookie, expõe `request.usuario` e renova o
+  access token quando só o refresh ainda vale.
+- `@jwt_required('pj')` protege as views por perfil. Conta recusada perde o acesso mesmo com token válido.
+- O CSRF do Django continua ativo nos formulários POST. O `/admin/` usa a sessão padrão do Django.
+- Limite de 5 tentativas de senha por 5 minutos (por perfil, IP e e-mail).
+
+## Estrutura
 
 ```
-.
-├── config/              # Configurações principais do Django (settings, urls, wsgi)
-├── db.sqlite3           # Banco de dados SQLite local
-├── Dockerfile           # Instruções de build da imagem da aplicação
-├── docker-compose.yml   # Definição e orquestração dos containers
-├── manage.py            # Script utilitário de gerenciamento do Django
-└── requirements.txt     # Dependências Python do projeto
+config/      configurações do Django (settings, urls)
+core/        base dos templates, CSS, JS e filtros de template compartilhados
+usuarios/    Usuario, Estabelecimento, JWT, cadastro e login
+produtos/    Categoria, Lote, Reserva, vitrine e regras de reserva
+metricas/    painel e relatório de impacto (CO₂, kg, refeições)
+database/    esquema SQL original, DER e dicionário de dados do grupo
+docs/        documentação e protótipos
 ```
 
----
+## Modelo de dados
 
-## 🔒 Regras de Git
+Implementado nos models do Django (`usuarios/models.py`, `produtos/models.py`).
+Diferenças em relação ao dicionário de dados em `database/`:
+
+- `tipo_perfil` agora é `pf`, `pj`, `ong` ou `admin` (antes: `doador`, `receptor`, `admin`).
+- `estabelecimento` também guarda as ONGs (`tipo_estabelecimento = ong`).
+- `lote` ganhou `tipo` (doação/venda), `preco` e `foto_validade` (foto do código de barras e da validade).
+- `reserva` ganhou `valor` e `comissao`.
+- A regra "uma reserva ativa por lote" é a constraint `uk_reserva_ativa` (índice único parcial).
+
+## CO₂
+
+O fator de conversão fica em `Categoria.fator_co2_kg`. Os valores atuais (2,5 kg CO₂e por kg)
+são uma estimativa didática. Quando a base de dados de CO₂ (PDF) estiver pronta, basta
+atualizar os fatores no admin ou em uma nova migração de dados; as telas recalculam sozinhas.
+
+## Testes
+
+```bash
+python manage.py test
+```
+
+## Regras de Git
 
 | Tipo | Descrição |
 |---|---|
@@ -113,38 +119,11 @@ Execute os comandos diretamente no container `web`:
 | `chore` | Manutenção geral |
 | `revert` | Desfazer commit |
 
-# ESCOPO
+## Escopo
 
-Apps
-   - Usuarios
-   -- PJ / compra e venda, gamificação
-   -- PF / compra
-   -- ONG / Recebe doação
-   -- Localização
-
-   - Produto
-   -- categorias
-   -- cadastra
-   -- vender
-   -- doar
-   -- comprar
-   -- Retirada
-   -- prazo de vencimento
-   -- garantia de qualidade / imagem codigo de barra e vencimento
-   -- imagens
-   -- descrição
-   -- quantidade
-   -- unidade
-
-   - Metricas
-   -- CO2
-   -- Kg não desperdiçados
-
-Modelo de negocio
-
-   - Comissão por venda
-
-Metologia
-
-   - SCRUM
-   - KANBAN
+- **Usuários:** PJ (compra, venda e gamificação), PF (compra), ONG (recebe doação), localização por bairro
+- **Produto:** categorias, cadastro, venda, doação, compra, retirada, prazo de vencimento,
+  garantia de qualidade (foto do código de barras e da validade), imagens, descrição, quantidade e unidade
+- **Métricas:** CO₂ evitado e kg não desperdiçados
+- **Modelo de negócio:** comissão por venda
+- **Metodologia:** Scrum e Kanban

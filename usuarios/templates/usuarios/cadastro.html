@@ -1,0 +1,65 @@
+{% extends 'core/base_auth.html' %}
+{% load static %}
+
+{% block title %}Cadastro {{ info.rotulo }}{% endblock %}
+{% block description %}{{ info.cadastro_descricao }}{% endblock %}
+
+{% block painel %}
+<a class="back" href="{% url 'usuarios:index' %}"><span aria-hidden="true">←</span> Voltar aos perfis</a>
+<h1>Cadastro {{ info.rotulo }}</h1>
+<p class="muted">
+  {% if info.precisa_estabelecimento %}
+  Depois do envio, nossa equipe analisa os dados antes de liberar o acesso.
+  {% else %}
+  Preencha os dados abaixo para criar sua conta.
+  {% endif %}
+</p>
+
+<form class="form" method="post" novalidate data-validar>
+  {% csrf_token %}
+  {% include 'core/_resumo_erros.html' with form=usuario_form form2=estabelecimento_form %}
+
+  <fieldset class="grupo">
+    <legend>Dados de acesso</legend>
+    {% include 'core/_campo.html' with campo=usuario_form.nome %}
+    {% include 'core/_campo.html' with campo=usuario_form.email %}
+    {% include 'core/_campo.html' with campo=usuario_form.telefone %}
+    {% include 'core/_campo.html' with campo=usuario_form.senha %}
+    {% include 'core/_campo.html' with campo=usuario_form.confirmar_senha %}
+  </fieldset>
+
+  {% if estabelecimento_form %}
+  <fieldset class="grupo">
+    <legend>Dados da empresa ou instituição</legend>
+    {% include 'core/_campo.html' with campo=estabelecimento_form.razao_social %}
+    {% include 'core/_campo.html' with campo=estabelecimento_form.cnpj %}
+    {% if estabelecimento_form.tipo_estabelecimento %}
+    {% include 'core/_campo.html' with campo=estabelecimento_form.tipo_estabelecimento %}
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="grupo">
+    <legend>Endereço</legend>
+    {% include 'core/_campo.html' with campo=estabelecimento_form.cep %}
+    {% include 'core/_campo.html' with campo=estabelecimento_form.logradouro %}
+    <div class="linha-campos">
+      {% include 'core/_campo.html' with campo=estabelecimento_form.numero %}
+      {% include 'core/_campo.html' with campo=estabelecimento_form.bairro %}
+    </div>
+    <div class="linha-campos">
+      {% include 'core/_campo.html' with campo=estabelecimento_form.cidade %}
+      {% include 'core/_campo.html' with campo=estabelecimento_form.uf %}
+    </div>
+  </fieldset>
+  {% endif %}
+
+  <p class="ajuda">O botão é liberado quando todos os campos estiverem preenchidos corretamente.</p>
+  <button class="btn btn-primary" type="submit" data-envio>Criar conta</button>
+</form>
+
+{% with destino='usuarios:login_'|add:perfil %}
+<p class="troca-acesso">Já tem conta? <a class="text-link" href="{% url destino %}">Entrar</a></p>
+{% endwith %}
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'core/js/formularios.js' %}"></script>{% endblock %}

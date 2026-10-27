@@ -1,0 +1,48 @@
+{% load static %}<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <title>{% block title %}{% endblock %} | Prato Cheio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap">
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="page-center">
+    <div class="login-shell">
+      <aside class="brand-panel">
+        <div class="brand-bloco">
+          <div class="brand-row">
+            <span class="brand-mark" aria-hidden="true">🌿</span>
+            <span class="brand">Prato Cheio</span>
+          </div>
+          <p class="tagline">Menos desperdício,<br>mais impacto.</p>
+          <p class="brand-texto">Conectamos alimentos de qualidade a quem precisa, combatendo o desperdício no varejo alimentício.</p>
+        </div>
+        <ul class="benefits">
+          <li class="benefit"><span aria-hidden="true">◌</span> Redução de emissões de CO₂</li>
+          <li class="benefit"><span aria-hidden="true">□</span> Aproveitamento de alimentos seguros</li>
+          <li class="benefit"><span aria-hidden="true">♥</span> Impacto social e ambiental direto</li>
+        </ul>
+      </aside>
+
+      <main class="login-panel" id="conteudo">
+        <div class="mensagens" aria-live="polite">
+          {% for mensagem in messages %}
+          <p class="mensagem mensagem--{{ mensagem.tags }}">{{ mensagem }}</p>
+          {% endfor %}
+        </div>
+        {% block painel %}{% endblock %}
+      </main>
+    </div>
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

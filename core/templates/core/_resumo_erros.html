@@ -1,0 +1,13 @@
+<div id="resumo-erros" class="resumo-erros" aria-live="polite" tabindex="-1"{% if not form.errors and not form2.errors %} hidden{% endif %}>
+  {% if form.errors or form2.errors %}
+  <p><strong>Corrija os pontos abaixo para continuar:</strong></p>
+  <ul>
+    {% for erro in form.non_field_errors %}<li>{{ erro }}</li>{% endfor %}
+    {% for campo in form %}{% if campo.errors %}<li><a href="#{{ campo.auto_id }}">{{ campo.label }}: {{ campo.errors.0 }}</a></li>{% endif %}{% endfor %}
+    {% if form2 %}
+    {% for erro in form2.non_field_errors %}<li>{{ erro }}</li>{% endfor %}
+    {% for campo in form2 %}{% if campo.errors %}<li><a href="#{{ campo.auto_id }}">{{ campo.label }}: {{ campo.errors.0 }}</a></li>{% endif %}{% endfor %}
+    {% endif %}
+  </ul>
+  {% endif %}
+</div>

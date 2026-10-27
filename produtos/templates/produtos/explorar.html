@@ -1,0 +1,85 @@
+{% extends 'core/base_app.html' %}
+{% load static pratocheio %}
+
+{% block title %}Lotes Disponíveis{% endblock %}
+{% block description %}Lotes de alimentos próximos do vencimento disponíveis para reserva, com filtro por bairro e categoria.{% endblock %}
+{% block heading %}Lotes Disponíveis{% endblock %}
+
+{% block content %}
+<form class="filtros" method="get" action="{% url 'produtos:explorar' %}" role="search" data-filtros>
+  <fieldset class="filtros-grupo">
+    <legend class="sr-only">Filtrar lotes</legend>
+    <div class="field">
+      <label for="busca">Buscar alimentos</label>
+      <input id="busca" name="q" type="search" value="{{ filtros.q }}" placeholder="Ex.: tomate, pão, padaria">
+    </div>
+    <div class="field">
+      <label for="bairro">Bairro</label>
+      <select id="bairro" name="bairro">
+        <option value="">Todos os bairros</option>
+        {% for nome in bairros %}
+        <option value="{{ nome }}"{% if filtros.bairro == nome %} selected{% endif %}>{{ nome }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" name="categoria">
+        <option value="">Todas as categorias</option>
+        {% for categoria in categorias %}
+        <option value="{{ categoria.pk }}"{% if filtros.categoria == categoria.pk|stringformat:"d" %} selected{% endif %}>{{ categoria.nome }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </fieldset>
+  <div class="actions">
+    <button class="btn btn-primary" type="submit">Filtrar</button>
+    {% if filtrando %}<a class="btn btn-secondary" href="{% url 'produtos:explorar' %}" data-limpar-filtros>Limpar filtros</a>{% endif %}
+  </div>
+</form>
+
+<section>
+  <div class="section-head">
+    <h2>{% if usuario.tipo_perfil == 'ong' %}Doações próximas do vencimento{% else %}Alimentos próximos do vencimento{% endif %}</h2>
+    <p class="muted">{{ lotes|length }} lote{{ lotes|length|pluralize }} encontrado{{ lotes|length|pluralize }}</p>
+  </div>
+
+  <div class="cards">
+    {% for lote in lotes %}
+    <article class="food-card">
+      {% if lote.foto %}
+      <img class="food-img" src="{{ lote.foto.url }}" alt="Foto do lote: {{ lote.descricao }}">
+      {% else %}
+      {% with imagem=lote.categoria|imagem_padrao %}
+      {% if imagem %}
+      <img class="food-img" src="{{ imagem }}" alt="Imagem ilustrativa de {{ lote.categoria.nome|lower }}">
+      {% else %}
+      <div class="food-img food-img--vazio" aria-hidden="true">🍽</div>
+      {% endif %}
+      {% endwith %}
+      {% endif %}
+      <div class="food-body">
+        <div class="food-title">
+          <h3>{{ lote.descricao }}</h3>
+          <span class="quantity">{{ lote|quantidade }}</span>
+        </div>
+        <ul class="food-meta">
+          <li><span aria-hidden="true">●</span> {{ lote.estabelecimento.usuario.nome }} · {{ lote.estabelecimento.bairro }}</li>
+          <li><span aria-hidden="true">□</span> Vence: <strong><time datetime="{{ lote.data_validade|date:'Y-m-d' }}">{{ lote.data_validade|date:"d/m/Y" }}</time></strong></li>
+          <li><span aria-hidden="true">◷</span> Retirada: {{ lote.retirada_inicio|dia_relativo }} até {{ lote.retirada_fim|dia_relativo }}</li>
+          <li>{% if lote.eh_venda %}<strong class="preco">{{ lote.preco|dinheiro }}</strong>{% else %}<strong class="preco">Doação gratuita</strong>{% endif %}</li>
+        </ul>
+        <form method="post" action="{% url 'produtos:reservar_lote' lote.pk %}">
+          {% csrf_token %}
+          <button class="btn btn-primary btn-bloco" type="submit">{% if lote.eh_venda %}Comprar e reservar{% else %}Reservar lote{% endif %}</button>
+        </form>
+      </div>
+    </article>
+    {% empty %}
+    <p class="vazio">Nenhum lote disponível no momento{% if filtrando %} com esses filtros{% endif %}.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'core/js/filtros.js' %}"></script>{% endblock %}

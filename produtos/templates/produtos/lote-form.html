@@ -1,0 +1,54 @@
+{% extends 'core/base_app.html' %}
+{% load static %}
+
+{% block title %}{% if editando %}Editar Lote{% else %}Anunciar Lote{% endif %}{% endblock %}
+{% block description %}{% if editando %}Edite os dados do lote de alimentos antes que ele seja reservado.{% else %}Cadastre um lote de alimentos para doação ou venda, com validade, janela de retirada e fotos.{% endif %}{% endblock %}
+{% block heading %}{% if editando %}Editar Lote{% else %}Anunciar Lote{% endif %}{% endblock %}
+
+{% block content %}
+<form class="form form-largo" method="post" enctype="multipart/form-data" novalidate data-validar>
+  {% csrf_token %}
+  {% include 'core/_resumo_erros.html' %}
+
+  <fieldset class="grupo">
+    <legend>O que está sendo oferecido</legend>
+    {% include 'core/_campo.html' with campo=form.descricao %}
+    <div class="linha-campos">
+      {% include 'core/_campo.html' with campo=form.categoria %}
+      {% include 'core/_campo.html' with campo=form.tipo %}
+    </div>
+    {% include 'core/_campo.html' with campo=form.preco %}
+  </fieldset>
+
+  <fieldset class="grupo">
+    <legend>Quantidade</legend>
+    <div class="linha-campos">
+      {% include 'core/_campo.html' with campo=form.quantidade %}
+      {% include 'core/_campo.html' with campo=form.unidade %}
+    </div>
+    {% include 'core/_campo.html' with campo=form.peso_kg %}
+  </fieldset>
+
+  <fieldset class="grupo">
+    <legend>Prazos</legend>
+    {% include 'core/_campo.html' with campo=form.data_validade %}
+    <div class="linha-campos">
+      {% include 'core/_campo.html' with campo=form.retirada_inicio %}
+      {% include 'core/_campo.html' with campo=form.retirada_fim %}
+    </div>
+  </fieldset>
+
+  <fieldset class="grupo">
+    <legend>Fotos</legend>
+    {% include 'core/_campo.html' with campo=form.foto %}
+    {% include 'core/_campo.html' with campo=form.foto_validade %}
+  </fieldset>
+
+  <div class="form-acoes">
+    <button class="btn btn-primary" type="submit" data-envio>{% if editando %}Salvar alterações{% else %}Publicar lote{% endif %}</button>
+    <a class="btn btn-secondary" href="{% url 'produtos:meus_lotes' %}">Cancelar</a>
+  </div>
+</form>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'core/js/formularios.js' %}"></script>{% endblock %}
