@@ -31,7 +31,7 @@ Comissão: cada venda registra a comissão da plataforma (`COMISSAO_PERCENTUAL`,
 cp .env.example .env        # defina DJANGO_SECRET_KEY e POSTGRES_PASSWORD
 docker compose up -d --build
 docker compose exec web python manage.py migrate
-docker compose exec web python manage.py seed_demo   # dados de demonstração (opcional)
+docker compose exec web python manage.py seed_demo   # usuários de demonstração (opcional)
 ```
 
 Acesse **http://localhost:8000**.
@@ -46,17 +46,23 @@ python manage.py seed_demo
 python manage.py runserver
 ```
 
-### Dados de demonstração
+### Usuários para login
 
-`seed_demo` cria usuários de cada perfil (senha padrão `prato-cheio-123`), lotes à venda,
-doações, reservas e histórico de retiradas.
+O banco local (`db.sqlite3`) já vem só com estes usuários, sem lotes nem reservas.
+A senha de todos é **`prato-cheio-123`**.
 
-| Perfil | E-mail |
-|---|---|
-| Doador | `contato@bompreco.com.br` |
-| ONG | `contato@mesasolidaria.org.br` |
-| Consumidor | `joao@exemplo.com.br` |
-| Admin | `admin@pratocheio.com.br` |
+| Perfil | E-mail | Observação |
+|---|---|---|
+| Admin | `admin@pratocheio.com.br` | acessa também `/admin/` |
+| Doador (PJ) | `contato@bompreco.com.br` | Hortifruti Bom Preço, Centro |
+| Doador (PJ) | `contato@paonosso.com.br` | Padaria Pão Nosso, Cambuí |
+| Doador (PJ) | `contato@novodia.com.br` | conta **pendente**, não consegue entrar até ser aprovada |
+| ONG | `contato@mesasolidaria.org.br` | Mesa Solidária, Taquaral |
+| ONG | `cozinha@vilanova.org.br` | Cozinha Comunitária Vila Nova |
+| Consumidor (PF) | `joao@exemplo.com.br` | João Silva |
+
+Para recriar esses usuários num banco novo: `python manage.py migrate` e depois
+`python manage.py seed_demo`. O comando pode rodar mais de uma vez sem duplicar nada.
 
 ## Autenticação (JWT)
 
@@ -76,19 +82,18 @@ core/        base dos templates, CSS, JS e filtros de template compartilhados
 usuarios/    Usuario, Estabelecimento, JWT, cadastro e login
 produtos/    Categoria, Lote, Reserva, vitrine e regras de reserva
 metricas/    painel e relatório de impacto (CO₂, kg, refeições)
-database/    DER e dicionário de dados do grupo (o esquema real vem dos models)
 docs/        documentação e protótipos
 ```
 
 ## Modelo de dados
 
 Implementado nos models do Django (`usuarios/models.py`, `produtos/models.py`).
-Diferenças em relação ao dicionário de dados em `database/`:
+Pontos principais do esquema:
 
-- `tipo_perfil` agora é `pf`, `pj`, `ong` ou `admin` (antes: `doador`, `receptor`, `admin`).
+- `tipo_perfil` é `pf`, `pj`, `ong` ou `admin`.
 - `estabelecimento` também guarda as ONGs (`tipo_estabelecimento = ong`).
-- `lote` ganhou `tipo` (doação/venda), `preco` e `foto_validade` (foto do código de barras e da validade).
-- `reserva` ganhou `valor` e `comissao`.
+- `lote` tem `tipo` (doação/venda), `preco` e `foto_validade` (foto do código de barras e da validade).
+- `reserva` guarda `valor` e `comissao`.
 - A regra "uma reserva ativa por lote" é a constraint `uk_reserva_ativa` (índice único parcial).
 
 ## CO₂
