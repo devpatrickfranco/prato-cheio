@@ -1,0 +1,39 @@
+{% extends 'layouts/app.html' %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block descricao %}{{ descricao }}{% endblock %}
+{% block cabecalho %}Painel de Impacto{% endblock %}
+
+{% block conteudo %}
+    <section class="metrics">
+        {% for metrica in metricas %}
+            <article class="metric">
+                <div class="metric-head">
+                    <div class="metric-icon"><span aria-hidden="true">{{ metrica.icone }}</span></div><span class="trend">{{ metrica.tendencia }}</span>
+                </div>
+                <div><span class="metric-value">{{ metrica.valor }}</span> <span class="metric-unit">{{ metrica.unidade }}</span></div>
+                <p class="metric-label">{{ metrica.rotulo }}</p>
+            </article>
+        {% endfor %}
+    </section>
+    <section class="dashboard-grid">
+        <article class="panel">
+            <div class="panel-title">
+                <h2>Impacto Ambiental Histórico</h2><a class="text-link" href="#">Ver Relatório Completo <span aria-hidden="true">▥</span></a>
+            </div>
+            <div class="chart-placeholder"><span aria-hidden="true">◌</span> &nbsp; Gráfico de emissões evitadas (Últimos 6 meses)</div>
+        </article>
+        <article class="panel">
+            <div class="panel-title">
+                <h2>{{ titulo_atividades }}</h2>
+            </div>
+            <div class="activity">
+                {% for atividade in atividades %}
+                    <div class="activity-item"><span class="dot"></span>
+                        <div><strong>{{ atividade.titulo }}</strong><span>{{ atividade.texto }}</span><span>{{ atividade.quando }}</span></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </article>
+    </section>
+{% endblock %}

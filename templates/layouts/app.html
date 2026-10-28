@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% comment %}
+Layout das áreas logadas: sidebar do perfil + conteúdo principal.
+Contexto esperado: `perfil` (apps.usuarios.perfis.Perfil) e `ativo` (item do menu).
+{% endcomment %}
+
+{% block corpo %}
+    <div class="app">
+        {% include 'components/sidebar.html' %}
+        <main class="main">
+            <header class="topbar">
+                <h1>{% block cabecalho %}{% endblock %}</h1>
+                {% block topbar_extra %}{% endblock %}
+            </header>
+            <div class="content">
+                {% for mensagem in messages %}
+                    <p class="mensagem mensagem-{{ mensagem.tags }}" role="status">{{ mensagem }}</p>
+                {% endfor %}
+                {% block conteudo %}{% endblock %}
+            </div>
+        </main>
+    </div>
+{% endblock %}

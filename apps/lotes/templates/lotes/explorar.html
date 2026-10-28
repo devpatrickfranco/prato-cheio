@@ -1,0 +1,60 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block titulo %}Lotes Disponíveis{% endblock %}
+{% block descricao %}Lotes de alimentos próximos do vencimento disponíveis para reserva, com filtro por distância.{% endblock %}
+{% block cabecalho %}Lotes Disponíveis{% endblock %}
+
+{% block topbar_extra %}
+    <div class="search-wrap"><label for="busca" class="sr-only">Buscar alimentos</label><input id="busca" class="search" type="search" placeholder="Buscar alimentos..."></div>
+{% endblock %}
+
+{% block conteudo %}
+    <div class="section-head">
+        <h2>Alimentos Próximos do Vencimento</h2>
+        <form class="actions filtro-distancia" method="get">
+            <label for="raio" class="sr-only">Distância máxima em km</label>
+            <input id="raio" class="search" name="raio" type="number" min="0.1" step="0.1" placeholder="Até x km" value="{{ raio }}">
+            {% if origem_do_navegador %}
+                <input type="hidden" name="lat" value="{{ origem.0|stringformat:'.6f' }}">
+                <input type="hidden" name="lon" value="{{ origem.1|stringformat:'.6f' }}">
+            {% else %}
+                <input type="hidden" name="lat"><input type="hidden" name="lon">
+            {% endif %}
+            <button class="btn btn-secondary" type="button" data-usar-localizacao><span aria-hidden="true">●</span> Usar minha localização</button>
+            <button class="btn btn-primary" type="submit">Filtrar</button>
+        </form>
+    </div>
+    {% if not origem %}
+        <p class="muted">Use sua localização ou cadastre seu endereço para ver a distância até cada estabelecimento.</p>
+    {% endif %}
+    <section class="cards">
+        {% for lote in lotes %}
+            <article class="food-card">
+                {% if lote.foto_url %}
+                    <img class="food-img" src="{{ lote.foto_url }}" alt="{{ lote.descricao }}">
+                {% elif lote.imagem_padrao %}
+                    <img class="food-img" src="{% static lote.imagem_padrao %}" alt="{{ lote.descricao }}">
+                {% endif %}
+                <div class="food-body">
+                    <div class="food-title">
+                        <h3>{{ lote.descricao }}</h3><span class="quantity">{{ lote.quantidade|floatformat:"-2" }}{{ lote.unidade }}</span>
+                    </div>
+                    <div class="food-meta">
+                        <span><span aria-hidden="true">●</span> {{ lote.estabelecimento.razao_social }} · {{ lote.estabelecimento.bairro }}</span>
+                        {% if lote.distancia_km is not None %}<span class="distancia"><span aria-hidden="true">↗</span> {{ lote.distancia_km|floatformat:1 }} km de você</span>{% endif %}
+                        <span><span aria-hidden="true">□</span> Vence: <strong>{{ lote.data_validade|date:"d/m/Y" }}</strong></span>
+                        <span><span aria-hidden="true">◷</span> Retirada: {{ lote.retirada_inicio|date:"d/m H:i" }} - {{ lote.retirada_fim|date:"H:i" }}</span>
+                    </div>
+                    <a class="btn btn-primary" href="#">Reservar Lote</a>
+                </div>
+            </article>
+        {% empty %}
+            <p class="muted">Nenhum lote disponível{% if raio %} em até {{ raio }} km{% endif %} no momento.</p>
+        {% endfor %}
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'lotes/js/localizacao.js' %}"></script>
+{% endblock %}
