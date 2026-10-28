@@ -1,0 +1,1972 @@
+﻿grupo,cod_pof,descricao,cod_preparo,preparo,cf_gco2eq_100g,wf_litros_100g,ef_m2g_100g,cf_kgco2eq_por_kg
+cereais e leguminosas,6300101,"arroz (polido, parboilizado, agulha, agulhinha etc.)",99,não se aplica,106,65,0.5,1.06
+cereais e leguminosas,6300201,arroz integral,99,não se aplica,107,65,0.5,1.07
+cereais e leguminosas,6300701,milho (em grão),1,cru(a),82,185,0.5,0.82
+cereais e leguminosas,6300701,milho (em grão),2,cozido(a),55,95,0.2,0.55
+cereais e leguminosas,6300701,milho (em grão),3,grelhado(a)/brasa/churrasco,42,95,0.2,0.42
+cereais e leguminosas,6300701,milho (em grão),4,assado(a),64,95,0.2,0.64
+cereais e leguminosas,6300701,milho (em grão),7,refogado(a),61,112,0.4,0.61
+cereais e leguminosas,6300701,milho (em grão),13,ensopado,65,73,0.3,0.65
+cereais e leguminosas,6300701,milho (em grão),99,não se aplica,55,95,0.2,0.55
+cereais e leguminosas,6300706,canjiquinha de milho em grão,1,cru(a),85,228,1.2,0.85
+cereais e leguminosas,6300706,canjiquinha de milho em grão,2,cozido(a),57,117,0.6,0.57
+cereais e leguminosas,6300706,canjiquinha de milho em grão,13,ensopado,66,84,0.5,0.66
+cereais e leguminosas,6300706,canjiquinha de milho em grão,14,mingau,142,158,0.9,1.42
+cereais e leguminosas,6300706,canjiquinha de milho em grão,15,sopa,54,109,0.7,0.54
+cereais e leguminosas,6300706,canjiquinha de milho em grão,99,não se aplica,57,117,0.6,0.57
+cereais e leguminosas,6300707,xerém de milho,99,não se aplica,63,151,0.8,0.63
+cereais e leguminosas,6301001,amendoim (em grão) (in natura),99,não se aplica,133,270,0.8,1.33
+cereais e leguminosas,6301101,ervilha em grão,99,não se aplica,39,52,1.1,0.39
+cereais e leguminosas,6301201,fava (em grão),99,não se aplica,54,224,0.4,0.54
+cereais e leguminosas,6301204,mangalô amargo em grão,99,não se aplica,54,160,0.4,0.54
+cereais e leguminosas,6301603,feijão de corda,99,não se aplica,37,142,0.4,0.37
+cereais e leguminosas,6301634,feijão verde,99,não se aplica,37,142,0.4,0.37
+cereais e leguminosas,6302001,semente de linhaça,99,não se aplica,206,379,0.8,2.06
+cereais e leguminosas,6302602,andu,99,não se aplica,54,160,0.4,0.54
+cereais e leguminosas,6302801,grão de bico,99,não se aplica,93,160,0.4,0.93
+cereais e leguminosas,6302901,lentilha,99,não se aplica,93,160,0.4,0.93
+cereais e leguminosas,6303001,soja em grão,99,não se aplica,36,94,0.5,0.36
+cereais e leguminosas,6303102,"feijão (preto, mulatinho, roxo, rosinha etc.)",99,não se aplica,35,142,0.4,0.35
+cereais e leguminosas,6303501,quirera não especificada,99,não se aplica,63,133,0.8,0.63
+cereais e leguminosas,6304034,feijão verde orgânico,99,não se aplica,37,142,0.4,0.37
+cereais e leguminosas,6304101,feijão orgânico,99,não se aplica,41,142,0.4,0.41
+cereais e leguminosas,6304201,pipoca light,99,não se aplica,29,65,0.2,0.29
+cereais e leguminosas,6304301,arroz orgânico,99,não se aplica,112,65,0.5,1.12
+cereais e leguminosas,6304401,arroz integral orgânico,99,não se aplica,107,65,0.5,1.07
+cereais e leguminosas,6304602,feijão soja orgânico,99,não se aplica,42,95,0.5,0.42
+cereais e leguminosas,6304901,quinoa,99,não se aplica,85,198,0.3,0.85
+hortaliças tuberosas,6400101,batata-inglesa,1,cru(a),26,69,0.3,0.26
+hortaliças tuberosas,6400101,batata-inglesa,2,cozido(a),47,90,0.4,0.47
+hortaliças tuberosas,6400101,batata-inglesa,3,grelhado(a)/brasa/churrasco,34,90,0.4,0.34
+hortaliças tuberosas,6400101,batata-inglesa,4,assado(a),56,90,0.4,0.56
+hortaliças tuberosas,6400101,batata-inglesa,5,frito(a),50,107,0.6,0.5
+hortaliças tuberosas,6400101,batata-inglesa,7,refogado(a),54,107,0.6,0.54
+hortaliças tuberosas,6400101,batata-inglesa,8,molho vermelho,76,97,0.5,0.76
+hortaliças tuberosas,6400101,batata-inglesa,9,molho branco,91,117,0.7,0.91
+hortaliças tuberosas,6400101,batata-inglesa,10,ao alho e óleo,63,148,0.7,0.63
+hortaliças tuberosas,6400101,batata-inglesa,11,com manteiga/óleo,54,107,0.6,0.54
+hortaliças tuberosas,6400101,batata-inglesa,13,ensopado,61,70,0.4,0.61
+hortaliças tuberosas,6400101,batata-inglesa,15,sopa,47,89,0.5,0.47
+hortaliças tuberosas,6400101,batata-inglesa,99,não se aplica,47,90,0.4,0.47
+hortaliças tuberosas,6400303,mandioquinha salsa (batata barôa),2,cozido(a),50,121,0.2,0.5
+hortaliças tuberosas,6400303,mandioquinha salsa (batata barôa),7,refogado(a),57,136,0.3,0.57
+hortaliças tuberosas,6400303,mandioquinha salsa (batata barôa),13,ensopado,63,86,0.3,0.63
+hortaliças tuberosas,6400303,mandioquinha salsa (batata barôa),99,não se aplica,50,121,0.2,0.5
+hortaliças tuberosas,6400304,cenoura amarela (batata barôa),99,não se aplica,50,121,0.2,0.5
+hortaliças tuberosas,6400401,batata doce,1,cru(a),9,55,0.4,0.09
+hortaliças tuberosas,6400401,batata doce,2,cozido(a),25,72,0.5,0.25
+hortaliças tuberosas,6400401,batata doce,4,assado(a),34,72,0.5,0.34
+hortaliças tuberosas,6400401,batata doce,5,frito(a),30,90,0.7,0.3
+hortaliças tuberosas,6400401,batata doce,7,refogado(a),33,90,0.7,0.33
+hortaliças tuberosas,6400401,batata doce,13,ensopado,50,61,0.5,0.5
+hortaliças tuberosas,6400401,batata doce,99,não se aplica,25,72,0.5,0.25
+hortaliças tuberosas,6400501,inhame,1,cru(a),10,62,0.4,0.1
+hortaliças tuberosas,6400501,inhame,2,cozido(a),25,80,0.5,0.25
+hortaliças tuberosas,6400501,inhame,4,assado(a),35,80,0.5,0.35
+hortaliças tuberosas,6400501,inhame,5,frito(a),30,97,0.7,0.3
+hortaliças tuberosas,6400501,inhame,7,refogado(a),33,97,0.7,0.33
+hortaliças tuberosas,6400501,inhame,13,ensopado,51,65,0.5,0.51
+hortaliças tuberosas,6400501,inhame,15,sopa,31,81,0.6,0.31
+hortaliças tuberosas,6400508,quiçaré,99,não se aplica,25,80,0.5,0.25
+hortaliças tuberosas,6400601,mandioca,1,cru(a),11,62,0.4,0.11
+hortaliças tuberosas,6400601,mandioca,2,cozido(a),26,80,0.5,0.26
+hortaliças tuberosas,6400601,mandioca,4,assado(a),36,80,0.5,0.36
+hortaliças tuberosas,6400601,mandioca,5,frito(a),31,97,0.7,0.31
+hortaliças tuberosas,6400601,mandioca,7,refogado(a),34,97,0.7,0.34
+hortaliças tuberosas,6400601,mandioca,8,molho vermelho,60,89,0.7,0.6
+hortaliças tuberosas,6400601,mandioca,11,com manteiga/óleo,34,97,0.7,0.34
+hortaliças tuberosas,6400601,mandioca,13,ensopado,51,65,0.5,0.51
+hortaliças tuberosas,6400601,mandioca,15,sopa,31,81,0.6,0.31
+hortaliças tuberosas,6400601,mandioca,99,não se aplica,26,80,0.5,0.26
+hortaliças tuberosas,6400609,aipim,2,cozido(a),26,80,0.5,0.26
+hortaliças tuberosas,6400609,aipim,4,assado(a),36,80,0.5,0.36
+hortaliças tuberosas,6400609,aipim,5,frito(a),31,97,0.7,0.31
+hortaliças tuberosas,6400609,aipim,6,empanado(a)/à milanesa,87,147,1.1,0.87
+hortaliças tuberosas,6400609,aipim,7,refogado(a),34,97,0.7,0.34
+hortaliças tuberosas,6400609,aipim,8,molho vermelho,60,89,0.7,0.6
+hortaliças tuberosas,6400609,aipim,11,com manteiga/óleo,34,97,0.7,0.34
+hortaliças tuberosas,6400609,aipim,13,ensopado,51,65,0.5,0.51
+hortaliças tuberosas,6400609,aipim,15,sopa,31,81,0.6,0.31
+hortaliças tuberosas,6400609,aipim,99,não se aplica,26,80,0.5,0.26
+hortaliças tuberosas,6400610,macaxeira,1,cru(a),11,62,0.4,0.11
+hortaliças tuberosas,6400610,macaxeira,2,cozido(a),26,80,0.5,0.26
+hortaliças tuberosas,6400610,macaxeira,4,assado(a),36,80,0.5,0.36
+hortaliças tuberosas,6400610,macaxeira,5,frito(a),31,97,0.7,0.31
+hortaliças tuberosas,6400701,cara,2,cozido(a),26,81,0.5,0.26
+hortaliças tuberosas,6400701,cara,5,frito(a),30,98,0.7,0.3
+hortaliças tuberosas,6400701,cara,7,refogado(a),33,98,0.7,0.33
+hortaliças tuberosas,6400701,cara,13,ensopado,51,66,0.5,0.51
+hortaliças tuberosas,6400701,cara,14,mingau,139,154,0.9,1.39
+hortaliças tuberosas,6400701,cara,15,sopa,31,82,0.6,0.31
+hortaliças tuberosas,6400713,inhame caraquento (cara),2,cozido(a),26,81,0.5,0.26
+hortaliças tuberosas,6400802,batata (não especificada),1,cru(a),21,54,0.2,0.21
+hortaliças tuberosas,6400802,batata (não especificada),2,cozido(a),39,70,0.3,0.39
+hortaliças tuberosas,6400802,batata (não especificada),3,grelhado(a)/brasa/churrasco,27,70,0.3,0.27
+hortaliças tuberosas,6400802,batata (não especificada),4,assado(a),49,70,0.3,0.49
+hortaliças tuberosas,6400802,batata (não especificada),5,frito(a),43,88,0.5,0.43
+hortaliças tuberosas,6400802,batata (não especificada),7,refogado(a),46,88,0.5,0.46
+hortaliças tuberosas,6400802,batata (não especificada),8,molho vermelho,70,81,0.5,0.7
+hortaliças tuberosas,6400802,batata (não especificada),9,molho branco,85,101,0.7,0.85
+hortaliças tuberosas,6400802,batata (não especificada),12,ao vinagrete,54,85,0.6,0.54
+hortaliças tuberosas,6400802,batata (não especificada),13,ensopado,58,60,0.4,0.58
+hortaliças tuberosas,6400802,batata (não especificada),15,sopa,41,74,0.4,0.41
+hortaliças tuberosas,6400802,batata (não especificada),99,não se aplica,39,70,0.3,0.39
+hortaliças tuberosas,6400908,mandioquinha,2,cozido(a),50,121,0.2,0.5
+hortaliças tuberosas,6400908,mandioquinha,5,frito(a),54,136,0.3,0.54
+hortaliças tuberosas,6400908,mandioquinha,7,refogado(a),57,136,0.3,0.57
+hortaliças tuberosas,6400908,mandioquinha,13,ensopado,63,86,0.3,0.63
+hortaliças tuberosas,6401001,rabanete,1,cru(a),14,103,0.1,0.14
+hortaliças tuberosas,6401001,rabanete,2,cozido(a),24,104,0.1,0.24
+hortaliças tuberosas,6401001,rabanete,12,ao vinagrete,32,111,0.4,0.32
+hortaliças tuberosas,6401101,beterraba,1,cru(a),13,96,0.1,0.13
+hortaliças tuberosas,6401101,beterraba,2,cozido(a),23,97,0.1,0.23
+hortaliças tuberosas,6401101,beterraba,7,refogado(a),31,114,0.2,0.31
+hortaliças tuberosas,6401101,beterraba,12,ao vinagrete,32,111,0.4,0.32
+hortaliças tuberosas,6401101,beterraba,15,sopa,28,95,0.2,0.28
+hortaliças tuberosas,6401101,beterraba,99,não se aplica,13,96,0.1,0.13
+hortaliças tuberosas,6401201,cenoura,1,cru(a),29,93,0.1,0.29
+hortaliças tuberosas,6401201,cenoura,2,cozido(a),34,80,0.1,0.34
+hortaliças tuberosas,6401201,cenoura,5,frito(a),38,97,0.3,0.38
+hortaliças tuberosas,6401201,cenoura,7,refogado(a),42,97,0.3,0.42
+hortaliças tuberosas,6401201,cenoura,8,molho vermelho,66,88,0.3,0.66
+hortaliças tuberosas,6401201,cenoura,10,ao alho e óleo,46,150,0.5,0.46
+hortaliças tuberosas,6401201,cenoura,11,com manteiga/óleo,32,97,0.3,0.32
+hortaliças tuberosas,6401201,cenoura,12,ao vinagrete,44,103,0.4,0.44
+hortaliças tuberosas,6401201,cenoura,13,ensopado,53,65,0.3,0.53
+hortaliças tuberosas,6401201,cenoura,15,sopa,37,81,0.3,0.37
+hortaliças tuberosas,6401201,cenoura,99,não se aplica,29,93,0.1,0.29
+hortaliças tuberosas,6401301,nabo,2,cozido(a),39,95,0.1,0.39
+hortaliças tuberosas,6401301,nabo,7,refogado(a),46,111,0.3,0.46
+hortaliças tuberosas,6401601,açafrão,1,cru(a),34,80,0.2,0.34
+hortaliças tuberosas,6401801,batata inglesa orgânica,5,frito(a),44,88,0.5,0.44
+"farinhas, féculas e massas",6500101,creme de arroz,99,não se aplica,421,178,0.8,4.21
+"farinhas, féculas e massas",6500104,arrozina,99,não se aplica,286,235,1.5,2.86
+"farinhas, féculas e massas",6500105,mucilon,99,não se aplica,286,235,1.5,2.86
+"farinhas, féculas e massas",6500108,mingau de arroz,99,não se aplica,139,153,0.9,1.39
+"farinhas, féculas e massas",6500202,croquinhos de arroz,99,não se aplica,953,173,1.1,9.53
+"farinhas, féculas e massas",6500301,farinha de aveia,99,não se aplica,38,235,0.5,0.38
+"farinhas, féculas e massas",6500401,aveia em flocos,99,não se aplica,38,235,0.5,0.38
+"farinhas, féculas e massas",6500601,fubá de milho,99,não se aplica,42,80,0.4,0.42
+"farinhas, féculas e massas",6500603,farinha de milho,99,não se aplica,30,92,0.4,0.3
+"farinhas, féculas e massas",6500608,puba de milho,99,não se aplica,145,105,0.7,1.45
+"farinhas, féculas e massas",6500609,puba de fubá,99,não se aplica,135,105,0.6,1.35
+"farinhas, féculas e massas",6500613,milho moído,2,cozido(a),42,92,0.4,0.42
+"farinhas, féculas e massas",6500614,mingau de milho,99,não se aplica,139,153,0.9,1.39
+"farinhas, féculas e massas",6500702,amido de milho,99,não se aplica,127,153,0.9,1.27
+"farinhas, féculas e massas",6500705,amido de arroz,99,não se aplica,127,153,0.9,1.27
+"farinhas, féculas e massas",6500801,cremogema,99,não se aplica,83,256,1.2,0.83
+"farinhas, féculas e massas",6500802,vitamilho,99,não se aplica,83,256,1.2,0.83
+"farinhas, féculas e massas",6500804,creme de milho,99,não se aplica,156,148,0.9,1.56
+"farinhas, féculas e massas",6500902,sucrilhos de milho,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6500903,cereal matinal de milho em flocos,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6501301,germe de trigo,99,não se aplica,50,235,0.5,0.5
+"farinhas, féculas e massas",6501303,fibra de trigo,99,não se aplica,38,235,0.5,0.38
+"farinhas, féculas e massas",6501304,fibra de cereal trigo,99,não se aplica,38,235,0.5,0.38
+"farinhas, féculas e massas",6501401,farinha de mandioca,99,não se aplica,59,165,0.8,0.59
+"farinhas, féculas e massas",6501410,farinha de copioba,99,não se aplica,59,197,0.8,0.59
+"farinhas, féculas e massas",6501415,farinha de água,99,não se aplica,59,197,0.8,0.59
+"farinhas, féculas e massas",6501416,cruera,99,não se aplica,73,456,1.0,0.73
+"farinhas, féculas e massas",6501502,goma de mandioca,99,não se aplica,72,197,0.8,0.72
+"farinhas, féculas e massas",6501505,sagu de mandioca,99,não se aplica,78,39,0.5,0.78
+"farinhas, féculas e massas",6501510,farinha de tapioca,99,não se aplica,59,228,0.8,0.59
+"farinhas, féculas e massas",6501511,farinha beiju,99,não se aplica,59,197,0.8,0.59
+"farinhas, féculas e massas",6501515,sagu de tapioca,99,não se aplica,78,39,0.5,0.78
+"farinhas, féculas e massas",6501516,tapioca de goma,99,não se aplica,99,208,1.4,0.99
+"farinhas, féculas e massas",6502001,farinha láctea,99,não se aplica,200,165,1.0,2.0
+"farinhas, féculas e massas",6502101,neston,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6502102,flocos de cereais,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6502105,vitaflocos,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6502403,mini pizza semipronta,1,cru(a),560,127,0.9,5.6
+"farinhas, féculas e massas",6502403,mini pizza semipronta,2,cozido(a),573,127,0.9,5.73
+"farinhas, féculas e massas",6502403,mini pizza semipronta,4,assado(a),593,127,0.9,5.93
+"farinhas, féculas e massas",6502403,mini pizza semipronta,5,frito(a),550,142,1.1,5.5
+"farinhas, féculas e massas",6502403,mini pizza semipronta,99,não se aplica,560,127,0.9,5.6
+"farinhas, féculas e massas",6502501,fibra de soja,99,não se aplica,167,116,0.4,1.67
+"farinhas, féculas e massas",6502603,mini pastel,99,não se aplica,953,173,1.1,9.53
+"farinhas, féculas e massas",6503401,macarrão,1,cru(a),137,173,1.1,1.37
+"farinhas, féculas e massas",6503401,macarrão,2,cozido(a),72,75,0.5,0.72
+"farinhas, féculas e massas",6503401,macarrão,3,grelhado(a)/brasa/churrasco,59,75,0.5,0.59
+"farinhas, féculas e massas",6503401,macarrão,4,assado(a),81,75,0.5,0.81
+"farinhas, féculas e massas",6503401,macarrão,5,frito(a),74,93,0.6,0.74
+"farinhas, féculas e massas",6503401,macarrão,6,empanado(a)/à milanesa,124,143,1.0,1.24
+"farinhas, féculas e massas",6503401,macarrão,7,refogado(a),78,93,0.6,0.78
+"farinhas, féculas e massas",6503401,macarrão,8,molho vermelho,97,85,0.6,0.97
+"farinhas, féculas e massas",6503401,macarrão,9,molho branco,112,105,0.8,1.12
+"farinhas, féculas e massas",6503401,macarrão,10,ao alho e óleo,83,136,0.8,0.83
+"farinhas, féculas e massas",6503401,macarrão,11,com manteiga/óleo,78,93,0.6,0.78
+"farinhas, féculas e massas",6503401,macarrão ao vinagrete,12,ao vinagrete,81,89,0.7,0.81
+"farinhas, féculas e massas",6503401,macarrão,13,ensopado,74,63,0.4,0.74
+"farinhas, féculas e massas",6503401,macarrão,15,sopa,66,78,0.5,0.66
+"farinhas, féculas e massas",6503401,macarrão,99,não se aplica,72,75,0.5,0.72
+"farinhas, féculas e massas",6503501,purê de batata,99,não se aplica,75,129,0.7,0.75
+"farinhas, féculas e massas",6503601,bife vegetal,99,não se aplica,138,94,0.5,1.38
+"farinhas, féculas e massas",6503603,carne vegetal,5,frito(a),166,103,0.5,1.66
+"farinhas, féculas e massas",6503604,pasta de soja,99,não se aplica,136,22,0.3,1.36
+"farinhas, féculas e massas",6503605,carne de soja,99,não se aplica,198,161,0.5,1.98
+"farinhas, féculas e massas",6503702,amendoim moído,99,não se aplica,133,270,0.8,1.33
+"farinhas, féculas e massas",6504101,granola,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6504601,musli,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6504701,mix de cereais,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6504801,miojo,99,não se aplica,105,75,0.5,1.05
+"farinhas, féculas e massas",6504802,macarrão instantâneo,99,não se aplica,105,75,0.5,1.05
+"farinhas, féculas e massas",6505101,sustagem,99,não se aplica,79,152,5.8,0.79
+"farinhas, féculas e massas",6505601,proteína de soja,99,não se aplica,104,86,0.3,1.04
+"farinhas, féculas e massas",6505603,proteína vegetal,99,não se aplica,136,86,0.3,1.36
+"farinhas, féculas e massas",6505701,complemento alimentar de qualquer sabor,99,não se aplica,10,18,0.7,0.1
+"farinhas, féculas e massas",6505902,sucrilhos de milho light,99,não se aplica,290,177,1.0,2.9
+"farinhas, féculas e massas",6506003,mini pizza semipronta light,4,assado(a),413,127,0.9,4.13
+"farinhas, féculas e massas",6506302,macarrão instantâneo light,15,sopa,100,78,0.5,1.0
+"farinhas, féculas e massas",6506302,macarrão instantâneo light,99,não se aplica,105,75,0.5,1.05
+"farinhas, féculas e massas",6506401,proteína de soja orgânica,99,não se aplica,136,86,0.3,1.36
+"farinhas, féculas e massas",6573225,macarrão com carne,99,não se aplica,488,337,2.1,4.88
+"farinhas, féculas e massas",6573226,macarrão com peixe,99,não se aplica,125,68,2.2,1.25
+"cocos, castanhas e nozes",6600101,coco da bahia (seco ou verde),99,não se aplica,1782,892,4.0,17.82
+"cocos, castanhas e nozes",6600301,castanha portuguesa,99,não se aplica,405,1912,3.4,4.05
+"cocos, castanhas e nozes",6600401,pinhão,99,não se aplica,405,1912,3.4,4.05
+"cocos, castanhas e nozes",6600501,amêndoa,99,não se aplica,471,1912,3.4,4.71
+"cocos, castanhas e nozes",6600601,avelã,99,não se aplica,405,1912,3.4,4.05
+"cocos, castanhas e nozes",6600701,castanha do para,99,não se aplica,327,1600,0.7,3.27
+"cocos, castanhas e nozes",6600801,castanha de caju,99,não se aplica,327,5907,0.7,3.27
+"cocos, castanhas e nozes",6600912,butiá,99,não se aplica,1782,892,4.0,17.82
+"cocos, castanhas e nozes",6601108,tucumã,99,não se aplica,1782,892,4.0,17.82
+"cocos, castanhas e nozes",6601208,coco mucajá,99,não se aplica,1782,892,4.0,17.82
+"cocos, castanhas e nozes",6601501,noz (nogueira),99,não se aplica,288,1912,3.4,2.88
+"cocos, castanhas e nozes",6601706,açaí,99,não se aplica,185,93,0.4,1.85
+"cocos, castanhas e nozes",6601707,juçara,99,não se aplica,185,93,0.4,1.85
+"cocos, castanhas e nozes",6601709,uaçaí,99,não se aplica,185,93,0.4,1.85
+"cocos, castanhas e nozes",6601712,jussara,99,não se aplica,185,93,0.4,1.85
+"cocos, castanhas e nozes",6601805,pupunha,99,não se aplica,1782,892,4.0,17.82
+"cocos, castanhas e nozes",6601902,bacaba,99,não se aplica,1782,892,4.0,17.82
+"cocos, castanhas e nozes",6601904,bacabuçu,99,não se aplica,1782,892,4.0,17.82
+"cocos, castanhas e nozes",6602001,castanha da índia,99,não se aplica,327,164,0.7,3.27
+"cocos, castanhas e nozes",6602201,pistache,99,não se aplica,580,1642,2.9,5.8
+"cocos, castanhas e nozes",6602301,buriti,99,não se aplica,185,93,0.4,1.85
+"cocos, castanhas e nozes",6602401,coco,99,não se aplica,363,182,0.8,3.63
+"cocos, castanhas e nozes",6602601,Patauá,99,não se aplica,1782,892,4.0,17.82
+"hortaliças folhosas, frutosas e outras",6700101,Alface,99,não se aplica,41,51,0.3,0.41
+"hortaliças folhosas, frutosas e outras",6700201,bertalha,7,refogado(a),38,102,0.3,0.38
+"hortaliças folhosas, frutosas e outras",6700301,chicória,1,cru(a),39,48,0.2,0.39
+"hortaliças folhosas, frutosas e outras",6700301,chicória,2,cozido(a),48,47,0.2,0.48
+"hortaliças folhosas, frutosas e outras",6700301,chicória,7,refogado(a),54,66,0.4,0.54
+"hortaliças folhosas, frutosas e outras",6700301,chicória ao vinagrete,12,ao vinagrete,52,67,0.5,0.52
+"hortaliças folhosas, frutosas e outras",6700304,escarola,99,não se aplica,38,47,0.2,0.38
+"hortaliças folhosas, frutosas e outras",6700501,couve,1,cru(a),49,112,0.2,0.49
+"hortaliças folhosas, frutosas e outras",6700501,couve,2,cozido(a),58,112,0.2,0.58
+"hortaliças folhosas, frutosas e outras",6700501,couve,5,frito(a),61,128,0.4,0.61
+"hortaliças folhosas, frutosas e outras",6700501,couve,7,refogado(a),64,128,0.4,0.64
+"hortaliças folhosas, frutosas e outras",6700501,couve,8,molho vermelho,85,114,0.4,0.85
+"hortaliças folhosas, frutosas e outras",6700501,couve,10,ao alho e óleo,62,165,0.5,0.62
+"hortaliças folhosas, frutosas e outras",6700501,couve,11,com manteiga/óleo,55,128,0.4,0.55
+"hortaliças folhosas, frutosas e outras",6700501,couve ao vinagrete,12,ao vinagrete,59,118,0.5,0.59
+"hortaliças folhosas, frutosas e outras",6700501,couve,13,ensopado,65,81,0.3,0.65
+"hortaliças folhosas, frutosas e outras",6700501,couve,14,mingau,142,157,0.9,1.42
+"hortaliças folhosas, frutosas e outras",6700501,couve,99,não se aplica,49,112,0.2,0.49
+"hortaliças folhosas, frutosas e outras",6700601,couve flor,1,cru(a),38,99,0.1,0.38
+"hortaliças folhosas, frutosas e outras",6700601,couve flor,2,cozido(a),46,96,0.1,0.46
+"hortaliças folhosas, frutosas e outras",6700601,couve flor,5,frito(a),50,112,0.3,0.5
+"hortaliças folhosas, frutosas e outras",6700601,couve flor,6,empanado(a)/à milanesa,103,160,0.7,1.03
+"hortaliças folhosas, frutosas e outras",6700601,couve flor,7,refogado(a),53,112,0.3,0.53
+"hortaliças folhosas, frutosas e outras",6700601,couve flor ao vinagrete,12,ao vinagrete,50,105,0.4,0.5
+"hortaliças folhosas, frutosas e outras",6700601,couve flor,99,não se aplica,37,96,0.1,0.37
+"hortaliças folhosas, frutosas e outras",6700701,espinafre,1,cru(a),23,93,0.2,0.23
+"hortaliças folhosas, frutosas e outras",6700701,espinafre,2,cozido(a),33,93,0.2,0.33
+"hortaliças folhosas, frutosas e outras",6700701,espinafre,7,refogado(a),40,110,0.3,0.4
+"hortaliças folhosas, frutosas e outras",6700701,espinafre ao vinagrete,12,ao vinagrete,39,103,0.4,0.39
+"hortaliças folhosas, frutosas e outras",6700701,espinafre,99,não se aplica,23,93,0.2,0.23
+"hortaliças folhosas, frutosas e outras",6700801,mostarda (verdura),1,cru(a),12,93,0.1,0.12
+"hortaliças folhosas, frutosas e outras",6700801,mostarda (verdura),2,cozido(a),22,90,0.1,0.22
+"hortaliças folhosas, frutosas e outras",6700801,mostarda (verdura),7,refogado(a),29,107,0.3,0.29
+"hortaliças folhosas, frutosas e outras",6700801,mostarda (verdura),99,não se aplica,12,90,0.1,0.12
+"hortaliças folhosas, frutosas e outras",6700901,repolho,1,cru(a),13,96,0.1,0.13
+"hortaliças folhosas, frutosas e outras",6700901,repolho,2,cozido(a),21,88,0.1,0.21
+"hortaliças folhosas, frutosas e outras",6700901,repolho,5,frito(a),26,105,0.3,0.26
+"hortaliças folhosas, frutosas e outras",6700901,repolho,7,refogado(a),29,105,0.3,0.29
+"hortaliças folhosas, frutosas e outras",6700901,repolho,9,molho branco,61,116,0.5,0.61
+"hortaliças folhosas, frutosas e outras",6700901,repolho ao alho e óleo,10,ao alho e óleo,33,153,0.5,0.33
+"hortaliças folhosas, frutosas e outras",6700901,repolho ao vinagrete,12,ao vinagrete,31,105,0.4,0.31
+"hortaliças folhosas, frutosas e outras",6700901,repolho ensopado,13,ensopado,47,69,0.3,0.47
+"hortaliças folhosas, frutosas e outras",6700901,repolho,15,sopa,27,87,0.3,0.27
+"hortaliças folhosas, frutosas e outras",6700901,repolho,99,não se aplica,13,96,0.1,0.13
+"hortaliças folhosas, frutosas e outras",6701101,cebolinha,99,não se aplica,23,179,0.1,0.23
+"hortaliças folhosas, frutosas e outras",6701301,agrião,1,cru(a),16,121,0.2,0.16
+"hortaliças folhosas, frutosas e outras",6701301,agrião,2,cozido(a),25,117,0.2,0.25
+"hortaliças folhosas, frutosas e outras",6701301,agrião ao vinagrete,12,ao vinagrete,33,125,0.5,0.33
+"hortaliças folhosas, frutosas e outras",6701301,agrião,13,ensopado,49,84,0.3,0.49
+"hortaliças folhosas, frutosas e outras",6701301,agrião,99,não se aplica,16,121,0.2,0.16
+"hortaliças folhosas, frutosas e outras",6701401,taioba,1,cru(a),11,68,0.4,0.11
+"hortaliças folhosas, frutosas e outras",6701401,taioba,2,cozido(a),20,68,0.4,0.2
+"hortaliças folhosas, frutosas e outras",6701401,taioba,7,refogado(a),28,86,0.6,0.28
+"hortaliças folhosas, frutosas e outras",6701501,acelga,1,cru(a),37,46,0.2,0.37
+"hortaliças folhosas, frutosas e outras",6701501,acelga,2,cozido(a),46,45,0.2,0.46
+"hortaliças folhosas, frutosas e outras",6701501,acelga,7,refogado(a),53,64,0.4,0.53
+"hortaliças folhosas, frutosas e outras",6701501,acelga,99,não se aplica,36,45,0.2,0.36
+"hortaliças folhosas, frutosas e outras",6701505,beterraba branca (acelga),2,cozido(a),46,45,0.2,0.46
+"hortaliças folhosas, frutosas e outras",6701601,almeirão,1,cru(a),39,48,0.2,0.39
+"hortaliças folhosas, frutosas e outras",6701601,almeirão,2,cozido(a),48,47,0.2,0.48
+"hortaliças folhosas, frutosas e outras",6701601,almeirão,7,refogado(a),54,66,0.4,0.54
+"hortaliças folhosas, frutosas e outras",6701601,almeirão ao vinagrete,12,ao vinagrete,52,67,0.5,0.52
+"hortaliças folhosas, frutosas e outras",6701602,radite,1,cru(a),39,48,0.2,0.39
+"hortaliças folhosas, frutosas e outras",6701602,radite,7,refogado(a),54,66,0.4,0.54
+"hortaliças folhosas, frutosas e outras",6701602,radite ao vinagrete,12,ao vinagrete,52,67,0.5,0.52
+"hortaliças folhosas, frutosas e outras",6701704,brócolis,1,cru(a),42,89,0.2,0.42
+"hortaliças folhosas, frutosas e outras",6701704,brócolis,2,cozido(a),50,86,0.2,0.5
+"hortaliças folhosas, frutosas e outras",6701704,brócolis,6,empanado(a)/à milanesa,106,152,0.8,1.06
+"hortaliças folhosas, frutosas e outras",6701704,brócolis,7,refogado(a),57,103,0.3,0.57
+"hortaliças folhosas, frutosas e outras",6701704,brócolis,10,ao alho e óleo,56,147,0.5,0.56
+"hortaliças folhosas, frutosas e outras",6701704,brócolis ao vinagrete,12,ao vinagrete,54,99,0.4,0.54
+"hortaliças folhosas, frutosas e outras",6701704,brócolis,99,não se aplica,42,89,0.2,0.42
+"hortaliças folhosas, frutosas e outras",6701801,serralha,1,cru(a),12,89,0.1,0.12
+"hortaliças folhosas, frutosas e outras",6701801,serralha,2,cozido(a),21,86,0.1,0.21
+"hortaliças folhosas, frutosas e outras",6701801,serralha,7,refogado(a),29,103,0.3,0.29
+"hortaliças folhosas, frutosas e outras",6701901,caruru,2,cozido(a),22,94,0.1,0.22
+"hortaliças folhosas, frutosas e outras",6701906,cuxá,99,não se aplica,13,94,0.1,0.13
+"hortaliças folhosas, frutosas e outras",6701907,vinagreira,99,não se aplica,13,94,0.1,0.13
+"hortaliças folhosas, frutosas e outras",6701913,cariru,99,não se aplica,13,94,0.1,0.13
+"hortaliças folhosas, frutosas e outras",6702001,rúcula,99,não se aplica,16,117,0.2,0.16
+"hortaliças folhosas, frutosas e outras",6702105,jambu,99,não se aplica,12,90,0.1,0.12
+"hortaliças folhosas, frutosas e outras",6702201,língua de vaca (verdura),1,cru(a),16,121,0.2,0.16
+"hortaliças folhosas, frutosas e outras",6702301,alcachofra,99,não se aplica,54,90,0.2,0.54
+"hortaliças folhosas, frutosas e outras",6702501,bredo,99,não se aplica,13,94,0.1,0.13
+"hortaliças folhosas, frutosas e outras",6702604,salsão (aipo),7,refogado(a),56,69,0.4,0.56
+"hortaliças folhosas, frutosas e outras",6702801,erva doce,99,não se aplica,36,44,0.2,0.36
+"hortaliças folhosas, frutosas e outras",6703003,folha de aipim,1,cru(a),47,58,0.3,0.47
+"hortaliças folhosas, frutosas e outras",6703004,folha de macaxeira,2,cozido(a),57,58,0.3,0.57
+"hortaliças folhosas, frutosas e outras",6703101,broto de feijão,1,cru(a),34,80,0.2,0.34
+"hortaliças folhosas, frutosas e outras",6703101,broto de feijão,2,cozido(a),44,81,0.2,0.44
+"hortaliças folhosas, frutosas e outras",6703306,moranga,2,cozido(a),57,82,0.2,0.57
+"hortaliças folhosas, frutosas e outras",6703306,moranga,7,refogado(a),63,99,0.3,0.63
+"hortaliças folhosas, frutosas e outras",6703306,moranga,13,ensopado,65,66,0.3,0.65
+"hortaliças folhosas, frutosas e outras",6703306,moranga,99,não se aplica,57,82,0.2,0.57
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,1,cru(a),22,104,0.2,0.22
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,2,cozido(a),32,106,0.2,0.32
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,3,grelhado(a)/brasa/churrasco,22,106,0.2,0.22
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,4,assado(a),44,106,0.2,0.44
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,5,frito(a),36,122,0.4,0.36
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,6,empanado(a)/à milanesa,91,167,0.8,0.91
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,7,refogado(a),39,122,0.4,0.39
+"hortaliças folhosas, frutosas e outras",6703701,abobrinha,13,ensopado,52,78,0.3,0.52
+"hortaliças folhosas, frutosas e outras",6703805,jerimum,1,cru(a),44,106,0.2,0.44
+"hortaliças folhosas, frutosas e outras",6703805,jerimum,2,cozido(a),44,82,0.2,0.44
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,1,cru(a),49,118,0.2,0.49
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,2,cozido(a),47,90,0.2,0.47
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,4,assado(a),60,90,0.2,0.6
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,5,frito(a),51,107,0.4,0.51
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,7,refogado(a),54,107,0.4,0.54
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,8,molho vermelho,76,97,0.3,0.76
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,13,ensopado,60,71,0.3,0.6
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,15,sopa,46,89,0.3,0.46
+"hortaliças folhosas, frutosas e outras",6703901,abóbora,99,não se aplica,38,90,0.2,0.38
+"hortaliças folhosas, frutosas e outras",6704001,pepino,99,não se aplica,44,107,0.4,0.44
+"hortaliças folhosas, frutosas e outras",6704101,chuchu,1,cru(a),46,110,0.2,0.46
+"hortaliças folhosas, frutosas e outras",6704101,chuchu,2,cozido(a),76,158,0.3,0.76
+"hortaliças folhosas, frutosas e outras",6704101,chuchu,4,assado(a),88,158,0.3,0.88
+"hortaliças folhosas, frutosas e outras",6704101,chuchu,7,refogado(a),81,171,0.5,0.81
+"hortaliças folhosas, frutosas e outras",6704101,chuchu,8,molho vermelho,99,151,0.5,0.99
+"hortaliças folhosas, frutosas e outras",6704101,chuchu ao alho e óleo,10,ao alho e óleo,76,202,0.6,0.76
+"hortaliças folhosas, frutosas e outras",6704101,chuchu ao vinagrete,12,ao vinagrete,73,155,0.5,0.73
+"hortaliças folhosas, frutosas e outras",6704101,chuchu,13,ensopado,74,104,0.4,0.74
+"hortaliças folhosas, frutosas e outras",6704101,chuchu (sopa),15,sopa,68,140,0.4,0.68
+"hortaliças folhosas, frutosas e outras",6704201,jiló,1,cru(a),41,93,0.2,0.41
+"hortaliças folhosas, frutosas e outras",6704201,jiló,2,cozido(a),51,95,0.2,0.51
+"hortaliças folhosas, frutosas e outras",6704201,jiló,4,assado(a),63,95,0.2,0.63
+"hortaliças folhosas, frutosas e outras",6704201,jiló,5,frito(a),54,111,0.4,0.54
+"hortaliças folhosas, frutosas e outras",6704201,jiló,7,refogado(a),57,111,0.4,0.57
+"hortaliças folhosas, frutosas e outras",6704201,jiló,11,com manteiga/óleo,48,111,0.4,0.48
+"hortaliças folhosas, frutosas e outras",6704201,jiló,13,ensopado,62,73,0.3,0.62
+"hortaliças folhosas, frutosas e outras",6704201,jiló,99,não se aplica,41,95,0.2,0.41
+"hortaliças folhosas, frutosas e outras",6704301,maxixe,1,cru(a),44,106,0.2,0.44
+"hortaliças folhosas, frutosas e outras",6704301,maxixe,2,cozido(a),55,108,0.2,0.55
+"hortaliças folhosas, frutosas e outras",6704301,maxixe,7,refogado(a),61,124,0.4,0.61
+"hortaliças folhosas, frutosas e outras",6704301,maxixe,13,ensopado,64,79,0.3,0.64
+"hortaliças folhosas, frutosas e outras",6704306,pepininho (maxixe),2,cozido(a),55,108,0.2,0.55
+"hortaliças folhosas, frutosas e outras",6704306,pepininho (maxixe),12,ao vinagrete,57,115,0.5,0.57
+"hortaliças folhosas, frutosas e outras",6704401,palmito in natura,1,cru(a),81,240,1.1,0.81
+"hortaliças folhosas, frutosas e outras",6704401,palmito in natura,2,cozido(a),92,244,1.1,0.92
+"hortaliças folhosas, frutosas e outras",6704401,palmito in natura,7,refogado(a),96,253,1.3,0.96
+"hortaliças folhosas, frutosas e outras",6704401,palmito in natura,13,ensopado,82,147,0.8,0.82
+"hortaliças folhosas, frutosas e outras",6704409,guariroba (palmito in natura),2,cozido(a),92,244,1.1,0.92
+"hortaliças folhosas, frutosas e outras",6704409,guariroba (palmito in natura),7,refogado(a),96,253,1.3,0.96
+"hortaliças folhosas, frutosas e outras",6704409,guariroba (palmito in natura),8,molho vermelho,112,220,1.1,1.12
+"hortaliças folhosas, frutosas e outras",6704410,guariroba (palmito in natura),2,cozido(a),92,244,1.1,0.92
+"hortaliças folhosas, frutosas e outras",6704410,guariroba (palmito in natura),7,refogado(a),96,253,1.3,0.96
+"hortaliças folhosas, frutosas e outras",6704501,pimentão,99,não se aplica,43,97,0.2,0.43
+"hortaliças folhosas, frutosas e outras",6705001,quiabo,1,cru(a),40,97,0.2,0.4
+"hortaliças folhosas, frutosas e outras",6705001,quiabo,2,cozido(a),51,98,0.2,0.51
+"hortaliças folhosas, frutosas e outras",6705001,quiabo,5,frito(a),54,115,0.4,0.54
+"hortaliças folhosas, frutosas e outras",6705001,quiabo,6,empanado(a)/à milanesa,106,161,0.8,1.06
+"hortaliças folhosas, frutosas e outras",6705001,quiabo,7,refogado(a),57,115,0.4,0.57
+"hortaliças folhosas, frutosas e outras",6705001,quiabo,13,ensopado,62,74,0.3,0.62
+"hortaliças folhosas, frutosas e outras",6705001,quiabo,99,não se aplica,41,98,0.2,0.41
+"hortaliças folhosas, frutosas e outras",6705101,tomate,99,não se aplica,82,9,0.1,0.82
+"hortaliças folhosas, frutosas e outras",6705201,vagem,1,cru(a),56,93,2.9,0.56
+"hortaliças folhosas, frutosas e outras",6705201,vagem,2,cozido(a),67,95,3.0,0.67
+"hortaliças folhosas, frutosas e outras",6705201,vagem,7,refogado(a),72,112,3.0,0.72
+"hortaliças folhosas, frutosas e outras",6705201,vagem,11,com manteiga/óleo,63,112,3.0,0.63
+"hortaliças folhosas, frutosas e outras",6705201,vagem,13,ensopado,70,73,1.7,0.7
+"hortaliças folhosas, frutosas e outras",6705201,vagem,99,não se aplica,57,95,3.0,0.57
+"hortaliças folhosas, frutosas e outras",6705301,cogumelo in natura,99,não se aplica,48,81,0.1,0.48
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,1,cru(a),42,97,0.2,0.42
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,2,cozido(a),72,142,0.3,0.72
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,4,assado(a),84,142,0.3,0.84
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,5,frito(a),74,156,0.4,0.74
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,6,empanado(a)/à milanesa,123,196,0.8,1.23
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,7,refogado(a),77,156,0.4,0.77
+"hortaliças folhosas, frutosas e outras",6705401,berinjela ao vinagrete,12,ao vinagrete,70,142,0.5,0.7
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,13,ensopado,72,96,0.3,0.72
+"hortaliças folhosas, frutosas e outras",6705401,berinjela,99,não se aplica,62,142,0.3,0.62
+"hortaliças folhosas, frutosas e outras",6705501,ervilha em vagem,2,cozido(a),103,391,0.5,1.03
+"hortaliças folhosas, frutosas e outras",6705501,ervilha em vagem,7,refogado(a),106,393,0.7,1.06
+"hortaliças folhosas, frutosas e outras",6705701,cebola,1,cru(a),23,52,0.1,0.23
+"hortaliças folhosas, frutosas e outras",6705701,cebola,2,cozido(a),33,53,0.1,0.33
+"hortaliças folhosas, frutosas e outras",6705701,cebola,3,grelhado(a)/brasa/churrasco,24,53,0.1,0.24
+"hortaliças folhosas, frutosas e outras",6705701,cebola,4,assado(a),46,53,0.1,0.46
+"hortaliças folhosas, frutosas e outras",6705701,cebola,5,frito(a),37,71,0.3,0.37
+"hortaliças folhosas, frutosas e outras",6705701,cebola,7,refogado(a),40,71,0.3,0.4
+"hortaliças folhosas, frutosas e outras",6705701,cebola,8,molho vermelho,55,67,0.3,0.55
+"hortaliças folhosas, frutosas e outras",6705701,cebola,11,com manteiga/óleo,31,71,0.3,0.31
+"hortaliças folhosas, frutosas e outras",6705701,cebola ao vinagrete,12,ao vinagrete,39,70,0.4,0.39
+"hortaliças folhosas, frutosas e outras",6705701,cebola,99,não se aplica,23,52,0.1,0.23
+"hortaliças folhosas, frutosas e outras",6705801,catalonha,7,refogado(a),52,63,0.4,0.52
+"hortaliças folhosas, frutosas e outras",6706101,jardineira (seleta),99,não se aplica,81,240,1.1,0.81
+"hortaliças folhosas, frutosas e outras",6706102,seleta (jardineira),99,não se aplica,173,125,0.5,1.73
+"hortaliças folhosas, frutosas e outras",6706201,alho,99,não se aplica,25,330,0.1,0.25
+"hortaliças folhosas, frutosas e outras",6706301,alho poro,99,não se aplica,26,204,0.2,0.26
+"hortaliças folhosas, frutosas e outras",6707301,broto de alfafa,99,não se aplica,33,78,0.1,0.33
+"hortaliças folhosas, frutosas e outras",6707801,alface orgânica,99,não se aplica,41,51,0.2,0.41
+"hortaliças folhosas, frutosas e outras",6707901,tomate orgânico,99,não se aplica,91,48,0.1,0.91
+"hortaliças folhosas, frutosas e outras",6708001,pimentão orgânico,99,não se aplica,43,97,0.2,0.43
+"hortaliças folhosas, frutosas e outras",6709701,orégano,99,não se aplica,34,42,0.2,0.34
+frutas,6801017,pacová,99,não se aplica,269,135,0.6,2.69
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",1,cru(a),139,146,0.6,1.39
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",2,cozido(a),145,146,0.6,1.45
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",4,assado(a),155,146,0.6,1.55
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",5,frito(a),147,160,0.8,1.47
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",6,empanado(a)/à milanesa,178,200,1.1,1.78
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",11,com manteiga/óleo,147,160,0.8,1.47
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",13,ensopado,101,98,0.5,1.01
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",14,mingau,151,160,0.9,1.51
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",15,sopa,112,131,0.6,1.12
+frutas,6801101,"banana (ouro, prata, d'água, da terra etc.)",99,não se aplica,139,146,0.6,1.39
+frutas,6801801,"laranja (pera, seleta, lima, da terra etc.)",99,não se aplica,40,62,0.6,0.4
+frutas,6801901,lima,99,não se aplica,12,84,0.6,0.12
+frutas,6802001,"limão (comum, galego etc.)",99,não se aplica,18,118,0.9,0.18
+frutas,6802201,tangerina,99,não se aplica,78,73,0.6,0.78
+frutas,6802202,mexerica,99,não se aplica,78,80,0.6,0.78
+frutas,6802217,bergamota,99,não se aplica,78,76,0.6,0.78
+frutas,6802218,mimosa,99,não se aplica,78,76,0.6,0.78
+frutas,6802223,tanja,99,não se aplica,78,76,0.6,0.78
+frutas,6802227,maricota,99,não se aplica,78,76,0.6,0.78
+frutas,6802407,laranjinha japonesa,99,não se aplica,40,62,0.6,0.4
+frutas,6802501,cana de açúcar,99,não se aplica,98,18,0.5,0.98
+frutas,6802601,abacaxi,99,não se aplica,40,25,0.6,0.4
+frutas,6802602,ananás,99,não se aplica,9,607,0.6,0.09
+frutas,6802701,abacate,99,não se aplica,51,145,0.6,0.51
+frutas,6802801,caqui,99,não se aplica,66,443,0.5,0.66
+frutas,6802901,figo,99,não se aplica,27,137,0.5,0.27
+frutas,6803001,maçã,99,não se aplica,27,20,0.1,0.27
+frutas,6803101,mamão,99,não se aplica,144,34,0.6,1.44
+frutas,6803108,papaia,99,não se aplica,144,34,0.6,1.44
+frutas,6803201,manga,99,não se aplica,15,155,0.7,0.15
+frutas,6803215,manguito,99,não se aplica,97,650,0.7,0.97
+frutas,6803301,maracujá,99,não se aplica,25,804,0.8,0.25
+frutas,6803401,melancia,99,não se aplica,227,38,0.7,2.27
+frutas,6803501,melão,99,não se aplica,101,27,0.6,1.01
+frutas,6803601,pera,99,não se aplica,14,129,0.2,0.14
+frutas,6803701,pêssego,99,não se aplica,43,156,0.7,0.43
+frutas,6803801,fruta de conde,99,não se aplica,120,804,0.8,1.2
+frutas,6803802,pinha (fruta de conde),99,não se aplica,120,804,0.8,1.2
+frutas,6803803,ata,99,não se aplica,120,804,0.8,1.2
+frutas,6803901,uva,99,não se aplica,24,44,0.5,0.24
+frutas,6803912,uva passa,99,não se aplica,85,175,0.5,0.85
+frutas,6804001,jenipapo,99,não se aplica,90,600,0.6,0.9
+frutas,6804101,jaca,99,não se aplica,103,688,0.7,1.03
+frutas,6804201,goiaba,99,não se aplica,10,106,0.5,0.1
+frutas,6804203,araçá açú (goiaba),99,não se aplica,67,446,0.5,0.67
+frutas,6804301,ameixa,99,não se aplica,42,156,0.3,0.42
+frutas,6804401,caju,99,não se aplica,163,443,0.5,1.63
+frutas,6804501,cereja,99,não se aplica,40,157,0.6,0.4
+frutas,6804601,cajá manga,99,não se aplica,66,443,0.5,0.66
+frutas,6804602,cajarana,99,não se aplica,66,443,0.5,0.66
+frutas,6804701,taperebá,99,não se aplica,66,443,0.5,0.66
+frutas,6804702,acajá (taperebá),99,não se aplica,66,443,0.5,0.66
+frutas,6804801,carambola,99,não se aplica,66,443,0.5,0.66
+frutas,6804901,jabuticaba,99,não se aplica,73,487,0.5,0.73
+frutas,6805001,graviola,99,não se aplica,97,650,0.7,0.97
+frutas,6805201,morango,99,não se aplica,64,59,0.2,0.64
+frutas,6805301,jambo,99,não se aplica,66,443,0.5,0.66
+frutas,6805401,atemoia,99,não se aplica,120,804,0.8,1.2
+frutas,6805601,mangaba,99,não se aplica,66,443,0.5,0.66
+frutas,6805701,araçá,99,não se aplica,67,446,0.5,0.67
+frutas,6805801,nêspera,99,não se aplica,67,446,0.5,0.67
+frutas,6805901,fruta pão,99,não se aplica,59,392,0.4,0.59
+frutas,6806001,sapoti,99,não se aplica,67,446,0.5,0.67
+frutas,6806101,uxi,99,não se aplica,67,446,0.5,0.67
+frutas,6806201,tamarindo,99,não se aplica,67,446,0.5,0.67
+frutas,6806301,cacau,99,não se aplica,431,4304,6.4,4.31
+frutas,6806401,pitomba,99,não se aplica,70,467,0.5,0.7
+frutas,6806501,bacuri,99,não se aplica,67,446,0.5,0.67
+frutas,6806601,ingá,99,não se aplica,64,425,0.4,0.64
+frutas,6806701,pequi,99,não se aplica,67,446,0.5,0.67
+frutas,6806801,pitanga,99,não se aplica,70,467,0.5,0.7
+frutas,6806901,ciriguela,99,não se aplica,66,443,0.5,0.66
+frutas,6807001,murici,99,não se aplica,66,443,0.5,0.66
+frutas,6807101,umbu,99,não se aplica,66,443,0.5,0.66
+frutas,6807103,imbu,99,não se aplica,66,443,0.5,0.66
+frutas,6807202,biriba,99,não se aplica,97,650,0.7,0.97
+frutas,6807301,cupuaçu,99,não se aplica,90,600,0.6,0.9
+frutas,6807401,nectarina,99,não se aplica,43,156,0.7,0.43
+frutas,6807501,mari,99,não se aplica,64,430,0.4,0.64
+frutas,6807601,romã,99,não se aplica,83,552,0.6,0.83
+frutas,6807701,acerola,99,não se aplica,66,443,0.5,0.66
+frutas,6807801,kiwi,99,não se aplica,150,136,0.3,1.5
+frutas,6808001,abiu,99,não se aplica,66,443,0.5,0.66
+frutas,6808201,jurubeba,99,não se aplica,64,426,0.4,0.64
+frutas,6808401,fruta (não especificada),99,não se aplica,96,436,0.4,0.96
+frutas,6808601,maçã orgânica,99,não se aplica,27,20,0.1,0.27
+frutas,6808901,acerola orgânica,99,não se aplica,66,443,0.5,0.66
+frutas,6809901,amora,99,não se aplica,19,446,0.5,0.19
+frutas,6810201,jamelão (jamburão),99,não se aplica,67,451,0.5,0.67
+açúcares e produtos de confeitaria,6900302,demerara,99,não se aplica,77,65,0.4,0.77
+açúcares e produtos de confeitaria,6900304,açúcar mascavo,99,não se aplica,180,109,0.4,1.8
+açúcares e produtos de confeitaria,6900401,rapadura,99,não se aplica,77,34,0.4,0.77
+açúcares e produtos de confeitaria,6900402,alfenim de cana,99,não se aplica,77,34,0.4,0.77
+açúcares e produtos de confeitaria,6900403,batida (rapadura),99,não se aplica,77,65,0.4,0.77
+açúcares e produtos de confeitaria,6900501,sorvete de qualquer sabor industrializado,99,não se aplica,235,611,3.4,2.35
+açúcares e produtos de confeitaria,6900502,picolé de qualquer sabor industrializado,99,não se aplica,235,611,3.4,2.35
+açúcares e produtos de confeitaria,6900601,chiclete,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6900603,bala,99,não se aplica,400,59,0.4,4.0
+açúcares e produtos de confeitaria,6900604,caramelo (bala),99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6900605,drops,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6900606,pastilha,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6900607,pirulito,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6900609,goma de mascar,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6900610,jujuba,99,não se aplica,259,59,0.4,2.59
+açúcares e produtos de confeitaria,6900701,tablete de chocolate,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6900702,barra de chocolate,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6900706,confete,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6900801,chocolate em pó de qualquer marca,99,não se aplica,253,2491,4.6,2.53
+açúcares e produtos de confeitaria,6900818,ovomaltine,99,não se aplica,79,152,5.8,0.79
+açúcares e produtos de confeitaria,6900821,achocolatado em pó,99,não se aplica,79,152,5.8,0.79
+açúcares e produtos de confeitaria,6900822,toddynho,99,não se aplica,79,152,5.8,0.79
+açúcares e produtos de confeitaria,6900901,bombom de qualquer marca,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6900904,trufa,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6901001,geleia de frutas de qualquer marca ou sabor,99,não se aplica,350,125,0.6,3.5
+açúcares e produtos de confeitaria,6901002,mousse de qualquer sabor (geleia),99,não se aplica,180,127,0.9,1.8
+açúcares e produtos de confeitaria,6901101,geleia de mocotó,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6901201,doce de frutas em pasta de qualquer sabor,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6901203,pasta de amendoim,99,não se aplica,119,246,1.0,1.19
+açúcares e produtos de confeitaria,6901204,pessegada,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6901206,marmelada,99,não se aplica,240,125,0.6,2.4
+açúcares e produtos de confeitaria,6901209,figada,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6901211,goiabada,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6901214,caju em pasta,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6901224,mariola,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6901301,doce de frutas em calda de qualquer sabor,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6901401,doce de frutas cristalizado de qualquer sabor,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6901501,melado,99,não se aplica,77,34,0.4,0.77
+açúcares e produtos de confeitaria,6901602,mel,99,não se aplica,200,398,0.9,2.0
+açúcares e produtos de confeitaria,6901701,gelatina de qualquer sabor,99,não se aplica,9,4,0.0,0.09
+açúcares e produtos de confeitaria,6901801,adoçante artificial,99,não se aplica,4457,1748,3.4,44.57
+açúcares e produtos de confeitaria,6902004,merengue,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6902301,schimier de cana,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6902401,fruta seca ou desidratada,99,não se aplica,72,308,0.4,0.72
+açúcares e produtos de confeitaria,6902402,passa,99,não se aplica,68,141,0.4,0.68
+açúcares e produtos de confeitaria,6902601,pudim de qualquer sabor,99,não se aplica,320,398,2.7,3.2
+açúcares e produtos de confeitaria,6902607,danette pudim,99,não se aplica,320,398,2.7,3.2
+açúcares e produtos de confeitaria,6902701,manjar (sem calda),99,não se aplica,144,172,0.9,1.44
+açúcares e produtos de confeitaria,6902901,cuscuz,99,não se aplica,30,92,0.4,0.3
+açúcares e produtos de confeitaria,6902902,cuscuz de tapioca,99,não se aplica,118,166,0.7,1.18
+açúcares e produtos de confeitaria,6903001,maria mole,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6903101,cocada,99,não se aplica,160,102,0.5,1.6
+açúcares e produtos de confeitaria,6903102,quebra-queixo,99,não se aplica,114,81,0.4,1.14
+açúcares e produtos de confeitaria,6903201,doce de amendoim,99,não se aplica,94,135,0.6,0.94
+açúcares e produtos de confeitaria,6903202,pé de moleque,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6903203,paçoca,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6903204,torrão de amendoim,99,não se aplica,118,152,1.1,1.18
+açúcares e produtos de confeitaria,6903205,paçoquinha de amendoim,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6903207,amendoim caramelizado,99,não se aplica,115,230,0.7,1.15
+açúcares e produtos de confeitaria,6903208,amendoim amanteigado,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6903209,amendoim achocolatado,99,não se aplica,153,745,1.5,1.53
+açúcares e produtos de confeitaria,6903303,amendoim apimentado,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6903304,amendoim cozido,99,não se aplica,133,270,0.8,1.33
+açúcares e produtos de confeitaria,6903601,brigadeiro,99,não se aplica,236,308,1.5,2.36
+açúcares e produtos de confeitaria,6903701,bomba de qualquer tipo,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6903801,mil folhas,99,não se aplica,180,127,0.9,1.8
+açúcares e produtos de confeitaria,6903901,queijadinha,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6904101,doce a base de ovos,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6904104,caçarola italiana,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6904105,quindim,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6904108,fios de ovos,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6904201,crème brûlée,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6904202,pavê de qualquer sabor,99,não se aplica,236,263,1.6,2.36
+açúcares e produtos de confeitaria,6904203,ambrosia,99,não se aplica,143,142,0.9,1.43
+açúcares e produtos de confeitaria,6904204,leite geleificado,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6904205,chandele de qualquer sabor,99,não se aplica,333,265,2.6,3.33
+açúcares e produtos de confeitaria,6904302,mumu,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6904401,canudinho recheado,99,não se aplica,180,127,0.9,1.8
+açúcares e produtos de confeitaria,6904501,sarolho,99,não se aplica,122,145,0.6,1.22
+açúcares e produtos de confeitaria,6904502,beiju,99,não se aplica,59,197,0.8,0.59
+açúcares e produtos de confeitaria,6904601,schimier de fruta (exceto de cana),99,não se aplica,32,34,0.2,0.32
+açúcares e produtos de confeitaria,6904701,beijo de moca,99,não se aplica,208,203,3.0,2.08
+açúcares e produtos de confeitaria,6904801,picolé ensacado,99,não se aplica,235,611,3.4,2.35
+açúcares e produtos de confeitaria,6904807,geladinho,99,não se aplica,235,611,3.4,2.35
+açúcares e produtos de confeitaria,6905001,churro,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6905101,pamonha,99,não se aplica,89,211,1.0,0.89
+açúcares e produtos de confeitaria,6905401,algodão-doce,99,não se aplica,164,223,1.1,1.64
+açúcares e produtos de confeitaria,6905603,ioiô creme (chocolate em creme),99,não se aplica,253,2491,4.6,2.53
+açúcares e produtos de confeitaria,6905801,ovo de pascoa,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6905804,kinder ovo,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6905901,torrone,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6906001,arroz doce,99,não se aplica,124,97,0.6,1.24
+açúcares e produtos de confeitaria,6906404,polpa de coco,99,não se aplica,54,27,0.1,0.54
+açúcares e produtos de confeitaria,6906501,diet shake,99,não se aplica,16,30,1.2,0.16
+açúcares e produtos de confeitaria,6906502,concentrado alimentar diet shake,99,não se aplica,16,30,1.2,0.16
+açúcares e produtos de confeitaria,6906602,açúcar,99,não se aplica,42,68,0.4,0.42
+açúcares e produtos de confeitaria,6907001,açúcar light,99,não se aplica,77,65,0.4,0.77
+açúcares e produtos de confeitaria,6907201,barra de cereais,99,não se aplica,290,177,1.0,2.9
+açúcares e produtos de confeitaria,6907202,barra de cereais salgada,99,não se aplica,290,177,1.0,2.9
+açúcares e produtos de confeitaria,6907203,barra de cereais doce,99,não se aplica,290,177,1.0,2.9
+açúcares e produtos de confeitaria,6907301,sobremesa de qualquer tipo (exceto infantil),99,não se aplica,180,127,0.9,1.8
+açúcares e produtos de confeitaria,6907401,rabanada,99,não se aplica,182,243,1.5,1.82
+açúcares e produtos de confeitaria,6907501,milk shake,99,não se aplica,235,611,3.4,2.35
+açúcares e produtos de confeitaria,6907901,geleia diet,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6908001,doce de frutas diet,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6908401,pasteis de santa clara,99,não se aplica,220,388,2.5,2.2
+açúcares e produtos de confeitaria,6908501,suspiro,99,não se aplica,266,245,1.6,2.66
+açúcares e produtos de confeitaria,6909301,doce de frutas cristalizado de qualquer sabor diet,99,não se aplica,24,84,0.4,0.24
+açúcares e produtos de confeitaria,6909601,sorvete de qualquer sabor industrializado light,99,não se aplica,235,611,3.4,2.35
+açúcares e produtos de confeitaria,6909701,sorvete de qualquer sabor industrializado diet,99,não se aplica,235,611,3.4,2.35
+açúcares e produtos de confeitaria,6909803,bala light,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6909901,chiclete diet,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6909903,bala diet,99,não se aplica,330,59,0.4,3.3
+açúcares e produtos de confeitaria,6910002,barra de chocolate light,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6910102,barra de chocolate diet,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6910221,achocolatado em pó light,99,não se aplica,79,152,5.8,0.79
+açúcares e produtos de confeitaria,6910321,achocolatado em pó diet,99,não se aplica,79,152,5.8,0.79
+açúcares e produtos de confeitaria,6910322,toddynho diet,99,não se aplica,79,152,5.8,0.79
+açúcares e produtos de confeitaria,6910401,bombom de qualquer marca light,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6910501,bombom de qualquer marca diet,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6910502,bombom caramelizado de qualquer marca diet,99,não se aplica,233,2643,4.6,2.33
+açúcares e produtos de confeitaria,6910601,geleia de frutas de qualquer marca ou sabor light,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6910604,geleia light,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6910605,geleia de frutas light,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6910701,doce de frutas em barra ou pasta light,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6910702,doce de frutas em pasta light,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6910801,pudim de qualquer sabor light,99,não se aplica,320,398,2.7,3.2
+açúcares e produtos de confeitaria,6910808,pudim danette light,99,não se aplica,320,398,2.7,3.2
+açúcares e produtos de confeitaria,6910901,pudim de qualquer sabor diet,99,não se aplica,320,398,2.7,3.2
+açúcares e produtos de confeitaria,6911201,doce de leite light,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6911301,doce de leite diet,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6912501,barra de cereais diet,99,não se aplica,290,177,1.0,2.9
+açúcares e produtos de confeitaria,6912502,barra de cereais doce diet,99,não se aplica,290,177,1.0,2.9
+açúcares e produtos de confeitaria,6912801,milk shake diet,99,não se aplica,79,152,5.8,0.79
+açúcares e produtos de confeitaria,6913001,cocada diet,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6913101,doce de amendoim diet,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6913103,paçoca diet,99,não se aplica,295,125,0.6,2.95
+açúcares e produtos de confeitaria,6913108,amendoim amanteigado diet,99,não se aplica,160,125,0.6,1.6
+açúcares e produtos de confeitaria,6913801,doce a base de leite diet,99,não se aplica,200,165,1.0,2.0
+açúcares e produtos de confeitaria,6913901,gelatina de qualquer sabor light,99,não se aplica,9,4,0.0,0.09
+açúcares e produtos de confeitaria,6914001,adoçante light,99,não se aplica,4457,1748,3.4,44.57
+açúcares e produtos de confeitaria,6914002,adoçante em pó light,99,não se aplica,4457,1748,3.4,44.57
+açúcares e produtos de confeitaria,6914003,adoçante líquido light,99,não se aplica,4457,1748,3.4,44.57
+sais e condimentos,7001501,mostarda molho,99,não se aplica,156,43,3.4,1.56
+sais e condimentos,7002304,hortelã,99,não se aplica,34,80,0.2,0.34
+sais e condimentos,7002401,alcaparra em conserva,99,não se aplica,82,522,0.6,0.82
+sais e condimentos,7002601,coentro,99,não se aplica,34,42,0.1,0.34
+sais e condimentos,7003601,molho de soja,99,não se aplica,156,63,3.4,1.56
+sais e condimentos,7003604,shoyo,99,não se aplica,156,63,3.4,1.56
+sais e condimentos,7003801,leite de coco,99,não se aplica,94,207,0.7,0.94
+sais e condimentos,7004301,maionese (molho),99,não se aplica,156,43,3.4,1.56
+sais e condimentos,7004701,massa de tomate,99,não se aplica,150,36,0.6,1.5
+sais e condimentos,7004801,molho de tomate,99,não se aplica,101,120,1.1,1.01
+sais e condimentos,7004802,ketchup,99,não se aplica,156,24,3.4,1.56
+sais e condimentos,7004803,catchup,99,não se aplica,156,24,3.4,1.56
+sais e condimentos,7006101,pimenta em pó,99,não se aplica,33,184,5.0,0.33
+sais e condimentos,7007101,tucupi em caldo sem pimenta,99,não se aplica,290,611,3.4,2.9
+sais e condimentos,7007502,creme de queijo,99,não se aplica,818,626,2.8,8.18
+sais e condimentos,7007701,caldo de peixe,99,não se aplica,236,25,15.7,2.36
+sais e condimentos,7007901,caldo de tomate,99,não se aplica,70,28,0.3,0.7
+sais e condimentos,7009102,gergelim,99,não se aplica,194,685,0.8,1.94
+sais e condimentos,7010301,tomate seco,99,não se aplica,77,189,0.1,0.77
+sais e condimentos,7010401,maionese (molho) light,99,não se aplica,156,43,3.4,1.56
+sais e condimentos,7010501,molho de soja light,99,não se aplica,156,63,3.4,1.56
+sais e condimentos,7010601,leite de coco light,99,não se aplica,94,207,0.7,0.94
+sais e condimentos,7079202,vinagrete,99,não se aplica,102,142,1.6,1.02
+carnes e vísceras,7100101,filé mignon,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100101,filé mignon,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100101,filé mignon,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100101,filé mignon,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100101,filé mignon,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7100101,filé mignon,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7100101,filé mignon,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100101,filé mignon,9,molho branco,3811,2564,16.0,38.11
+carnes e vísceras,7100101,filé mignon,11,com manteiga/óleo,4470,3012,18.7,44.7
+carnes e vísceras,7100101,filé mignon,99,não se aplica,4695,3148,19.5,46.95
+carnes e vísceras,7100201,contrafilé,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100201,contrafilé,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100201,contrafilé,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100201,contrafilé,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100201,contrafilé,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7100201,contrafilé,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7100201,contrafilé,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100205,bisteca bovina,1,cru(a),3273,2204,13.6,32.73
+carnes e vísceras,7100205,bisteca bovina,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100205,bisteca bovina,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100205,bisteca bovina,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100205,bisteca bovina,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100205,bisteca bovina,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7100205,bisteca bovina,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7100205,bisteca bovina,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100301,alcatra,1,cru(a),3273,2204,13.6,32.73
+carnes e vísceras,7100301,alcatra,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100301,alcatra,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100301,alcatra,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100301,alcatra,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100301,alcatra,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7100301,alcatra,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7100301,alcatra,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100301,alcatra ao vinagrete,12,ao vinagrete,3780,2547,15.9,37.8
+carnes e vísceras,7100301,alcatra,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7100303,maminha,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100303,maminha,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100303,maminha,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100303,maminha,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100304,picanha,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100304,picanha,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100304,picanha,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100304,picanha,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100304,picanha,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7100501,patinho,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100501,patinho,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100501,patinho,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100501,patinho,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100501,patinho,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7100501,patinho,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100501,patinho,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7100502,cabeça de lombo (carne bovina),2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100502,cabeça de lombo (carne bovina),3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100502,cabeça de lombo (carne bovina),4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100502,cabeça de lombo (carne bovina),5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100502,cabeça de lombo (carne bovina),6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7100502,cabeça de lombo (carne bovina),7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7100604,posta branca,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100604,posta branca,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100604,posta branca,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100606,tatu (lagarto redondo),2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100606,tatu (lagarto redondo),4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100606,tatu (lagarto redondo),7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7100606,tatu (lagarto redondo),99,não se aplica,4695,3148,19.5,46.95
+carnes e vísceras,7100607,paulista,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100607,paulista,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100608,lombo paulista (carne bovina),2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100608,lombo paulista (carne bovina),4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100608,lombo paulista (carne bovina),5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100608,lombo paulista (carne bovina),13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7100702,posta vermelha,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100801,acém,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100801,acém,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100801,acém,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100801,acém,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7100801,acém,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7100801,acém,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7100803,agulha (acém),2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100803,agulha (acém),4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7100803,agulha (acém),5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100905,paleta,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100905,paleta,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7100905,paleta,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7100905,paleta,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7100908,pá com osso,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7100908,pá com osso,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7100908,pá com osso,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7101001,musculo bovino,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7101001,musculo bovino,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7101001,musculo bovino,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7101001,musculo bovino,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7101001,musculo bovino,15,sopa,1916,1312,8.1,19.16
+carnes e vísceras,7101006,chambaril,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7101006,chambaril,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7101006,chambaril,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7101009,carne marica bovina,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7101009,carne marica bovina,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7101009,carne marica bovina,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7101011,vazio (carne bovina),2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7101011,vazio (carne bovina),3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7101011,vazio (carne bovina),5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7101101,peito bovino,2,cozido(a),4712,3160,19.6,47.12
+carnes e vísceras,7101101,peito bovino,5,frito(a),4479,3023,18.8,44.79
+carnes e vísceras,7101202,fraldinha (capa de file),2,cozido(a),4712,3160,19.6,47.12
+carnes e vísceras,7101202,fraldinha (capa de file),3,grelhado(a)/brasa/churrasco,4693,3160,19.6,46.93
+carnes e vísceras,7101202,fraldinha (capa de file),4,assado(a),4759,3160,19.6,47.59
+carnes e vísceras,7101202,fraldinha (capa de file),5,frito(a),4479,3023,18.8,44.79
+carnes e vísceras,7101203,aba de Filé,1,cru(a),3285,2212,13.7,32.85
+carnes e vísceras,7101203,aba de Filé,3,grelhado(a)/brasa/churrasco,4693,3160,19.6,46.93
+carnes e vísceras,7101203,aba de Filé,5,frito(a),4479,3023,18.8,44.79
+carnes e vísceras,7101301,costela bovina,2,cozido(a),4896,3284,20.3,48.96
+carnes e vísceras,7101301,costela bovina,4,assado(a),4943,3284,20.3,49.43
+carnes e vísceras,7101301,costela bovina,7,refogado(a),4661,3141,19.5,46.61
+carnes e vísceras,7101301,costela bovina,13,ensopado,2489,1667,10.4,24.89
+carnes e vísceras,7101704,jacaré (carne bovina de segunda c/ osso),2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7101704,jacaré (carne bovina de segunda c/ osso),4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7101704,jacaré (carne bovina de segunda c/ osso),5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7101706,file de segunda,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7101706,file de segunda,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7101706,file de segunda,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7101706,file de segunda,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7101706,file de segunda,10,ao alho e óleo,3773,2594,16.0,37.73
+carnes e vísceras,7101801,víscera bovina,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7101801,víscera bovina,5,frito(a),1128,174,8.9,11.28
+carnes e vísceras,7101806,panelada (vísceras bovinas não especificadas),2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7101806,panelada (vísceras bovinas não especificadas),13,ensopado,864,325,5.1,8.64
+carnes e vísceras,7101901,coração bovino,2,cozido(a),1440,195,11.2,14.4
+carnes e vísceras,7101901,coração bovino,3,grelhado(a)/brasa/churrasco,1421,195,11.2,14.21
+carnes e vísceras,7101901,coração bovino,4,assado(a),1487,195,11.2,14.87
+carnes e vísceras,7101901,coração bovino,5,frito(a),1371,207,10.8,13.71
+carnes e vísceras,7102001,rim de boi,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7102102,bofe bovino,4,assado(a),1231,160,9.2,12.31
+carnes e vísceras,7102102,bofe bovino,5,frito(a),1128,174,8.9,11.28
+carnes e vísceras,7102102,bofe bovino,7,refogado(a),1135,174,8.9,11.35
+carnes e vísceras,7102201,miolo de boi,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7102401,tripa bovina,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7102401,tripa bovina,3,grelhado(a)/brasa/churrasco,1165,160,9.2,11.65
+carnes e vísceras,7102401,tripa bovina,4,assado(a),1231,160,9.2,12.31
+carnes e vísceras,7102401,tripa bovina,5,frito(a),1128,174,8.9,11.28
+carnes e vísceras,7102402,dobradinha fresca,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7102402,dobradinha fresca,4,assado(a),1231,160,9.2,12.31
+carnes e vísceras,7102402,dobradinha fresca,8,molho vermelho,988,153,7.6,9.88
+carnes e vísceras,7102402,dobradinha fresca,13,ensopado,633,106,4.8,6.33
+carnes e vísceras,7102402,dobradinha fresca,99,não se aplica,1184,160,9.2,11.84
+carnes e vísceras,7102403,fato bovino,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7102403,fato bovino,5,frito(a),1128,174,8.9,11.28
+carnes e vísceras,7102404,fato caprino,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7102501,fígado bovino,1,cru(a),1010,139,8.0,10.1
+carnes e vísceras,7102501,fígado bovino,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7102501,fígado bovino,3,grelhado(a)/brasa/churrasco,1165,160,9.2,11.65
+carnes e vísceras,7102501,fígado bovino,4,assado(a),1231,160,9.2,12.31
+carnes e vísceras,7102501,fígado bovino,5,frito(a),1128,174,8.9,11.28
+carnes e vísceras,7102501,fígado bovino,6,empanado(a)/à milanesa,1015,211,8.0,10.15
+carnes e vísceras,7102501,fígado bovino,7,refogado(a),1135,174,8.9,11.35
+carnes e vísceras,7102501,fígado bovino,8,molho vermelho,988,153,7.6,9.88
+carnes e vísceras,7102501,fígado bovino,10,ao alho e óleo,964,204,7.8,9.64
+carnes e vísceras,7102501,fígado bovino,13,ensopado,633,106,4.8,6.33
+carnes e vísceras,7102601,fígado bovino,3,grelhado(a)/brasa/churrasco,4693,3160,19.6,46.93
+carnes e vísceras,7102601,fígado bovino,4,assado(a),4759,3160,19.6,47.59
+carnes e vísceras,7102601,fígado bovino,5,frito(a),4479,3023,18.8,44.79
+carnes e vísceras,7102701,língua bovina,2,cozido(a),1440,195,11.2,14.4
+carnes e vísceras,7102701,língua bovina,3,grelhado(a)/brasa/churrasco,1421,195,11.2,14.21
+carnes e vísceras,7102701,língua bovina,4,assado(a),1487,195,11.2,14.87
+carnes e vísceras,7102701,língua bovina,5,frito(a),1371,207,10.8,13.71
+carnes e vísceras,7102701,língua bovina,8,molho vermelho,1192,181,9.2,11.92
+carnes e vísceras,7102701,língua bovina,13,ensopado,761,123,5.8,7.61
+carnes e vísceras,7102801,rabada de boi,99,não se aplica,4486,3023,18.8,44.86
+carnes e vísceras,7103101,mocotó bovino,2,cozido(a),1462,198,11.4,14.62
+carnes e vísceras,7103101,mocotó bovino,13,ensopado,772,125,5.9,7.72
+carnes e vísceras,7103101,mocotó bovino,15,sopa,1103,170,8.7,11.03
+carnes e vísceras,7103101,mocotó bovino,99,não se aplica,1462,198,11.4,14.62
+carnes e vísceras,7103104,braço bovino,5,frito(a),3677,2483,15.4,36.77
+carnes e vísceras,7103105,mão bovina,2,cozido(a),1462,198,11.4,14.62
+carnes e vísceras,7103301,carré,2,cozido(a),697,1272,5.9,6.97
+carnes e vísceras,7103301,carré,3,grelhado(a)/brasa/churrasco,678,1272,5.9,6.78
+carnes e vísceras,7103301,carré,4,assado(a),744,1272,5.9,7.44
+carnes e vísceras,7103301,carré,5,frito(a),666,1230,5.8,6.66
+carnes e vísceras,7103305,bisteca suína,2,cozido(a),697,1272,5.9,6.97
+carnes e vísceras,7103305,bisteca suína,3,grelhado(a)/brasa/churrasco,678,1272,5.9,6.78
+carnes e vísceras,7103305,bisteca suína,4,assado(a),744,1272,5.9,7.44
+carnes e vísceras,7103305,bisteca suína,5,frito(a),666,1230,5.8,6.66
+carnes e vísceras,7103305,bisteca suína,6,empanado(a)/à milanesa,625,1100,5.4,6.25
+carnes e vísceras,7103305,bisteca suína,7,refogado(a),672,1230,5.8,6.72
+carnes e vísceras,7103305,bisteca suína,99,não se aplica,697,1272,5.9,6.97
+carnes e vísceras,7103401,pernil suíno,2,cozido(a),697,1272,5.9,6.97
+carnes e vísceras,7103401,pernil suíno,4,assado(a),744,1272,5.9,7.44
+carnes e vísceras,7103401,pernil suíno,5,frito(a),666,1230,5.8,6.66
+carnes e vísceras,7103401,pernil suíno,7,refogado(a),672,1230,5.8,6.72
+carnes e vísceras,7103403,quarto suíno,2,cozido(a),697,1272,5.9,6.97
+carnes e vísceras,7103501,costela suína,1,cru(a),464,869,4.0,4.64
+carnes e vísceras,7103501,costela suína,2,cozido(a),697,1272,5.9,6.97
+carnes e vísceras,7103501,costela suína,3,grelhado(a)/brasa/churrasco,678,1272,5.9,6.78
+carnes e vísceras,7103501,costela suína,4,assado(a),744,1272,5.9,7.44
+carnes e vísceras,7103501,costela suína,5,frito(a),666,1230,5.8,6.66
+carnes e vísceras,7103501,costela suína,7,refogado(a),672,1230,5.8,6.72
+carnes e vísceras,7103501,costela suína,8,molho vermelho,598,1042,4.9,5.98
+carnes e vísceras,7103501,costela suína,13,ensopado,390,661,3.2,3.9
+carnes e vísceras,7103501,costela suína,99,não se aplica,697,1272,5.9,6.97
+carnes e vísceras,7103701,lombo suíno,2,cozido(a),734,1099,5.1,7.34
+carnes e vísceras,7103701,lombo suíno,3,grelhado(a)/brasa/churrasco,715,1099,5.1,7.15
+carnes e vísceras,7103701,lombo suíno,4,assado(a),781,1099,5.1,7.81
+carnes e vísceras,7103701,lombo suíno,5,frito(a),700,1065,5.0,7.0
+carnes e vísceras,7103801,toucinho,99,não se aplica,1039,736,1.9,10.39
+carnes e vísceras,7103903,miúdo suíno,2,cozido(a),357,160,9.2,3.57
+carnes e vísceras,7103906,arrasto suíno,99,não se aplica,357,160,9.2,3.57
+carnes e vísceras,7103907,sarapatel suíno fresco,99,não se aplica,357,160,9.2,3.57
+carnes e vísceras,7104101,carne suína,1,cru(a),461,869,4.0,4.61
+carnes e vísceras,7104101,carne suína,2,cozido(a),694,1272,5.9,6.94
+carnes e vísceras,7104101,carne suína,3,grelhado(a)/brasa/churrasco,675,1272,5.9,6.75
+carnes e vísceras,7104101,carne suína,4,assado(a),741,1272,5.9,7.41
+carnes e vísceras,7104101,carne suína,5,frito(a),662,1230,5.8,6.62
+carnes e vísceras,7104101,carne suína,6,empanado(a)/à milanesa,622,1100,5.4,6.22
+carnes e vísceras,7104101,carne suína,7,refogado(a),668,1230,5.8,6.68
+carnes e vísceras,7104101,carne suína,8,molho vermelho,595,1042,4.9,5.95
+carnes e vísceras,7104101,carne suína,10,ao alho e óleo,572,1093,5.1,5.72
+carnes e vísceras,7104101,carne suína,13,ensopado,388,661,3.2,3.88
+carnes e vísceras,7104101,carne suína,99,não se aplica,694,1272,5.9,6.94
+carnes e vísceras,7104301,carne moída,1,cru(a),3118,2099,13.0,31.18
+carnes e vísceras,7104301,carne moída,2,cozido(a),4473,2999,18.6,44.73
+carnes e vísceras,7104301,carne moída,4,assado(a),4520,2999,18.6,45.2
+carnes e vísceras,7104301,carne moída,5,frito(a),4252,2870,17.8,42.52
+carnes e vísceras,7104301,carne moída,6,empanado(a)/à milanesa,3646,2482,15.5,36.46
+carnes e vísceras,7104301,carne moída,7,refogado(a),4259,2870,17.8,42.59
+carnes e vísceras,7104301,carne moída,8,molho vermelho,3619,2424,15.1,36.19
+carnes e vísceras,7104301,carne moída,9,molho branco,3633,2444,15.2,36.33
+carnes e vísceras,7104301,carne moída,10,ao alho e óleo,3595,2475,15.2,35.95
+carnes e vísceras,7104301,carne moída,13,ensopado,2278,1525,9.5,22.78
+carnes e vísceras,7104301,carne moída,15,sopa,1827,1252,7.8,18.27
+carnes e vísceras,7104301,carne moída,99,não se aplica,4473,2999,18.6,44.73
+carnes e vísceras,7104302,guisado,99,não se aplica,1936,1331,8.3,19.36
+carnes e vísceras,7104501,tripa suína,3,grelhado(a)/brasa/churrasco,338,160,9.2,3.38
+carnes e vísceras,7104501,tripa suína,5,frito(a),342,174,8.9,3.42
+carnes e vísceras,7104601,fígado suíno,2,cozido(a),357,160,9.2,3.57
+carnes e vísceras,7104601,fígado suíno,4,assado(a),403,160,9.2,4.03
+carnes e vísceras,7104601,fígado suíno,5,frito(a),342,174,8.9,3.42
+carnes e vísceras,7104701,língua suína,2,cozido(a),414,187,10.8,4.14
+carnes e vísceras,7104701,língua suína,3,grelhado(a)/brasa/churrasco,395,187,10.8,3.95
+carnes e vísceras,7104701,língua suína,4,assado(a),461,187,10.8,4.61
+carnes e vísceras,7104701,língua suína,5,frito(a),396,200,10.4,3.96
+carnes e vísceras,7104701,língua suína,7,refogado(a),403,200,10.4,4.03
+carnes e vísceras,7105001,língua suína,2,cozido(a),520,238,13.6,5.2
+carnes e vísceras,7105103,sarrabulho,99,não se aplica,1568,778,8.2,15.68
+carnes e vísceras,7105203,mocotó suíno,2,cozido(a),29250,13888,797.1,292.5
+carnes e vísceras,7105401,carne de cabrito,2,cozido(a),2171,1167,11.7,21.71
+carnes e vísceras,7105401,carne de cabrito,3,grelhado(a)/brasa/churrasco,2152,1167,11.7,21.52
+carnes e vísceras,7105401,carne de cabrito,4,assado(a),2218,1167,11.7,22.18
+carnes e vísceras,7105402,carne de bode,2,cozido(a),2171,1167,11.7,21.71
+carnes e vísceras,7105402,carne de bode,3,grelhado(a)/brasa/churrasco,2152,1167,11.7,21.52
+carnes e vísceras,7105402,carne de bode,4,assado(a),2218,1167,11.7,22.18
+carnes e vísceras,7105402,carne de bode,5,frito(a),2066,1130,11.3,20.66
+carnes e vísceras,7105403,carne caprina,2,cozido(a),2171,1167,11.7,21.71
+carnes e vísceras,7105403,carne caprina,4,assado(a),2218,1167,11.7,22.18
+carnes e vísceras,7105403,carne caprina,5,frito(a),2066,1130,11.3,20.66
+carnes e vísceras,7105403,carne caprina,13,ensopado,1127,609,6.1,11.27
+carnes e vísceras,7105405,carne de caprino,1,cru(a),1679,911,9.1,16.79
+carnes e vísceras,7105405,carne de caprino,2,cozido(a),2171,1167,11.7,21.71
+carnes e vísceras,7105405,carne de caprino,5,frito(a),2066,1130,11.3,20.66
+carnes e vísceras,7105601,carne de carneiro,2,cozido(a),2171,1167,11.7,21.71
+carnes e vísceras,7105601,carne de carneiro,3,grelhado(a)/brasa/churrasco,2152,1167,11.7,21.52
+carnes e vísceras,7105601,carne de carneiro,4,assado(a),2218,1167,11.7,22.18
+carnes e vísceras,7105601,carne de carneiro,5,frito(a),2066,1130,11.3,20.66
+carnes e vísceras,7105601,carne de carneiro,13,ensopado,1127,609,6.1,11.27
+carnes e vísceras,7105602,carne de ovelha,2,cozido(a),2171,1167,11.7,21.71
+carnes e vísceras,7105602,carne de ovelha,3,grelhado(a)/brasa/churrasco,2152,1167,11.7,21.52
+carnes e vísceras,7105602,carne de ovelha,4,assado(a),2218,1167,11.7,22.18
+carnes e vísceras,7105602,carne de ovelha,5,frito(a),2066,1130,11.3,20.66
+carnes e vísceras,7105801,mocotó de caprino,2,cozido(a),1443,198,11.4,14.43
+carnes e vísceras,7106301,pernil,2,cozido(a),697,1272,5.9,6.97
+carnes e vísceras,7106301,pernil,3,grelhado(a)/brasa/churrasco,678,1272,5.9,6.78
+carnes e vísceras,7106301,pernil,4,assado(a),744,1272,5.9,7.44
+carnes e vísceras,7106301,pernil,5,frito(a),666,1230,5.8,6.66
+carnes e vísceras,7106401,lagarto bovino,2,cozido(a),3867,2591,16.0,38.67
+carnes e vísceras,7106401,lagarto bovino,4,assado(a),3914,2591,16.0,39.14
+carnes e vísceras,7106401,lagarto bovino,5,frito(a),3677,2483,15.4,36.77
+carnes e vísceras,7106401,lagarto bovino,7,refogado(a),3683,2483,15.4,36.83
+carnes e vísceras,7106401,lagarto bovino,8,molho vermelho,3134,2097,13.0,31.34
+carnes e vísceras,7106501,alcatra suína,2,cozido(a),697,1272,5.9,6.97
+carnes e vísceras,7106501,alcatra suína,4,assado(a),744,1272,5.9,7.44
+carnes e vísceras,7106501,alcatra suína,5,frito(a),666,1230,5.8,6.66
+carnes e vísceras,7107102,brechona,99,não se aplica,2981,2019,12.5,29.81
+carnes e vísceras,7107103,bife a role,99,não se aplica,2981,2019,12.5,29.81
+carnes e vísceras,7107204,buchada de bode,99,não se aplica,651,131,4.9,6.51
+carnes e vísceras,7107501,sua suína,2,cozido(a),520,238,6.0,5.2
+carnes e vísceras,7107501,sua suína,5,frito(a),497,247,5.9,4.97
+carnes e vísceras,7107601,carne de outros animais,1,cru(a),404,1223,9.7,4.04
+carnes e vísceras,7107601,carne de outros animais,2,cozido(a),530,1568,12.4,5.3
+carnes e vísceras,7107601,carne de outros animais,3,grelhado(a)/brasa/churrasco,517,1568,12.4,5.17
+carnes e vísceras,7107601,carne de outros animais,4,assado(a),583,1568,12.4,5.83
+carnes e vísceras,7107601,carne de outros animais,5,frito(a),513,1511,12.0,5.13
+carnes e vísceras,7107601,carne de outros animais,7,refogado(a),513,1511,12.0,5.13
+carnes e vísceras,7107601,carne de outros animais,8,molho vermelho,463,1279,10.1,4.63
+carnes e vísceras,7107601,carne de outros animais,13,ensopado,303,809,6.4,3.03
+carnes e vísceras,7107601,carne de outros animais,99,não se aplica,530,1568,12.4,5.3
+carnes e vísceras,7107603,carne da paca,2,cozido(a),530,1568,12.4,5.3
+carnes e vísceras,7107603,carne da paca,4,assado(a),583,1568,12.4,5.83
+carnes e vísceras,7107603,carne da paca,5,frito(a),513,1511,12.0,5.13
+carnes e vísceras,7107611,carne de jacaré,2,cozido(a),530,1568,12.4,5.3
+carnes e vísceras,7107611,carne de jacaré,5,frito(a),513,1511,12.0,5.13
+carnes e vísceras,7107615,carne de capivara,2,cozido(a),530,1568,12.4,5.3
+carnes e vísceras,7107615,carne de capivara,4,assado(a),583,1568,12.4,5.83
+carnes e vísceras,7107615,carne de capivara,5,frito(a),513,1511,12.0,5.13
+carnes e vísceras,7107617,carne de cotia,2,cozido(a),530,1568,12.4,5.3
+carnes e vísceras,7107617,carne de cotia,4,assado(a),583,1568,12.4,5.83
+carnes e vísceras,7107622,carne de jabuti,2,cozido(a),530,1568,12.4,5.3
+carnes e vísceras,7107801,carne de primeira,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7107801,carne de primeira,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7107801,carne de primeira,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7107801,carne de primeira,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7107801,carne de primeira,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7107801,carne de primeira,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7107801,carne de primeira,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7107801,carne de primeira,9,molho branco,3811,2564,16.0,38.11
+carnes e vísceras,7107801,carne de primeira,11,com manteiga/óleo,4470,3012,18.7,44.7
+carnes e vísceras,7107804,chuleta,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7107804,chuleta,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7107804,chuleta,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7107804,chuleta,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7107805,file não especificado,1,cru(a),3273,2204,13.6,32.73
+carnes e vísceras,7107805,file não especificado,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7107805,file não especificado,3,grelhado(a)/brasa/churrasco,4676,3148,19.5,46.76
+carnes e vísceras,7107805,file não especificado,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7107805,file não especificado,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7107805,file não especificado,6,empanado(a)/à milanesa,3823,2601,16.2,38.23
+carnes e vísceras,7107805,file não especificado,7,refogado(a),4470,3012,18.7,44.7
+carnes e vísceras,7107805,file não especificado,8,molho vermelho,3796,2543,15.8,37.96
+carnes e vísceras,7107805,file não especificado,11,com manteiga/óleo,4470,3012,18.7,44.7
+carnes e vísceras,7107805,file não especificado,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7107805,file não especificado,99,não se aplica,4695,3148,19.5,46.95
+carnes e vísceras,7108107,miúdo de bode,2,cozido(a),1184,160,9.2,11.84
+carnes e vísceras,7108301,pé suíno fresco,2,cozido(a),520,238,13.6,5.2
+carnes e vísceras,7108301,pé suíno fresco,3,grelhado(a)/brasa/churrasco,501,238,13.6,5.01
+carnes e vísceras,7108301,pé suíno fresco,5,frito(a),497,247,13.2,4.97
+carnes e vísceras,7109101,carne bovina,1,cru(a),3273,2204,13.6,32.73
+carnes e vísceras,7109101,carne bovina,2,cozido(a),4215,2825,17.5,42.15
+carnes e vísceras,7109101,carne bovina,3,grelhado(a)/brasa/churrasco,4196,2825,17.5,41.96
+carnes e vísceras,7109101,carne bovina,4,assado(a),4262,2825,17.5,42.62
+carnes e vísceras,7109101,carne bovina,5,frito(a),4008,2705,16.8,40.08
+carnes e vísceras,7109101,carne bovina,6,empanado(a)/à milanesa,3440,2343,14.6,34.4
+carnes e vísceras,7109101,carne bovina,7,refogado(a),4014,2705,16.8,40.14
+carnes e vísceras,7109101,carne bovina,8,molho vermelho,3412,2285,14.2,34.12
+carnes e vísceras,7109101,carne bovina,9,molho branco,3427,2305,14.4,34.27
+carnes e vísceras,7109101,carne bovina,10,ao alho e óleo,3389,2336,14.4,33.89
+carnes e vísceras,7109101,carne bovina,11,com manteiga/óleo,4014,2705,16.8,40.14
+carnes e vísceras,7109101,carne bovina,12,ao vinagrete,3396,2289,14.3,33.96
+carnes e vísceras,7109101,carne bovina,13,ensopado,2149,1438,9.0,21.49
+carnes e vísceras,7109101,carne bovina,15,sopa,1724,1183,7.3,17.24
+carnes e vísceras,7109101,carne bovina,99,não se aplica,4215,2825,17.5,42.15
+carnes e vísceras,7110601,lombo não especificado,1,cru(a),401,751,3.5,4.01
+carnes e vísceras,7110601,lombo não especificado,2,cozido(a),605,1099,5.1,6.05
+carnes e vísceras,7110601,lombo não especificado,4,assado(a),652,1099,5.1,6.52
+carnes e vísceras,7110601,lombo não especificado,5,frito(a),578,1065,5.0,5.78
+carnes e vísceras,7110601,lombo não especificado,9,molho branco,539,924,4.5,5.39
+carnes e vísceras,7110801,musculo não especificado,2,cozido(a),4695,3148,19.5,46.95
+carnes e vísceras,7110801,musculo não especificado,13,ensopado,2389,1599,10.0,23.89
+carnes e vísceras,7110902,ossada não especificada,2,cozido(a),4630,3104,19.2,46.3
+carnes e vísceras,7110902,ossada não especificada,7,refogado(a),4408,2970,18.4,44.08
+carnes e vísceras,7110902,ossada não especificada,15,sopa,3479,2350,14.6,34.79
+carnes e vísceras,7110902,ossada não especificada,99,não se aplica,4630,3104,19.2,46.3
+carnes e vísceras,7111202,carne de segunda,1,cru(a),3273,2204,13.6,32.73
+carnes e vísceras,7111202,carne de segunda,2,cozido(a),4215,2825,17.5,42.15
+carnes e vísceras,7111202,carne de segunda,3,grelhado(a)/brasa/churrasco,4196,2825,17.5,41.96
+carnes e vísceras,7111202,carne de segunda,4,assado(a),4262,2825,17.5,42.62
+carnes e vísceras,7111202,carne de segunda,5,frito(a),4008,2705,16.8,40.08
+carnes e vísceras,7111202,carne de segunda,6,empanado(a)/à milanesa,3440,2343,14.6,34.4
+carnes e vísceras,7111202,carne de segunda,7,refogado(a),4014,2705,16.8,40.14
+carnes e vísceras,7111202,carne de segunda,8,molho vermelho,3412,2285,14.2,34.12
+carnes e vísceras,7111202,carne de segunda,10,ao alho e óleo,3389,2336,14.4,33.89
+carnes e vísceras,7111202,carne de segunda,13,ensopado,2149,1438,9.0,21.49
+carnes e vísceras,7111401,contrafilé orgânico,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7111405,bisteca orgânica,4,assado(a),4742,3148,19.5,47.42
+carnes e vísceras,7111405,bisteca orgânica,5,frito(a),4463,3012,18.7,44.63
+carnes e vísceras,7111702,cabeça de lombo (carne bovina) orgânica,1,cru(a),487,912,4.2,4.87
+carnes e vísceras,7111702,cabeça de lombo (carne bovina) orgânica,4,assado(a),761,1303,6.1,7.61
+carnes e vísceras,7111702,cabeça de lombo (carne bovina) orgânica,5,frito(a),682,1260,5.9,6.82
+carnes e vísceras,7111806,tatu (lagarto redondo) orgânico,4,assado(a),4742,3148,19.5,47.42
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",1,cru(a),530,0,27.1,5.3
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",2,cozido(a),634,0,31.7,6.34
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",3,grelhado(a)/brasa/churrasco,621,0,31.7,6.21
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",4,assado(a),649,0,31.7,6.49
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",5,frito(a),605,21,30.3,6.05
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",6,empanado(a)/à milanesa,573,83,26.0,5.73
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",8,molho vermelho,549,25,25.6,5.49
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",9,molho branco,564,45,25.8,5.64
+pescados e frutos do mar,7200101,"peixe de mar (inteiro, em posta etc.)",13,ensopado,358,25,16.1,3.58
+pescados e frutos do mar,7200401,"peixe de mar salgado (inteiro, em posta etc.)",2,cozido(a),602,0,29.2,6.02
+pescados e frutos do mar,7200401,"peixe de mar salgado (inteiro, em posta etc.)",3,grelhado(a)/brasa/churrasco,590,0,29.2,5.9
+pescados e frutos do mar,7200401,"peixe de mar salgado (inteiro, em posta etc.)",4,assado(a),624,0,29.2,6.24
+pescados e frutos do mar,7200401,"peixe de mar salgado (inteiro, em posta etc.)",5,frito(a),605,21,30.3,6.05
+pescados e frutos do mar,7200401,"peixe de mar salgado (inteiro, em posta etc.)",6,empanado(a)/à milanesa,573,83,26.0,5.73
+pescados e frutos do mar,7200401,"peixe de mar salgado (inteiro, em posta etc.)",9,molho branco,536,45,23.7,5.36
+pescados e frutos do mar,7200401,"peixe de mar salgado (inteiro, em posta etc.)",13,ensopado,339,25,14.8,3.39
+pescados e frutos do mar,7260101,camarão,1,cru(a),2881,0,29.0,28.81
+pescados e frutos do mar,7260101,camarão,2,cozido(a),5695,0,57.3,56.95
+pescados e frutos do mar,7260101,camarão,3,grelhado(a)/brasa/churrasco,5686,0,57.3,56.86
+pescados e frutos do mar,7260101,camarão,4,assado(a),5708,0,57.3,57.08
+pescados e frutos do mar,7260101,camarão,5,frito(a),5416,21,54.6,54.16
+pescados e frutos do mar,7260101,camarão,6,empanado(a)/à milanesa,4615,83,46.5,46.15
+pescados e frutos do mar,7260101,camarão,7,refogado(a),5420,21,54.6,54.2
+pescados e frutos do mar,7260101,camarão,8,molho vermelho,4594,25,46.0,45.94
+pescados e frutos do mar,7260101,camarão,9,molho branco,4609,45,46.2,46.09
+pescados e frutos do mar,7260101,camarão alho e óleo,10,ao alho e óleo,4578,76,46.2,45.78
+pescados e frutos do mar,7260101,camarão,13,ensopado,2884,25,28.8,28.84
+pescados e frutos do mar,7260101,camarão,99,não se aplica,5695,0,57.3,56.95
+pescados e frutos do mar,7261101,siri,2,cozido(a),1742,0,57.3,17.42
+pescados e frutos do mar,7261101,siri,6,empanado(a)/à milanesa,1453,83,46.5,14.53
+pescados e frutos do mar,7261101,siri,7,refogado(a),1664,21,54.6,16.64
+pescados e frutos do mar,7261120,baú (siri),2,cozido(a),1742,0,57.3,17.42
+pescados e frutos do mar,7261121,goiá,1,cru(a),2480,0,29.0,24.8
+pescados e frutos do mar,7262101,caranguejo,2,cozido(a),1742,0,57.3,17.42
+pescados e frutos do mar,7262101,caranguejo,4,assado(a),1754,0,57.3,17.54
+pescados e frutos do mar,7262101,caranguejo,12,ao vinagrete,1413,28,46.1,14.13
+pescados e frutos do mar,7262105,guaiamu,2,cozido(a),4905,0,57.3,49.05
+pescados e frutos do mar,7263101,marisco,2,cozido(a),1274,0,57.3,12.74
+pescados e frutos do mar,7263101,marisco,5,frito(a),1216,21,54.6,12.16
+pescados e frutos do mar,7263101,marisco,8,molho vermelho,1057,25,46.0,10.57
+pescados e frutos do mar,7263101,marisco,99,não se aplica,1274,0,57.3,12.74
+pescados e frutos do mar,7264101,ostra,2,cozido(a),1274,0,57.3,12.74
+pescados e frutos do mar,7265101,lula,6,empanado(a)/à milanesa,1576,83,46.5,15.76
+pescados e frutos do mar,7266101,sururu,2,cozido(a),1540,0,57.3,15.4
+pescados e frutos do mar,7266101,sururu,13,ensopado,807,25,28.8,8.07
+pescados e frutos do mar,7270401,bacalhau,2,cozido(a),382,0,27.0,3.82
+pescados e frutos do mar,7270401,bacalhau,4,assado(a),404,0,27.0,4.04
+pescados e frutos do mar,7270401,bacalhau,5,frito(a),376,21,25.9,3.76
+pescados e frutos do mar,7270401,bacalhau,6,empanado(a)/à milanesa,372,83,22.2,3.72
+pescados e frutos do mar,7270401,bacalhau,7,refogado(a),372,21,25.9,3.72
+pescados e frutos do mar,7270401,bacalhau,8,molho vermelho,345,25,21.8,3.45
+pescados e frutos do mar,7270401,bacalhau,13,ensopado,229,25,13.7,2.29
+pescados e frutos do mar,7270401,bacalhau,99,não se aplica,404,0,27.0,4.04
+pescados e frutos do mar,7273101,ovas de peixe (qualquer espécie),4,assado(a),609,1280,5.2,6.09
+pescados e frutos do mar,7273101,ovas de peixe (qualquer espécie),5,frito(a),572,1237,5.1,5.72
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",1,cru(a),396,0,33.1,3.96
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",2,cozido(a),477,0,38.7,4.77
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",3,grelhado(a)/brasa/churrasco,464,0,38.7,4.64
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",4,assado(a),491,0,38.7,4.91
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",5,frito(a),455,21,37.0,4.55
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",6,empanado(a)/à milanesa,447,83,31.6,4.47
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",7,refogado(a),465,21,37.0,4.65
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",8,molho vermelho,423,25,31.2,4.23
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",9,molho branco,438,45,31.4,4.38
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",13,ensopado,279,25,19.6,2.79
+pescados e frutos do mar,7400101,"peixe de água doce (inteiro, em posta etc.)",99,não se aplica,464,0,38.7,4.64
+pescados e frutos do mar,7400401,"peixe de água doce salgado (inteiro, em posta etc.)",2,cozido(a),411,0,29.2,4.11
+pescados e frutos do mar,7400401,"peixe de água doce salgado (inteiro, em posta etc.)",3,grelhado(a)/brasa/churrasco,399,0,29.2,3.99
+pescados e frutos do mar,7400401,"peixe de água doce salgado (inteiro, em posta etc.)",4,assado(a),433,0,29.2,4.33
+pescados e frutos do mar,7400401,"peixe de água doce salgado (inteiro, em posta etc.)",5,frito(a),403,21,27.9,4.03
+pescados e frutos do mar,7400401,"peixe de água doce salgado (inteiro, em posta etc.)",6,empanado(a)/à milanesa,395,83,23.9,3.95
+pescados e frutos do mar,7400401,"peixe de água doce salgado (inteiro, em posta etc.)",8,molho vermelho,368,25,23.5,3.68
+pescados e frutos do mar,7400401,"peixe de água doce salgado (inteiro, em posta etc.)",13,ensopado,244,25,14.8,2.44
+pescados e frutos do mar,7444101,tracajá,2,cozido(a),704,0,34.3,7.04
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",1,cru(a),490,0,15.6,4.9
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",2,cozido(a),587,0,18.3,5.87
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",3,grelhado(a)/brasa/churrasco,574,0,18.3,5.74
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",4,assado(a),601,0,18.3,6.01
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",5,frito(a),560,21,17.6,5.6
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",6,empanado(a)/à milanesa,536,83,15.2,5.36
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",7,refogado(a),570,21,17.6,5.7
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",8,molho vermelho,511,25,14.8,5.11
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",9,molho branco,526,45,15.0,5.26
+pescados e frutos do mar,7600101,"peixe não especificado (inteiro, em posta etc.)",13,ensopado,334,25,9.3,3.34
+pescados e frutos do mar,7600401,"peixe não especificado salgado (inteiro, posta etc.)",2,cozido(a),411,0,29.2,4.11
+pescados e frutos do mar,7600401,"peixe não especificado salgado (inteiro, posta etc.)",3,grelhado(a)/brasa/churrasco,399,0,29.2,3.99
+pescados e frutos do mar,7600401,"peixe não especificado salgado (inteiro, posta etc.)",4,assado(a),433,0,29.2,4.33
+pescados e frutos do mar,7600401,"peixe não especificado salgado (inteiro, posta etc.)",5,frito(a),403,21,27.9,4.03
+pescados e frutos do mar,7600401,"peixe não especificado salgado (inteiro, posta etc.)",6,empanado(a)/à milanesa,395,83,23.9,3.95
+enlatados e conservas,7700101,azeitona,99,não se aplica,110,1356,1.0,1.1
+enlatados e conservas,7700201,ervilha em conserva,99,não se aplica,176,127,0.5,1.76
+enlatados e conservas,7700202,petit pois,99,não se aplica,176,127,0.5,1.76
+enlatados e conservas,7700401,milho verde em conserva,99,não se aplica,247,178,0.7,2.47
+enlatados e conservas,7700501,palmito em conserva,99,não se aplica,82,522,0.6,0.82
+enlatados e conservas,7700601,cogumelo em conserva,99,não se aplica,338,127,0.1,3.38
+enlatados e conservas,7700602,champignon em conserva,99,não se aplica,338,127,0.1,3.38
+enlatados e conservas,7700701,aspargo em conserva,99,não se aplica,62,261,0.6,0.62
+enlatados e conservas,7700901,repolho em conserva,99,não se aplica,89,564,0.6,0.89
+enlatados e conservas,7700902,chucrute,99,não se aplica,89,564,0.6,0.89
+enlatados e conservas,7701101,legume não especificado em conserva,99,não se aplica,160,513,0.6,1.6
+enlatados e conservas,7701404,creme de cebola (sopa desidratada),99,não se aplica,50,102,0.6,0.5
+enlatados e conservas,7701405,creme de legumes (sopa desidratada),99,não se aplica,48,102,0.6,0.48
+enlatados e conservas,7701406,yakissoba,99,não se aplica,924,642,4.1,9.24
+enlatados e conservas,7701501,milho verde com ervilha em conserva,1,cru(a),173,125,0.5,1.73
+enlatados e conservas,7701501,milho verde com ervilha em conserva,2,cozido(a),173,125,0.5,1.73
+enlatados e conservas,7701501,milho verde com ervilha em conserva,5,frito(a),182,140,0.7,1.82
+enlatados e conservas,7701501,milho verde com ervilha em conserva,99,não se aplica,173,125,0.5,1.73
+enlatados e conservas,7701901,feijoada,99,não se aplica,1450,1291,2.9,14.5
+enlatados e conservas,7702001,feijão branco com dobradinha em conserva,99,não se aplica,530,1280,5.2,5.3
+enlatados e conservas,7702101,cozido,99,não se aplica,1482,1056,6.1,14.82
+enlatados e conservas,7702302,pasta de carne em conserva,99,não se aplica,530,1280,5.2,5.3
+enlatados e conservas,7702402,pasta de presunto em conserva,99,não se aplica,530,1280,5.2,5.3
+enlatados e conservas,7702502,pasta de galinha em conserva,99,não se aplica,530,1280,5.2,5.3
+enlatados e conservas,7702601,carne bovina em conserva,99,não se aplica,1859,1641,6.7,18.59
+enlatados e conservas,7702602,almondega,99,não se aplica,3473,2325,14.4,34.73
+enlatados e conservas,7702603,kitute bovino,99,não se aplica,1859,1641,6.7,18.59
+enlatados e conservas,7702604,almondega ao molho em conserva,99,não se aplica,679,1641,6.7,6.79
+enlatados e conservas,7702704,kitute suíno,99,não se aplica,2122,1873,7.6,21.22
+enlatados e conservas,7702705,presuntada,99,não se aplica,776,1873,7.6,7.76
+enlatados e conservas,7702707,fiambre,1,cru(a),1450,1280,5.2,14.5
+enlatados e conservas,7702707,fiambre,2,cozido(a),2135,1873,7.6,21.35
+enlatados e conservas,7702707,fiambre,4,assado(a),2155,1873,7.6,21.55
+enlatados e conservas,7702707,fiambre,5,frito(a),2037,1801,7.4,20.37
+enlatados e conservas,7702801,salsicha em conserva,99,não se aplica,1455,1280,5.2,14.55
+enlatados e conservas,7703002,sardinha em conserva,99,não se aplica,410,1500,6.1,4.1
+enlatados e conservas,7703402,atum em conserva,99,não se aplica,488,1786,7.3,4.88
+enlatados e conservas,7703701,pepino em conserva,99,não se aplica,82,522,0.6,0.82
+enlatados e conservas,7703902,pasta de peixe em conserva,99,não se aplica,350,1280,5.2,3.5
+enlatados e conservas,7704001,picles,99,não se aplica,82,522,0.6,0.82
+enlatados e conservas,7705201,nabo em conserva,99,não se aplica,82,522,0.6,0.82
+enlatados e conservas,7705401,strogonoff,99,não se aplica,2844,1917,12.0,28.44
+enlatados e conservas,7706001,salmão em conserva,99,não se aplica,410,1500,6.1,4.1
+enlatados e conservas,7706104,creme de cebola (sopa desidratada) light,99,não se aplica,48,102,0.6,0.48
+enlatados e conservas,7706105,creme de legumes (sopa desidratada) light,99,não se aplica,48,102,0.6,0.48
+enlatados e conservas,7706106,yakissoba (sopa de legumes desidratada) light,99,não se aplica,40,29,0.2,0.4
+enlatados e conservas,7706302,atum em conserva light,99,não se aplica,410,1500,6.1,4.1
+aves e ovos,7800103,frango inteiro,1,cru(a),388,523,3.1,3.88
+aves e ovos,7800103,frango inteiro,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800103,frango inteiro,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800103,frango inteiro,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800103,frango inteiro,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800103,frango inteiro,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800103,frango inteiro,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800103,frango inteiro,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800103,frango inteiro,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800301,parte de galinha ou frango não especificada,1,cru(a),388,523,3.1,3.88
+aves e ovos,7800301,parte de galinha ou frango não especificada,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800301,parte de galinha ou frango não especificada,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800301,parte de galinha ou frango não especificada,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800301,parte de galinha ou frango não especificada,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800301,parte de galinha ou frango não especificada,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800301,parte de galinha ou frango não especificada,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800301,parte de galinha ou frango não especificada,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800301,parte de galinha ou frango não especificada,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800301,parte de galinha ou frango não especificada,99,não se aplica,498,654,3.9,4.98
+aves e ovos,7800302,frango em pedaços,1,cru(a),388,523,3.1,3.88
+aves e ovos,7800302,frango em pedaços,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800302,frango em pedaços,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800302,frango em pedaços,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800302,frango em pedaços,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800302,frango em pedaços,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800302,frango em pedaços,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800302,frango em pedaços,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800302,frango em pedaços,9,molho branco,452,569,3.5,4.52
+aves e ovos,7800302,frango em pedaços,10,ao alho e óleo,421,599,3.5,4.21
+aves e ovos,7800302,frango em pedaços,11,com manteiga/óleo,482,643,3.9,4.82
+aves e ovos,7800302,frango em pedaços,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800302,frango em pedaços,15,sopa,240,315,1.9,2.4
+aves e ovos,7800302,frango em pedaços,99,não se aplica,498,654,3.9,4.98
+aves e ovos,7800303,galinha em pedaços,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800303,galinha em pedaços,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800303,galinha em pedaços,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800303,galinha em pedaços,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800303,galinha em pedaços,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800303,galinha em pedaços,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800303,galinha em pedaços,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800303,galinha em pedaços,9,molho branco,452,569,3.5,4.52
+aves e ovos,7800303,galinha em pedaços,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800304,carne de galinha,1,cru(a),388,523,3.1,3.88
+aves e ovos,7800304,carne de galinha,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800304,carne de galinha,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800304,carne de galinha,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800304,carne de galinha,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800304,carne de galinha,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800304,carne de galinha,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800304,carne de galinha,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800304,carne de galinha,9,molho branco,452,569,3.5,4.52
+aves e ovos,7800304,carne de galinha,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800304,carne de galinha,15,sopa,240,315,1.9,2.4
+aves e ovos,7800304,carne de galinha,99,não se aplica,498,654,3.9,4.98
+aves e ovos,7800401,peito de galinha ou frango,1,cru(a),388,523,3.1,3.88
+aves e ovos,7800401,peito de galinha ou frango,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800401,peito de galinha ou frango,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800401,peito de galinha ou frango,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800401,peito de galinha ou frango,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800401,peito de galinha ou frango,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800401,peito de galinha ou frango,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800401,peito de galinha ou frango,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800401,peito de galinha ou frango,9,molho branco,452,569,3.5,4.52
+aves e ovos,7800401,peito de galinha ou frango,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800401,peito de galinha ou frango,15,sopa,240,315,1.9,2.4
+aves e ovos,7800401,peito de galinha ou frango,99,não se aplica,498,654,3.9,4.98
+aves e ovos,7800402,file de frango,1,cru(a),388,523,3.1,3.88
+aves e ovos,7800402,file de frango,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800402,file de frango,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800402,file de frango,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800402,file de frango,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800402,file de frango,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800402,file de frango,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800402,file de frango,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800402,file de frango,9,molho branco,452,569,3.5,4.52
+aves e ovos,7800402,file de frango,10,ao alho e óleo,421,599,3.5,4.21
+aves e ovos,7800402,file de frango,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800402,file de frango,99,não se aplica,498,654,3.9,4.98
+aves e ovos,7800602,carcaça de galinha ou frango,2,cozido(a),559,736,4.4,5.59
+aves e ovos,7800602,carcaça de galinha ou frango,4,assado(a),612,736,4.4,6.12
+aves e ovos,7800602,carcaça de galinha ou frango,5,frito(a),540,721,4.3,5.4
+aves e ovos,7800602,carcaça de galinha ou frango,7,refogado(a),540,721,4.3,5.4
+aves e ovos,7800602,carcaça de galinha ou frango,13,ensopado,317,393,2.4,3.17
+aves e ovos,7800701,asa de galinha ou frango,1,cru(a),388,523,3.1,3.88
+aves e ovos,7800701,asa de galinha ou frango,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800701,asa de galinha ou frango,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800701,asa de galinha ou frango,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800701,asa de galinha ou frango,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800701,asa de galinha ou frango,6,empanado(a)/à milanesa,465,606,3.7,4.65
+aves e ovos,7800701,asa de galinha ou frango,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800701,asa de galinha ou frango,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800701,asa de galinha ou frango,13,ensopado,287,352,2.1,2.87
+aves e ovos,7800702,drumete de galinha ou frango,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800702,drumete de galinha ou frango,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800702,drumete de galinha ou frango,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800702,drumete de galinha ou frango,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800702,drumete de galinha ou frango,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800702,drumete de galinha ou frango,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800801,pescoço de galinha ou frango,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800801,pescoço de galinha ou frango,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800801,pescoço de galinha ou frango,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800801,pescoço de galinha ou frango,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800801,pescoço de galinha ou frango,9,molho branco,452,569,3.5,4.52
+aves e ovos,7800901,pé de galinha ou frango,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7800901,pé de galinha ou frango,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7800901,pé de galinha ou frango,4,assado(a),551,654,3.9,5.51
+aves e ovos,7800901,pé de galinha ou frango,5,frito(a),482,643,3.9,4.82
+aves e ovos,7800901,pé de galinha ou frango,7,refogado(a),482,643,3.9,4.82
+aves e ovos,7800901,pé de galinha ou frango,8,molho vermelho,437,548,3.3,4.37
+aves e ovos,7800901,pé de galinha ou frango,13,ensopado,287,352,2.1,2.87
+aves e ovos,7801001,miúdo de galinha ou frango,2,cozido(a),396,516,3.1,3.96
+aves e ovos,7801001,miúdo de galinha ou frango,4,assado(a),449,516,3.1,4.49
+aves e ovos,7801001,miúdo de galinha ou frango,5,frito(a),385,512,3.1,3.85
+aves e ovos,7801001,miúdo de galinha ou frango,8,molho vermelho,356,438,2.7,3.56
+aves e ovos,7801001,miúdo de galinha ou frango,15,sopa,199,259,1.6,1.99
+aves e ovos,7801101,moela de galinha ou frango,2,cozido(a),396,516,3.1,3.96
+aves e ovos,7801101,moela de galinha ou frango,3,grelhado(a)/brasa/churrasco,383,516,3.1,3.83
+aves e ovos,7801101,moela de galinha ou frango,5,frito(a),385,512,3.1,3.85
+aves e ovos,7801101,moela de galinha ou frango,7,refogado(a),385,512,3.1,3.85
+aves e ovos,7801101,moela de galinha ou frango,8,molho vermelho,356,438,2.7,3.56
+aves e ovos,7801101,moela de galinha ou frango,9,molho branco,371,458,2.8,3.71
+aves e ovos,7801101,moela de galinha ou frango,13,ensopado,236,284,1.7,2.36
+aves e ovos,7801101,moela de galinha ou frango,15,sopa,199,259,1.6,1.99
+aves e ovos,7801202,coração de frango,2,cozido(a),402,516,3.1,4.02
+aves e ovos,7801202,coração de frango,3,grelhado(a)/brasa/churrasco,383,516,3.1,3.83
+aves e ovos,7801202,coração de frango,4,assado(a),449,516,3.1,4.49
+aves e ovos,7801202,coração de frango,5,frito(a),385,512,3.1,3.85
+aves e ovos,7801202,coração de frango,13,ensopado,242,284,1.7,2.42
+aves e ovos,7801301,fígado de galinha ou frango,2,cozido(a),396,516,3.1,3.96
+aves e ovos,7801301,fígado de galinha ou frango,4,assado(a),449,516,3.1,4.49
+aves e ovos,7801301,fígado de galinha ou frango,5,frito(a),385,512,3.1,3.85
+aves e ovos,7801407,canja,99,não se aplica,498,654,3.9,4.98
+aves e ovos,7801702,peru em pedaço não especificado,2,cozido(a),483,559,3.3,4.83
+aves e ovos,7801702,peru em pedaço não especificado,4,assado(a),536,559,3.3,5.36
+aves e ovos,7801702,peru em pedaço não especificado,5,frito(a),468,553,3.3,4.68
+aves e ovos,7801702,peru em pedaço não especificado,13,ensopado,279,305,1.9,2.79
+aves e ovos,7801801,peito de peru,1,cru(a),376,447,2.7,3.76
+aves e ovos,7801801,peito de peru,2,cozido(a),389,447,2.7,3.89
+aves e ovos,7801801,peito de peru,3,grelhado(a)/brasa/churrasco,376,447,2.7,3.76
+aves e ovos,7801801,peito de peru,4,assado(a),442,447,2.7,4.42
+aves e ovos,7801801,peito de peru,5,frito(a),378,447,2.7,3.78
+aves e ovos,7801801,peito de peru,6,empanado(a)/à milanesa,377,441,2.7,3.77
+aves e ovos,7801801,peito de peru,99,não se aplica,389,447,2.7,3.89
+aves e ovos,7802101,asa de peru,2,cozido(a),562,654,3.9,5.62
+aves e ovos,7802101,asa de peru,4,assado(a),616,654,3.9,6.16
+aves e ovos,7802701,chester,2,cozido(a),450,589,3.5,4.5
+aves e ovos,7802701,chester,4,assado(a),503,589,3.5,5.03
+aves e ovos,7802701,chester,99,não se aplica,450,589,3.5,4.5
+aves e ovos,7802702,tender,4,assado(a),503,589,3.5,5.03
+aves e ovos,7802801,nambu,2,cozido(a),559,736,4.4,5.59
+aves e ovos,7802901,nuggets de frango,3,grelhado(a)/brasa/churrasco,528,1600,6.5,5.28
+aves e ovos,7802901,nuggets de frango,4,assado(a),561,1600,6.5,5.61
+aves e ovos,7802901,nuggets de frango,5,frito(a),523,1541,6.4,5.23
+aves e ovos,7802901,nuggets de frango,6,empanado(a)/à milanesa,496,1363,5.8,4.96
+aves e ovos,7802901,nuggets de frango,7,refogado(a),523,1541,6.4,5.23
+aves e ovos,7802902,steak de frango,2,cozido(a),541,1600,6.5,5.41
+aves e ovos,7802902,steak de frango,3,grelhado(a)/brasa/churrasco,528,1600,6.5,5.28
+aves e ovos,7802902,steak de frango,4,assado(a),561,1600,6.5,5.61
+aves e ovos,7802902,steak de frango,5,frito(a),523,1541,6.4,5.23
+aves e ovos,7802902,steak de frango,6,empanado(a)/à milanesa,492,1363,5.8,4.92
+aves e ovos,7802902,steak de frango,99,não se aplica,528,1600,6.5,5.28
+aves e ovos,7803001,codorna,5,frito(a),540,721,4.3,5.4
+aves e ovos,7803201,pé e asa de galinha ou frango,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7803201,pé e asa de galinha ou frango,4,assado(a),551,654,3.9,5.51
+aves e ovos,7803201,pé e asa de galinha ou frango,5,frito(a),482,643,3.9,4.82
+aves e ovos,7803301,ovo de galinha,1,cru(a),372,340,2.3,3.72
+aves e ovos,7803301,ovo de galinha,2,cozido(a),382,340,2.3,3.82
+aves e ovos,7803301,ovo de galinha,4,assado(a),394,340,2.3,3.94
+aves e ovos,7803301,ovo de galinha,5,frito(a),368,344,2.4,3.68
+aves e ovos,7803301,ovo de galinha,7,refogado(a),365,344,2.4,3.65
+aves e ovos,7803301,ovo de galinha,8,molho vermelho,337,297,2.1,3.37
+aves e ovos,7803301,ovo de galinha,10,ao alho e óleo,323,348,2.2,3.23
+aves e ovos,7803301,ovo de galinha,11,com manteiga/óleo,371,344,2.4,3.71
+aves e ovos,7803301,ovo de galinha,12,ao vinagrete,321,300,2.2,3.21
+aves e ovos,7803301,ovo de galinha,13,ensopado,221,195,1.4,2.21
+aves e ovos,7803301,ovo de galinha,14,mingau,175,180,1.1,1.75
+aves e ovos,7803301,ovo de galinha,99,não se aplica,382,340,2.3,3.82
+aves e ovos,7803501,ovo de codorna,1,cru(a),374,341,2.3,3.74
+aves e ovos,7803501,ovo de codorna,2,cozido(a),383,341,2.3,3.83
+aves e ovos,7803501,ovo de codorna,5,frito(a),370,346,2.4,3.7
+aves e ovos,7803501,ovo de codorna,12,ao vinagrete,322,302,2.2,3.22
+aves e ovos,7803501,ovo de codorna,99,não se aplica,383,341,2.3,3.83
+aves e ovos,7803702,"galinha de angola abatida, congelada ou viva",2,cozido(a),498,654,3.9,4.98
+aves e ovos,7803702,"galinha de angola abatida, congelada ou viva",4,assado(a),551,654,3.9,5.51
+aves e ovos,7803703,capote,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7803703,capote,4,assado(a),551,654,3.9,5.51
+aves e ovos,7803703,capote,5,frito(a),482,643,3.9,4.82
+aves e ovos,7803707,mutum,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7803907,pato em pedaços,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7803907,pato em pedaços,13,ensopado,287,352,2.1,2.87
+aves e ovos,7803908,peito de pato,5,frito(a),482,643,3.9,4.82
+aves e ovos,7803913,carne de pato,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7803913,carne de pato,4,assado(a),551,654,3.9,5.51
+aves e ovos,7803913,carne de pato,5,frito(a),482,643,3.9,4.82
+aves e ovos,7805401,peito de peru light,1,cru(a),376,447,2.7,3.76
+aves e ovos,7805401,peito de peru light,2,cozido(a),483,559,3.3,4.83
+aves e ovos,7805401,peito de peru light,99,não se aplica,483,559,3.3,4.83
+aves e ovos,7805501,frango inteiro orgânico,2,cozido(a),559,736,4.4,5.59
+aves e ovos,7805501,frango inteiro orgânico,4,assado(a),612,736,4.4,6.12
+aves e ovos,7805702,file de frango orgânico,2,cozido(a),498,654,3.9,4.98
+aves e ovos,7805702,file de frango orgânico,3,grelhado(a)/brasa/churrasco,486,654,3.9,4.86
+aves e ovos,7805702,file de frango orgânico,5,frito(a),482,643,3.9,4.82
+aves e ovos,7805702,file de frango orgânico,6,empanado(a)/à milanesa,465,606,3.7,4.65
+laticínios,7900101,leite de vaca integral,99,não se aplica,127,135,0.8,1.27
+laticínios,7900201,leite de vaca fresco,99,não se aplica,127,132,0.8,1.27
+laticínios,7900301,leite de cabra,99,não se aplica,132,120,0.8,1.32
+laticínios,7900601,leite em pó integral,99,não se aplica,133,67,0.3,1.33
+laticínios,7900710,leite em pó desnatado,99,não se aplica,133,67,0.3,1.33
+laticínios,7900801,leite em pó,99,não se aplica,133,67,0.3,1.33
+laticínios,7900901,leite condensado,99,não se aplica,200,165,1.0,2.0
+laticínios,7900903,leite beijinho,99,não se aplica,200,165,1.0,2.0
+laticínios,7901001,creme de leite,99,não se aplica,627,495,4.5,6.27
+laticínios,7901101,chantilly,99,não se aplica,257,204,1.4,2.57
+laticínios,7901201,iogurte de qualquer sabor,99,não se aplica,343,150,1.3,3.43
+laticínios,7901203,iogurte desnatado,99,não se aplica,333,265,2.6,3.33
+laticínios,7901204,iogurte natural,99,não se aplica,161,265,2.6,1.61
+laticínios,7901301,yakult de qualquer sabor,99,não se aplica,79,152,5.8,0.79
+laticínios,7901303,bebida láctea,99,não se aplica,79,140,5.8,0.79
+laticínios,7901304,leite fermentado,99,não se aplica,79,152,5.8,0.79
+laticínios,7901401,coalhada,99,não se aplica,333,265,2.6,3.33
+laticínios,7901501,manteiga com ou sem sal,99,não se aplica,603,422,11.5,6.03
+laticínios,7901505,manteiga de garrafa,99,não se aplica,910,422,11.5,9.1
+laticínios,7901602,margarina com ou sem sal,99,não se aplica,157,132,6.6,1.57
+laticínios,7901701,queijo prato,99,não se aplica,818,626,2.8,8.18
+laticínios,7901703,queijo colonial,99,não se aplica,818,626,2.8,8.18
+laticínios,7901705,queijo de colônia,99,não se aplica,818,626,2.8,8.18
+laticínios,7901801,queijo muçarela,99,não se aplica,923,696,3.6,9.23
+laticínios,7901803,muçarela,99,não se aplica,818,712,2.8,8.18
+laticínios,7901807,muçarela de búfala,99,não se aplica,818,626,2.8,8.18
+laticínios,7901809,queijo de búfalo,99,não se aplica,818,626,2.8,8.18
+laticínios,7901901,queijo de reino,99,não se aplica,818,626,2.8,8.18
+laticínios,7902001,queijo de minas,99,não se aplica,835,375,4.1,8.35
+laticínios,7902003,queijo de manteiga,99,não se aplica,818,626,2.8,8.18
+laticínios,7902004,quechimia,99,não se aplica,295,125,0.6,2.95
+laticínios,7902005,queijo de coalho,99,não se aplica,818,626,2.8,8.18
+laticínios,7902008,queijo canastra,99,não se aplica,818,626,2.8,8.18
+laticínios,7902201,queijo ricota,99,não se aplica,400,262,1.4,4.0
+laticínios,7902301,leite de soja com sabor,99,não se aplica,79,152,5.8,0.79
+laticínios,7902303,ades original,99,não se aplica,94,41,5.8,0.94
+laticínios,7902403,queijo ralado,99,não se aplica,876,597,4.1,8.76
+laticínios,7902501,queijo provolone,99,não se aplica,818,626,2.8,8.18
+laticínios,7902801,queijo polenguinho,99,não se aplica,818,626,2.8,8.18
+laticínios,7902901,requeijão,99,não se aplica,818,626,2.8,8.18
+laticínios,7902902,queijo cremoso,99,não se aplica,818,626,2.8,8.18
+laticínios,7903001,queijo não especificado,99,não se aplica,897,597,5.4,8.97
+laticínios,7903101,leite com sabor,99,não se aplica,55,152,5.8,0.55
+laticínios,7903102,leite achocolatado,99,não se aplica,79,152,5.8,0.79
+laticínios,7903109,leite aromatizado,99,não se aplica,79,152,5.8,0.79
+laticínios,7903110,bebida achocolatada,99,não se aplica,79,152,5.8,0.79
+laticínios,7903201,nata,99,não se aplica,333,265,2.6,3.33
+laticínios,7903301,queijo gorgonzola,99,não se aplica,876,597,4.1,8.76
+laticínios,7903402,tofu,99,não se aplica,59,98,0.3,0.59
+laticínios,7903501,leite de soja em pó,99,não se aplica,11,46,0.7,0.11
+laticínios,7903601,leite de vaca desnatado,99,não se aplica,111,120,0.8,1.11
+laticínios,7903702,leite de vaca semidesnatado,99,não se aplica,141,124,0.8,1.41
+laticínios,7903801,leite não especificado pasteurizado,99,não se aplica,127,132,0.8,1.27
+laticínios,7903901,iogurte de qualquer sabor light,99,não se aplica,333,265,2.6,3.33
+laticínios,7904001,iogurte de qualquer sabor diet,99,não se aplica,333,265,2.6,3.33
+laticínios,7904201,margarina light,99,não se aplica,157,132,6.6,1.57
+laticínios,7904301,leite de vaca integral orgânico,99,não se aplica,127,132,0.8,1.27
+laticínios,7904401,leite de vaca fresco orgânico,99,não se aplica,127,132,0.8,1.27
+laticínios,7904601,leite semidesnatado de vaca orgânico,99,não se aplica,118,120,0.8,1.18
+laticínios,7904701,creme de leite orgânico,99,não se aplica,333,265,2.6,3.33
+laticínios,7904801,iogurte de qualquer sabor orgânico,99,não se aplica,333,265,2.6,3.33
+laticínios,7904803,iogurte de qualquer sabor desnatado orgânico,99,não se aplica,333,265,2.6,3.33
+laticínios,7904804,iogurte natural de qualquer sabor orgânico,99,não se aplica,333,265,2.6,3.33
+laticínios,7905103,muçarela light,99,não se aplica,818,626,2.8,8.18
+laticínios,7905104,queijo muçarela light,99,não se aplica,818,626,2.8,8.18
+laticínios,7905201,leite de soja com sabor light,99,não se aplica,79,152,5.8,0.79
+laticínios,7905203,ades light,99,não se aplica,79,152,5.8,0.79
+laticínios,7905601,creme de leite light,99,não se aplica,333,265,2.6,3.33
+laticínios,7905901,queijo prato light,99,não se aplica,818,626,2.8,8.18
+laticínios,7906001,queijo de minas light,99,não se aplica,818,626,2.8,8.18
+laticínios,7906005,queijo de coalho light,99,não se aplica,818,626,2.8,8.18
+laticínios,7906201,queijo ricota light,99,não se aplica,818,626,2.8,8.18
+laticínios,7906303,queijo ralado light,99,não se aplica,876,597,4.1,8.76
+laticínios,7906401,queijo polenguinho light,99,não se aplica,818,626,2.8,8.18
+laticínios,7906501,requeijão light,99,não se aplica,818,626,2.8,8.18
+laticínios,7906601,queijo não especificado light,99,não se aplica,818,626,2.8,8.18
+laticínios,7906702,leite achocolatado light,99,não se aplica,79,152,5.8,0.79
+laticínios,7906710,bebida achocolatada light,99,não se aplica,79,152,5.8,0.79
+laticínios,7906801,leite com sabor diet,99,não se aplica,79,152,5.8,0.79
+laticínios,7906802,leite achocolatado diet,99,não se aplica,79,152,5.8,0.79
+laticínios,7906810,bebida achocolatada diet,99,não se aplica,79,152,5.8,0.79
+laticínios,7906901,leite de soja em pó light,99,não se aplica,10,18,0.7,0.1
+laticínios,7907001,leite em pó com sabor,99,não se aplica,10,18,0.7,0.1
+laticínios,7907101,manteiga com ou sem sal light,99,não se aplica,987,422,11.5,9.87
+laticínios,7907301,queijo de minas frescal orgânico,99,não se aplica,818,626,2.8,8.18
+laticínios,7907305,queijo de coalho frescal orgânico,99,não se aplica,818,626,2.8,8.18
+panificados,8000103,pão de hambúrguer,99,não se aplica,180,127,0.9,1.8
+panificados,8000105,pão de sal,99,não se aplica,55,187,0.5,0.55
+panificados,8000201,pão doce,99,não se aplica,180,127,0.9,1.8
+panificados,8000203,chineque,99,não se aplica,257,204,1.4,2.57
+panificados,8000218,chineque com farofa,99,não se aplica,257,204,1.4,2.57
+panificados,8000229,pão de mel,99,não se aplica,257,204,1.4,2.57
+panificados,8000234,panetone,99,não se aplica,257,204,1.4,2.57
+panificados,8000237,bisnaguinha,99,não se aplica,93,127,0.9,0.93
+panificados,8000240,croissant,99,não se aplica,180,127,0.9,1.8
+panificados,8000501,pão de forma industrializado de qualquer marca,99,não se aplica,108,88,0.5,1.08
+panificados,8000801,pão de queijo,99,não se aplica,200,165,1.0,2.0
+panificados,8001101,pão de milho,99,não se aplica,180,127,0.9,1.8
+panificados,8001401,pão integral,99,não se aplica,180,127,0.9,1.8
+panificados,8001501,pão não especificado,99,não se aplica,180,127,0.9,1.8
+panificados,8001901,torrada de qualquer pão,99,não se aplica,154,132,1.0,1.54
+panificados,8002001,rosca doce,99,não se aplica,257,204,1.4,2.57
+panificados,8002002,rosquinha doce,99,não se aplica,194,273,1.1,1.94
+panificados,8002101,rosca salgada,99,não se aplica,164,223,1.1,1.64
+panificados,8002106,rosquinha salgada,99,não se aplica,180,127,0.9,1.8
+panificados,8002201,biscoito salgado,99,não se aplica,155,151,1.0,1.55
+panificados,8002205,presuntinho biscoito,99,não se aplica,180,127,0.9,1.8
+panificados,8002212,biscoito de polvilho,99,não se aplica,164,223,1.1,1.64
+panificados,8002225,bolacha salgada,99,não se aplica,145,98,1.0,1.45
+panificados,8002227,chips (salgadinhos),99,não se aplica,390,127,0.9,3.9
+panificados,8002230,baconzitos,99,não se aplica,180,127,0.9,1.8
+panificados,8002236,biscoito salgado integral,99,não se aplica,100,62,0.9,1.0
+panificados,8002301,biscoito doce,99,não se aplica,169,305,1.3,1.69
+panificados,8002302,cavaco chinês,99,não se aplica,164,223,1.1,1.64
+panificados,8002305,sequilho,99,não se aplica,164,223,1.1,1.64
+panificados,8002306,tareco,99,não se aplica,164,223,1.1,1.64
+panificados,8002309,solda,99,não se aplica,180,127,0.9,1.8
+panificados,8002315,brevidade,99,não se aplica,164,223,1.1,1.64
+panificados,8002334,bolacha doce,99,não se aplica,147,168,1.0,1.47
+panificados,8002335,maria maluca (bolacha doce),99,não se aplica,164,223,1.1,1.64
+panificados,8002405,quebra quebra,99,não se aplica,164,223,1.1,1.64
+panificados,8002502,rocambole,99,não se aplica,206,203,1.4,2.06
+panificados,8002503,cuca de qualquer tipo,99,não se aplica,257,204,1.4,2.57
+panificados,8002601,bolo de milho,99,não se aplica,225,197,1.2,2.25
+panificados,8002604,amidomil (bolinho),99,não se aplica,257,204,1.4,2.57
+panificados,8002605,angusor de milho,99,não se aplica,257,204,1.4,2.57
+panificados,8002609,grustoli (bolinho doce),99,não se aplica,257,204,1.4,2.57
+panificados,8002701,bolo de aipim,99,não se aplica,124,134,1.3,1.24
+panificados,8002702,bolo de tapioca,99,não se aplica,157,219,1.5,1.57
+panificados,8002703,bolo de macaxeira,99,não se aplica,124,134,1.3,1.24
+panificados,8002704,bolo de goma,99,não se aplica,157,219,1.5,1.57
+panificados,8002801,bolo de batata doce,99,não se aplica,160,162,1.1,1.6
+panificados,8002901,bolo de arroz,99,não se aplica,186,153,1.0,1.86
+panificados,8003101,bolo de cara,99,não se aplica,160,165,1.1,1.6
+panificados,8003501,tortas doces de qualquer sabor,99,não se aplica,300,127,0.9,3.0
+panificados,8003601,tortas salgadas de qualquer sabor,99,não se aplica,953,173,1.1,9.53
+panificados,8003701,sonho,99,não se aplica,180,127,0.9,1.8
+panificados,8003702,filhos (bolinho de farinha de trigo e ovos),99,não se aplica,180,127,0.9,1.8
+panificados,8003801,bolo de chocolate,99,não se aplica,170,188,2.8,1.7
+panificados,8003902,brioche,99,não se aplica,164,192,1.0,1.64
+panificados,8004001,bolo de laranja,99,não se aplica,157,159,1.1,1.57
+panificados,8004101,bolo de coco,99,não se aplica,205,169,1.1,2.05
+panificados,8004201,bolo de cenoura,99,não se aplica,153,169,1.0,1.53
+panificados,8004601,bolo de trigo,99,não se aplica,294,262,3.4,2.94
+panificados,8004701,broa,99,não se aplica,180,127,0.9,1.8
+panificados,8004801,biscoito recheado,99,não se aplica,182,172,1.1,1.82
+panificados,8004807,waffer (biscoito),99,não se aplica,164,223,1.1,1.64
+panificados,8004809,alfajores (biscoito),99,não se aplica,164,223,1.1,1.64
+panificados,8004810,bolacha recheada,99,não se aplica,155,246,1.2,1.55
+panificados,8004813,rosca recheada,99,não se aplica,238,190,1.3,2.38
+panificados,8004814,rosquinha recheada de qualquer sabor,99,não se aplica,164,223,1.1,1.64
+panificados,8005201,biscoito não especificado,99,não se aplica,225,127,1.4,2.25
+panificados,8006101,crepe,99,não se aplica,1969,1379,8.7,19.69
+panificados,8006501,pão diet (de forma industrializado),99,não se aplica,180,127,0.9,1.8
+panificados,8006601,pão light (de forma industrializado),99,não se aplica,180,127,0.9,1.8
+panificados,8006701,pão integral light,99,não se aplica,180,127,0.9,1.8
+panificados,8006801,pão integral light,99,não se aplica,180,127,0.9,1.8
+panificados,8007001,tortas doces de qualquer sabor light,99,não se aplica,180,127,0.9,1.8
+panificados,8007101,tortas doces de qualquer sabor diet,99,não se aplica,180,127,0.9,1.8
+panificados,8007302,filhos (bolinho de farinha de trigo e ovos) light,99,não se aplica,953,173,1.1,9.53
+panificados,8007402,filhos (bolinho de farinha de trigo e ovos) diet,99,não se aplica,953,173,1.1,9.53
+panificados,8007501,bolo de chocolate light,99,não se aplica,257,204,1.4,2.57
+panificados,8007601,bolo de chocolate diet,99,não se aplica,257,204,1.4,2.57
+panificados,8007701,bolo de laranja light,99,não se aplica,256,204,1.5,2.56
+panificados,8008001,bolo de coco diet,99,não se aplica,257,204,1.4,2.57
+panificados,8008201,bolo de cenoura diet,99,não se aplica,257,204,1.4,2.57
+panificados,8008301,biscoito recheado light,99,não se aplica,164,223,1.1,1.64
+panificados,8008305,biscoito waffer light,99,não se aplica,164,223,1.1,1.64
+panificados,8008307,waffer (biscoito) light,99,não se aplica,164,223,1.1,1.64
+panificados,8008309,alfajores (biscoito) light,99,não se aplica,164,223,1.1,1.64
+panificados,8008310,bolacha recheada light,99,não se aplica,294,547,2.1,2.94
+panificados,8008401,biscoito recheado diet,99,não se aplica,164,223,1.1,1.64
+panificados,8008408,rosquinha recheada de qualquer sabor diet,99,não se aplica,164,223,1.1,1.64
+panificados,8008410,bolacha recheada diet,99,não se aplica,164,223,1.1,1.64
+panificados,8010001,pão doce diet,99,não se aplica,257,204,1.4,2.57
+panificados,8010029,pão de mel diet,99,não se aplica,257,204,1.4,2.57
+panificados,8010034,panetone diet,99,não se aplica,257,204,1.4,2.57
+panificados,8010101,biscoito salgado light,99,não se aplica,180,127,0.9,1.8
+panificados,8010125,bolacha salgada light,99,não se aplica,180,127,0.9,1.8
+panificados,8010127,chips (salgadinhos) light,99,não se aplica,180,127,0.9,1.8
+panificados,8010401,biscoito doce light,99,não se aplica,164,223,1.1,1.64
+panificados,8010434,bolacha doce light,99,não se aplica,164,223,1.1,1.64
+panificados,8010501,biscoito doce diet,99,não se aplica,164,223,1.1,1.64
+panificados,8010534,bolacha doce diet,99,não se aplica,164,223,1.1,1.64
+panificados,8010601,bolo de banana,99,não se aplica,189,186,1.1,1.89
+carnes industrializadas,8100101,carne seca,2,cozido(a),5023,4698,3.5,50.23
+carnes industrializadas,8100101,carne seca,3,grelhado(a)/brasa/churrasco,5011,4698,3.5,50.11
+carnes industrializadas,8100101,carne seca,4,assado(a),5045,4698,3.5,50.45
+carnes industrializadas,8100101,carne seca,5,frito(a),4785,4484,3.5,47.85
+carnes industrializadas,8100101,carne seca,7,refogado(a),4781,4484,3.5,47.81
+carnes industrializadas,8100101,carne seca,8,molho vermelho,4058,3783,3.0,40.58
+carnes industrializadas,8100101,carne seca,13,ensopado,2550,2374,2.0,25.5
+carnes industrializadas,8100102,carne de charque,1,cru(a),3508,3288,2.5,35.08
+carnes industrializadas,8100102,carne de charque,2,cozido(a),5023,4698,3.5,50.23
+carnes industrializadas,8100102,carne de charque,3,grelhado(a)/brasa/churrasco,5011,4698,3.5,50.11
+carnes industrializadas,8100102,carne de charque,4,assado(a),5045,4698,3.5,50.45
+carnes industrializadas,8100102,carne de charque,5,frito(a),4785,4484,3.5,47.85
+carnes industrializadas,8100102,carne de charque,7,refogado(a),4781,4484,3.5,47.81
+carnes industrializadas,8100102,carne de charque,8,molho vermelho,4058,3783,3.0,40.58
+carnes industrializadas,8100102,carne de charque,13,ensopado,2550,2374,2.0,25.5
+carnes industrializadas,8100103,jabá,2,cozido(a),5023,4698,3.5,50.23
+carnes industrializadas,8100103,jabá,5,frito(a),4785,4484,3.5,47.85
+carnes industrializadas,8100103,jabá,7,refogado(a),4781,4484,3.5,47.81
+carnes industrializadas,8100103,jabá,99,não se aplica,5011,4698,3.5,50.11
+carnes industrializadas,8100201,carne de sol,1,cru(a),3508,3288,2.5,35.08
+carnes industrializadas,8100201,carne de sol,2,cozido(a),5023,4698,3.5,50.23
+carnes industrializadas,8100201,carne de sol,3,grelhado(a)/brasa/churrasco,5011,4698,3.5,50.11
+carnes industrializadas,8100201,carne de sol,4,assado(a),5045,4698,3.5,50.45
+carnes industrializadas,8100201,carne de sol,5,frito(a),4785,4484,3.5,47.85
+carnes industrializadas,8100201,carne de sol,13,ensopado,2550,2374,2.0,25.5
+carnes industrializadas,8100202,carne do sertão,2,cozido(a),5023,4698,3.5,50.23
+carnes industrializadas,8100202,carne do sertão,4,assado(a),5045,4698,3.5,50.45
+carnes industrializadas,8100202,carne do sertão,5,frito(a),4785,4484,3.5,47.85
+carnes industrializadas,8100502,hambúrguer de carne bovina,1,cru(a),1450,1280,5.2,14.5
+carnes industrializadas,8100502,hambúrguer de carne bovina,2,cozido(a),2084,1829,7.4,20.84
+carnes industrializadas,8100502,hambúrguer de carne bovina,3,grelhado(a)/brasa/churrasco,2071,1829,7.4,20.71
+carnes industrializadas,8100502,hambúrguer de carne bovina,4,assado(a),2104,1829,7.4,21.04
+carnes industrializadas,8100502,hambúrguer de carne bovina,5,frito(a),1989,1759,7.2,19.89
+carnes industrializadas,8100502,hambúrguer de carne bovina,8,molho vermelho,1706,1487,6.2,17.06
+carnes industrializadas,8100502,hambúrguer de carne bovina,99,não se aplica,2071,1829,7.4,20.71
+carnes industrializadas,8100802,copa de porco defumada,99,não se aplica,1152,1060,2.8,11.52
+carnes industrializadas,8101005,bacon,99,não se aplica,1020,736,1.9,10.2
+carnes industrializadas,8101101,hambúrguer de frango,2,cozido(a),2084,1829,7.4,20.84
+carnes industrializadas,8101101,hambúrguer de frango,3,grelhado(a)/brasa/churrasco,2071,1829,7.4,20.71
+carnes industrializadas,8101101,hambúrguer de frango,4,assado(a),2104,1829,7.4,21.04
+carnes industrializadas,8101101,hambúrguer de frango,5,frito(a),1989,1759,7.2,19.89
+carnes industrializadas,8101101,hambúrguer de frango,6,empanado(a)/à milanesa,1730,1546,6.6,17.3
+carnes industrializadas,8101101,hambúrguer de frango,99,não se aplica,2071,1829,7.4,20.71
+carnes industrializadas,8102101,salsicha no varejo,1,cru(a),353,1280,5.2,3.53
+carnes industrializadas,8102101,salsicha no varejo,2,cozido(a),334,1164,4.7,3.34
+carnes industrializadas,8102101,salsicha no varejo,3,grelhado(a)/brasa/churrasco,321,1164,4.7,3.21
+carnes industrializadas,8102101,salsicha no varejo,4,assado(a),354,1164,4.7,3.54
+carnes industrializadas,8102101,salsicha no varejo,5,frito(a),326,1127,4.7,3.26
+carnes industrializadas,8102101,salsicha no varejo,7,refogado(a),326,1127,4.7,3.26
+carnes industrializadas,8102101,salsicha no varejo,8,molho vermelho,306,956,4.0,3.06
+carnes industrializadas,8102101,salsicha no varejo,9,molho branco,321,976,4.2,3.21
+carnes industrializadas,8102101,salsicha no varejo,10,ao alho e óleo,289,1007,4.2,2.89
+carnes industrializadas,8102101,salsicha no varejo,11,com manteiga/óleo,339,1127,4.7,3.39
+carnes industrializadas,8102101,salsicha no varejo,13,ensopado,205,607,2.6,2.05
+carnes industrializadas,8102101,salsicha no varejo,99,não se aplica,321,1164,4.7,3.21
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",1,cru(a),1780,1560,5.2,17.8
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",2,cozido(a),2618,2283,7.6,26.18
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",3,grelhado(a)/brasa/churrasco,2605,2283,7.6,26.05
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",4,assado(a),2638,2283,7.6,26.38
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",5,frito(a),2496,2190,7.4,24.96
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",6,empanado(a)/à milanesa,2157,1909,6.7,21.57
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",7,refogado(a),2496,2190,7.4,24.96
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",8,molho vermelho,2133,1851,6.3,21.33
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",11,com manteiga/óleo,2496,2190,7.4,24.96
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",13,ensopado,1347,1167,4.0,13.47
+carnes industrializadas,8102204,"linguiça (suína, bovina, mista etc.)",99,não se aplica,2605,2283,7.6,26.05
+carnes industrializadas,8102207,linguiça de frango,1,cru(a),1455,1280,5.2,14.55
+carnes industrializadas,8102207,linguiça de frango,2,cozido(a),2142,1873,7.6,21.42
+carnes industrializadas,8102207,linguiça de frango,3,grelhado(a)/brasa/churrasco,2129,1873,7.6,21.29
+carnes industrializadas,8102207,linguiça de frango,4,assado(a),2162,1873,7.6,21.62
+carnes industrializadas,8102207,linguiça de frango,5,frito(a),2044,1801,7.4,20.44
+carnes industrializadas,8102401,chouriço,99,não se aplica,1455,1280,5.2,14.55
+carnes industrializadas,8102402,morcela,99,não se aplica,1455,1280,5.2,14.55
+carnes industrializadas,8102403,morcilha,1,cru(a),1455,1280,5.2,14.55
+carnes industrializadas,8102403,morcilha,2,cozido(a),1468,1280,5.2,14.68
+carnes industrializadas,8102501,paio,2,cozido(a),2142,1873,7.6,21.42
+carnes industrializadas,8102601,mortadela,99,não se aplica,1455,1280,5.2,14.55
+carnes industrializadas,8102701,salame,99,não se aplica,1455,1280,5.2,14.55
+carnes industrializadas,8102702,salaminho,99,não se aplica,1130,1000,5.2,11.3
+carnes industrializadas,8102801,blanquet de peru,99,não se aplica,423,1280,5.2,4.23
+carnes industrializadas,8102901,presunto,99,não se aplica,788,724,1.9,7.88
+carnes industrializadas,8103001,hambúrguer de peru,2,cozido(a),616,1829,7.4,6.16
+carnes industrializadas,8103001,hambúrguer de peru,4,assado(a),637,1829,7.4,6.37
+carnes industrializadas,8103001,hambúrguer de peru,6,empanado(a)/à milanesa,556,1546,6.6,5.56
+carnes industrializadas,8103101,hambúrguer não especificado,2,cozido(a),2084,1829,7.4,20.84
+carnes industrializadas,8103101,hambúrguer não especificado,3,grelhado(a)/brasa/churrasco,2071,1829,7.4,20.71
+carnes industrializadas,8103101,hambúrguer não especificado,4,assado(a),2104,1829,7.4,21.04
+carnes industrializadas,8103101,hambúrguer não especificado,5,frito(a),1989,1759,7.2,19.89
+carnes industrializadas,8103101,hambúrguer não especificado,99,não se aplica,2071,1829,7.4,20.71
+carnes industrializadas,8103601,apresuntado,99,não se aplica,530,1280,5.2,5.3
+carnes industrializadas,8103901,pururuca de porco,99,não se aplica,788,724,1.9,7.88
+carnes industrializadas,8103902,pele de porco preparada (pururuca),99,não se aplica,788,724,1.9,7.88
+carnes industrializadas,8104001,"patê (fígado, calabresa, frango, presunto etc.)",99,não se aplica,530,1280,5.2,5.3
+carnes industrializadas,8104101,carne de aves defumada,99,não se aplica,984,905,2.4,9.84
+carnes industrializadas,8104601,carne salgada não especificada,2,cozido(a),4510,4216,3.2,45.1
+carnes industrializadas,8104601,carne salgada não especificada,3,grelhado(a)/brasa/churrasco,4497,4216,3.2,44.97
+carnes industrializadas,8104601,carne salgada não especificada,4,assado(a),4532,4216,3.2,45.32
+carnes industrializadas,8104601,carne salgada não especificada,5,frito(a),4296,4027,3.2,42.96
+carnes industrializadas,8104601,carne salgada não especificada,7,refogado(a),4293,4027,3.2,42.93
+carnes industrializadas,8104601,carne salgada não especificada,8,molho vermelho,3646,3397,2.8,36.46
+carnes industrializadas,8104601,carne salgada não especificada,99,não se aplica,4497,4216,3.2,44.97
+carnes industrializadas,8104904,mini chicken empanado,2,cozido(a),541,1600,6.5,5.41
+carnes industrializadas,8104904,mini chicken empanado,3,grelhado(a)/brasa/churrasco,528,1600,6.5,5.28
+carnes industrializadas,8104904,mini chicken empanado,4,assado(a),561,1600,6.5,5.61
+carnes industrializadas,8104904,mini chicken empanado,5,frito(a),523,1541,6.4,5.23
+carnes industrializadas,8104904,mini chicken empanado,6,empanado(a)/à milanesa,496,1363,5.8,4.96
+carnes industrializadas,8105001,mortadela light,99,não se aplica,353,1280,5.2,3.53
+carnes industrializadas,8105201,salsicha no varejo light,5,frito(a),357,1237,5.1,3.57
+carnes industrializadas,8105401,salame light,99,não se aplica,353,1280,5.2,3.53
+carnes industrializadas,8105501,blanquet de peru light,99,não se aplica,423,1280,5.2,4.23
+carnes industrializadas,8105701,hambúrguer não especificado light,99,não se aplica,2071,1829,7.4,20.71
+bebidas não alcoólicas e infusões,8200101,refrigerante de cola tradicional,99,não se aplica,69,45,0.2,0.69
+bebidas não alcoólicas e infusões,8200102,coca cola tradicional,99,não se aplica,38,45,0.2,0.38
+bebidas não alcoólicas e infusões,8200202,fanta laranja tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8200208,sukita tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8200301,refrigerante de guaraná tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8200302,guaraná tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8200407,Sprite refrigerante tradicional,99,não se aplica,33,45,0.2,0.33
+bebidas não alcoólicas e infusões,8200505,fanta uva tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8200701,refrigerante de cola light,99,não se aplica,27,45,0.2,0.27
+bebidas não alcoólicas e infusões,8200702,coca cola light,99,não se aplica,27,45,0.2,0.27
+bebidas não alcoólicas e infusões,8200801,refrigerante de cola diet,99,não se aplica,27,45,0.2,0.27
+bebidas não alcoólicas e infusões,8200902,minuano tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8201104,mate tradicional,99,não se aplica,36,740,4.7,0.36
+bebidas não alcoólicas e infusões,8201202,bidu tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8201502,fanta laranja light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8201601,refrigerante de guaraná light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8201602,guaraná light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8201802,tubaína tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8201902,tubaína light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8202001,caldo de cana,99,não se aplica,94,68,0.7,0.94
+bebidas não alcoólicas e infusões,8202002,garapa,99,não se aplica,94,68,0.7,0.94
+bebidas não alcoólicas e infusões,8202101,água de coco,99,não se aplica,94,207,0.7,0.94
+bebidas não alcoólicas e infusões,8202402,q-suco,99,não se aplica,16,51,1.9,0.16
+bebidas não alcoólicas e infusões,8202403,q-refresko,99,não se aplica,16,51,1.9,0.16
+bebidas não alcoólicas e infusões,8202602,nescafé,99,não se aplica,0,2,0.0,0.0
+bebidas não alcoólicas e infusões,8202803,erva mate,99,não se aplica,3,2,0.0,0.03
+bebidas não alcoólicas e infusões,8202804,chimarrão,99,não se aplica,3,2,0.0,0.03
+bebidas não alcoólicas e infusões,8202805,tererê,99,não se aplica,3,2,0.0,0.03
+bebidas não alcoólicas e infusões,8203401,levedo de cerveja,99,não se aplica,17,382,2.4,0.17
+bebidas não alcoólicas e infusões,8203501,refrigerante não especificado,99,não se aplica,90,45,0.2,0.9
+bebidas não alcoólicas e infusões,8203603,cevada em pó,99,não se aplica,0,0,0.0,0.0
+bebidas não alcoólicas e infusões,8204503,chocomilk,99,não se aplica,79,152,5.8,0.79
+bebidas não alcoólicas e infusões,8204902,água tônica tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8205201,"chá diet (preto, camomila, erva cidreira, capim limão etc.)",99,não se aplica,33,740,4.7,0.33
+bebidas não alcoólicas e infusões,8205402,paraguai refrigerante tradicional,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8205803,gatorade,99,não se aplica,48,152,5.8,0.48
+bebidas não alcoólicas e infusões,8205901,bebida energética,99,não se aplica,48,152,5.8,0.48
+bebidas não alcoólicas e infusões,8206301,"chá (preto, camomila, erva cidreira, capim limão etc.)",99,não se aplica,3,2,0.0,0.03
+bebidas não alcoólicas e infusões,8206402,café solúvel cappuccino,99,não se aplica,19,122,0.7,0.19
+bebidas não alcoólicas e infusões,8207401,refrigerante de guaraná diet,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8207402,guaraná diet,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8207601,refrigerante de limão diet,99,não se aplica,26,45,0.2,0.26
+bebidas não alcoólicas e infusões,8207705,fanta uva light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8208104,mate light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8209002,água tônica light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8209102,paraguai refrigerante light,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8211002,q-suco light,99,não se aplica,16,51,1.9,0.16
+bebidas não alcoólicas e infusões,8211003,q-refresko light,99,não se aplica,16,51,1.9,0.16
+bebidas não alcoólicas e infusões,8211102,q-suco diet,99,não se aplica,2,7,0.3,0.02
+bebidas não alcoólicas e infusões,8212401,café cappuccino solúvel light,99,não se aplica,19,122,0.7,0.19
+bebidas não alcoólicas e infusões,8212501,café cappuccino solúvel diet,99,não se aplica,19,122,0.7,0.19
+bebidas não alcoólicas e infusões,8212902,água tônica diet,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8212906,refrigerante de quinino dietético,99,não se aplica,45,45,0.2,0.45
+bebidas não alcoólicas e infusões,8213003,chá mate orgânico,99,não se aplica,3,2,0.0,0.03
+bebidas não alcoólicas e infusões,8213004,chimarrão orgânico,99,não se aplica,3,2,0.0,0.03
+bebidas não alcoólicas e infusões,8213601,suco de clorofila,99,não se aplica,94,68,0.7,0.94
+bebidas não alcoólicas e infusões,8273902,café com farinha,99,não se aplica,36,278,1.3,0.36
+bebidas alcoólicas,8300101,cerveja (com ou sem álcool),99,não se aplica,125,45,0.5,1.25
+bebidas alcoólicas,8300201,chopp,99,não se aplica,125,45,0.5,1.25
+bebidas alcoólicas,8300301,aguardente,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8300302,cachaça,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8300501,batida de qualquer sabor,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8300701,rum,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8300801,vodka,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8301001,uisque,99,não se aplica,300,50,4.1,3.0
+bebidas alcoólicas,8301002,whisky,99,não se aplica,300,50,4.1,3.0
+bebidas alcoólicas,8301201,champanhe,99,não se aplica,220,50,1.6,2.2
+bebidas alcoólicas,8301202,sidra champanhe,99,não se aplica,140,50,2.2,1.4
+bebidas alcoólicas,8301501,martini,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8301601,conhaque,99,não se aplica,759,50,4.1,7.59
+bebidas alcoólicas,8301701,drink dreher,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8301901,licor de qualquer sabor,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8302409,cajuína,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8302415,vinho,99,não se aplica,220,41,1.6,2.2
+bebidas alcoólicas,8302416,catuaba,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8302901,coquetel de frutas,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8303101,caipirinha,99,não se aplica,530,50,4.1,5.3
+bebidas alcoólicas,8303501,bebida alcoólica,99,não se aplica,300,79,2.2,3.0
+bebidas alcoólicas,8303615,vinho orgânico,99,não se aplica,220,41,1.6,2.2
+bebidas alcoólicas,8304301,cerveja (com ou sem álcool) light,99,não se aplica,125,45,0.5,1.25
+bebidas alcoólicas,8304502,caxiri (aguardente de mandioca),99,não se aplica,530,50,4.1,5.3
+óleos e gorduras,8400101,azeite de oliva,99,não se aplica,294,736,7.5,2.94
+óleos e gorduras,8400301,óleo de soja,99,não se aplica,169,429,3.8,1.69
+óleos e gorduras,8401801,banha suína,99,não se aplica,257,440,6.0,2.57
+óleos e gorduras,8403001,banha bovina,99,não se aplica,257,706,6.0,2.57
+óleos e gorduras,8403201,óleo não especificado,99,não se aplica,187,782,3.8,1.87
+óleos e gorduras,8403501,óleo de dendê,99,não se aplica,253,552,6.0,2.53
+miscelâneas,8500201,salgadinho,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500202,"pastel (queijo, carne, palmito etc.)",99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500203,croquete,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500205,coxinha,99,não se aplica,360,173,1.1,3.6
+miscelâneas,8500206,"empada (queijo, carne, camarão etc.)",99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500207,"rissole (queijo, carne, camarão etc.)",99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500209,acarajé,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500210,torresmo,99,não se aplica,1039,736,1.9,10.39
+miscelâneas,8500211,quibe,99,não se aplica,1450,1280,5.2,14.5
+miscelâneas,8500212,abara (bahia),99,não se aplica,1187,111,11.9,11.87
+miscelâneas,8500213,paçoca de carne de sol,99,não se aplica,788,724,1.9,7.88
+miscelâneas,8500215,angu frito,99,não se aplica,76,192,1.0,0.76
+miscelâneas,8500217,angu de milho,99,não se aplica,49,97,0.6,0.49
+miscelâneas,8500218,polenta,99,não se aplica,76,192,1.0,0.76
+miscelâneas,8500222,esfirra,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500223,esfirra de carne,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500224,esfirra de queijo,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500225,esfirra de ricota,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500226,esfirra de frango,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500227,enroladinho,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8500228,bolinho de aipim,99,não se aplica,150,227,1.2,1.5
+miscelâneas,8500232,bolinho de bacalhau,99,não se aplica,229,98,10.1,2.29
+miscelâneas,8500302,cachorro quente,99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500303,hambúrguer (sanduíche),99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500304,cheesburguer,99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500305,eggsburguer,99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500307,bauru,99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500308,americano,99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500313,misto quente ou frio,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500315,sanduíche de queijo prato,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500316,sanduíche de salame,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500317,sanduíche de presunto,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500318,sanduíche de queijo prato com presunto,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500319,sanduíche de mortadela,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500320,sanduíche de queijo minas,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500321,cheese egg,99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500322,cheese tudo,99,não se aplica,900,1280,5.2,9.0
+miscelâneas,8500323,sanduíche natural,99,não se aplica,44,152,0.9,0.44
+miscelâneas,8500401,suco,99,não se aplica,22,17,0.4,0.22
+miscelâneas,8500402,suco de abacaxi,99,não se aplica,31,27,0.2,0.31
+miscelâneas,8500403,suco de acerola,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8500404,suco de beterraba,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8500405,suco de cupuaçu,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8500406,suco de goiaba,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8500407,suco de laranja,99,não se aplica,26,24,0.2,0.26
+miscelâneas,8500408,suco de laranja com banana,99,não se aplica,49,48,0.3,0.49
+miscelâneas,8500409,suco de laranja e beterraba,99,não se aplica,24,40,0.2,0.24
+miscelâneas,8500410,suco de laranja e cenoura,99,não se aplica,27,38,0.2,0.27
+miscelâneas,8500411,suco de laranja cenoura e beterraba,99,não se aplica,25,46,0.2,0.25
+miscelâneas,8500412,suco de mamão,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8500413,suco de manga,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8500414,suco de maracujá,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8500415,suco de melão,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8500416,suco de morango,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8500417,suco de pêssego,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8500418,suco de pêssego em calda,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8500501,vitamina,99,não se aplica,123,132,0.7,1.23
+miscelâneas,8500503,vitamina de banana,99,não se aplica,123,132,0.7,1.23
+miscelâneas,8500504,vitamina de banana com aveia,99,não se aplica,116,139,0.7,1.16
+miscelâneas,8500505,vitamina de mamão,99,não se aplica,124,102,0.7,1.24
+miscelâneas,8500506,vitamina de abacate,99,não se aplica,99,132,0.8,0.99
+miscelâneas,8500507,vitamina de morango,99,não se aplica,103,109,0.6,1.03
+miscelâneas,8500508,vitamina mista,99,não se aplica,123,132,0.7,1.23
+miscelâneas,8500509,vitamina de maca,99,não se aplica,93,98,0.6,0.93
+miscelâneas,8500601,refresco,99,não se aplica,48,152,5.8,0.48
+miscelâneas,8500602,refresco de caju,99,não se aplica,48,152,5.8,0.48
+miscelâneas,8500603,refresco de groselha,99,não se aplica,48,152,5.8,0.48
+miscelâneas,8500604,refresco de laranja,99,não se aplica,48,152,5.8,0.48
+miscelâneas,8500605,refresco de maracujá,99,não se aplica,48,152,5.8,0.48
+miscelâneas,8500606,refresco de limão,99,não se aplica,48,152,5.8,0.48
+miscelâneas,8500801,"salada ou verdura cozida, exceto de fruta",99,não se aplica,81,240,1.1,0.81
+miscelâneas,8500802,salada de maionese,99,não se aplica,125,120,1.1,1.25
+miscelâneas,8500903,pizza,99,não se aplica,440,127,0.9,4.4
+miscelâneas,8500904,lasanha,99,não se aplica,2155,1365,8.4,21.55
+miscelâneas,8500905,nhoque,99,não se aplica,69,107,0.6,0.69
+miscelâneas,8500906,canelone,99,não se aplica,150,173,1.1,1.5
+miscelâneas,8500907,capeleti,99,não se aplica,1895,1303,8.2,18.95
+miscelâneas,8500909,ravioli,99,não se aplica,150,173,1.1,1.5
+miscelâneas,8500910,calzone,99,não se aplica,150,173,1.1,1.5
+miscelâneas,8500913,panqueca,99,não se aplica,1969,1379,8.7,19.69
+miscelâneas,8500914,pizza calabresa,99,não se aplica,570,127,0.9,5.7
+miscelâneas,8500915,pizza muçarela,99,não se aplica,400,160,0.9,4.0
+miscelâneas,8500916,pizza presunto,99,não se aplica,420,127,0.9,4.2
+miscelâneas,8500917,pizza portuguesa,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8500919,macarronada,99,não se aplica,488,337,2.1,4.88
+miscelâneas,8501004,galeto,99,não se aplica,337,447,2.7,3.37
+miscelâneas,8501104,costela,99,não se aplica,4661,3141,19.5,46.61
+miscelâneas,8501202,pipoca doce ou salgada,99,não se aplica,56,125,0.3,0.56
+miscelâneas,8501302,café,99,não se aplica,36,1226,5.2,0.36
+miscelâneas,8501303,café tipo expresso,99,não se aplica,33,1226,5.2,0.33
+miscelâneas,8501304,café com leite,99,não se aplica,128,298,1.5,1.28
+miscelâneas,8501305,café tipo cappuccino,99,não se aplica,94,611,3.4,0.94
+miscelâneas,8501402,milho cozido,99,não se aplica,94,240,1.1,0.94
+miscelâneas,8501502,batata palito,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8501503,batata palha,99,não se aplica,220,127,0.9,2.2
+miscelâneas,8501902,mungunzá,99,não se aplica,154,149,0.9,1.54
+miscelâneas,8501903,canjica,99,não se aplica,154,149,0.9,1.54
+miscelâneas,8501904,curau,99,não se aplica,187,275,1.5,1.87
+miscelâneas,8502201,farofa,99,não se aplica,74,199,1.2,0.74
+miscelâneas,8502301,"mingau (fubá, aveia, farinha etc.)",99,não se aplica,139,153,0.9,1.39
+miscelâneas,8502401,tacacá,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8502501,bolinho de coco,99,não se aplica,205,169,1.1,2.05
+miscelâneas,8502701,risoto,99,não se aplica,234,224,1.5,2.34
+miscelâneas,8502801,vatapá,99,não se aplica,1772,378,17.8,17.72
+miscelâneas,8502901,farofa pronta,99,não se aplica,200,165,1.0,2.0
+miscelâneas,8503202,caldo de carne,99,não se aplica,280,611,3.4,2.8
+miscelâneas,8503203,caldo de feijão,99,não se aplica,55,104,0.4,0.55
+miscelâneas,8503204,caldo de mocotó,99,não se aplica,1110,170,8.7,11.1
+miscelâneas,8503501,baião de dois,99,não se aplica,1587,1485,1.4,15.87
+miscelâneas,8503801,churrasco,99,não se aplica,4215,2825,17.5,42.15
+miscelâneas,8504201,sushi,99,não se aplica,350,1280,5.2,3.5
+miscelâneas,8504401,salada de frutas,99,não se aplica,72,120,0.3,0.72
+miscelâneas,8504501,"sopa (legumes, carne etc.)",99,não se aplica,240,315,1.9,2.4
+miscelâneas,8504801,salpicão,99,não se aplica,376,423,3.1,3.76
+miscelâneas,8505201,charuto de repolho,99,não se aplica,1423,958,6.0,14.23
+miscelâneas,8505401,arroz à grega,99,não se aplica,112,78,0.5,1.12
+miscelâneas,8505501,arrumadinho,99,não se aplica,712,629,2.1,7.12
+miscelâneas,8505601,bobo de camarão,99,não se aplica,2895,61,29.1,28.95
+miscelâneas,8505701,"caruru (quiabo, amendoim, castanha de caju, etc.)",99,não se aplica,1498,674,14.8,14.98
+miscelâneas,8505801,cuscuz paulista,99,não se aplica,173,608,2.3,1.73
+miscelâneas,8505901,"empadão (queijo, frango, camarão, palmito etc.)",99,não se aplica,953,173,1.1,9.53
+miscelâneas,8506001,farofa de banana,99,não se aplica,96,200,1.2,0.96
+miscelâneas,8506101,feijão tropeiro,99,não se aplica,693,629,2.1,6.93
+miscelâneas,8506201,galinha com arroz,99,não se aplica,238,247,1.6,2.38
+miscelâneas,8506301,galinhada,99,não se aplica,238,247,1.6,2.38
+miscelâneas,8506401,moqueca baiana,99,não se aplica,416,54,19.3,4.16
+miscelâneas,8506501,omelete,99,não se aplica,371,330,2.5,3.71
+miscelâneas,8506601,pirão,99,não se aplica,387,58,11.3,3.87
+miscelâneas,8506701,quibebe,99,não se aplica,44,107,0.4,0.44
+miscelâneas,8506801,quiche,99,não se aplica,953,173,1.1,9.53
+miscelâneas,8506901,suflê,99,não se aplica,147,167,1.1,1.47
+miscelâneas,8507001,tutu,99,não se aplica,35,102,0.3,0.35
+miscelâneas,8507101,moqueca capixaba,99,não se aplica,418,64,19.4,4.18
+miscelâneas,8507201,maniçoba,99,não se aplica,1577,1253,3.9,15.77
+miscelâneas,8507301,caldo verde,99,não se aplica,378,363,1.5,3.78
+miscelâneas,8507401,arroz de cuxá,99,não se aplica,94,85,0.5,0.94
+miscelâneas,8507501,angu à baiana,99,não se aplica,845,462,4.6,8.45
+miscelâneas,8507601,chocolate,99,não se aplica,233,2643,4.6,2.33
+miscelâneas,8507701,gemada,99,não se aplica,258,238,1.6,2.58
+miscelâneas,8507801,açaí com granola,99,não se aplica,206,110,0.5,2.06
+miscelâneas,8507901,suco orgânico,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8507902,suco de abacaxi orgânico,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8507903,suco de acerola orgânico,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8507906,suco de goiaba orgânico,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8507907,suco de laranja orgânico,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8507911,suco de laranja cenoura e beterraba orgânico,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8507913,suco de manga orgânico,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8507914,suco de maracujá orgânico,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8507916,suco de morango orgânico,99,não se aplica,31,23,0.2,0.31
+miscelâneas,8507917,suco de pêssego orgânico,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8507918,suco de pêssego em calda orgânico,99,não se aplica,16,51,1.9,0.16
+miscelâneas,8508003,pizza pronta light,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8508004,lasanha pronta light,99,não se aplica,1150,173,1.1,11.5
+miscelâneas,8508012,macarrão pronto light,2,cozido(a),965,173,1.1,9.65
+miscelâneas,8508017,pizza portuguesa light,99,não se aplica,180,127,0.9,1.8
+miscelâneas,8508101,farofa pronta light em pacote,99,não se aplica,200,165,1.0,2.0
+miscelâneas,8508301,vaca atolada,99,não se aplica,2728,1860,11.6,27.28
+miscelâneas,8508401,outros legumes cozidos,99,não se aplica,52,85,0.3,0.52
+miscelâneas,8508403,outros legumes cozidos,99,não se aplica,52,85,0.3,0.52
+miscelâneas,8509801,café da manhã,99,não se aplica,128,298,1.5,1.28
+miscelâneas,8570101,prato de comida Brasileiro,99,não se aplica,1572,1060,6.5,15.72
+miscelâneas,8570102,prato de comida NE,99,não se aplica,1553,1063,6.5,15.53
+miscelâneas,8570103,prato de comida N,99,não se aplica,1559,1078,6.6,15.59
+miscelâneas,8570104,prato de comida SE,99,não se aplica,1564,1046,6.4,15.64
+miscelâneas,8570105,prato de comida S,99,não se aplica,1572,1060,6.5,15.72
+miscelâneas,8570106,prato de comida CO,99,não se aplica,1564,1046,6.4,15.64
+miscelâneas,8570107,arroz com feijão,99,não se aplica,101,89,0.5,1.01
+miscelâneas,8570328,pão com manteiga,99,não se aplica,82,199,1.1,0.82
+miscelâneas,8570329,pão com margarina,99,não se aplica,60,184,0.8,0.6
+miscelâneas,8570330,pão com ovo,99,não se aplica,213,268,1.5,2.13
+miscelâneas,8571110,"carne com batata, inhame, batata barôa ou aipim",99,não se aplica,2050,1406,8.7,20.5
+miscelâneas,8571111,"carne com legumes (exceto batata, inhame e aipim)",99,não se aplica,2039,1406,8.6,20.39
+miscelâneas,8571112,"frango com batata, inhame batata barôa ou aipim",99,não se aplica,281,375,2.2,2.81
+miscelâneas,8571113,"frango com legumes (exceto batata, inhame e aipim)",99,não se aplica,270,375,2.1,2.7
+miscelâneas,8578404,abóbora com quiabo,99,não se aplica,56,111,0.4,0.56
+miscelâneas,8579002,arroz carreteiro,99,não se aplica,1595,1460,1.5,15.95
+miscelâneas,8579003,maria Izabel,99,não se aplica,1595,1460,1.5,15.95
+miscelâneas,8579004,arroz de leite,99,não se aplica,124,97,0.6,1.24
+miscelâneas,8579005,arroz com mandioca,99,não se aplica,96,75,0.6,0.96
+miscelâneas,8579006,arroz com ovo,99,não se aplica,200,153,1.1,2.0
+miscelâneas,8800109,palma,99,não se aplica,34,80,0.2,0.34

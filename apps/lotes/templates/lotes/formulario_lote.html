@@ -1,0 +1,26 @@
+{% extends 'layouts/app.html' %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block descricao %}Cadastro de lotes de alimentos pelo estabelecimento doador.{% endblock %}
+{% block cabecalho %}{{ titulo }}{% endblock %}
+
+{% block conteudo %}
+    <article class="panel form-lote">
+        {% for erro in form.non_field_errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
+        <form class="form" method="post" novalidate>
+            {% csrf_token %}
+            {% for campo in form %}
+                <div class="field">
+                    {{ campo.label_tag }}
+                    {{ campo }}
+                    {% if campo.help_text %}<small class="muted">{{ campo.help_text }}</small>{% endif %}
+                    {% for erro in campo.errors %}<small class="campo-erro" role="alert">{{ erro }}</small>{% endfor %}
+                </div>
+            {% endfor %}
+            <div class="actions">
+                <a class="btn btn-secondary" href="{% url 'lotes:meus_lotes' %}">Cancelar</a>
+                <button class="btn btn-primary" type="submit">Salvar lote</button>
+            </div>
+        </form>
+    </article>
+{% endblock %}

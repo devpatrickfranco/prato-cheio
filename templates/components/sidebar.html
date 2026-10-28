@@ -1,0 +1,27 @@
+<aside class="sidebar">
+    <div>
+        <div class="sidebar-brand"><span>🌿</span><span class="brand">Prato Cheio</span></div>
+        <nav class="nav">
+            <a class="{% if ativo == 'painel' %}active{% endif %}" href="{% url perfil.url_painel %}"><span aria-hidden="true">▦</span> Painel de Impacto</a>
+            {% if perfil.doador %}
+                <a class="{% if ativo == 'meus_lotes' %}active{% endif %}" href="{% url 'lotes:meus_lotes' %}"><span aria-hidden="true">□</span> Meus Lotes</a>
+                <a class="{% if ativo == 'novo_lote' %}active{% endif %}" href="{% url 'lotes:novo_lote' %}"><span aria-hidden="true">＋</span> Anunciar Lote</a>
+            {% else %}
+                <a class="{% if ativo == 'explorar' %}active{% endif %}" href="{% url 'lotes:explorar' %}"><span aria-hidden="true">▣</span> Explorar Lotes</a>
+            {% endif %}
+        </nav>
+    </div>
+    <div class="profile">
+        <div class="profile-row">
+            <div class="avatar">{{ user.iniciais }}</div>
+            <div>
+                <div class="profile-name">{{ user.nome }}</div>
+                <div class="profile-type">{{ perfil.nome }}</div>
+            </div>
+        </div>
+        <form class="profile-actions" action="{% url 'jwt_auth:sair' %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit"><span aria-hidden="true">↪</span> Sair da conta</button>
+        </form>
+    </div>
+</aside>

@@ -1,0 +1,18 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block descricao %}{% endblock %}">
+    <title>{% block titulo %}{% endblock %} | Prato Cheio</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    {% block corpo %}{% endblock %}
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
