@@ -1,7 +1,8 @@
 {% extends 'layouts/app.html' %}
+{% load static %}
 
 {% block titulo %}Gerenciar Meus Lotes{% endblock %}
-{% block descricao %}Gerenciamento dos lotes de alimentos publicados pelo estabelecimento doador, com status e edição rápida.{% endblock %}
+{% block descricao %}Gerenciamento dos lotes de alimentos publicados pelo estabelecimento doador: status, reservas, retirada, edição e exclusão.{% endblock %}
 {% block cabecalho %}Gerenciar Meus Lotes{% endblock %}
 
 {% block conteudo %}
@@ -29,8 +30,29 @@
                         <td>{{ lote.categoria.nome }}</td>
                         <td>{{ lote.quantidade|floatformat:"-2" }}{{ lote.unidade }}</td>
                         <td>{{ lote.data_validade|date:"d/m/Y" }}</td>
-                        <td><span class="status">{{ lote.get_status_display }}</span></td>
-                        <td>{% if lote.status == 'disponivel' %}<a class="text-link" href="{% url 'lotes:editar_lote' lote.pk %}">Editar</a>{% else %}—{% endif %}</td>
+                        <td>
+                            <span class="status status-{{ lote.status }}">{{ lote.get_status_display }}</span>
+                            {% if lote.reserva_ativa %}<br><small class="muted">Reservado por {{ lote.reserva_ativa.usuario.nome }} até {{ lote.reserva_ativa.data_expiracao|date:"d/m H:i" }}</small>{% endif %}
+                        </td>
+                        <td>
+                            <div class="acoes-linha">
+                                {% if lote.status == 'disponivel' %}<a class="text-link" href="{% url 'lotes:editar_lote' lote.pk %}">Editar</a>{% endif %}
+                                {% if lote.reserva_ativa %}
+                                    <form action="{% url 'lotes:registrar_retirada' lote.pk %}" method="post">
+                                        {% csrf_token %}
+                                        <button class="btn btn-primary btn-pequeno" type="submit" name="resultado" value="retirado">Confirmar retirada</button>
+                                        <button class="btn btn-secondary btn-pequeno" type="submit" name="resultado" value="nao_retirado">Não retirado</button>
+                                    </form>
+                                {% endif %}
+                                {% if lote.excluivel %}
+                                    <form action="{% url 'lotes:excluir_lote' lote.pk %}" method="post" data-confirmar="Excluir o lote &quot;{{ lote.descricao }}&quot;? Esta ação não pode ser desfeita.">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger btn-pequeno" type="submit">Excluir</button>
+                                    </form>
+                                {% endif %}
+                                {% if lote.status == 'retirado' %}—{% endif %}
+                            </div>
+                        </td>
                     </tr>
                 {% empty %}
                     <tr><td colspan="6">Nenhum lote publicado ainda.</td></tr>
@@ -39,3 +61,5 @@
         </table>
     </div>
 {% endblock %}
+
+{% block scripts %}<script src="{% static 'lotes/js/confirmar.js' %}"></script>{% endblock %}
