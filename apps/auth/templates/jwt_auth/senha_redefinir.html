@@ -1,0 +1,23 @@
+{% extends 'layouts/acesso.html' %}
+
+{% block titulo %}Nova senha{% endblock %}
+{% block descricao %}Defina uma nova senha para acessar a plataforma Prato Cheio.{% endblock %}
+
+{% block painel_acesso %}
+    {% if validlink %}
+        <h2>Criar nova senha</h2>
+        <p class="muted">Escolha uma senha com pelo menos 8 caracteres.</p>
+        {% for erro in form.new_password1.errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
+        {% for erro in form.new_password2.errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
+        <form class="form" method="post" novalidate>
+            {% csrf_token %}
+            <div class="field"><label for="id_new_password1">Nova senha</label><input id="id_new_password1" name="new_password1" type="password" required autocomplete="new-password"></div>
+            <div class="field"><label for="id_new_password2">Confirmar nova senha</label><input id="id_new_password2" name="new_password2" type="password" required autocomplete="new-password"></div>
+            <button class="btn btn-primary" type="submit">Salvar senha</button>
+        </form>
+    {% else %}
+        <h2>Link inválido</h2>
+        <p class="muted">Este link de redefinição expirou ou já foi usado. Solicite um novo.</p>
+        <a class="btn btn-primary" href="{% url 'jwt_auth:senha_esqueci' %}">Solicitar novo link</a>
+    {% endif %}
+{% endblock %}

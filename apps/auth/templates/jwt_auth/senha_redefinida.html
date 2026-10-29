@@ -1,0 +1,10 @@
+{% extends 'layouts/acesso.html' %}
+
+{% block titulo %}Senha alterada{% endblock %}
+{% block descricao %}Sua senha da plataforma Prato Cheio foi alterada com sucesso.{% endblock %}
+
+{% block painel_acesso %}
+    <h2>Senha alterada</h2>
+    <p class="muted">Sua nova senha já está valendo. Escolha seu perfil para entrar.</p>
+    <a class="btn btn-primary" href="{% url 'usuarios:index' %}">Entrar</a>
+{% endblock %}

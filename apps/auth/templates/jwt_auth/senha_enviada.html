@@ -1,0 +1,10 @@
+{% extends 'layouts/acesso.html' %}
+
+{% block titulo %}Link enviado{% endblock %}
+{% block descricao %}Confirmação do envio do link de redefinição de senha da plataforma Prato Cheio.{% endblock %}
+
+{% block painel_acesso %}
+    <h2>Confira seu e-mail</h2>
+    <p class="muted">Se existir uma conta com o e-mail informado, enviamos um link para redefinir a senha. O link vale por tempo limitado e só pode ser usado uma vez.</p>
+    <a class="btn btn-primary" href="{% url 'usuarios:index' %}">Voltar ao início</a>
+{% endblock %}

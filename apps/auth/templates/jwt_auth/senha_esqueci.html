@@ -1,0 +1,16 @@
+{% extends 'layouts/acesso.html' %}
+
+{% block titulo %}Recuperar senha{% endblock %}
+{% block descricao %}Informe seu e-mail para receber um link de redefinição de senha da plataforma Prato Cheio.{% endblock %}
+
+{% block painel_acesso %}
+    <a class="back" href="{% url 'usuarios:index' %}"><span aria-hidden="true">←</span> Voltar aos perfis</a>
+    <h2>Recuperar senha</h2>
+    <p class="muted">Informe o e-mail da sua conta. Enviaremos um link para criar uma nova senha.</p>
+    {% for erro in form.email.errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
+    <form class="form" method="post" novalidate>
+        {% csrf_token %}
+        <div class="field"><label for="id_email">E-mail</label><input id="id_email" name="email" type="email" required autocomplete="email" placeholder="seu@email.com" value="{{ form.email.value|default:'' }}"></div>
+        <button class="btn btn-primary" type="submit">Enviar link</button>
+    </form>
+{% endblock %}
