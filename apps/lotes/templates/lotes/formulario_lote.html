@@ -1,4 +1,5 @@
 {% extends 'layouts/app.html' %}
+{% load static %}
 
 {% block titulo %}{{ titulo }}{% endblock %}
 {% block descricao %}Cadastro de lotes de alimentos pelo estabelecimento doador.{% endblock %}
@@ -7,7 +8,7 @@
 {% block conteudo %}
     <article class="panel form-lote">
         {% for erro in form.non_field_errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
-        <form class="form" method="post" novalidate>
+        <form class="form" method="post" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             {% for campo in form %}
                 <div class="field">
@@ -24,3 +25,5 @@
         </form>
     </article>
 {% endblock %}
+
+{% block scripts %}<script src="{% static 'lotes/js/autocomplete.js' %}"></script>{% endblock %}

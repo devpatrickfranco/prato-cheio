@@ -6,8 +6,10 @@
             {% if perfil.doador %}
                 <a class="{% if ativo == 'meus_lotes' %}active{% endif %}" href="{% url 'lotes:meus_lotes' %}"><span aria-hidden="true">□</span> Meus Lotes</a>
                 <a class="{% if ativo == 'novo_lote' %}active{% endif %}" href="{% url 'lotes:novo_lote' %}"><span aria-hidden="true">＋</span> Anunciar Lote</a>
+                <a class="{% if ativo == 'estabelecimento' %}active{% endif %}" href="{% url 'usuarios:meu_estabelecimento' %}"><span aria-hidden="true">⌂</span> Meu Estabelecimento</a>
             {% else %}
                 <a class="{% if ativo == 'explorar' %}active{% endif %}" href="{% url 'lotes:explorar' %}"><span aria-hidden="true">▣</span> Explorar Lotes</a>
+                <a class="{% if ativo == 'reservas' %}active{% endif %}" href="{% url 'lotes:minhas_reservas' %}"><span aria-hidden="true">✓</span> Minhas Reservas</a>
             {% endif %}
         </nav>
     </div>

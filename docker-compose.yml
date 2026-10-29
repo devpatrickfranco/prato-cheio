@@ -8,8 +8,15 @@ services:
 
     restart: unless-stopped
 
-    # Aplica as migrations antes de iniciar o servidor.
-    command: sh -c "python manage.py migrate --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
+    # Variáveis de produção (DJANGO_DEBUG, DJANGO_SECRET_KEY, DJANGO_ALLOWED_HOSTS,
+    # DJANGO_CSRF_TRUSTED_ORIGINS...) vêm do arquivo .env, que não é versionado. Sem ele, usa o modo desenvolvimento.
+    env_file:
+      - path: .env
+        required: false
+
+    # Aplica as migrations, reúne os arquivos estáticos (o volume `.:/app` oculta os gerados no build)
+    # e inicia o servidor.
+    command: sh -c "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
 
     ports:
       - "8000:8000"

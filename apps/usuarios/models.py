@@ -51,6 +51,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     nome = models.CharField(max_length=120)
     email = models.EmailField(max_length=150, unique=True)
     telefone = models.CharField(max_length=20, blank=True)
+    # CPF (consumidor) ou CNPJ (ONG), somente números. O doador guarda o CNPJ em Estabelecimento.
+    documento = models.CharField(max_length=14, blank=True, help_text='CPF ou CNPJ, somente números.')
     tipo_perfil = models.CharField(max_length=10, choices=TipoPerfil.choices)
     status_conta = models.CharField(max_length=10, choices=StatusConta.choices, default=StatusConta.PENDENTE)
     # Ponto de referência do consumidor/ONG para calcular a distância até os estabelecimentos.
@@ -69,6 +71,11 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     class Meta:
         db_table = 'usuario'
         verbose_name = 'usuário'
+        constraints = [
+            models.UniqueConstraint(
+                fields=['tipo_perfil', 'documento'], condition=~models.Q(documento=''), name='uk_usuario_documento',
+            ),
+        ]
 
     def __str__(self):
         return self.nome

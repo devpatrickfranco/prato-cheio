@@ -1,0 +1,9 @@
+{% autoescape off %}Olá, {{ user.nome }}!
+
+Recebemos um pedido para redefinir a senha da sua conta no Prato Cheio.
+Para criar uma nova senha, acesse o link abaixo (válido por tempo limitado e de uso único):
+
+{{ protocol }}://{{ domain }}{% url 'jwt_auth:senha_redefinir' uidb64=uid token=token %}
+
+Se você não fez este pedido, ignore este e-mail: sua senha continua a mesma.
+{% endautoescape %}

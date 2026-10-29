@@ -1,0 +1,14 @@
+{% comment %}
+Campo de formulário acessível: rótulo, ajuda, erros do servidor e espaço para o JS.
+Contexto: `campo` (BoundField).
+{% endcomment %}
+<div class="field{% if campo.errors %} field-invalido{% endif %}">
+    {{ campo.label_tag }}
+    {{ campo }}
+    {% if campo.help_text %}<small class="muted" id="{{ campo.id_for_label }}-ajuda">{{ campo.help_text }}</small>{% endif %}
+    {% if campo.field.widget.input_type == 'password' and campo.name == 'senha' %}
+        <div class="forca-senha" data-forca-senha aria-live="polite"><div class="forca-barra"><span></span></div><small class="forca-texto"></small></div>
+    {% endif %}
+    {% if campo.name == 'nome' %}<small class="contador muted" data-contador-de="{{ campo.id_for_label }}" aria-hidden="true"></small>{% endif %}
+    <small class="campo-erro" data-erro-de="{{ campo.id_for_label }}" role="alert">{% for erro in campo.errors %}{{ erro }}{% if not forloop.last %} {% endif %}{% endfor %}</small>
+</div>

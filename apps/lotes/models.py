@@ -100,6 +100,7 @@ class Lote(models.Model):
     data_validade = models.DateField()
     retirada_inicio = models.DateTimeField()
     retirada_fim = models.DateTimeField()
+    foto = models.ImageField(upload_to='lotes/%Y/%m/', blank=True)
     foto_url = models.CharField(max_length=255, blank=True)
     status = models.CharField(max_length=12, choices=Status.choices, default=Status.DISPONIVEL)
     criado_em = models.DateTimeField(auto_now_add=True)
@@ -130,6 +131,13 @@ class Lote(models.Model):
         return self.peso_kg * self.fator_co2_kg
 
     @property
+    def imagem_enviada(self):
+        """URL da foto enviada pelo doador (arquivo) ou informada por link; None se não houver."""
+        if self.foto:
+            return self.foto.url
+        return self.foto_url or None
+
+    @property
     def imagem_padrao(self):
         return self.IMAGENS_PADRAO.get(self.categoria.nome)
 
@@ -146,10 +154,11 @@ class Reserva(models.Model):
         CONFIRMADA = 'confirmada', 'Confirmada'
         EXPIRADA = 'expirada', 'Expirada'
         CANCELADA = 'cancelada', 'Cancelada'
+        NAO_RETIRADA = 'nao_retirada', 'Não retirada'
 
     lote = models.ForeignKey(Lote, on_delete=models.CASCADE, related_name='reservas')
     usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='reservas')
-    status = models.CharField(max_length=10, choices=Status.choices, default=Status.ATIVA)
+    status = models.CharField(max_length=12, choices=Status.choices, default=Status.ATIVA)
     data_reserva = models.DateTimeField(auto_now_add=True)
     data_expiracao = models.DateTimeField('data de expiração')
     data_confirmacao = models.DateTimeField('data de confirmação', null=True, blank=True)

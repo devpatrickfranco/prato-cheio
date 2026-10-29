@@ -8,16 +8,23 @@ from django.views.decorators.http import require_GET, require_POST
 
 from apps.usuarios.perfis import PERFIS
 
-from .cookies import apagar_cookies, definir_cookies
+from . import limitador
+from .cookies import ACCESS_COOKIE, REFRESH_COOKIE, apagar_cookies, definir_cookies
 from .decorators import jwt_obrigatorio, usuario_do_token
-from .tokens import REFRESH, emitir_access, emitir_tokens
+from .tokens import REFRESH, emitir_access, emitir_tokens, revogar
 
 
 def _autenticar(request, email, senha):
     """Devolve (usuario, erro, status HTTP do erro); sem erro, erro é None."""
+    if limitador.bloqueado(request, email):
+        return None, limitador.MENSAGEM, 429
     usuario = authenticate(request, email=email, password=senha)
     if usuario is None:
+        limitador.registrar_falha(request, email)
         return None, 'E-mail ou senha inválidos.', 401
+    limitador.limpar(email)
+    if usuario.status_conta == usuario.StatusConta.RECUSADO:
+        return None, 'Seu cadastro foi recusado. Entre em contato com a plataforma.', 403
     if usuario.status_conta != usuario.StatusConta.APROVADO:
         return None, 'Sua conta ainda não foi aprovada.', 403
     return usuario, None, None
@@ -30,7 +37,7 @@ def login(request, perfil):
     contexto = {'perfil': perfil}
     if request.method == 'POST':
         email = request.POST.get('email', '').strip()
-        usuario, erro, _ = _autenticar(request, email, request.POST.get('senha', ''))
+        usuario, erro, status = _autenticar(request, email, request.POST.get('senha', ''))
         if usuario is not None and usuario.tipo_perfil != perfil.slug:
             usuario, erro = None, f'Esta conta não é de {perfil.nome}. Use o acesso do seu perfil.'
         if usuario is not None:
@@ -38,11 +45,15 @@ def login(request, perfil):
             definir_cookies(resposta, usuario)
             return resposta
         contexto.update(erro=erro, email=email)
+        return render(request, 'jwt_auth/login.html', contexto, status=429 if status == 429 else 200)
     return render(request, 'jwt_auth/login.html', contexto)
 
 
 @require_POST
 def sair(request):
+    # Só apagar os cookies não basta: os tokens continuariam válidos até expirar.
+    for cookie in (ACCESS_COOKIE, REFRESH_COOKIE):
+        revogar(request.COOKIES.get(cookie, ''))
     resposta = redirect('usuarios:index')
     apagar_cookies(resposta)
     return resposta
@@ -87,6 +98,20 @@ def renovar_token(request):
     if usuario is None:
         return JsonResponse({'erro': 'Token de renovação inválido ou expirado.'}, status=401)
     return JsonResponse({'access': emitir_access(usuario)})
+
+
+@csrf_exempt
+@require_POST
+def revogar_token(request):
+    """Logout da API: revoga o refresh do corpo e o access do cabeçalho Bearer (se enviados)."""
+    dados = _dados(request)
+    if dados is None:
+        return JsonResponse({'erro': 'JSON inválido.'}, status=400)
+    _, _, access = request.headers.get('Authorization', '').partition(' ')
+    revogados = [revogar(token) for token in (dados.get('refresh') or '', access) if token]
+    if not any(revogados):
+        return JsonResponse({'erro': 'Nenhum token válido para revogar.'}, status=400)
+    return JsonResponse({'detalhe': 'Token(s) revogado(s).'})
 
 
 @require_GET

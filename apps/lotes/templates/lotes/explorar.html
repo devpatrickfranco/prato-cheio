@@ -2,37 +2,56 @@
 {% load static %}
 
 {% block titulo %}Lotes Disponíveis{% endblock %}
-{% block descricao %}Lotes de alimentos próximos do vencimento disponíveis para reserva, com filtro por distância.{% endblock %}
+{% block descricao %}Lotes de alimentos próximos do vencimento disponíveis para reserva, com busca e filtros por categoria, bairro e distância.{% endblock %}
 {% block cabecalho %}Lotes Disponíveis{% endblock %}
 
 {% block topbar_extra %}
-    <div class="search-wrap"><label for="busca" class="sr-only">Buscar alimentos</label><input id="busca" class="search" type="search" placeholder="Buscar alimentos..."></div>
+    <div class="search-wrap"><label for="busca" class="sr-only">Buscar alimentos</label><input id="busca" class="search" type="search" name="q" form="filtros" placeholder="Buscar alimentos..." value="{{ busca }}"></div>
 {% endblock %}
 
 {% block conteudo %}
     <div class="section-head">
         <h2>Alimentos Próximos do Vencimento</h2>
-        <form class="actions filtro-distancia" method="get">
-            <label for="raio" class="sr-only">Distância máxima em km</label>
-            <input id="raio" class="search" name="raio" type="number" min="0.1" step="0.1" placeholder="Até x km" value="{{ raio }}">
-            {% if origem_do_navegador %}
-                <input type="hidden" name="lat" value="{{ origem.0|stringformat:'.6f' }}">
-                <input type="hidden" name="lon" value="{{ origem.1|stringformat:'.6f' }}">
-            {% else %}
-                <input type="hidden" name="lat"><input type="hidden" name="lon">
-            {% endif %}
+    </div>
+    <form id="filtros" class="filtros" method="get">
+        <div class="filtro-campos">
+            <div class="field"><label for="categoria">Categoria</label>
+                <select id="categoria" name="categoria">
+                    <option value="">Todas</option>
+                    {% for categoria in categorias %}<option value="{{ categoria.pk }}"{% if categoria.pk == categoria_id %} selected{% endif %}>{{ categoria.nome }}</option>{% endfor %}
+                </select>
+            </div>
+            <div class="field"><label for="bairro">Bairro</label>
+                <select id="bairro" name="bairro">
+                    <option value="">Todos</option>
+                    {% for opcao in bairros %}<option value="{{ opcao }}"{% if opcao == bairro %} selected{% endif %}>{{ opcao }}</option>{% endfor %}
+                </select>
+            </div>
+            <div class="field"><label for="raio">Distância máxima (km)</label>
+                <input id="raio" class="search" name="raio" type="number" min="0.1" step="0.1" placeholder="Até x km" value="{{ raio }}">
+            </div>
+        </div>
+        {% if origem_do_navegador %}
+            <input type="hidden" name="lat" value="{{ origem.0|stringformat:'.6f' }}">
+            <input type="hidden" name="lon" value="{{ origem.1|stringformat:'.6f' }}">
+        {% else %}
+            <input type="hidden" name="lat"><input type="hidden" name="lon">
+        {% endif %}
+        <div class="actions">
             <button class="btn btn-secondary" type="button" data-usar-localizacao><span aria-hidden="true">●</span> Usar minha localização</button>
             <button class="btn btn-primary" type="submit">Filtrar</button>
-        </form>
-    </div>
+            {% if filtrando %}<a class="btn btn-secondary" href="{% url 'lotes:explorar' %}">Limpar</a>{% endif %}
+        </div>
+        <p class="muted" data-localizacao-status role="status" aria-live="polite"></p>
+    </form>
     {% if not origem %}
         <p class="muted">Use sua localização ou cadastre seu endereço para ver a distância até cada estabelecimento.</p>
     {% endif %}
     <section class="cards">
         {% for lote in lotes %}
             <article class="food-card">
-                {% if lote.foto_url %}
-                    <img class="food-img" src="{{ lote.foto_url }}" alt="{{ lote.descricao }}">
+                {% if lote.imagem_enviada %}
+                    <img class="food-img" src="{{ lote.imagem_enviada }}" alt="{{ lote.descricao }}">
                 {% elif lote.imagem_padrao %}
                     <img class="food-img" src="{% static lote.imagem_padrao %}" alt="{{ lote.descricao }}">
                 {% endif %}
@@ -46,11 +65,14 @@
                         <span><span aria-hidden="true">□</span> Vence: <strong>{{ lote.data_validade|date:"d/m/Y" }}</strong></span>
                         <span><span aria-hidden="true">◷</span> Retirada: {{ lote.retirada_inicio|date:"d/m H:i" }} - {{ lote.retirada_fim|date:"H:i" }}</span>
                     </div>
-                    <a class="btn btn-primary" href="#">Reservar Lote</a>
+                    <form action="{% url 'lotes:reservar' lote.pk %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-primary" type="submit">Reservar Lote</button>
+                    </form>
                 </div>
             </article>
         {% empty %}
-            <p class="muted">Nenhum lote disponível{% if raio %} em até {{ raio }} km{% endif %} no momento.</p>
+            <p class="muted">Nenhum lote disponível{% if filtrando %} para os filtros escolhidos{% endif %} no momento.</p>
         {% endfor %}
     </section>
 {% endblock %}

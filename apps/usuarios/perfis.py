@@ -16,6 +16,10 @@ class Perfil:
         return f'jwt_auth:login_{self.slug}'
 
     @property
+    def url_cadastro(self):
+        return f'usuarios:cadastro_{self.slug}'
+
+    @property
     def url_painel(self):
         return f'metricas:dashboard_{self.slug}'
 

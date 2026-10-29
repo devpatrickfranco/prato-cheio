@@ -2,6 +2,21 @@
 
 Projeto base em Django executado com Docker.
 
+## 🌱 Sobre o projeto (Prato Cheio)
+
+Plataforma que conecta estabelecimentos com **excedente de alimentos próximo do vencimento** (mercados,
+padarias, hortifrútis) a **consumidores e ONGs**, que reservam e retiram os lotes. Cada retirada confirmada
+gera métricas de impacto (kg salvos, CO₂ evitado, refeições estimadas).
+
+| Item | Descrição |
+|---|---|
+| Problema | Desperdício de alimentos no varejo enquanto há pessoas e instituições que precisam deles |
+| Setor | Terceiro Setor (ONGs) em parceria com o Segundo Setor (varejo doador) |
+| ODS | 2 (Fome Zero), 12 (Consumo e Produção Responsáveis) e 13 (Ação contra a Mudança do Clima) |
+| Impacto | Social, ambiental e econômico |
+| Tecnologias | Python 3.13, Django 6.1, SQLite, JWT (PyJWT), HTML5/CSS3/JavaScript sem framework, Docker |
+| Status | MVP em desenvolvimento (ver Pendências) |
+
 ---
 
 ## 📋 Pré-requisitos
@@ -87,8 +102,17 @@ python manage.py runserver
 
 ### Variáveis de ambiente
 As configurações sensíveis são lidas do ambiente; veja `.env.example` (`DJANGO_SECRET_KEY`,
-`DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`). Sem elas, o projeto usa padrões de desenvolvimento.
-Nunca versione o arquivo `.env`.
+`DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`, `DJANGO_CSRF_TRUSTED_ORIGINS`, JWT, e-mail e geocodificação).
+Sem elas, o projeto usa padrões de desenvolvimento. Nunca versione o arquivo `.env`; o
+`docker-compose.yml` o carrega sozinho (`env_file`, opcional).
+
+**Produção** (`DJANGO_DEBUG=False`): o app **recusa subir** sem `DJANGO_SECRET_KEY` próprio (e chave JWT, se
+definida, que não seja o exemplo) e sem `DJANGO_ALLOWED_HOSTS`. Nesse modo, cookies de sessão/CSRF/JWT só
+trafegam por HTTPS; atrás de um proxy HTTPS defina `DJANGO_PROXY_SSL=True` (confia em `X-Forwarded-Proto` e
+redireciona http→https) e `DJANGO_CSRF_TRUSTED_ORIGINS=https://seu.dominio`. Para enviar e-mails reais
+(recuperação de senha), defina `DJANGO_EMAIL_HOST` e relacionados; sem isso eles saem no console do servidor.
+O container executa `migrate` e `collectstatic` ao iniciar (o volume `.:/app` oculta os estáticos gerados no
+build). Fotos enviadas ficam em `media/` (monte um volume persistente).
 
 ---
 
@@ -104,6 +128,9 @@ Execute os comandos diretamente no container `web`:
 | `docker compose exec web python manage.py test` | Executar os testes |
 | `docker compose exec web python manage.py makemigrations` | Gerar migrations após alterar models |
 | `docker compose exec web python manage.py check` | Verificar a configuração do projeto |
+| `docker compose exec web python manage.py atualizar_status` | Expirar reservas vencidas e lotes fora da validade (agende no cron; as telas também aplicam a regra ao listar) |
+| `docker compose exec web python manage.py reclassificar_alimentos [--simular]` | Reaplicar `lotes/catalogo.py` aos alimentos e lotes já gravados |
+| `docker compose exec web python manage.py limpar_auth` | Apagar tokens revogados já expirados e tentativas de login antigas |
 
 Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 
@@ -115,24 +142,30 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 .
 ├── config/                 # Configurações do Django (settings, urls raiz, wsgi/asgi)
 ├── apps/
-│   ├── usuarios/           # Models Usuario (AUTH_USER_MODEL, login por e-mail) e Estabelecimento; seleção de perfil
+│   ├── usuarios/           # Models Usuario (AUTH_USER_MODEL, login por e-mail) e Estabelecimento; seleção de perfil e cadastro
 │   │   ├── perfis.py       # Perfis Doador, Consumidor e ONG (iguais a Usuario.tipo_perfil)
+│   │   ├── forms.py        # Cadastro (CPF/CNPJ, senha) e estabelecimento
+│   │   ├── validators.py   # Dígitos verificadores de CPF/CNPJ e CEP
+│   │   ├── geocodificacao.py  # Endereço/CEP → latitude/longitude (Nominatim/OpenStreetMap)
+│   │   ├── static/usuarios/js/cadastro.js  # Validação em tempo real do cadastro
 │   │   └── templates/usuarios/
-│   ├── lotes/              # Models Categoria, Alimento, Lote e Reserva; vitrine (/explore/) e gestão do doador (/meus-lotes/)
+│   ├── lotes/              # Models Categoria, Alimento, Lote e Reserva; vitrine, reservas e gestão do doador
 │   │   ├── catalogo.py     # Categorias e classificação dos alimentos do CSV
 │   │   ├── geo.py          # Fórmula de Haversine
-│   │   ├── selectors.py    # Consulta da vitrine (validade, distância e raio)
+│   │   ├── selectors.py    # Consulta da vitrine (validade, busca, categoria, bairro, distância e raio)
+│   │   ├── services.py     # Reservar, cancelar, confirmar retirada, expirar reservas/lotes, excluir
 │   │   ├── dados/pegadas_alimentos_brasil.csv   # Fonte das pegadas de CO₂, água e ecológica
 │   │   └── management/commands/criar_dados_demo.py
-│   ├── metricas/           # Painéis de impacto (CO₂ evitado, alimentos salvos, refeições)
-│   └── auth/               # Login com JWT (páginas e API). Label `jwt_auth`, pois `auth` é do django.contrib.auth
+│   ├── metricas/           # Painéis e relatório de impacto, calculados das retiradas confirmadas (servicos.py)
+│   └── auth/               # Login com JWT (páginas e API), recuperação de senha, revogação de tokens e limite de tentativas. Label `jwt_auth`, pois `auth` é do django.contrib.auth
 ├── templates/              # Templates compartilhados entre apps
 │   ├── base.html           # Esqueleto HTML de todas as páginas
 │   ├── layouts/acesso.html # Layout das telas de acesso (seleção de perfil e login)
 │   ├── layouts/app.html    # Layout das áreas logadas (sidebar + conteúdo)
 │   └── components/         # Componentes reutilizáveis (sidebar)
 ├── static/css/style.css    # Folha de estilo global
-├── docs/                   # Documentação acadêmica e screenshots do protótipo
+├── docs/                   # Documentação acadêmica, screenshots do protótipo e decisões arquiteturais (docs/adr/)
+├── media/                  # Fotos enviadas pelos doadores (não versionado)
 ├── Dockerfile / docker-compose.yml
 ├── manage.py
 └── requirements.txt
@@ -149,7 +182,8 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
   usam `apps.auth.decorators`; `usuarios` não importa outros apps.
 - Banco de dados: SQLite (`db.sqlite3`, não versionado). O schema vem exclusivamente dos models;
   `python manage.py migrate` cria as tabelas e carrega categorias e alimentos a partir do CSV.
-- Os painéis de impacto (`PAINEIS` em `metricas/views.py`) ainda exibem números fixos do protótipo.
+- Os painéis de impacto vêm de dados reais: só lotes `retirado` (reserva confirmada pelo doador) contam.
+- Decisões arquiteturais ficam registradas em `docs/adr/` (ADRs).
 
 ### Perfis
 
@@ -182,6 +216,42 @@ A vitrine mostra a distância em linha reta até cada estabelecimento, calculada
 falta dela, das coordenadas do cadastro do usuário. O campo "Até x km" (`?raio=`) mantém apenas os lotes
 dentro do raio. Estabelecimentos e usuários sem `latitude`/`longitude` aparecem sem distância.
 
+### Cadastro e aprovação de contas
+
+`/cadastro/doador/`, `/cadastro/consumidor/` e `/cadastro/ong/` criam a conta com `status_conta = pendente`;
+o administrador aprova ou recusa no Django Admin (filtro "status conta" + ações em lote; a tela da conta também
+permite trocar a senha). O consumidor informa **CPF** e a ONG **CNPJ** (validados pelos dígitos verificadores);
+o doador informa os dados do estabelecimento (CNPJ, endereço), que ele mesmo edita depois em **Meu
+Estabelecimento**. O formulário valida em tempo real (contador de caracteres, força da senha, erros por campo,
+sumário de erros acessível e botão habilitado só com tudo válido) e o servidor repete todas as validações.
+
+O endereço/CEP é convertido em latitude/longitude automaticamente (Nominatim/OpenStreetMap, no cadastro e na
+edição). Se o serviço não responder, o cadastro segue sem coordenadas e o usuário aparece sem distância na
+vitrine (desligue com `DJANGO_GEOCODIFICACAO=False`). Recuperação de senha: "Esqueceu a senha?" envia um link
+de uso único.
+
+### Reservas e retirada
+
+| Etapa | Quem | Efeito |
+|---|---|---|
+| Reservar (`/explore/`) | Consumidor/ONG | Lote vira `reservado`; a reserva vale até o fim da janela de retirada |
+| Cancelar (`/minhas-reservas/`) | Quem reservou | Lote volta à vitrine |
+| Confirmar retirada (`/meus-lotes/`) | Doador | Reserva `confirmada`, lote `retirado`: passa a contar nas métricas |
+| Não retirado (`/meus-lotes/`) | Doador | Reserva `nao_retirada`, lote `nao_retirado` |
+| Expiração | Automática | Reserva ativa vencida vira `expirada` e o lote volta a `disponivel` (ou `expirado` se a validade passou); lote disponível vencido vira `expirado` |
+
+A vitrine tem busca (sem diferenciar acentos), filtro por categoria, bairro e distância, e mostra só lotes
+disponíveis, dentro da validade e com a janela de retirada em aberto. O doador pode editar lotes disponíveis,
+enviar foto (JPG/PNG/WebP até 5 MB) e excluir lotes que não estejam reservados ou retirados. No cadastro de
+lote, o campo Alimento tem busca com autocomplete.
+
+### Painéis de impacto
+
+Para o doador, contam as retiradas dos seus lotes; para consumidor e ONG, as próprias. Kg salvos = soma de
+`peso_kg`; CO₂ evitado = soma de `Lote.co2_evitado_kg`; refeições = kg ÷ 0,4. A tendência compara o mês
+atual com o anterior, o gráfico mostra o CO₂ dos últimos 6 meses e **Ver Relatório Completo**
+(`/relatorio/<perfil>/`) detalha 12 meses e cada retirada.
+
 ### Autenticação JWT (`apps/auth`)
 
 As páginas depois do login são protegidas por `apps.auth.decorators.login_obrigatorio`: o login emite
@@ -196,63 +266,68 @@ Para clientes externos há uma API JSON:
 | `/auth/token/renovar/` | POST | `{"refresh": "..."}` | `{"access": "..."}` |
 | `/auth/eu/` | GET | header `Authorization: Bearer <access>` | dados do usuário autenticado |
 
+| `/auth/token/revogar/` | POST | `{"refresh": "..."}` (+ `Authorization: Bearer <access>` opcional) | revoga os tokens informados |
+
 Só contas ativas com `status_conta = aprovado` acessam. Para proteger uma rota da API, use
 `apps.auth.decorators.jwt_obrigatorio`. A validade dos tokens é configurada em `.env.example`.
+
+**Revogação:** cada token tem um `jti`; sair da conta (página ou `/auth/token/revogar/`) grava o `jti` em
+`TokenRevogado`, e tokens revogados deixam de valer mesmo antes de expirar (`limpar_auth` apaga os vencidos).
+**Força bruta:** 5 senhas erradas por e-mail ou 20 por IP em 15 minutos bloqueiam novos logins (HTTP 429),
+na página e na API; um login correto zera as falhas do e-mail. Atrás de proxy, defina `DJANGO_PROXY_IP_HEADER`
+para o limite por IP enxergar o cliente real.
 
 ---
 
 ## 📝 Pendências
 
-Estado em 28/10/2026. O trabalho está no branch `refactor/arquitetura-apps`, **ainda sem commit**.
+Estado em 28/10/2026. O branch `refactor/arquitetura-apps` já foi mergeado (PR #7); as mudanças abaixo estão
+**apenas no diretório local, sem commit nem push**.
 
 ### Funcionalidades
 
 **Reservas (consumidor e ONG)**
-- [ ] Botão "Reservar Lote" na vitrine (hoje é `#`): criar `Reserva` e mudar o lote para `reservado`.
-- [ ] Expirar reservas vencidas: reserva `ativa` com `data_expiracao` passada vira `expirada` e o lote volta a `disponivel`.
-- [ ] Doador confirma a retirada (`retirado`) ou registra `nao_retirado`.
-- [ ] Tela de "minhas reservas" para consumidor e ONG.
+- [x] Botão "Reservar Lote" na vitrine: cria a `Reserva` e muda o lote para `reservado`.
+- [x] Expirar reservas vencidas: reserva `ativa` com `data_expiracao` passada vira `expirada` e o lote volta a `disponivel`.
+- [x] Doador confirma a retirada (`retirado`) ou registra `nao_retirado`.
+- [x] Tela de "minhas reservas" para consumidor e ONG.
 
 **Lotes (doador)**
-- [ ] Excluir ou cancelar lote.
-- [ ] Foto do lote: upload (configurar `MEDIA_ROOT`/`MEDIA_URL`). Hoje a vitrine usa a imagem padrão da categoria.
-- [ ] Marcar como `expirado` os lotes disponíveis cuja validade passou. A vitrine já os esconde pela data, mas o status não muda.
-- [ ] Melhorar a escolha do alimento no formulário (lista com 1038 itens): busca com autocomplete.
+- [x] Excluir lote (lotes reservados ou retirados são histórico e não podem ser excluídos).
+- [x] Foto do lote: upload (`MEDIA_ROOT`/`MEDIA_URL`), validado por tipo e tamanho.
+- [x] Marcar como `expirado` os lotes disponíveis cuja validade passou.
+- [x] Busca com autocomplete na escolha do alimento (lista com 1038 itens).
 
 **Vitrine**
-- [ ] Campo "Buscar alimentos..." (ainda não funciona).
-- [ ] Filtros por categoria e por bairro.
-- [ ] Opcional: distância por rota (hoje é em linha reta, pela fórmula de Haversine).
+- [x] Campo "Buscar alimentos...".
+- [x] Filtros por categoria e por bairro.
+- [ ] Opcional: distância por rota (hoje é em linha reta, pela fórmula de Haversine). Exige um serviço de roteamento externo; ficou fora do MVP.
 
 **Painéis de impacto**
-- [ ] Trocar os números fixos (`PAINEIS` em `metricas/views.py`) por dados reais dos lotes `retirado`:
-  kg salvos, CO₂ evitado (`Lote.co2_evitado_kg`) e refeições (kg ÷ 0,4).
-- [ ] Gráfico "Impacto Ambiental Histórico" e "Ver Relatório Completo" (hoje são espaços reservados).
-- [ ] Lista de atividades recentes com dados reais.
+- [x] Números reais dos lotes `retirado`: kg salvos, CO₂ evitado e refeições (kg ÷ 0,4).
+- [x] Gráfico "Impacto Ambiental Histórico" e "Ver Relatório Completo".
+- [x] Lista de atividades recentes com dados reais.
 
 **Contas e cadastro**
-- [ ] Cadastro de novos usuários (doador, consumidor e ONG). Hoje as contas são criadas pelo admin ou por `criar_dados_demo`.
-- [ ] Fluxo de aprovação de contas pelo admin (`status_conta` pendente → aprovado/recusado).
-- [ ] Cadastro e edição do estabelecimento pelo próprio doador.
-- [ ] Documento por perfil: CPF para consumidor (PF) e CNPJ para ONG (PJ). O doador já tem CNPJ no `Estabelecimento`.
-- [ ] Geocodificação do endereço/CEP para preencher latitude e longitude automaticamente.
-- [ ] "Esqueceu a senha?" (hoje é `#`).
-- [ ] Admin do `Usuario`: permitir troca de senha (hoje o campo de senha fica oculto).
+- [x] Cadastro de novos usuários (doador, consumidor e ONG).
+- [x] Fluxo de aprovação de contas pelo admin (`pendente` → `aprovado`/`recusado`).
+- [x] Cadastro e edição do estabelecimento pelo próprio doador.
+- [x] Documento por perfil: CPF para consumidor (PF) e CNPJ para ONG (PJ).
+- [x] Geocodificação do endereço/CEP para preencher latitude e longitude automaticamente.
+- [x] "Esqueceu a senha?".
+- [x] Admin do `Usuario`: troca de senha.
 
 **Escopo original ainda não iniciado:** compra e venda, gamificação para PJ e comissão por venda.
 
 ### Técnico
 
-- [ ] Fazer o commit e abrir a PR do branch `refactor/arquitetura-apps`.
-- [ ] Produção:
-  - `DJANGO_DEBUG=False`, `DJANGO_SECRET_KEY` e `DJANGO_ALLOWED_HOSTS` definidos;
-  - `collectstatic` (com o volume `.:/app` do compose, a pasta `staticfiles/` gerada no build fica oculta);
-  - `CSRF_TRUSTED_ORIGINS` para HTTPS;
-  - carregar o `.env` no `docker-compose.yml` (`env_file`).
-- [ ] O `Dockerfile` instala `libpq-dev` (PostgreSQL), mas o projeto usa SQLite: remover ou migrar para PostgreSQL.
-- [ ] JWT: o logout só apaga os cookies, e os tokens continuam válidos até expirar. Avaliar uma lista de revogação.
-- [ ] Limitar tentativas de login (proteção contra força bruta).
-- [ ] Comando para reclassificar os alimentos quando `lotes/catalogo.py` mudar. A migration `0003_catalogo` só classifica na criação do banco.
+- [x] Branch `refactor/arquitetura-apps`: já mergeado pela PR #7.
+- [x] Produção: `DJANGO_DEBUG=False`, `DJANGO_SECRET_KEY` e `DJANGO_ALLOWED_HOSTS` obrigatórios; `collectstatic` ao iniciar; `CSRF_TRUSTED_ORIGINS`; `env_file` no compose.
+- [x] `Dockerfile` sem `libpq-dev`/`build-essential` (o banco é SQLite).
+- [x] JWT: logout revoga os tokens (lista de revogação).
+- [x] Limitar tentativas de login (força bruta).
+- [x] Comando `reclassificar_alimentos` para reaplicar `lotes/catalogo.py`.
+- [ ] Antes de publicar: servir `/media/` por um servidor web/armazenamento de objetos e configurar SMTP real.
 
 ---
 

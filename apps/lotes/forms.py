@@ -1,6 +1,7 @@
 from decimal import Decimal
 
 from django import forms
+from django.conf import settings
 from django.utils import timezone
 
 from .catalogo import PREPAROS_DE_VAREJO
@@ -20,7 +21,7 @@ class LoteForm(forms.ModelForm):
         model = Lote
         fields = [
             'alimento', 'categoria', 'descricao', 'quantidade', 'unidade', 'peso_kg',
-            'data_validade', 'retirada_inicio', 'retirada_fim',
+            'data_validade', 'retirada_inicio', 'retirada_fim', 'foto',
         ]
         labels = {
             'alimento': 'Alimento',
@@ -28,13 +29,17 @@ class LoteForm(forms.ModelForm):
             'data_validade': 'Validade',
             'retirada_inicio': 'Retirada a partir de',
             'retirada_fim': 'Retirada até',
+            'foto': 'Foto do lote',
         }
         help_texts = {
             'alimento': 'Opcional. Define a categoria e o cálculo de CO₂ evitado.',
             'categoria': 'Obrigatória se nenhum alimento for escolhido.',
             'peso_kg': 'Para lotes em kg, deixe em branco para usar a quantidade.',
+            'foto': 'Opcional. JPG, PNG ou WebP de até 5 MB. Sem foto, a vitrine usa a imagem da categoria.',
         }
         widgets = {
+            'alimento': forms.Select(attrs={'data-autocomplete': 'true'}),
+            'foto': forms.ClearableFileInput(attrs={'accept': 'image/jpeg,image/png,image/webp'}),
             'descricao': forms.TextInput(attrs={'placeholder': 'Ex.: Kit hortifruti (tomates e cenouras)'}),
             'quantidade': forms.NumberInput(attrs={'min': '0.01', 'step': '0.01'}),
             'peso_kg': forms.NumberInput(attrs={'min': '0.01', 'step': '0.01'}),
@@ -61,6 +66,17 @@ class LoteForm(forms.ModelForm):
         campo = self.fields['alimento']
         campo.queryset = alimentos
         campo.choices = [('', 'Nenhum (escolher só a categoria)'), *grupos.items()]
+
+    def clean_foto(self):
+        foto = self.cleaned_data.get('foto')
+        # Só valida arquivos recém-enviados (UploadedFile tem content_type; FieldFile salvo não).
+        if foto and hasattr(foto, 'content_type'):
+            limite = settings.FOTO_LOTE_MAX_MB * 1024 * 1024
+            if foto.size > limite:
+                raise forms.ValidationError(f'A foto deve ter no máximo {settings.FOTO_LOTE_MAX_MB} MB.')
+            if foto.content_type not in ('image/jpeg', 'image/png', 'image/webp'):
+                raise forms.ValidationError('Envie uma imagem JPG, PNG ou WebP.')
+        return foto
 
     def clean_quantidade(self):
         quantidade = self.cleaned_data['quantidade']

@@ -1,0 +1,41 @@
+{% extends 'layouts/acesso.html' %}
+{% load static %}
+
+{% block titulo %}Cadastro {{ perfil.nome }}{% endblock %}
+{% block descricao %}Crie sua conta de {{ perfil.nome }} na plataforma Prato Cheio. O cadastro passa por aprovação da equipe antes do primeiro acesso.{% endblock %}
+
+{% block painel_acesso %}
+    <a class="back" href="{% url perfil.url_login %}"><span aria-hidden="true">←</span> Voltar ao login</a>
+    <h2>Cadastro {{ perfil.nome }}</h2>
+    <p class="muted">Preencha os dados abaixo. Sua conta será analisada antes de ser liberada.</p>
+
+    {% if form.errors or form_estabelecimento.errors %}
+        <div class="resumo-erros" role="alert" tabindex="-1" data-resumo-servidor>
+            <strong>Revise os campos destacados:</strong>
+            <ul>
+                {% for campo in form %}{% for erro in campo.errors %}<li><a href="#{{ campo.id_for_label }}">{{ campo.label }}: {{ erro }}</a></li>{% endfor %}{% endfor %}
+                {% for campo in form_estabelecimento %}{% for erro in campo.errors %}<li><a href="#{{ campo.id_for_label }}">{{ campo.label }}: {{ erro }}</a></li>{% endfor %}{% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="resumo-erros" role="alert" aria-live="polite" data-resumo-erros hidden></div>
+
+    <form class="form form-cadastro" method="post" novalidate data-validar>
+        {% csrf_token %}
+        <fieldset>
+            <legend>Dados de acesso</legend>
+            {% for campo in form %}{% include 'components/campo.html' %}{% endfor %}
+        </fieldset>
+        {% if form_estabelecimento %}
+            <fieldset>
+                <legend>Estabelecimento</legend>
+                {% for campo in form_estabelecimento %}{% include 'components/campo.html' %}{% endfor %}
+            </fieldset>
+        {% endif %}
+        <button class="btn btn-primary" type="submit" data-enviar>Criar conta</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'usuarios/js/cadastro.js' %}"></script>
+{% endblock %}
