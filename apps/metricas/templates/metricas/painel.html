@@ -19,9 +19,25 @@
     <section class="dashboard-grid">
         <article class="panel">
             <div class="panel-title">
-                <h2>Impacto Ambiental Histórico</h2><a class="text-link" href="#">Ver Relatório Completo <span aria-hidden="true">▥</span></a>
+                <h2>Impacto Ambiental Histórico</h2><a class="text-link" href="{% url 'metricas:relatorio' perfil.slug %}">Ver Relatório Completo <span aria-hidden="true">▥</span></a>
             </div>
-            <div class="chart-placeholder"><span aria-hidden="true">◌</span> &nbsp; Gráfico de emissões evitadas (Últimos 6 meses)</div>
+            <figure class="grafico">
+                <div class="grafico-barras" aria-hidden="true">
+                    {% for barra in grafico %}
+                        <div class="grafico-coluna">
+                            <span class="grafico-valor">{{ barra.co2 }}</span>
+                            <div class="grafico-barra" style="height: {{ barra.altura }}%"></div>
+                            <span class="grafico-mes">{{ barra.rotulo }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+                <figcaption class="muted">CO₂ evitado por mês, em kg (últimos 6 meses)</figcaption>
+                <table class="sr-only">
+                    <caption>CO₂ evitado por mês (kg)</caption>
+                    <thead><tr><th scope="col">Mês</th><th scope="col">CO₂ evitado (kg)</th></tr></thead>
+                    <tbody>{% for barra in grafico %}<tr><th scope="row">{{ barra.rotulo }}</th><td>{{ barra.co2 }}</td></tr>{% endfor %}</tbody>
+                </table>
+            </figure>
         </article>
         <article class="panel">
             <div class="panel-title">
@@ -30,8 +46,10 @@
             <div class="activity">
                 {% for atividade in atividades %}
                     <div class="activity-item"><span class="dot"></span>
-                        <div><strong>{{ atividade.titulo }}</strong><span>{{ atividade.texto }}</span><span>{{ atividade.quando }}</span></div>
+                        <div><strong>{{ atividade.titulo }}</strong><span>{{ atividade.texto }}</span><span>Há {{ atividade.quando|timesince }}</span></div>
                     </div>
+                {% empty %}
+                    <p class="muted">{{ texto_sem_atividades }}</p>
                 {% endfor %}
             </div>
         </article>

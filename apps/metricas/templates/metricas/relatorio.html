@@ -1,0 +1,55 @@
+{% extends 'layouts/app.html' %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block descricao %}{{ descricao }}{% endblock %}
+{% block cabecalho %}{{ titulo }}{% endblock %}
+
+{% block conteudo %}
+    <a class="back" href="{% url perfil.url_painel %}"><span aria-hidden="true">←</span> Voltar ao painel</a>
+    <section class="metrics">
+        <article class="metric"><p class="metric-label">Retiradas confirmadas</p><span class="metric-value">{{ total.retiradas }}</span></article>
+        <article class="metric"><p class="metric-label">Alimentos salvos</p><span class="metric-value">{{ total.kg }}</span> <span class="metric-unit">kg</span></article>
+        <article class="metric"><p class="metric-label">CO₂ evitado</p><span class="metric-value">{{ total.co2 }}</span> <span class="metric-unit">kg</span></article>
+    </section>
+
+    <div class="section-head secao-relatorio"><h2>Totais por mês (últimos 12 meses)</h2></div>
+    <div class="table-wrap">
+        <table>
+            <caption class="sr-only">Totais mensais de impacto</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Mês</th><th scope="col">Retiradas</th><th scope="col">Alimentos (kg)</th>
+                    <th scope="col">CO₂ evitado (kg)</th><th scope="col">Refeições</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mes in meses %}
+                    <tr><th scope="row">{{ mes.rotulo }}</th><td>{{ mes.retiradas }}</td><td>{{ mes.kg }}</td><td>{{ mes.co2 }}</td><td>{{ mes.refeicoes }}</td></tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr><th scope="row">Total geral</th><td>{{ total.retiradas }}</td><td>{{ total.kg }}</td><td>{{ total.co2 }}</td><td>{{ total.refeicoes }}</td></tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="section-head secao-relatorio"><h2>Histórico de retiradas</h2></div>
+    <div class="table-wrap">
+        <table>
+            <caption class="sr-only">Todas as retiradas confirmadas</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Data</th><th scope="col">Lote</th><th scope="col">Categoria</th>
+                    <th scope="col">{{ rotulo_contraparte }}</th><th scope="col">Peso (kg)</th><th scope="col">CO₂ evitado (kg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in retiradas %}
+                    <tr><td>{{ r.quando|date:"d/m/Y H:i" }}</td><td>{{ r.descricao }}</td><td>{{ r.categoria }}</td><td>{{ r.contraparte }}</td><td>{{ r.kg }}</td><td>{{ r.co2 }}</td></tr>
+                {% empty %}
+                    <tr><td colspan="6">Nenhuma retirada confirmada ainda.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
