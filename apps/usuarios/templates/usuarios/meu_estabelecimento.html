@@ -1,0 +1,25 @@
+{% extends 'layouts/app.html' %}
+
+{% block titulo %}Meu Estabelecimento{% endblock %}
+{% block descricao %}Cadastro e edição dos dados do estabelecimento doador, usados na vitrine e no cálculo de distância.{% endblock %}
+{% block cabecalho %}Meu Estabelecimento{% endblock %}
+
+{% block conteudo %}
+    <article class="panel form-lote">
+        {% if estabelecimento and not estabelecimento.coordenadas %}
+            <p class="mensagem mensagem-warning" role="status">Não foi possível localizar o endereço no mapa. Seus lotes aparecem na vitrine sem a distância até o consumidor. Confira o endereço e salve novamente.</p>
+        {% elif not estabelecimento %}
+            <p class="muted">Cadastre os dados do estabelecimento para poder anunciar lotes.</p>
+        {% endif %}
+        <form class="form" method="post" novalidate>
+            {% csrf_token %}
+            <fieldset>
+                <legend>Dados do estabelecimento</legend>
+                {% for campo in form %}{% include 'components/campo.html' %}{% endfor %}
+            </fieldset>
+            <div class="actions">
+                <button class="btn btn-primary" type="submit">Salvar dados</button>
+            </div>
+        </form>
+    </article>
+{% endblock %}
