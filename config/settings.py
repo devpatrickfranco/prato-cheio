@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 import os
+import sys
 from datetime import timedelta
 from pathlib import Path
+
+from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,20 +25,33 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Os valores padrão servem apenas para desenvolvimento local.
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
+def _lista(nome):
+    return [item.strip() for item in os.environ.get(nome, '').split(',') if item.strip()]
+
+
+def _booleano(nome, padrao):
+    return os.environ.get(nome, str(padrao)).lower() in ('1', 'true', 'yes')
+
+
+_CHAVE_DE_DESENVOLVIMENTO = 'django-insecure-ce6*-^wyot92cbo06rnd47j1(a4a!tyh^f@96%2l2qd)k5p0='
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    'DJANGO_SECRET_KEY',
-    'django-insecure-ce6*-^wyot92cbo06rnd47j1(a4a!tyh^f@96%2l2qd)k5p0=p',
-)
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', _CHAVE_DE_DESENVOLVIMENTO)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('1', 'true', 'yes')
+DEBUG = _booleano('DJANGO_DEBUG', True)
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
-    if host.strip()
-]
+ALLOWED_HOSTS = _lista('DJANGO_ALLOWED_HOSTS')
+
+if not DEBUG:
+    # Em produção a configuração é obrigatória: sem isso o site subiria com a chave pública do repositório.
+    if SECRET_KEY == _CHAVE_DE_DESENVOLVIMENTO or SECRET_KEY.startswith('troque-'):
+        raise ImproperlyConfigured('Defina DJANGO_SECRET_KEY com uma chave secreta própria quando DJANGO_DEBUG=False.')
+    if not ALLOWED_HOSTS:
+        raise ImproperlyConfigured('Defina DJANGO_ALLOWED_HOSTS quando DJANGO_DEBUG=False.')
+
+# Origens https confiáveis para formulários (CSRF), separadas por vírgula. Ex.: https://prato.exemplo.com
+CSRF_TRUSTED_ORIGINS = _lista('DJANGO_CSRF_TRUSTED_ORIGINS')
 
 
 # Application definition
@@ -140,6 +156,22 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # Destino do `collectstatic` em produção.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Arquivos enviados pelos usuários (fotos dos lotes). Em produção, monte MEDIA_ROOT em um volume.
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+# Limite de tamanho da foto do lote (validado em apps.lotes.forms).
+FOTO_LOTE_MAX_MB = 5
+
+# Segurança em produção (DJANGO_DEBUG=False). Atrás de um proxy HTTPS, defina DJANGO_PROXY_SSL=True.
+if not DEBUG:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_REFERRER_POLICY = 'same-origin'
+    if _booleano('DJANGO_PROXY_SSL', False):
+        SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+        SECURE_SSL_REDIRECT = True
+
 
 # Autenticação JWT (apps.auth)
 
@@ -148,13 +180,37 @@ JWT_ACCESS_TTL = timedelta(minutes=int(os.environ.get('DJANGO_JWT_ACCESS_MINUTES
 JWT_REFRESH_TTL = timedelta(days=int(os.environ.get('DJANGO_JWT_REFRESH_DAYS', '7')))
 # Cookies dos tokens só trafegam por HTTPS fora do modo debug.
 JWT_COOKIE_SECURE = not DEBUG
+if not DEBUG and JWT_SECRET_KEY.startswith('troque-'):
+    raise ImproperlyConfigured('Defina DJANGO_JWT_SECRET_KEY (ou remova-a para usar DJANGO_SECRET_KEY) quando DJANGO_DEBUG=False.')
+# Cabeçalho com o IP real do cliente atrás de proxy (ex.: HTTP_X_FORWARDED_FOR); usado no limite de tentativas de login.
+PROXY_IP_HEADER = os.environ.get('DJANGO_PROXY_IP_HEADER', '')
+
+
+# Geocodificação (latitude/longitude a partir do endereço/CEP) pelo Nominatim/OpenStreetMap.
+# Desligada por padrão nos testes para nunca acessar a rede.
+GEOCODIFICACAO_ATIVA = _booleano('DJANGO_GEOCODIFICACAO', 'test' not in sys.argv)
+GEOCODIFICACAO_USER_AGENT = os.environ.get('DJANGO_GEOCODIFICACAO_USER_AGENT', 'PratoCheio/1.0 (projeto academico)')
 
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+# Sem DJANGO_EMAIL_HOST, os e-mails (ex.: recuperação de senha) saem no console do servidor.
+# Com ele, são enviados por SMTP (ver .env.example).
+if os.environ.get('DJANGO_EMAIL_HOST'):
+    _mailer_padrao = {
+        'BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+        'OPTIONS': {
+            'host': os.environ['DJANGO_EMAIL_HOST'],
+            'port': int(os.environ.get('DJANGO_EMAIL_PORT', '587')),
+            'username': os.environ.get('DJANGO_EMAIL_USER', ''),
+            'password': os.environ.get('DJANGO_EMAIL_PASSWORD', ''),
+            'use_tls': _booleano('DJANGO_EMAIL_TLS', True),
+            'timeout': 10,
+        },
+    }
+else:
+    _mailer_padrao = {'BACKEND': 'django.core.mail.backends.console.EmailBackend'}
+
+MAILERS = {'default': _mailer_padrao}
+DEFAULT_FROM_EMAIL = os.environ.get('DJANGO_DEFAULT_FROM_EMAIL', 'Prato Cheio <nao-responda@pratocheio.local>')
