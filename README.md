@@ -1,6 +1,6 @@
 # PAGAFARRA
 
-Projeto base em Django executado com Docker.
+Prato Cheio — plataforma Web em Django (Python 3.13), executada com Docker e PostgreSQL. Projeto do grupo PAGAFARRA (PUC-Campinas).
 
 ## 🌱 Sobre o projeto (Prato Cheio)
 
@@ -11,11 +11,11 @@ gera métricas de impacto (kg salvos, CO₂ evitado, refeições estimadas).
 | Item | Descrição |
 |---|---|
 | Problema | Desperdício de alimentos no varejo enquanto há pessoas e instituições que precisam deles |
-| Setor | Terceiro Setor (ONGs) em parceria com o Segundo Setor (varejo doador) |
+| Setor | Segundo Setor (privado): o varejo doador é a parte principal; as ONGs são receptoras, com benefícios sociais e ambientais |
 | ODS | 2 (Fome Zero), 12 (Consumo e Produção Responsáveis) e 13 (Ação contra a Mudança do Clima) |
 | Impacto | Social, ambiental e econômico |
 | Tecnologias | Python 3.13, Django 6.1, PostgreSQL 17 (SQLite sem Docker), JWT (PyJWT), HTML5/CSS3/JavaScript sem framework, Docker |
-| Status | MVP em desenvolvimento (ver Pendências) |
+| Status | MVP implementado (3ª entrega); falta preparar a publicação (ver Pendências) |
 
 ---
 
@@ -180,7 +180,7 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 - Recursos estáticos específicos de um app ficam em `apps/<app>/static/<app>/`; o CSS global em `static/`.
 - Dependências entre apps: `auth`, `lotes` e `metricas` usam `apps.usuarios.perfis`; `lotes` e `metricas`
   usam `apps.auth.decorators`; `usuarios` não importa outros apps.
-- Banco de dados: SQLite (`db.sqlite3`, não versionado). O schema vem exclusivamente dos models;
+- Banco de dados: PostgreSQL 17 no serviço `db` do Docker Compose (selecionado por `POSTGRES_HOST`); sem essa variável, SQLite local (`db.sqlite3`, não versionado). O schema vem exclusivamente dos models;
   `python manage.py migrate` cria as tabelas e carrega categorias e alimentos a partir do CSV.
 - Os painéis de impacto vêm de dados reais: só lotes `retirado` (reserva confirmada pelo doador) contam.
 - Decisões arquiteturais ficam registradas em `docs/adr/` (ADRs).
@@ -281,8 +281,8 @@ para o limite por IP enxergar o cliente real.
 
 ## 📝 Pendências
 
-Estado em 28/10/2026. O branch `refactor/arquitetura-apps` já foi mergeado (PR #7); as mudanças abaixo estão
-**apenas no diretório local, sem commit nem push**.
+Estado em 03/11/2026. As PRs #7 (refatoração em apps), #8 (cadastro, reservas e painéis) e #9 (volta ao PostgreSQL)
+já foram integradas à `main`.
 
 ### Funcionalidades
 
@@ -317,13 +317,13 @@ Estado em 28/10/2026. O branch `refactor/arquitetura-apps` já foi mergeado (PR 
 - [x] "Esqueceu a senha?".
 - [x] Admin do `Usuario`: troca de senha.
 
-**Escopo original ainda não iniciado:** compra e venda, gamificação para PJ e comissão por venda.
+**Escopo original ainda não iniciado (fora do MVP):** compra e venda com desconto, gamificação para PJ e comissão por venda.
 
 ### Técnico
 
 - [x] Branch `refactor/arquitetura-apps`: já mergeado pela PR #7.
 - [x] Produção: `DJANGO_DEBUG=False`, `DJANGO_SECRET_KEY` e `DJANGO_ALLOWED_HOSTS` obrigatórios; `collectstatic` ao iniciar; `CSRF_TRUSTED_ORIGINS`; `env_file` no compose.
-- [x] `Dockerfile` sem `libpq-dev`/`build-essential` (o banco é SQLite).
+- [x] `Dockerfile` sem `libpq-dev`/`build-essential` (o `psycopg[binary]` já traz a libpq); banco PostgreSQL 17 no serviço `db` do `docker-compose.yml`.
 - [x] JWT: logout revoga os tokens (lista de revogação).
 - [x] Limitar tentativas de login (força bruta).
 - [x] Comando `reclassificar_alimentos` para reaplicar `lotes/catalogo.py`.

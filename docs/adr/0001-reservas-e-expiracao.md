@@ -5,7 +5,7 @@
 
 ## Contexto
 Um lote reservado precisa voltar à vitrine se ninguém retirar, e lotes vencidos não podem aparecer como
-disponíveis. O projeto roda em um único container (gunicorn + SQLite), sem fila de tarefas nem agendador.
+disponíveis. O projeto roda em um container web (gunicorn) com o banco no serviço `db` (PostgreSQL; SQLite sem Docker), sem fila de tarefas nem agendador.
 
 ## Alternativas
 1. Celery/RQ com agendador: exige Redis/broker, mais infraestrutura que o MVP justifica.
