@@ -1,4 +1,27 @@
 services:
+  db:
+    image: postgres:17-alpine
+
+    container_name: prato_cheio_db
+
+    restart: unless-stopped
+
+    # Credenciais vêm do .env (ver .env.example); os padrões servem só para desenvolvimento.
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-prato_cheio}
+      POSTGRES_USER: ${POSTGRES_USER:-prato_cheio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-prato_cheio_dev}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    # O web só sobe quando o banco aceita conexões.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   web:
     build:
       context: .
@@ -14,6 +37,18 @@ services:
       - path: .env
         required: false
 
+    # Conexão com o serviço `db` (config/settings.py usa PostgreSQL quando POSTGRES_HOST existe).
+    environment:
+      POSTGRES_HOST: db
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: ${POSTGRES_DB:-prato_cheio}
+      POSTGRES_USER: ${POSTGRES_USER:-prato_cheio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-prato_cheio_dev}
+
+    depends_on:
+      db:
+        condition: service_healthy
+
     # Aplica as migrations, reúne os arquivos estáticos (o volume `.:/app` oculta os gerados no build)
     # e inicia o servidor.
     command: sh -c "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
@@ -23,3 +58,6 @@ services:
 
     volumes:
       - .:/app
+
+volumes:
+  postgres_data:
