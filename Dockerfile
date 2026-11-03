@@ -8,8 +8,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-# O banco é SQLite (módulo embutido no Python) e todas as dependências têm wheels:
-# não há pacotes de sistema a instalar (libpq/build-essential só seriam necessários com PostgreSQL).
+# O banco é PostgreSQL (serviço `db` do docker-compose). O psycopg[binary] já traz a libpq,
+# então não há pacotes de sistema a instalar.
 
 # Instala dependências Python
 COPY requirements.txt .

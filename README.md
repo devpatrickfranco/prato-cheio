@@ -14,7 +14,7 @@ gera métricas de impacto (kg salvos, CO₂ evitado, refeições estimadas).
 | Setor | Terceiro Setor (ONGs) em parceria com o Segundo Setor (varejo doador) |
 | ODS | 2 (Fome Zero), 12 (Consumo e Produção Responsáveis) e 13 (Ação contra a Mudança do Clima) |
 | Impacto | Social, ambiental e econômico |
-| Tecnologias | Python 3.13, Django 6.1, SQLite, JWT (PyJWT), HTML5/CSS3/JavaScript sem framework, Docker |
+| Tecnologias | Python 3.13, Django 6.1, PostgreSQL 17 (SQLite sem Docker), JWT (PyJWT), HTML5/CSS3/JavaScript sem framework, Docker |
 | Status | MVP em desenvolvimento (ver Pendências) |
 
 ---
