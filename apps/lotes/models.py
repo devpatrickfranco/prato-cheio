@@ -1,8 +1,11 @@
+from datetime import date
 from decimal import Decimal
 
 from django.conf import settings
 from django.db import models
 from django.db.models import F, Q
+from django.utils import timezone
+from django.utils.formats import number_format
 
 
 class Categoria(models.Model):
@@ -65,8 +68,13 @@ class Lote(models.Model):
     usado pelas métricas. Regras:
     - a vitrine mostra apenas lotes `disponivel` com `data_validade` >= hoje,
       ordenados pela validade mais próxima;
+    - doações aparecem só para ONGs; lotes à venda, para ONGs e consumidores;
     - lotes disponíveis que passam da validade viram `expirado`;
     - só lotes `retirado` contam para as métricas de impacto.
+
+    A retirada acontece nos `retirada_dias` escolhidos, no mesmo horário em
+    todos eles. `retirada_inicio` é o primeiro dia na hora inicial e
+    `retirada_fim`, o último dia na hora final.
 
     `alimento` é opcional; quando informado, define a categoria e o fator de
     CO₂ usado no cálculo do impacto.
@@ -83,6 +91,15 @@ class Lote(models.Model):
         KG = 'kg', 'kg'
         UN = 'un', 'un'
 
+    class Modalidade(models.TextChoices):
+        DOACAO = 'doacao', 'Doação'
+        VENDA = 'venda', 'Venda'
+
+    MODALIDADES_POR_PERFIL = {
+        'consumidor': [Modalidade.VENDA],
+        'ong': [Modalidade.DOACAO, Modalidade.VENDA],
+    }
+
     class Status(models.TextChoices):
         DISPONIVEL = 'disponivel', 'Disponível'
         RESERVADO = 'reservado', 'Reservado'
@@ -94,10 +111,13 @@ class Lote(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name='lotes')
     alimento = models.ForeignKey(Alimento, on_delete=models.PROTECT, related_name='lotes', null=True, blank=True)
     descricao = models.CharField('descrição', max_length=200)
+    modalidade = models.CharField(max_length=6, choices=Modalidade.choices)
+    preco = models.DecimalField('preço', max_digits=8, decimal_places=2, null=True, blank=True)
     quantidade = models.DecimalField(max_digits=8, decimal_places=2)
-    unidade = models.CharField(max_length=2, choices=Unidade.choices)
-    peso_kg = models.DecimalField('peso (kg)', max_digits=8, decimal_places=2)
+    unidade = models.CharField(max_length=2, choices=Unidade.choices, default=Unidade.UN)
+    peso_kg = models.DecimalField('peso (kg)', max_digits=9, decimal_places=3)
     data_validade = models.DateField()
+    retirada_dias = models.JSONField('dias de retirada', default=list)
     retirada_inicio = models.DateTimeField()
     retirada_fim = models.DateTimeField()
     foto = models.ImageField(upload_to='lotes/%Y/%m/', blank=True)
@@ -112,6 +132,10 @@ class Lote(models.Model):
             models.CheckConstraint(condition=Q(quantidade__gt=0), name='ck_lote_quantidade'),
             models.CheckConstraint(condition=Q(peso_kg__gt=0), name='ck_lote_peso'),
             models.CheckConstraint(condition=Q(retirada_fim__gt=F('retirada_inicio')), name='ck_lote_janela'),
+            models.CheckConstraint(
+                condition=Q(modalidade='doacao', preco__isnull=True) | Q(modalidade='venda', preco__isnull=False, preco__gt=0),
+                name='ck_lote_preco',
+            ),
         ]
 
     def __str__(self):
@@ -129,6 +153,24 @@ class Lote(models.Model):
     @property
     def co2_evitado_kg(self):
         return self.peso_kg * self.fator_co2_kg
+
+    @property
+    def modalidade_resumo(self):
+        """'Doação' ou o preço de venda, para as listagens."""
+        if self.modalidade == self.Modalidade.VENDA:
+            return f'R$ {number_format(self.preco, decimal_pos=2, use_l10n=True, force_grouping=True)}'
+        return self.get_modalidade_display()
+
+    @property
+    def dias_de_retirada(self):
+        return [date.fromisoformat(dia) for dia in self.retirada_dias]
+
+    @property
+    def retirada_resumo(self):
+        """Ex.: '07/11, 09/11, das 10:00 às 18:00'."""
+        dias = ', '.join(f'{dia:%d/%m}' for dia in self.dias_de_retirada)
+        inicio, fim = timezone.localtime(self.retirada_inicio), timezone.localtime(self.retirada_fim)
+        return f'{dias}, das {inicio:%H:%M} às {fim:%H:%M}'
 
     @property
     def imagem_enviada(self):

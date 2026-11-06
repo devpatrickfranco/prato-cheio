@@ -38,7 +38,7 @@
             <input type="hidden" name="lat"><input type="hidden" name="lon">
         {% endif %}
         <div class="actions">
-            <button class="btn btn-secondary" type="button" data-usar-localizacao><span aria-hidden="true">●</span> Usar minha localização</button>
+            <button class="btn btn-secondary" type="button" data-usar-localizacao>Usar minha localização</button>
             <button class="btn btn-primary" type="submit">Filtrar</button>
             {% if filtrando %}<a class="btn btn-secondary" href="{% url 'lotes:explorar' %}">Limpar</a>{% endif %}
         </div>
@@ -60,10 +60,11 @@
                         <h3>{{ lote.descricao }}</h3><span class="quantity">{{ lote.quantidade|floatformat:"-2" }}{{ lote.unidade }}</span>
                     </div>
                     <div class="food-meta">
-                        <span><span aria-hidden="true">●</span> {{ lote.estabelecimento.razao_social }} · {{ lote.estabelecimento.bairro }}</span>
-                        {% if lote.distancia_km is not None %}<span class="distancia"><span aria-hidden="true">↗</span> {{ lote.distancia_km|floatformat:1 }} km de você</span>{% endif %}
-                        <span><span aria-hidden="true">□</span> Vence: <strong>{{ lote.data_validade|date:"d/m/Y" }}</strong></span>
-                        <span><span aria-hidden="true">◷</span> Retirada: {{ lote.retirada_inicio|date:"d/m H:i" }} - {{ lote.retirada_fim|date:"H:i" }}</span>
+                        <span class="modalidade">{{ lote.modalidade_resumo }}</span>
+                        <span>{{ lote.estabelecimento.razao_social }} · {{ lote.estabelecimento.bairro }}</span>
+                        {% if lote.distancia_km is not None %}<span class="distancia">{{ lote.distancia_km|floatformat:1 }} km de você</span>{% endif %}
+                        <span>Vence: <strong>{{ lote.data_validade|date:"d/m/Y" }}</strong></span>
+                        <span>Retirada: {{ lote.retirada_resumo }}</span>
                     </div>
                     <form action="{% url 'lotes:reservar' lote.pk %}" method="post">
                         {% csrf_token %}

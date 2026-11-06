@@ -9,30 +9,27 @@
     <div class="role-list">
         <a class="role-card" href="{% url 'jwt_auth:login_doador' %}">
             <div class="role-info">
-                <div class="role-icon">🏢</div>
                 <div>
                     <h3>Doador (Mercado/Varejo)</h3>
                     <p>Cadastre lotes e acompanhe seu impacto</p>
                 </div>
-            </div><span aria-hidden="true">→</span>
+            </div>
         </a>
         <a class="role-card" href="{% url 'jwt_auth:login_ong' %}">
             <div class="role-info">
-                <div class="role-icon">♥</div>
                 <div>
                     <h3>ONG / Instituição</h3>
                     <p>Reserve alimentos para sua causa</p>
                 </div>
-            </div><span aria-hidden="true">→</span>
+            </div>
         </a>
         <a class="role-card" href="{% url 'jwt_auth:login_consumidor' %}">
             <div class="role-info">
-                <div class="role-icon"><span aria-hidden="true">●</span></div>
                 <div>
                     <h3>Consumidor</h3>
                     <p>Encontre alimentos próximos ao vencimento</p>
                 </div>
-            </div><span aria-hidden="true">→</span>
+            </div>
         </a>
     </div>
 {% endblock %}

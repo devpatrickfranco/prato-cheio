@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% comment %}
 Layout das áreas logadas: sidebar do perfil + conteúdo principal.
@@ -8,9 +9,13 @@ Contexto esperado: `perfil` (apps.usuarios.perfis.Perfil) e `ativo` (item do men
 {% block corpo %}
     <div class="app">
         {% include 'components/sidebar.html' %}
+        <div class="menu-fundo" data-menu-fundo hidden></div>
         <main class="main">
             <header class="topbar">
-                <h1>{% block cabecalho %}{% endblock %}</h1>
+                <div class="topbar-titulo">
+                    <button class="menu-botao" type="button" data-menu-abrir aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-lateral"><span></span><span></span><span></span></button>
+                    <h1>{% block cabecalho %}{% endblock %}</h1>
+                </div>
                 {% block topbar_extra %}{% endblock %}
             </header>
             <div class="content">
@@ -21,4 +26,5 @@ Contexto esperado: `perfil` (apps.usuarios.perfis.Perfil) e `ativo` (item do men
             </div>
         </main>
     </div>
+    <script src="{% static 'js/menu.js' %}"></script>
 {% endblock %}

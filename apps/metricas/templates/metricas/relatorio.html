@@ -5,7 +5,7 @@
 {% block cabecalho %}{{ titulo }}{% endblock %}
 
 {% block conteudo %}
-    <a class="back" href="{% url perfil.url_painel %}"><span aria-hidden="true">←</span> Voltar ao painel</a>
+    <a class="back" href="{% url perfil.url_painel %}">Voltar ao painel</a>
     <section class="metrics">
         <article class="metric"><p class="metric-label">Retiradas confirmadas</p><span class="metric-value">{{ total.retiradas }}</span></article>
         <article class="metric"><p class="metric-label">Alimentos salvos</p><span class="metric-value">{{ total.kg }}</span> <span class="metric-unit">kg</span></article>

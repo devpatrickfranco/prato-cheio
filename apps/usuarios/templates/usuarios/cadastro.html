@@ -5,7 +5,7 @@
 {% block descricao %}Crie sua conta de {{ perfil.nome }} na plataforma Prato Cheio. O cadastro passa por aprovação da equipe antes do primeiro acesso.{% endblock %}
 
 {% block painel_acesso %}
-    <a class="back" href="{% url perfil.url_login %}"><span aria-hidden="true">←</span> Voltar ao login</a>
+    <a class="back" href="{% url perfil.url_login %}">Voltar ao login</a>
     <h2>Cadastro {{ perfil.nome }}</h2>
     <p class="muted">Preencha os dados abaixo. Sua conta será analisada antes de ser liberada.</p>
 

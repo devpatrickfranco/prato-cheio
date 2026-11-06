@@ -45,9 +45,14 @@ def _alimentos_salvos(kg):
     return _numero(kg, 1), 'kg'
 
 
+def _peso(peso_kg):
+    """Peso de um lote: três casas só quando ele tem fração de grama a mostrar."""
+    return _numero(peso_kg, 1 if peso_kg == round(peso_kg, 1) else 3)
+
+
 def _atividade(perfil, retirada):
     lote = retirada.lote
-    quilos = _numero(retirada.kg, 1)
+    quilos = _peso(retirada.kg)
     if perfil == 'doador':
         titulo = 'Retirada confirmada'
         texto = f'{retirada.reserva.usuario.nome} retirou {quilos} kg: {lote.descricao}.'
@@ -94,9 +99,9 @@ def painel(request, perfil):
         'titulo': textos['titulo'],
         'descricao': textos['descricao'],
         'metricas': [
-            {'icone': '◌', 'tendencia': servicos.variacao(atual.co2_kg, anterior.co2_kg), 'valor': _numero(total.co2_kg, 1), 'unidade': 'kg', 'rotulo': f'CO₂ Evitado{sufixo}'},
-            {'icone': '□', 'tendencia': servicos.variacao(atual.kg, anterior.kg), 'valor': valor_alimentos, 'unidade': unidade_alimentos, 'rotulo': f'Alimentos Salvos{sufixo}'},
-            {'icone': '🌿', 'tendencia': servicos.variacao(atual.refeicoes, anterior.refeicoes), 'valor': _numero(total.refeicoes), 'unidade': '', 'rotulo': f'Refeições Estimadas{sufixo}'},
+            {'tendencia': servicos.variacao(atual.co2_kg, anterior.co2_kg), 'valor': _numero(total.co2_kg, 1), 'unidade': 'kg', 'rotulo': f'CO₂ Evitado{sufixo}'},
+            {'tendencia': servicos.variacao(atual.kg, anterior.kg), 'valor': valor_alimentos, 'unidade': unidade_alimentos, 'rotulo': f'Alimentos Salvos{sufixo}'},
+            {'tendencia': servicos.variacao(atual.refeicoes, anterior.refeicoes), 'valor': _numero(total.refeicoes), 'unidade': '', 'rotulo': f'Refeições Estimadas{sufixo}'},
         ],
         'grafico': grafico,
         'titulo_atividades': textos['titulo_atividades'],
@@ -129,7 +134,7 @@ def relatorio(request, perfil):
             {
                 'quando': r.quando, 'descricao': r.lote.descricao, 'categoria': r.lote.categoria.nome,
                 'contraparte': r.reserva.usuario.nome if perfil == 'doador' else r.lote.estabelecimento.razao_social,
-                'kg': _numero(r.kg, 1), 'co2': _numero(r.co2_kg, 1),
+                'kg': _peso(r.kg), 'co2': _numero(r.co2_kg, 1),
             }
             for r in retiradas
         ],

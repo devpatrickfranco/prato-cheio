@@ -198,8 +198,8 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 ```bash
 python manage.py criar_dados_demo
 ```
-Cria em Campinas/SP três doadores com lotes, o consumidor `joao@demo.com` e a ONG `esperanca@demo.com`
-(senha de todas: `prato123demo`). Pode ser executado mais de uma vez.
+Cria em Campinas/SP três doadores com lotes (dois à venda e uma doação), o consumidor `joao@demo.com` e a ONG
+`esperanca@demo.com` (senha de todas: `prato123demo`). Pode ser executado mais de uma vez.
 
 ### Categorias e alimentos
 
@@ -239,6 +239,16 @@ de uso único.
 | Confirmar retirada (`/meus-lotes/`) | Doador | Reserva `confirmada`, lote `retirado`: passa a contar nas métricas |
 | Não retirado (`/meus-lotes/`) | Doador | Reserva `nao_retirada`, lote `nao_retirado` |
 | Expiração | Automática | Reserva ativa vencida vira `expirada` e o lote volta a `disponivel` (ou `expirado` se a validade passou); lote disponível vencido vira `expirado` |
+
+Ao anunciar, o doador escolhe **doação** ou **venda**. Doações aparecem e podem ser reservadas só por ONGs;
+lotes à venda, com o preço informado, aparecem para ONGs e consumidores (a plataforma não processa pagamentos).
+
+A retirada é um único grupo de campos: o doador informa o horário (ex.: das 10:00 às 18:00) e clica no calendário
+em cada dia disponível, que precisa estar entre hoje e a validade. Os dias ficam em `Lote.retirada_dias`;
+`retirada_inicio` e `retirada_fim` são derivados (primeiro dia na hora inicial, último dia na hora final) e
+definem a expiração da reserva e a saída da vitrine.
+
+O peso aceita até 3 casas decimais e é obrigatório em lotes em un; em kg, se ficar em branco, usa a quantidade.
 
 A vitrine tem busca (sem diferenciar acentos), filtro por categoria, bairro e distância, e mostra só lotes
 disponíveis, dentro da validade e com a janela de retirada em aberto. O doador pode editar lotes disponíveis,

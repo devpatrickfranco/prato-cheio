@@ -8,7 +8,7 @@
 {% block conteudo %}
     <div class="section-head">
         <h2>Meus Lotes</h2>
-        <a class="btn btn-primary" href="{% url 'lotes:novo_lote' %}"><span aria-hidden="true">＋</span> Anunciar Lote</a>
+        <a class="btn btn-primary" href="{% url 'lotes:novo_lote' %}">Anunciar Lote</a>
     </div>
     <div class="table-wrap">
         <table>
@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col">Produto</th>
                     <th scope="col">Categoria</th>
+                    <th scope="col">Tipo</th>
                     <th scope="col">Quantidade</th>
                     <th scope="col">Vencimento</th>
                     <th scope="col">Status</th>
@@ -28,6 +29,7 @@
                     <tr>
                         <td>{{ lote.descricao }}</td>
                         <td>{{ lote.categoria.nome }}</td>
+                        <td>{{ lote.modalidade_resumo }}</td>
                         <td>{{ lote.quantidade|floatformat:"-2" }}{{ lote.unidade }}</td>
                         <td>{{ lote.data_validade|date:"d/m/Y" }}</td>
                         <td>
@@ -55,7 +57,7 @@
                         </td>
                     </tr>
                 {% empty %}
-                    <tr><td colspan="6">Nenhum lote publicado ainda.</td></tr>
+                    <tr><td colspan="7">Nenhum lote publicado ainda.</td></tr>
                 {% endfor %}
             </tbody>
         </table>

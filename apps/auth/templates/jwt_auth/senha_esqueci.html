@@ -4,7 +4,7 @@
 {% block descricao %}Informe seu e-mail para receber um link de redefinição de senha da plataforma Prato Cheio.{% endblock %}
 
 {% block painel_acesso %}
-    <a class="back" href="{% url 'usuarios:index' %}"><span aria-hidden="true">←</span> Voltar aos perfis</a>
+    <a class="back" href="{% url 'usuarios:index' %}">Voltar aos perfis</a>
     <h2>Recuperar senha</h2>
     <p class="muted">Informe o e-mail da sua conta. Enviaremos um link para criar uma nova senha.</p>
     {% for erro in form.email.errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
