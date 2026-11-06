@@ -53,7 +53,7 @@ class FluxoDeReservaTests(TestCase):
         self.assertEqual(self.lote.status, Lote.Status.RESERVADO)
         self.assertEqual((reserva.usuario, reserva.status), (self.consumidor, Reserva.Status.ATIVA))
         self.assertEqual(reserva.data_expiracao, self.lote.retirada_fim)
-        self.assertNotIn(self.lote, lotes_na_vitrine())
+        self.assertNotIn(self.lote, lotes_na_vitrine('ong'))
 
     def test_so_um_receptor_reserva_o_lote(self):
         self._logar(self.consumidor)
@@ -236,7 +236,8 @@ class FiltrosDaVitrineTests(TestCase):
         pao = Alimento.objects.filter(categoria__nome='Padaria').first()
         Lote.objects.create(
             estabelecimento=padaria, categoria=pao.categoria, alimento=pao, descricao='Pão francês',
-            quantidade=5, unidade='kg', peso_kg=5, data_validade=timezone.localdate(),
+            modalidade=Lote.Modalidade.VENDA, preco=8, quantidade=5, unidade='kg', peso_kg=5,
+            data_validade=timezone.localdate(),
             retirada_inicio=timezone.now(), retirada_fim=timezone.now() + timedelta(hours=2),
         )
         cls.consumidor = _usuario('joao@x.com', 'consumidor')
@@ -303,9 +304,10 @@ class FotoDoLoteTests(TestCase):
     def _dados(self, **alteracoes):
         amanha = timezone.localdate() + timedelta(days=1)
         dados = {
-            'alimento': self.tomate.pk, 'categoria': '', 'descricao': 'Tomates com foto', 'quantidade': '5',
+            'alimento': self.tomate.pk, 'categoria': '', 'descricao': 'Tomates com foto',
+            'modalidade': 'venda', 'preco': '12.50', 'quantidade': '5',
             'unidade': 'kg', 'peso_kg': '', 'data_validade': amanha.isoformat(),
-            'retirada_inicio': f'{amanha.isoformat()}T09:00', 'retirada_fim': f'{amanha.isoformat()}T11:00',
+            'retirada_dias': amanha.isoformat(), 'retirada_hora_inicio': '09:00', 'retirada_hora_fim': '11:00',
         }
         dados.update(alteracoes)
         return dados

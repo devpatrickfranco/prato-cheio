@@ -9,6 +9,7 @@ from apps.auth.cookies import ACCESS_COOKIE
 from apps.auth.tokens import emitir_access
 
 from . import geocodificacao
+from .forms import EstabelecimentoForm
 from .models import Estabelecimento
 from .validators import cnpj_valido, cpf_valido
 
@@ -157,6 +158,14 @@ class CadastroTests(TestCase):
         resposta = self.client.post(reverse('jwt_auth:login_consumidor'), {'email': 'nao@exemplo.com', 'senha': SENHA})
 
         self.assertContains(resposta, 'cadastro foi recusado')
+
+
+class RotuloDosSelectsTests(TestCase):
+    def test_tipo_de_estabelecimento_usa_selecione(self):
+        html = str(EstabelecimentoForm()['tipo_estabelecimento'])
+
+        self.assertIn('<option value="" selected>Selecione</option>', html)
+        self.assertNotIn('Select an option', html)
 
 
 class MeuEstabelecimentoTests(TestCase):

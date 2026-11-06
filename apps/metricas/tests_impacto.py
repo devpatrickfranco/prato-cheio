@@ -129,6 +129,21 @@ class PainelRealTests(TestCase):
         self.assertEqual([b['altura'] for b in grafico], [0, 0, 0, 0, 0, 100])
         self.assertContains(resposta, 'height: 100%')
 
+    def test_peso_com_gramas_aparece_com_tres_casas(self):
+        lote = self._retirar('Temperos', self.consumidor)
+        Lote.objects.filter(pk=lote.pk).update(peso_kg=Decimal('0.125'))
+
+        resposta = self._painel(self.doador, 'doador')
+
+        self.assertContains(resposta, 'João Silva retirou 0,125 kg: Temperos.')
+
+    def test_layout_tem_botao_que_abre_o_menu_lateral(self):
+        resposta = self._painel(self.doador, 'doador')
+
+        self.assertContains(resposta, 'data-menu-abrir')
+        self.assertContains(resposta, 'aria-controls="menu-lateral"')
+        self.assertContains(resposta, '<aside class="sidebar" id="menu-lateral"')
+
     def test_link_do_relatorio_completo(self):
         resposta = self._painel(self.doador, 'doador')
 

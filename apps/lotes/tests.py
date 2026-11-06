@@ -90,11 +90,14 @@ def _criar_estabelecimento(email, coordenadas, cnpj):
     )
 
 
-def _criar_lote(estabelecimento, descricao, dias=0, status=Lote.Status.DISPONIVEL):
+def _criar_lote(estabelecimento, descricao, dias=0, status=Lote.Status.DISPONIVEL, preco=Decimal('10')):
+    """Lote à venda (visível para consumidor e ONG); com `preco=None`, é uma doação."""
     agora = timezone.now()
     return Lote.objects.create(
         estabelecimento=estabelecimento, alimento=Alimento.objects.get(cod_pof=6705101, cod_preparo=99),
         descricao=descricao, quantidade=Decimal('15'), unidade='kg', peso_kg=Decimal('15'),
+        modalidade=Lote.Modalidade.VENDA if preco else Lote.Modalidade.DOACAO, preco=preco,
+        retirada_dias=[timezone.localdate().isoformat()],
         data_validade=timezone.localdate() + timedelta(days=dias), status=status,
         retirada_inicio=agora, retirada_fim=agora + timedelta(hours=2),
     )
@@ -149,12 +152,12 @@ class VitrineTests(TestCase):
         )
 
     def test_so_disponiveis_e_dentro_da_validade_ordenados_por_vencimento(self):
-        descricoes = [lote.descricao for lote in lotes_na_vitrine()]
+        descricoes = [lote.descricao for lote in lotes_na_vitrine('ong')]
 
         self.assertEqual(descricoes, ['Lote longe', 'Lote perto', 'Lote sem local'])
 
     def test_distancia_calculada_por_lote(self):
-        distancias = {lote.descricao: lote.distancia_km for lote in lotes_na_vitrine(BOSQUE)}
+        distancias = {lote.descricao: lote.distancia_km for lote in lotes_na_vitrine('ong', BOSQUE)}
 
         self.assertAlmostEqual(distancias['Lote perto'], haversine_km(BOSQUE, CENTRO))
         self.assertLess(distancias['Lote perto'], 1)
@@ -162,8 +165,8 @@ class VitrineTests(TestCase):
         self.assertIsNone(distancias['Lote sem local'])
 
     def test_raio_maximo(self):
-        self.assertEqual([lote.descricao for lote in lotes_na_vitrine(BOSQUE, 2)], ['Lote perto'])
-        self.assertEqual(len(lotes_na_vitrine(BOSQUE, 50)), 2)
+        self.assertEqual([lote.descricao for lote in lotes_na_vitrine('ong', BOSQUE, 2)], ['Lote perto'])
+        self.assertEqual(len(lotes_na_vitrine('ong', BOSQUE, 50)), 2)
 
     def test_pagina_usa_localizacao_do_cadastro_e_filtra_raio(self):
         self.client.cookies[ACCESS_COOKIE] = emitir_access(self.consumidor)
@@ -219,10 +222,10 @@ class CadastroLoteTests(TestCase):
     def _dados(self, **alteracoes):
         amanha = timezone.localdate() + timedelta(days=1)
         dados = {
-            'alimento': self.tomate.pk, 'categoria': '', 'descricao': 'Tomates maduros',
+            'alimento': self.tomate.pk, 'categoria': '', 'descricao': 'Tomates maduros', 'modalidade': 'doacao',
             'quantidade': '12', 'unidade': 'kg', 'peso_kg': '',
             'data_validade': amanha.isoformat(),
-            'retirada_inicio': f'{amanha.isoformat()}T09:00', 'retirada_fim': f'{amanha.isoformat()}T11:00',
+            'retirada_dias': amanha.isoformat(), 'retirada_hora_inicio': '09:00', 'retirada_hora_fim': '11:00',
         }
         dados.update(alteracoes)
         return dados
@@ -248,7 +251,7 @@ class CadastroLoteTests(TestCase):
     def test_lote_criado_aparece_na_vitrine(self):
         self.client.post(reverse('lotes:novo_lote'), self._dados())
 
-        self.assertIn('Tomates maduros', [lote.descricao for lote in lotes_na_vitrine()])
+        self.assertIn('Tomates maduros', [lote.descricao for lote in lotes_na_vitrine('ong')])
 
     def test_cria_lote_so_com_categoria(self):
         padaria = Categoria.objects.get(nome='Padaria')
@@ -264,7 +267,7 @@ class CadastroLoteTests(TestCase):
             'peso_kg': self._dados(unidade='un'),
             'quantidade': self._dados(quantidade='0'),
             'data_validade': self._dados(data_validade=ontem),
-            'retirada_fim': self._dados(retirada_fim=self._dados()['retirada_inicio']),
+            'retirada_hora_fim': self._dados(retirada_hora_fim='09:00'),
         }
         for campo, dados in casos.items():
             with self.subTest(campo=campo):

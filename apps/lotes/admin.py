@@ -17,8 +17,8 @@ class AlimentoAdmin(admin.ModelAdmin):
 
 @admin.register(Lote)
 class LoteAdmin(admin.ModelAdmin):
-    list_display = ['descricao', 'estabelecimento', 'categoria', 'peso_kg', 'data_validade', 'status']
-    list_filter = ['status', 'categoria']
+    list_display = ['descricao', 'estabelecimento', 'categoria', 'modalidade', 'preco', 'peso_kg', 'data_validade', 'status']
+    list_filter = ['status', 'modalidade', 'categoria']
     autocomplete_fields = ['alimento']
 
 

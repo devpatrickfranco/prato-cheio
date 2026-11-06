@@ -27,11 +27,11 @@ ESTABELECIMENTOS = {
     'bemtevi@demo.com': ('Mercado Bem Te Vi EIRELI', '33444555000163', 'mercado', 'Barão Geraldo', ('-22.824100', '-47.078900')),
 }
 
-# (doador, descrição, (cod_pof, cod_preparo), quantidade, unidade, peso_kg, dias até vencer, retirada)
+# (doador, descrição, (cod_pof, cod_preparo), preço (None = doação), quantidade, unidade, peso_kg, dias até vencer, retirada)
 LOTES = [
-    ('bemtevi@demo.com', 'Kit Hortifruti (Tomates e Cenouras)', (6705101, 99), '15', 'kg', '15', 0, (18, 19)),
-    ('padaria@demo.com', 'Pães Artesanais (Misto)', (8001501, 99), '5', 'kg', '5', 1, (8, 9)),
-    ('mercado@demo.com', 'Laticínios e Iogurtes', (7901201, 99), '20', 'un', '4', 1, (10, 12)),
+    ('bemtevi@demo.com', 'Kit Hortifruti (Tomates e Cenouras)', (6705101, 99), '25.00', '15', 'kg', '15', 0, (18, 19)),
+    ('padaria@demo.com', 'Pães Artesanais (Misto)', (8001501, 99), None, '5', 'kg', '5', 1, (8, 9)),
+    ('mercado@demo.com', 'Laticínios e Iogurtes', (7901201, 99), '18.90', '20', 'un', '4', 1, (10, 12)),
 ]
 
 
@@ -67,15 +67,18 @@ class Command(BaseCommand):
             )
 
         hoje = timezone.localdate()
-        for email, descricao, (cod_pof, cod_preparo), qtd, unidade, peso, dias, (inicio, fim) in LOTES:
+        for email, descricao, (cod_pof, cod_preparo), preco, qtd, unidade, peso, dias, (inicio, fim) in LOTES:
             alimento = Alimento.objects.get(cod_pof=cod_pof, cod_preparo=cod_preparo)
             dia = hoje + timedelta(days=dias)
             Lote.objects.update_or_create(
                 estabelecimento=estabelecimentos[email], descricao=descricao,
                 defaults={
                     'alimento': alimento, 'categoria': alimento.categoria,
+                    'modalidade': Lote.Modalidade.VENDA if preco else Lote.Modalidade.DOACAO,
+                    'preco': Decimal(preco) if preco else None,
                     'quantidade': Decimal(qtd), 'unidade': unidade, 'peso_kg': Decimal(peso),
                     'data_validade': dia, 'status': Lote.Status.DISPONIVEL,
+                    'retirada_dias': [dia.isoformat()],
                     'retirada_inicio': timezone.make_aware(datetime.combine(dia, time(inicio))),
                     'retirada_fim': timezone.make_aware(datetime.combine(dia, time(fim))),
                 },

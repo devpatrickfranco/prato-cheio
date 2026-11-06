@@ -1,15 +1,15 @@
-<aside class="sidebar">
+<aside class="sidebar" id="menu-lateral" aria-label="Menu">
     <div>
-        <div class="sidebar-brand"><span>🌿</span><span class="brand">Prato Cheio</span></div>
+        <div class="sidebar-brand"><span class="brand">Prato Cheio</span><button class="btn btn-secondary btn-pequeno menu-fechar" type="button" data-menu-fechar>Fechar</button></div>
         <nav class="nav">
-            <a class="{% if ativo == 'painel' %}active{% endif %}" href="{% url perfil.url_painel %}"><span aria-hidden="true">▦</span> Painel de Impacto</a>
+            <a class="{% if ativo == 'painel' %}active{% endif %}" href="{% url perfil.url_painel %}">Painel de Impacto</a>
             {% if perfil.doador %}
-                <a class="{% if ativo == 'meus_lotes' %}active{% endif %}" href="{% url 'lotes:meus_lotes' %}"><span aria-hidden="true">□</span> Meus Lotes</a>
-                <a class="{% if ativo == 'novo_lote' %}active{% endif %}" href="{% url 'lotes:novo_lote' %}"><span aria-hidden="true">＋</span> Anunciar Lote</a>
-                <a class="{% if ativo == 'estabelecimento' %}active{% endif %}" href="{% url 'usuarios:meu_estabelecimento' %}"><span aria-hidden="true">⌂</span> Meu Estabelecimento</a>
+                <a class="{% if ativo == 'meus_lotes' %}active{% endif %}" href="{% url 'lotes:meus_lotes' %}">Meus Lotes</a>
+                <a class="{% if ativo == 'novo_lote' %}active{% endif %}" href="{% url 'lotes:novo_lote' %}">Anunciar Lote</a>
+                <a class="{% if ativo == 'estabelecimento' %}active{% endif %}" href="{% url 'usuarios:meu_estabelecimento' %}">Meu Estabelecimento</a>
             {% else %}
-                <a class="{% if ativo == 'explorar' %}active{% endif %}" href="{% url 'lotes:explorar' %}"><span aria-hidden="true">▣</span> Explorar Lotes</a>
-                <a class="{% if ativo == 'reservas' %}active{% endif %}" href="{% url 'lotes:minhas_reservas' %}"><span aria-hidden="true">✓</span> Minhas Reservas</a>
+                <a class="{% if ativo == 'explorar' %}active{% endif %}" href="{% url 'lotes:explorar' %}">Explorar Lotes</a>
+                <a class="{% if ativo == 'reservas' %}active{% endif %}" href="{% url 'lotes:minhas_reservas' %}">Minhas Reservas</a>
             {% endif %}
         </nav>
     </div>
@@ -23,7 +23,7 @@
         </div>
         <form class="profile-actions" action="{% url 'jwt_auth:sair' %}" method="post">
             {% csrf_token %}
-            <button class="btn btn-danger" type="submit"><span aria-hidden="true">↪</span> Sair da conta</button>
+            <button class="btn btn-danger" type="submit">Sair da conta</button>
         </form>
     </div>
 </aside>

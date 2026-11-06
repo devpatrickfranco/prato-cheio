@@ -55,6 +55,8 @@ def reservar_lote(usuario, lote_id):
             lote = Lote.objects.select_for_update().filter(pk=lote_id).first()
             if lote is None:
                 raise RegraDeNegocio('Lote não encontrado.')
+            if lote.modalidade not in Lote.MODALIDADES_POR_PERFIL[usuario.tipo_perfil]:
+                raise RegraDeNegocio('Este lote é uma doação exclusiva para ONGs.')
             if lote.status != Lote.Status.DISPONIVEL:
                 raise RegraDeNegocio('Este lote não está mais disponível.')
             if lote.data_validade < timezone.localdate(agora) or lote.retirada_fim <= agora:

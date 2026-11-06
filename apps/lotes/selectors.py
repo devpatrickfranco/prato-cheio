@@ -12,26 +12,32 @@ def _normalizar(texto):
     return sem_acento.casefold().strip()
 
 
-def _vitrine():
+def _vitrine(tipo_perfil):
     agora = timezone.now()
     return (
         Lote.objects
-        .filter(status=Lote.Status.DISPONIVEL, data_validade__gte=timezone.localdate(agora), retirada_fim__gt=agora)
+        .filter(
+            status=Lote.Status.DISPONIVEL,
+            modalidade__in=Lote.MODALIDADES_POR_PERFIL[tipo_perfil],
+            data_validade__gte=timezone.localdate(agora),
+            retirada_fim__gt=agora,
+        )
         .select_related('estabelecimento', 'categoria', 'alimento')
         .order_by('data_validade', 'retirada_inicio')
     )
 
 
-def lotes_na_vitrine(origem=None, raio_km=None, busca='', categoria_id=None, bairro=''):
+def lotes_na_vitrine(tipo_perfil, origem=None, raio_km=None, busca='', categoria_id=None, bairro=''):
     """Lotes disponíveis e dentro da validade, do que vence primeiro ao último.
 
+    `tipo_perfil` define as modalidades visíveis: doações só aparecem para ONGs.
     Com `origem` (lat, lon), cada lote recebe `distancia_km` até o
     estabelecimento (None se ele não tiver coordenadas). Com `origem` e
     `raio_km`, ficam apenas os lotes a no máximo `raio_km` de distância.
     `busca` procura (sem diferenciar acentos/maiúsculas) na descrição, no alimento, na
     categoria e no estabelecimento; `categoria_id` e `bairro` restringem a lista.
     """
-    lotes = _vitrine()
+    lotes = _vitrine(tipo_perfil)
     if categoria_id:
         lotes = lotes.filter(categoria_id=categoria_id)
     if bairro:
@@ -62,9 +68,9 @@ def lotes_na_vitrine(origem=None, raio_km=None, busca='', categoria_id=None, bai
     return resultado
 
 
-def opcoes_de_filtro():
-    """Categorias e bairros que têm lotes na vitrine agora (para os selects de filtro)."""
-    lotes = _vitrine()
+def opcoes_de_filtro(tipo_perfil):
+    """Categorias e bairros que têm lotes na vitrine do perfil agora (para os selects de filtro)."""
+    lotes = _vitrine(tipo_perfil)
     categorias = Categoria.objects.filter(pk__in=lotes.values('categoria_id')).order_by('nome')
     bairros = sorted(set(lotes.values_list('estabelecimento__bairro', flat=True)))
     return categorias, bairros

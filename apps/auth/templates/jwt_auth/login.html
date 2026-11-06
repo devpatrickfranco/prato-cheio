@@ -4,7 +4,7 @@
 {% block descricao %}{{ perfil.descricao_login }}{% endblock %}
 
 {% block painel_acesso %}
-    <a class="back" href="{% url 'usuarios:index' %}"><span aria-hidden="true">←</span> Voltar aos perfis</a>
+    <a class="back" href="{% url 'usuarios:index' %}">Voltar aos perfis</a>
     <h2>Acesso {{ perfil.nome }}</h2>
     <p class="muted">Insira suas credenciais para continuar.</p>
     {% for mensagem in messages %}<p class="mensagem mensagem-{{ mensagem.tags }}" role="status">{{ mensagem }}</p>{% endfor %}

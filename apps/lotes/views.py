@@ -57,11 +57,12 @@ def explorar(request):
     busca = request.GET.get('q', '').strip()
     categoria_id = _inteiro(request.GET.get('categoria'))
     bairro = request.GET.get('bairro', '').strip()
-    categorias, bairros = opcoes_de_filtro()
+    tipo_perfil = request.user.tipo_perfil
+    categorias, bairros = opcoes_de_filtro(tipo_perfil)
     contexto = {
-        'perfil': PERFIS[request.user.tipo_perfil],
+        'perfil': PERFIS[tipo_perfil],
         'ativo': 'explorar',
-        'lotes': lotes_na_vitrine(origem, raio_km, busca=busca, categoria_id=categoria_id, bairro=bairro),
+        'lotes': lotes_na_vitrine(tipo_perfil, origem, raio_km, busca=busca, categoria_id=categoria_id, bairro=bairro),
         'origem': origem,
         'origem_do_navegador': do_navegador,
         'raio': request.GET.get('raio', '') if raio_km is not None else '',

@@ -25,9 +25,9 @@
             <tbody>
                 {% for reserva in reservas %}
                     <tr>
-                        <td>{{ reserva.lote.descricao }}<br><small class="muted">{{ reserva.lote.quantidade|floatformat:"-2" }}{{ reserva.lote.unidade }}</small></td>
+                        <td>{{ reserva.lote.descricao }}<br><small class="muted">{{ reserva.lote.quantidade|floatformat:"-2" }}{{ reserva.lote.unidade }} · {{ reserva.lote.modalidade_resumo }}</small></td>
                         <td>{{ reserva.lote.estabelecimento.razao_social }}<br><small class="muted">{{ reserva.lote.estabelecimento.logradouro }}, {{ reserva.lote.estabelecimento.numero }} · {{ reserva.lote.estabelecimento.bairro }}</small></td>
-                        <td>{{ reserva.lote.retirada_inicio|date:"d/m H:i" }} – {{ reserva.lote.retirada_fim|date:"H:i" }}</td>
+                        <td>{{ reserva.lote.retirada_resumo }}</td>
                         <td><span class="status status-{{ reserva.status }}">{{ reserva.get_status_display }}</span></td>
                         <td>
                             {% if reserva.status == 'ativa' %}

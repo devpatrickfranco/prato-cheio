@@ -11,12 +11,18 @@
         <form class="form" method="post" enctype="multipart/form-data" novalidate>
             {% csrf_token %}
             {% for campo in form %}
-                <div class="field">
-                    {{ campo.label_tag }}
-                    {{ campo }}
-                    {% if campo.help_text %}<small class="muted">{{ campo.help_text }}</small>{% endif %}
-                    {% for erro in campo.errors %}<small class="campo-erro" role="alert">{{ erro }}</small>{% endfor %}
-                </div>
+                {% if campo.name == 'retirada_dias' %}
+                    <fieldset>
+                        <legend>Retirada</legend>
+                        <div class="retirada-horas">
+                            {% include 'components/campo.html' with campo=form.retirada_hora_inicio %}
+                            {% include 'components/campo.html' with campo=form.retirada_hora_fim %}
+                        </div>
+                        {% include 'components/campo.html' %}
+                    </fieldset>
+                {% elif campo.name != 'retirada_hora_inicio' and campo.name != 'retirada_hora_fim' %}
+                    {% include 'components/campo.html' %}
+                {% endif %}
             {% endfor %}
             <div class="actions">
                 <a class="btn btn-secondary" href="{% url 'lotes:meus_lotes' %}">Cancelar</a>
@@ -26,4 +32,8 @@
     </article>
 {% endblock %}
 
-{% block scripts %}<script src="{% static 'lotes/js/autocomplete.js' %}"></script>{% endblock %}
+{% block scripts %}
+    <script src="{% static 'lotes/js/autocomplete.js' %}"></script>
+    <script src="{% static 'lotes/js/modalidade.js' %}"></script>
+    <script src="{% static 'lotes/js/calendario.js' %}"></script>
+{% endblock %}
