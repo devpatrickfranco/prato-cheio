@@ -1,3 +1,4 @@
+import json
 from datetime import timedelta
 
 from django.contrib.auth import get_user_model
@@ -160,3 +161,60 @@ class ApiJWTTests(BaseAuthTests):
         resposta = self.client.get(reverse('jwt_auth:usuario_atual'), HTTP_AUTHORIZATION=f'Bearer {access}')
 
         self.assertEqual(resposta.status_code, 401)
+
+
+class EmailSemDiferenciarMaiusculasTests(BaseAuthTests):
+    def test_login_web_aceita_email_digitado_com_maiusculas(self):
+        resposta = self.client.post(reverse('jwt_auth:login_ong'), {'email': '  ONG@Exemplo.COM ', 'senha': SENHA})
+
+        self.assertRedirects(resposta, reverse('metricas:dashboard_ong'))
+
+    def test_login_api_aceita_email_digitado_com_maiusculas(self):
+        resposta = self.client.post(
+            reverse('jwt_auth:token'), {'email': ' ONG@Exemplo.COM ', 'senha': SENHA}, content_type='application/json',
+        )
+
+        self.assertEqual(resposta.status_code, 200)
+
+    def test_manager_grava_o_email_em_minusculas(self):
+        usuario = get_user_model().objects.create_user(email='Joao@X.com', password=SENHA, nome='João')
+
+        self.assertEqual(usuario.email, 'joao@x.com')
+
+    def test_conta_salva_fora_do_manager_tambem_consegue_entrar(self):
+        # O formulário do admin salva o model direto, sem passar pelo manager.
+        Usuario = get_user_model()
+        usuario = Usuario(email=' Maria@X.com ', nome='Maria', tipo_perfil='ong', status_conta='aprovado')
+        usuario.set_password(SENHA)
+        usuario.save()
+
+        resposta = self.client.post(reverse('jwt_auth:login_ong'), {'email': 'Maria@X.com', 'senha': SENHA})
+
+        self.assertEqual(Usuario.objects.get(pk=usuario.pk).email, 'maria@x.com')
+        self.assertRedirects(resposta, reverse('metricas:dashboard_ong'))
+
+
+class CorpoJsonInvalidoTests(BaseAuthTests):
+    def _post(self, rota, corpo):
+        return self.client.post(reverse(f'jwt_auth:{rota}'), corpo, content_type='application/json')
+
+    def test_corpo_que_nao_e_objeto_retorna_400(self):
+        for rota in ('token', 'renovar_token', 'revogar_token'):
+            for corpo in ('[]', '"texto"', '123', 'null'):
+                with self.subTest(rota=rota, corpo=corpo):
+                    self.assertEqual(self._post(rota, corpo).status_code, 400)
+
+    def test_token_com_email_ou_senha_que_nao_sao_texto_retorna_400(self):
+        for corpo in ({'email': 123, 'senha': SENHA}, {'email': 'ong@exemplo.com', 'senha': ['x']}, {'email': {}, 'senha': None}):
+            with self.subTest(corpo=corpo):
+                self.assertEqual(self._post('token', json.dumps(corpo)).status_code, 400)
+
+    def test_renovar_com_refresh_que_nao_e_texto_retorna_401(self):
+        for refresh in (123, ['x'], {'a': 1}):
+            with self.subTest(refresh=refresh):
+                self.assertEqual(self._post('renovar_token', json.dumps({'refresh': refresh})).status_code, 401)
+
+    def test_revogar_com_refresh_que_nao_e_texto_retorna_400(self):
+        for refresh in (123, ['x'], {'a': 1}):
+            with self.subTest(refresh=refresh):
+                self.assertEqual(self._post('revogar_token', json.dumps({'refresh': refresh})).status_code, 400)

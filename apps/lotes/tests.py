@@ -5,9 +5,9 @@ from math import pi
 
 from django.contrib.auth import get_user_model
 from django.contrib.staticfiles import finders
-from django.core.management import call_command
+from django.core.management import CommandError, call_command
 from django.db import IntegrityError, transaction
-from django.test import SimpleTestCase, TestCase
+from django.test import SimpleTestCase, TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
@@ -223,7 +223,7 @@ class CadastroLoteTests(TestCase):
         amanha = timezone.localdate() + timedelta(days=1)
         dados = {
             'alimento': self.tomate.pk, 'categoria': '', 'descricao': 'Tomates maduros', 'modalidade': 'doacao',
-            'quantidade': '12', 'unidade': 'kg', 'peso_kg': '',
+            'quantidade': '12', 'unidade': 'kg', 'peso_kg': '12',
             'data_validade': amanha.isoformat(),
             'retirada_dias': amanha.isoformat(), 'retirada_hora_inicio': '09:00', 'retirada_hora_fim': '11:00',
         }
@@ -264,7 +264,7 @@ class CadastroLoteTests(TestCase):
         ontem = (timezone.localdate() - timedelta(days=1)).isoformat()
         casos = {
             'categoria': self._dados(alimento=''),
-            'peso_kg': self._dados(unidade='un'),
+            'peso_kg': self._dados(peso_kg=''),
             'quantidade': self._dados(quantidade='0'),
             'data_validade': self._dados(data_validade=ontem),
             'retirada_hora_fim': self._dados(retirada_hora_fim='09:00'),
@@ -316,10 +316,24 @@ class CadastroLoteTests(TestCase):
 
 class DadosDemoTests(TestCase):
     def test_comando_e_idempotente(self):
-        call_command('criar_dados_demo', stdout=StringIO())
-        call_command('criar_dados_demo', stdout=StringIO())
+        call_command('criar_dados_demo', forcar=True, stdout=StringIO())
+        call_command('criar_dados_demo', forcar=True, stdout=StringIO())
 
         self.assertEqual(Lote.objects.count(), 3)
+        self.assertEqual(get_user_model().objects.filter(email__endswith='@demo.com').count(), 5)
+
+
+    def test_comando_recusa_rodar_com_debug_desligado_sem_forcar(self):
+        # O executor de testes força DEBUG=False, o mesmo estado de produção.
+        with self.assertRaises(CommandError):
+            call_command('criar_dados_demo', stdout=StringIO())
+
+        self.assertFalse(get_user_model().objects.filter(email__endswith='@demo.com').exists())
+
+    @override_settings(DEBUG=True)
+    def test_comando_roda_com_debug_ligado(self):
+        call_command('criar_dados_demo', stdout=StringIO())
+
         self.assertEqual(get_user_model().objects.filter(email__endswith='@demo.com').count(), 5)
 
 

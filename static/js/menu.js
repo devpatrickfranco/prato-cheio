@@ -2,14 +2,14 @@
 (function () {
     'use strict';
 
-    var botao = document.querySelector('[data-menu-abrir]');
-    var sidebar = document.getElementById('menu-lateral');
-    var fundo = document.querySelector('[data-menu-fundo]');
-    var fechar = document.querySelector('[data-menu-fechar]');
-    var principal = document.querySelector('.main');
+    const botao = document.querySelector('[data-menu-abrir]');
+    const sidebar = document.getElementById('menu-lateral');
+    const fundo = document.querySelector('[data-menu-fundo]');
+    const fechar = document.querySelector('[data-menu-fechar]');
+    const principal = document.querySelector('.main');
     if (!botao || !sidebar || !fundo || !fechar || !principal) { return; }
 
-    var telaPequena = window.matchMedia('(max-width: 700px)');
+    const telaPequena = window.matchMedia('(max-width: 700px)');
 
     function aberto() {
         return sidebar.classList.contains('aberto');

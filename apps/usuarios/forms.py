@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
@@ -19,7 +20,11 @@ class CadastroUsuarioForm(forms.Form):
     telefone = forms.CharField(label='Telefone', max_length=20, required=False)
     documento = forms.CharField(label='Documento', max_length=18)
     cep = forms.CharField(label='CEP', max_length=9, required=False, help_text='Opcional. Usado para calcular a distância até os estabelecimentos.')
-    senha = forms.CharField(label='Senha', widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}), help_text='Mínimo de 8 caracteres.')
+    senha = forms.CharField(
+        label='Senha',
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'minlength': settings.SENHA_MIN_CARACTERES}),
+        help_text=f'Mínimo de {settings.SENHA_MIN_CARACTERES} caracteres.',
+    )
     confirmar_senha = forms.CharField(label='Confirmar senha', widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}))
 
     def __init__(self, *args, perfil, **kwargs):
@@ -28,10 +33,12 @@ class CadastroUsuarioForm(forms.Form):
         if perfil.slug == 'consumidor':
             self.fields['documento'].label = 'CPF'
             self.fields['documento'].widget.attrs['placeholder'] = '000.000.000-00'
+            self.fields['documento'].widget.attrs['data-documento'] = 'cpf'
         elif perfil.slug == 'ong':
             self.fields['nome'].label = 'Nome da instituição'
             self.fields['documento'].label = 'CNPJ'
             self.fields['documento'].widget.attrs['placeholder'] = '00.000.000/0000-00'
+            self.fields['documento'].widget.attrs['data-documento'] = 'cnpj'
         else:  # doador: o CNPJ fica no estabelecimento; o nome é o do responsável
             self.fields['nome'].label = 'Nome do responsável'
             del self.fields['documento'], self.fields['cep']

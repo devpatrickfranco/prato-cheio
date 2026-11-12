@@ -1,8 +1,9 @@
 from datetime import datetime, time, timedelta
 from decimal import Decimal
 
+from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.utils import timezone
 
@@ -38,8 +39,19 @@ LOTES = [
 class Command(BaseCommand):
     help = f'Cria contas e lotes de demonstração (senha de todas as contas: {SENHA_DEMO}).'
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--forcar', action='store_true',
+            help='Roda mesmo com DJANGO_DEBUG=False (cria contas aprovadas com senha pública: não use em produção).',
+        )
+
     @transaction.atomic
     def handle(self, *args, **options):
+        if not settings.DEBUG and not options['forcar']:
+            raise CommandError(
+                'Recusado: com DJANGO_DEBUG=False este comando criaria contas aprovadas com senha pública. '
+                'Use --forcar apenas se tiver certeza.'
+            )
         Usuario = get_user_model()
         usuarios = {}
         for email, nome, perfil, coordenadas in USUARIOS:

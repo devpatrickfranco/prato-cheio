@@ -3,20 +3,20 @@
 (function () {
     'use strict';
 
-    var LIMITE = 30;
+    let LIMITE = 30;
 
     function semAcento(texto) {
         return texto.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
     }
 
     document.querySelectorAll('select[data-autocomplete]').forEach(function (select) {
-        var opcoes = Array.prototype.slice.call(select.options)
+        let opcoes = Array.prototype.slice.call(select.options)
             .filter(function (opcao) { return opcao.value !== ''; })
             .map(function (opcao) {
                 return { valor: opcao.value, texto: opcao.text, grupo: opcao.parentNode.label || '', chave: semAcento(opcao.text) };
             });
 
-        var caixa = document.createElement('input');
+        let caixa = document.createElement('input');
         caixa.type = 'search';
         caixa.className = 'search';
         caixa.placeholder = 'Digite para buscar o alimento...';
@@ -27,20 +27,20 @@
         caixa.setAttribute('aria-autocomplete', 'list');
         caixa.setAttribute('aria-label', 'Buscar alimento');
 
-        var lista = document.createElement('ul');
+        let lista = document.createElement('ul');
         lista.id = select.id + '-lista';
         lista.className = 'autocomplete-lista';
         lista.setAttribute('role', 'listbox');
         lista.hidden = true;
 
-        var aviso = document.createElement('small');
+        let aviso = document.createElement('small');
         aviso.className = 'muted';
         aviso.setAttribute('aria-live', 'polite');
 
-        var atual = -1;
+        let atual = -1;
 
         function selecionadoTexto() {
-            var opcao = select.options[select.selectedIndex];
+            let opcao = select.options[select.selectedIndex];
             return opcao && opcao.value ? opcao.text : '';
         }
 
@@ -59,7 +59,7 @@
         }
 
         function destacar(indice) {
-            var itens = lista.children;
+            let itens = lista.children;
             Array.prototype.forEach.call(itens, function (item, i) {
                 item.setAttribute('aria-selected', i === indice ? 'true' : 'false');
             });
@@ -70,11 +70,11 @@
         }
 
         function mostrar() {
-            var termo = semAcento(caixa.value.trim());
-            var achados = opcoes.filter(function (opcao) { return !termo || opcao.chave.indexOf(termo) !== -1; });
+            let termo = semAcento(caixa.value.trim());
+            let achados = opcoes.filter(function (opcao) { return !termo || opcao.chave.indexOf(termo) !== -1; });
             lista.innerHTML = '';
             achados.slice(0, LIMITE).forEach(function (opcao) {
-                var item = document.createElement('li');
+                let item = document.createElement('li');
                 item.setAttribute('role', 'option');
                 item.setAttribute('aria-selected', 'false');
                 item.textContent = opcao.texto + (opcao.grupo ? ' — ' + opcao.grupo : '');
@@ -85,7 +85,7 @@
                 lista.appendChild(item);
             });
             if (!achados.length) {
-                var vazio = document.createElement('li');
+                let vazio = document.createElement('li');
                 vazio.className = 'autocomplete-vazio';
                 vazio.textContent = 'Nenhum alimento encontrado.';
                 lista.appendChild(vazio);
@@ -110,7 +110,7 @@
             caixa.value = selecionadoTexto();
         });
         caixa.addEventListener('keydown', function (evento) {
-            var itens = lista.querySelectorAll('[role="option"]');
+            let itens = lista.querySelectorAll('[role="option"]');
             if (evento.key === 'ArrowDown') {
                 evento.preventDefault();
                 if (lista.hidden) { mostrar(); }

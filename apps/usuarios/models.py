@@ -6,6 +6,11 @@ from django.db import models
 class UsuarioManager(BaseUserManager):
     use_in_migrations = True
 
+    @classmethod
+    def normalize_email(cls, email):
+        """Além do domínio (padrão do Django), baixa a caixa da parte local: o e-mail é o login."""
+        return super().normalize_email(email).lower()
+
     def _criar(self, email, password, **campos):
         if not email:
             raise ValueError('O e-mail é obrigatório.')
@@ -79,6 +84,13 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.nome
+
+    def save(self, *args, **kwargs):
+        # O login procura o e-mail em minúsculas. Contas salvas fora do manager (admin, shell)
+        # precisam seguir a mesma regra, senão ficam sem conseguir entrar.
+        if self.email:
+            self.email = self.email.strip().lower()
+        super().save(*args, **kwargs)
 
     @property
     def iniciais(self):

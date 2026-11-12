@@ -16,6 +16,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from django.core.exceptions import ImproperlyConfigured
+from django.utils.csp import CSP
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +40,8 @@ _CHAVE_DE_DESENVOLVIMENTO = 'django-insecure-ce6*-^wyot92cbo06rnd47j1(a4a!tyh^f@
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', _CHAVE_DE_DESENVOLVIMENTO)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = _booleano('DJANGO_DEBUG', True)
+# O padrão é False (seguro). Para rodar localmente, defina DJANGO_DEBUG=True (ver README e .env.example).
+DEBUG = _booleano('DJANGO_DEBUG', False)
 
 ALLOWED_HOSTS = _lista('DJANGO_ALLOWED_HOSTS')
 
@@ -49,6 +51,9 @@ if not DEBUG:
         raise ImproperlyConfigured('Defina DJANGO_SECRET_KEY com uma chave secreta própria quando DJANGO_DEBUG=False.')
     if not ALLOWED_HOSTS:
         raise ImproperlyConfigured('Defina DJANGO_ALLOWED_HOSTS quando DJANGO_DEBUG=False.')
+
+# Caminho do admin. Em produção, troque por um valor difícil de adivinhar (ex.: DJANGO_ADMIN_URL=gestao-x7k2/).
+ADMIN_URL = (os.environ.get('DJANGO_ADMIN_URL', '').strip().strip('/') or 'admin') + '/'
 
 # Origens https confiáveis para formulários (CSRF), separadas por vírgula. Ex.: https://prato.exemplo.com
 CSRF_TRUSTED_ORIGINS = _lista('DJANGO_CSRF_TRUSTED_ORIGINS')
@@ -73,6 +78,8 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # Cabeçalho Content-Security-Policy (configurado em SECURE_CSP_REPORT_ONLY, só com DEBUG=False).
+    'django.middleware.csp.ContentSecurityPolicyMiddleware',
     # Serve os arquivos estáticos também sob gunicorn (Docker).
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -131,12 +138,17 @@ else:
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
 
+# Tamanho mínimo da senha: fonte única do validador, do texto de ajuda do cadastro (apps/usuarios/forms.py),
+# da página de redefinição (apps/auth/urls.py) e da validação de cadastro.js (via atributo minlength).
+SENHA_MIN_CARACTERES = 8
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {'min_length': SENHA_MIN_CARACTERES},
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -170,6 +182,18 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # Destino do `collectstatic` em produção.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Raiz servida pelo WhiteNoise na URL `/` (ex.: robots.txt), sem rota nova.
+WHITENOISE_ROOT = BASE_DIR / 'raiz'
+
+STORAGES = {
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage'},
+}
+if not DEBUG:
+    # Manifest com nomes versionados e compressão. Exige `collectstatic` antes de servir
+    # (o Dockerfile/docker-compose já o executam na subida).
+    STORAGES['staticfiles'] = {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'}
+
 # Arquivos enviados pelos usuários (fotos dos lotes). Em produção, monte MEDIA_ROOT em um volume.
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -182,9 +206,27 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_REFERRER_POLICY = 'same-origin'
+    # HSTS é difícil de desfazer: começa em 1 hora e sobe (ex.: 31536000) depois de validado em produção.
+    SECURE_HSTS_SECONDS = int(os.environ.get('DJANGO_HSTS_SECONDS', '3600'))
+    # Redireciona http -> https. Atrás de proxy que termina TLS, DJANGO_PROXY_SSL=True é obrigatório,
+    # senão o Django nunca enxerga a requisição como segura e entra em laço de redirecionamento.
+    SECURE_SSL_REDIRECT = _booleano('DJANGO_SSL_REDIRECT', True)
     if _booleano('DJANGO_PROXY_SSL', False):
         SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-        SECURE_SSL_REDIRECT = True
+    # CSP em modo só-relatório: o navegador reporta violações no console sem bloquear nada.
+    # Depois de observar sem violações, mova a política para SECURE_CSP para passar a aplicá-la.
+    # 'unsafe-inline' em style-src cobre o atributo style="height: ..%" do gráfico do painel de métricas.
+    SECURE_CSP_REPORT_ONLY = {
+        'default-src': [CSP.SELF],
+        'script-src': [CSP.SELF],
+        'style-src': [CSP.SELF, CSP.UNSAFE_INLINE, 'https://fonts.googleapis.com'],
+        'font-src': [CSP.SELF, 'https://fonts.gstatic.com'],
+        'img-src': [CSP.SELF, 'data:'],
+        'connect-src': [CSP.SELF],
+        'frame-ancestors': [CSP.NONE],
+        'base-uri': [CSP.SELF],
+        'form-action': [CSP.SELF],
+    }
 
 
 # Autenticação JWT (apps.auth)
@@ -198,10 +240,14 @@ if not DEBUG and JWT_SECRET_KEY.startswith('troque-'):
     raise ImproperlyConfigured('Defina DJANGO_JWT_SECRET_KEY (ou remova-a para usar DJANGO_SECRET_KEY) quando DJANGO_DEBUG=False.')
 # Cabeçalho com o IP real do cliente atrás de proxy (ex.: HTTP_X_FORWARDED_FOR); usado no limite de tentativas de login.
 PROXY_IP_HEADER = os.environ.get('DJANGO_PROXY_IP_HEADER', '')
+# Quantos proxies confiáveis ficam na frente do app (ex.: 2 para CDN + nginx). Cada um acrescenta um valor
+# ao fim do cabeçalho; com o número errado, todos os clientes parecem ter o IP de um proxy.
+PROXIES_CONFIAVEIS = int(os.environ.get('DJANGO_PROXIES_CONFIAVEIS', '1'))
 
 
 # Geocodificação (latitude/longitude a partir do endereço/CEP) pelo Nominatim/OpenStreetMap.
-# Desligada por padrão nos testes para nunca acessar a rede.
+# Ligada por padrão; desligada nos testes (`manage.py test`) se DJANGO_GEOCODIFICACAO não estiver definida,
+# para nunca acessar a rede. Se a variável estiver definida, ela vale também nos testes.
 GEOCODIFICACAO_ATIVA = _booleano('DJANGO_GEOCODIFICACAO', 'test' not in sys.argv)
 GEOCODIFICACAO_USER_AGENT = os.environ.get('DJANGO_GEOCODIFICACAO_USER_AGENT', 'PratoCheio/1.0 (projeto academico)')
 
@@ -228,3 +274,26 @@ else:
 
 MAILERS = {'default': _mailer_padrao}
 DEFAULT_FROM_EMAIL = os.environ.get('DJANGO_DEFAULT_FROM_EMAIL', 'Prato Cheio <nao-responda@pratocheio.local>')
+
+
+# Logs no stdout (capturados pelo Docker / gunicorn).
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'padrao': {'format': '%(asctime)s %(levelname)s %(name)s: %(message)s'},
+    },
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler', 'stream': 'ext://sys.stdout', 'formatter': 'padrao'},
+    },
+    'root': {'handlers': ['console'], 'level': 'INFO'},
+    'loggers': {
+        # Substitui os handlers padrão do logger `django`. Sem isso, com DEBUG=True cada mensagem sairia
+        # duas vezes: uma pelo handler padrão do Django e outra pela raiz.
+        'django': {'handlers': ['console'], 'level': 'INFO', 'propagate': False},
+        'django.request': {'level': 'ERROR'},
+    },
+}
+if 'test' in sys.argv:
+    # Nos testes o console fica em silêncio (assertLogs continua funcionando: usa handler próprio).
+    LOGGING['handlers']['console']['level'] = 'CRITICAL'

@@ -3,8 +3,7 @@
 FROM python:3.13-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1
+    PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
@@ -28,6 +27,7 @@ USER app
 
 EXPOSE 8000
 
-# Migrations e collectstatic rodam na subida (ver docker-compose.yml): com o volume `.:/app`
-# a pasta staticfiles/ gerada no build ficaria oculta.
-CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"]
+# Migrations e collectstatic rodam na subida, não no build: o build não executa collectstatic, e com o
+# volume `.:/app` do docker-compose a pasta staticfiles/ gerada na imagem ficaria oculta de qualquer forma.
+# Este CMD é a única definição do comando de subida (o docker-compose.yml não o repete).
+CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 3 --threads 2 --timeout 30 --access-logfile -"]

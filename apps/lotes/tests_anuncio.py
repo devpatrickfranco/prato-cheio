@@ -150,13 +150,15 @@ class FormularioDeAnuncioTests(TestCase):
 
         self.assertIsNone(Lote.objects.get().preco)
 
-    def test_peso_e_obrigatorio_em_unidades(self):
-        self._assert_erro('peso_kg', unidade='un', peso_kg='')
+    def test_peso_e_obrigatorio_em_kg(self):
+        self._assert_erro('peso_kg', unidade='kg', quantidade='7.5', peso_kg='')
 
-    def test_peso_em_kg_usa_a_quantidade_quando_em_branco(self):
-        self._enviar(unidade='kg', quantidade='7.5', peso_kg='')
+    def test_peso_e_opcional_em_unidades(self):
+        self._enviar(unidade='un', peso_kg='')
 
-        self.assertEqual(Lote.objects.get().peso_kg, Decimal('7.5'))
+        lote = Lote.objects.get()
+        self.assertIsNone(lote.peso_kg)
+        self.assertEqual(lote.co2_evitado_kg, Decimal('0'))
 
     def test_peso_aceita_tres_casas_decimais(self):
         self._enviar(peso_kg='1.255')

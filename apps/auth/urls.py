@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.urls import path, reverse_lazy
 
@@ -23,6 +24,7 @@ urlpatterns = [
     ), name='senha_enviada'),
     path('senha/redefinir/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
         template_name='jwt_auth/senha_redefinir.html',
+        extra_context={'senha_min': settings.SENHA_MIN_CARACTERES},
         success_url=reverse_lazy('jwt_auth:senha_redefinida'),
     ), name='senha_redefinir'),
     path('senha/redefinida/', auth_views.PasswordResetCompleteView.as_view(

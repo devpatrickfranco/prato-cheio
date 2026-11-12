@@ -6,10 +6,11 @@
 
 {% block conteudo %}
     <a class="back" href="{% url perfil.url_painel %}">Voltar ao painel</a>
-    <section class="metrics">
+    <section class="metrics metrics-auto">
         <article class="metric"><p class="metric-label">Retiradas confirmadas</p><span class="metric-value">{{ total.retiradas }}</span></article>
         <article class="metric"><p class="metric-label">Alimentos salvos</p><span class="metric-value">{{ total.kg }}</span> <span class="metric-unit">kg</span></article>
         <article class="metric"><p class="metric-label">CO₂ evitado</p><span class="metric-value">{{ total.co2 }}</span> <span class="metric-unit">kg</span></article>
+        <article class="metric"><p class="metric-label">Refeições estimadas</p><span class="metric-value">{{ total.refeicoes }}</span></article>
     </section>
 
     <div class="section-head secao-relatorio"><h2>Totais por mês (últimos 12 meses)</h2></div>

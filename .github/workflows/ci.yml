@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Testes
+        env:
+          DJANGO_DEBUG: 'True'
+        run: python manage.py test
+
+      - name: Verificação de implantação (check --deploy)
+        env:
+          DJANGO_DEBUG: 'False'
+          # Valores fictícios, só para o settings aceitar o modo produção.
+          DJANGO_SECRET_KEY: ci-chave-ficticia-apenas-para-o-check-deploy-0123456789-abcdefghijklmnop
+          DJANGO_ALLOWED_HOSTS: prato.exemplo.com
+          DJANGO_EMAIL_HOST: smtp.exemplo.com
+        run: python manage.py check --deploy

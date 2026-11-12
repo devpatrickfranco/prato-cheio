@@ -12,7 +12,7 @@ from . import servicos
 TEXTOS = {
     'doador': {
         'titulo': 'Painel do Doador',
-        'descricao': 'Painel do doador com métricas de impacto ambiental, alimentos salvos e refeições geradas a partir dos lotes doados.',
+        'descricao': 'Painel do doador com métricas de impacto ambiental, alimentos salvos e refeições geradas a partir dos lotes doados e vendidos.',
         'sufixo_rotulo': '',
         'titulo_atividades': 'Últimas Retiradas',
         'vazio': 'Nenhuma retirada confirmada ainda. Quando um receptor retirar um lote, confirme em Meus Lotes.',
@@ -52,13 +52,17 @@ def _peso(peso_kg):
 
 def _atividade(perfil, retirada):
     lote = retirada.lote
-    quilos = _peso(retirada.kg)
+    # Lote em unidades pode não ter peso: mostra então a quantidade informada pelo doador.
+    if retirada.kg:
+        quantidade = f'{_peso(retirada.kg)} kg'
+    else:
+        quantidade = f'{_numero(lote.quantidade, 0 if lote.quantidade == round(lote.quantidade) else 2)} {lote.unidade}'
     if perfil == 'doador':
         titulo = 'Retirada confirmada'
-        texto = f'{retirada.reserva.usuario.nome} retirou {quilos} kg: {lote.descricao}.'
+        texto = f'{retirada.reserva.usuario.nome} retirou {quantidade}: {lote.descricao}.'
     else:
         titulo = 'Lote resgatado'
-        texto = f'Você resgatou {quilos} kg de {lote.descricao} em {lote.estabelecimento.razao_social}.'
+        texto = f'Você resgatou {quantidade} de {lote.descricao} em {lote.estabelecimento.razao_social}.'
     return {'titulo': titulo, 'texto': texto, 'quando': retirada.quando}
 
 
