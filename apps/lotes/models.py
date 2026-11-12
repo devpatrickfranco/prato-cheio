@@ -12,7 +12,7 @@ class Categoria(models.Model):
     """Classificação dos alimentos com o fator de conversão de CO₂.
 
     O fator é a mediana da pegada de carbono dos alimentos da categoria no
-    CSV de pegadas (ver migration 0002_catalogo); é usado quando o lote não
+    CSV de pegadas (ver migration 0003_catalogo); é usado quando o lote não
     indica um alimento específico. É uma tabela (e não choices) para que o
     fator possa ser ajustado sem alterar código.
     """

@@ -51,13 +51,13 @@
         {% for lote in lotes %}
             <article class="food-card">
                 {% if lote.imagem_enviada %}
-                    <img class="food-img" src="{{ lote.imagem_enviada }}" alt="{{ lote.descricao }}">
+                    <img class="food-img" src="{{ lote.imagem_enviada }}" alt="" loading="lazy" width="400" height="190">
                 {% elif lote.imagem_padrao %}
-                    <img class="food-img" src="{% static lote.imagem_padrao %}" alt="{{ lote.descricao }}">
+                    <img class="food-img" src="{% static lote.imagem_padrao %}" alt="" loading="lazy" width="400" height="190">
                 {% endif %}
                 <div class="food-body">
                     <div class="food-title">
-                        <h3>{{ lote.descricao }}</h3><span class="quantity">{{ lote.quantidade|floatformat:"-2" }}{{ lote.unidade }}</span>
+                        <h3>{{ lote.descricao }}</h3><span class="quantity">{{ lote.quantidade|floatformat:"-2" }} {{ lote.unidade }}</span>
                     </div>
                     <div class="food-meta">
                         <span class="modalidade">{{ lote.modalidade_resumo }}</span>

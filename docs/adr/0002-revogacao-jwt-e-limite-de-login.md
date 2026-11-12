@@ -17,7 +17,10 @@ refresh). Além disso, nada impedia tentativas ilimitadas de senha.
 - Cada senha errada grava uma `TentativaLogin`. Cinco falhas por e-mail ou vinte por IP em 15 minutos bloqueiam
   (HTTP 429) na página e na API. O cache em memória não serve: o estado se perde a cada worker/restart.
 - `limpar_auth` remove registros vencidos. `DJANGO_PROXY_IP_HEADER` informa o IP real atrás de proxy (por padrão
-  usa `REMOTE_ADDR`, para que `X-Forwarded-For` forjado não burle o limite).
+  usa `REMOTE_ADDR`). Cada proxy confiável acrescenta um valor ao fim do cabeçalho, então o IP do cliente é o
+  N-ésimo a partir do fim, onde N é `DJANGO_PROXIES_CONFIAVEIS` (padrão 1); os valores anteriores são
+  controlados pelo cliente. O valor só é aceito se for um IP válido; senão, cai para `REMOTE_ADDR`. Com N
+  errado, todos os clientes parecem ter o IP de um proxy e o limite por IP bloqueia o login de todos.
 
 ## Consequências
 - Logout efetivo imediatamente; reaproveitar cookies antigos não restaura a sessão.

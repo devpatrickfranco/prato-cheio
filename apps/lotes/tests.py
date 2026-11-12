@@ -5,9 +5,9 @@ from math import pi
 
 from django.contrib.auth import get_user_model
 from django.contrib.staticfiles import finders
-from django.core.management import call_command
+from django.core.management import CommandError, call_command
 from django.db import IntegrityError, transaction
-from django.test import SimpleTestCase, TestCase
+from django.test import SimpleTestCase, TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
@@ -316,10 +316,24 @@ class CadastroLoteTests(TestCase):
 
 class DadosDemoTests(TestCase):
     def test_comando_e_idempotente(self):
-        call_command('criar_dados_demo', stdout=StringIO())
-        call_command('criar_dados_demo', stdout=StringIO())
+        call_command('criar_dados_demo', forcar=True, stdout=StringIO())
+        call_command('criar_dados_demo', forcar=True, stdout=StringIO())
 
         self.assertEqual(Lote.objects.count(), 3)
+        self.assertEqual(get_user_model().objects.filter(email__endswith='@demo.com').count(), 5)
+
+
+    def test_comando_recusa_rodar_com_debug_desligado_sem_forcar(self):
+        # O executor de testes força DEBUG=False, o mesmo estado de produção.
+        with self.assertRaises(CommandError):
+            call_command('criar_dados_demo', stdout=StringIO())
+
+        self.assertFalse(get_user_model().objects.filter(email__endswith='@demo.com').exists())
+
+    @override_settings(DEBUG=True)
+    def test_comando_roda_com_debug_ligado(self):
+        call_command('criar_dados_demo', stdout=StringIO())
+
         self.assertEqual(get_user_model().objects.filter(email__endswith='@demo.com').count(), 5)
 
 

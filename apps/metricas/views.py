@@ -12,7 +12,7 @@ from . import servicos
 TEXTOS = {
     'doador': {
         'titulo': 'Painel do Doador',
-        'descricao': 'Painel do doador com métricas de impacto ambiental, alimentos salvos e refeições geradas a partir dos lotes doados.',
+        'descricao': 'Painel do doador com métricas de impacto ambiental, alimentos salvos e refeições geradas a partir dos lotes doados e vendidos.',
         'sufixo_rotulo': '',
         'titulo_atividades': 'Últimas Retiradas',
         'vazio': 'Nenhuma retirada confirmada ainda. Quando um receptor retirar um lote, confirme em Meus Lotes.',

@@ -1,3 +1,4 @@
+import re
 from decimal import Decimal
 from unittest import mock
 
@@ -158,6 +159,22 @@ class CadastroTests(TestCase):
         resposta = self.client.post(reverse('jwt_auth:login_consumidor'), {'email': 'nao@exemplo.com', 'senha': SENHA})
 
         self.assertContains(resposta, 'cadastro foi recusado')
+
+
+class AriaDescribedbyTests(TestCase):
+    def test_todo_id_citado_em_aria_describedby_existe_na_pagina(self):
+        resposta = self.client.post(reverse('usuarios:cadastro_consumidor'), _dados_base(documento='123'))
+        html = resposta.content.decode()
+
+        citados = set()
+        for valor in re.findall(r'aria-describedby="([^"]+)"', html):
+            citados.update(valor.split())
+
+        self.assertIn('id_senha_helptext', citados)
+        self.assertIn('id_documento_error', citados)
+        for ident in citados:
+            with self.subTest(ident=ident):
+                self.assertIn(f'id="{ident}"', html)
 
 
 class RotuloDosSelectsTests(TestCase):

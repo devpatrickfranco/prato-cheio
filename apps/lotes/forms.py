@@ -52,7 +52,7 @@ class LoteForm(forms.ModelForm):
             'categoria': 'Obrigatória se nenhum alimento for escolhido.',
             'modalidade': 'Doações aparecem só para ONGs. Vendas aparecem para ONGs e consumidores.',
             'peso_kg': 'Obrigatório para lotes em un. Para lotes em kg, deixe em branco para usar a quantidade.',
-            'foto': 'Opcional. JPG, PNG ou WebP de até 5 MB. Sem foto, a vitrine usa a imagem da categoria.',
+            'foto': f'Opcional. JPG, PNG ou WebP de até {settings.FOTO_LOTE_MAX_MB} MB. Sem foto, a vitrine usa a imagem da categoria.',
         }
         widgets = {
             'alimento': forms.Select(attrs={'data-autocomplete': 'true'}),

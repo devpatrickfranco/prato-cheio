@@ -36,7 +36,7 @@ def login(request, perfil):
     perfil = PERFIS[perfil]
     contexto = {'perfil': perfil}
     if request.method == 'POST':
-        email = request.POST.get('email', '').strip()
+        email = request.POST.get('email', '').strip().lower()
         usuario, erro, status = _autenticar(request, email, request.POST.get('senha', ''))
         if usuario is not None and usuario.tipo_perfil != perfil.slug:
             usuario, erro = None, f'Esta conta não é de {perfil.nome}. Use o acesso do seu perfil.'
@@ -63,13 +63,19 @@ def sair(request):
 # dispensa a verificação de CSRF.
 
 def _dados(request):
-    """Aceita corpo JSON ou formulário; devolve None se o JSON for inválido."""
+    """Aceita corpo JSON ou formulário; devolve None se o JSON for inválido ou não for um objeto."""
     if request.content_type == 'application/json':
         try:
-            return json.loads(request.body or b'{}')
+            dados = json.loads(request.body or b'{}')
         except ValueError:
             return None
+        return dados if isinstance(dados, dict) else None
     return request.POST
+
+
+def _texto(valor):
+    """Só aceita texto; qualquer outro tipo (número, lista, objeto) vira vazio, como um campo ausente."""
+    return valor if isinstance(valor, str) else ''
 
 
 @csrf_exempt
@@ -78,7 +84,7 @@ def obter_token(request):
     dados = _dados(request)
     if dados is None:
         return JsonResponse({'erro': 'JSON inválido.'}, status=400)
-    email, senha = dados.get('email'), dados.get('senha')
+    email, senha = _texto(dados.get('email')).strip().lower(), _texto(dados.get('senha'))
     if not email or not senha:
         return JsonResponse({'erro': 'Informe e-mail e senha.'}, status=400)
 
@@ -94,7 +100,7 @@ def renovar_token(request):
     dados = _dados(request)
     if dados is None:
         return JsonResponse({'erro': 'JSON inválido.'}, status=400)
-    usuario = usuario_do_token(dados.get('refresh') or '', REFRESH)
+    usuario = usuario_do_token(_texto(dados.get('refresh')), REFRESH)
     if usuario is None:
         return JsonResponse({'erro': 'Token de renovação inválido ou expirado.'}, status=401)
     return JsonResponse({'access': emitir_access(usuario)})
@@ -108,7 +114,7 @@ def revogar_token(request):
     if dados is None:
         return JsonResponse({'erro': 'JSON inválido.'}, status=400)
     _, _, access = request.headers.get('Authorization', '').partition(' ')
-    revogados = [revogar(token) for token in (dados.get('refresh') or '', access) if token]
+    revogados = [revogar(token) for token in (_texto(dados.get('refresh')), access) if token]
     if not any(revogados):
         return JsonResponse({'erro': 'Nenhum token válido para revogar.'}, status=400)
     return JsonResponse({'detalhe': 'Token(s) revogado(s).'})

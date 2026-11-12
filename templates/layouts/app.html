@@ -6,11 +6,14 @@ Layout das áreas logadas: sidebar do perfil + conteúdo principal.
 Contexto esperado: `perfil` (apps.usuarios.perfis.Perfil) e `ativo` (item do menu).
 {% endcomment %}
 
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+
 {% block corpo %}
+    <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
     <div class="app">
         {% include 'components/sidebar.html' %}
         <div class="menu-fundo" data-menu-fundo hidden></div>
-        <main class="main">
+        <main class="main" id="conteudo" tabindex="-1">
             <header class="topbar">
                 <div class="topbar-titulo">
                     <button class="menu-botao" type="button" data-menu-abrir aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-lateral"><span></span><span></span><span></span></button>
@@ -20,7 +23,7 @@ Contexto esperado: `perfil` (apps.usuarios.perfis.Perfil) e `ativo` (item do men
             </header>
             <div class="content">
                 {% for mensagem in messages %}
-                    <p class="mensagem mensagem-{{ mensagem.tags }}" role="status">{{ mensagem }}</p>
+                    <p class="mensagem mensagem-{{ mensagem.tags }}" role="{% if mensagem.level_tag == 'error' %}alert{% else %}status{% endif %}">{{ mensagem }}</p>
                 {% endfor %}
                 {% block conteudo %}{% endblock %}
             </div>

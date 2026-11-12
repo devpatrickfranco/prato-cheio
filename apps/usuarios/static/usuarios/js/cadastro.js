@@ -1,23 +1,23 @@
 // Validação em tempo real do cadastro (melhoria progressiva: o servidor valida de novo).
 // Eventos usados: input (contador e força da senha), blur (validação do campo),
-// change (revalida) e submit (validação final). O botão só habilita com tudo válido.
+// change (revalida) e submit (validação final). O botão fica sempre habilitado: ao enviar com erros, o
+// submit é barrado, os erros aparecem e o foco vai para o primeiro campo inválido.
 (function () {
     'use strict';
 
-    var form = document.querySelector('form[data-validar]');
+    let form = document.querySelector('form[data-validar]');
     if (!form) {
         return;
     }
 
-    var botao = form.querySelector('[data-enviar]');
-    var resumo = document.querySelector('[data-resumo-erros]');
-    var campos = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'))
+    let resumo = document.querySelector('[data-resumo-erros]');
+    let campos = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'))
         .filter(function (campo) { return campo.type !== 'hidden'; });
-    var tocados = {};
-    var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    let tocados = {};
+    let EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     function rotulo(campo) {
-        var label = form.querySelector('label[for="' + campo.id + '"]');
+        let label = form.querySelector('label[for="' + campo.id + '"]');
         return label ? label.textContent.trim() : campo.name;
     }
 
@@ -27,26 +27,38 @@
 
     // Devolve a mensagem de erro do campo, ou '' quando ele está válido.
     function validar(campo) {
-        var valor = campo.value.trim();
-        var nome = campo.name;
+        let valor = campo.value.trim();
+        let nome = campo.name;
         if (!valor) {
-            return campo.required || campo.hasAttribute('data-obrigatorio') ? 'Preencha este campo.' : '';
+            return campo.required ? 'Preencha este campo.' : '';
         }
         if (campo.type === 'email' && !EMAIL.test(valor)) {
             return 'Informe um e-mail válido, como nome@dominio.com.';
         }
-        if (nome === 'senha' && campo.value.length < 8) {
-            return 'A senha precisa de pelo menos 8 caracteres.';
+        if (nome === 'senha') {
+            // O mínimo vem do atributo minlength, renderizado a partir de settings.SENHA_MIN_CARACTERES.
+            let minimo = Number(campo.getAttribute('minlength'));
+            if (minimo && campo.value.length < minimo) {
+                return 'A senha precisa de pelo menos ' + minimo + ' caracteres.';
+            }
         }
         if (nome === 'confirmar_senha') {
-            var senha = form.elements.senha;
+            let senha = form.elements.senha;
             if (senha && campo.value !== senha.value) {
                 return 'As senhas não conferem.';
             }
         }
         if (nome === 'documento') {
-            var tamanho = digitos(valor).length;
-            if (tamanho !== 11 && tamanho !== 14) {
+            let tamanho = digitos(valor).length;
+            // data-documento ("cpf" ou "cnpj") vem do perfil da página; sem ele, aceita os dois.
+            let tipo = campo.getAttribute('data-documento');
+            if (tipo === 'cpf' && tamanho !== 11) {
+                return 'O CPF tem 11 dígitos.';
+            }
+            if (tipo === 'cnpj' && tamanho !== 14) {
+                return 'O CNPJ tem 14 dígitos.';
+            }
+            if (!tipo && tamanho !== 11 && tamanho !== 14) {
                 return 'Informe o CPF (11 dígitos) ou CNPJ (14 dígitos).';
             }
         }
@@ -63,7 +75,7 @@
     }
 
     function mostrarErro(campo, mensagem) {
-        var area = form.querySelector('[data-erro-de="' + campo.id + '"]');
+        let area = form.querySelector('[data-erro-de="' + campo.id + '"]');
         if (area) {
             area.textContent = mensagem;
         }
@@ -81,18 +93,18 @@
         if (!resumo) {
             return;
         }
-        var pendentes = campos.filter(function (campo) { return tocados[campo.id] && validar(campo); });
+        let pendentes = campos.filter(function (campo) { return tocados[campo.id] && validar(campo); });
         resumo.innerHTML = '';
         resumo.hidden = pendentes.length === 0;
         if (!pendentes.length) {
             return;
         }
-        var titulo = document.createElement('strong');
+        let titulo = document.createElement('strong');
         titulo.textContent = 'Corrija para continuar:';
-        var lista = document.createElement('ul');
+        let lista = document.createElement('ul');
         pendentes.forEach(function (campo) {
-            var item = document.createElement('li');
-            var link = document.createElement('a');
+            let item = document.createElement('li');
+            let link = document.createElement('a');
             link.href = '#' + campo.id;
             link.textContent = rotulo(campo) + ': ' + validar(campo);
             item.appendChild(link);
@@ -106,24 +118,17 @@
         return campos.every(function (campo) { return validar(campo) === ''; });
     }
 
-    function atualizarBotao() {
-        if (botao) {
-            botao.disabled = !formularioValido();
-        }
-    }
-
     function revalidar(campo) {
         mostrarErro(campo, tocados[campo.id] ? validar(campo) : '');
         atualizarResumo();
-        atualizarBotao();
     }
 
     // Contador de caracteres do nome.
-    var contador = form.querySelector('[data-contador-de]');
+    let contador = form.querySelector('[data-contador-de]');
     if (contador) {
-        var campoNome = document.getElementById(contador.getAttribute('data-contador-de'));
-        var atualizarContador = function () {
-            var limite = campoNome.maxLength;
+        let campoNome = document.getElementById(contador.getAttribute('data-contador-de'));
+        let atualizarContador = function () {
+            let limite = campoNome.maxLength;
             contador.textContent = campoNome.value.length + '/' + limite;
         };
         campoNome.addEventListener('input', atualizarContador);
@@ -131,9 +136,9 @@
     }
 
     // Indicador de força da senha: fraca, média ou forte.
-    var forca = form.querySelector('[data-forca-senha]');
+    let forca = form.querySelector('[data-forca-senha]');
     function pontuarSenha(senha) {
-        var pontos = 0;
+        let pontos = 0;
         if (senha.length >= 8) { pontos += 1; }
         if (senha.length >= 12) { pontos += 1; }
         if (/[a-z]/.test(senha) && /[A-Z]/.test(senha)) { pontos += 1; }
@@ -142,9 +147,9 @@
         return pontos;
     }
     function atualizarForca() {
-        var senha = form.elements.senha.value;
-        var nivel = !senha ? '' : pontuarSenha(senha) <= 2 ? 'fraca' : pontuarSenha(senha) <= 3 ? 'media' : 'forte';
-        var textos = { fraca: 'Senha fraca', media: 'Senha média', forte: 'Senha forte', '': '' };
+        let senha = form.elements.senha.value;
+        let nivel = !senha ? '' : pontuarSenha(senha) <= 2 ? 'fraca' : pontuarSenha(senha) <= 3 ? 'media' : 'forte';
+        let textos = { fraca: 'Senha fraca', media: 'Senha média', forte: 'Senha forte', '': '' };
         forca.setAttribute('data-nivel', nivel);
         forca.querySelector('.forca-texto').textContent = textos[nivel];
     }
@@ -173,13 +178,10 @@
         atualizarResumo();
         if (!formularioValido()) {
             evento.preventDefault();
-            var primeiro = campos.filter(function (campo) { return validar(campo); })[0];
+            let primeiro = campos.filter(function (campo) { return validar(campo); })[0];
             if (primeiro) {
                 primeiro.focus();
             }
         }
     });
-
-    // Estado inicial: o servidor pode devolver o formulário já preenchido.
-    atualizarBotao();
 })();

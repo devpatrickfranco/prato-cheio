@@ -6,7 +6,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{% block descricao %}{% endblock %}">
+    {% block robots %}{% endblock %}
     <title>{% block titulo %}{% endblock %} | Prato Cheio</title>
+    {% if request %}<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">{% endif %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Prato Cheio">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Prato Cheio">
+    <meta property="og:description" content="Conectamos alimentos próximos do vencimento a quem precisa, combatendo o desperdício no varejo alimentício.">
+    {% if request %}<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">{% endif %}
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Carlito:wght@400;700&display=swap">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 

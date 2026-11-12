@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+{% block titulo %}Página não encontrada{% endblock %}
+{% block descricao %}A página que você procurou não existe ou foi movida.{% endblock %}
+
+{% block corpo %}
+    <main class="page-center">
+        <section class="panel erro-pagina">
+            <span class="brand">Prato Cheio</span>
+            <h1>Página não encontrada</h1>
+            <p class="muted">O endereço que você abriu não existe ou foi movido. Confira o link ou volte para o início.</p>
+            <a class="btn btn-primary" href="{% url 'usuarios:index' %}">Ir para o início</a>
+        </section>
+    </main>
+{% endblock %}

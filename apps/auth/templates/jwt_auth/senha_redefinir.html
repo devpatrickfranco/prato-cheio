@@ -6,7 +6,7 @@
 {% block painel_acesso %}
     {% if validlink %}
         <h2>Criar nova senha</h2>
-        <p class="muted">Escolha uma senha com pelo menos 8 caracteres.</p>
+        <p class="muted">Escolha uma senha com pelo menos {{ senha_min }} caracteres.</p>
         {% for erro in form.new_password1.errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
         {% for erro in form.new_password2.errors %}<p class="form-erro" role="alert">{{ erro }}</p>{% endfor %}
         <form class="form" method="post" novalidate>

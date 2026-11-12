@@ -5,7 +5,7 @@ from io import StringIO
 from django.contrib.auth import get_user_model
 from django.core import mail
 from django.core.management import call_command
-from django.test import TestCase, override_settings
+from django.test import RequestFactory, TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
@@ -143,7 +143,7 @@ class LimiteDeTentativasTests(BaseSegurancaTests):
         for indice in range(limitador.MAX_FALHAS_IP):
             self.client.post(
                 reverse('jwt_auth:login_ong'), {'email': f'a{indice}@exemplo.com', 'senha': 'errada'},
-                headers={'X-Forwarded-For': '203.0.113.9, 10.0.0.1'},
+                headers={'X-Forwarded-For': '10.0.0.1, 203.0.113.9'},
             )
 
         mesmo = self.client.post(reverse('jwt_auth:login_ong'), {'email': 'ong@exemplo.com', 'senha': SENHA}, headers={'X-Forwarded-For': '203.0.113.9'})
@@ -151,6 +151,49 @@ class LimiteDeTentativasTests(BaseSegurancaTests):
 
         self.assertEqual(mesmo.status_code, 429)
         self.assertEqual(outro.status_code, 302)
+
+    @override_settings(PROXY_IP_HEADER='HTTP_X_FORWARDED_FOR')
+    def test_ip_e_o_ultimo_valor_do_cabecalho_e_nao_o_que_o_cliente_forja(self):
+        # O proxy acrescenta o IP real ao fim; o primeiro valor é controlado pelo cliente.
+        for indice in range(limitador.MAX_FALHAS_IP):
+            self.client.post(
+                reverse('jwt_auth:login_ong'), {'email': f'a{indice}@exemplo.com', 'senha': 'errada'},
+                headers={'X-Forwarded-For': f'1.1.1.{indice}, 203.0.113.9'},
+            )
+
+        resposta = self.client.post(
+            reverse('jwt_auth:login_ong'), {'email': 'ong@exemplo.com', 'senha': SENHA},
+            headers={'X-Forwarded-For': '9.9.9.9, 203.0.113.9'},
+        )
+
+        self.assertEqual(resposta.status_code, 429)
+
+    @override_settings(PROXY_IP_HEADER='HTTP_X_FORWARDED_FOR')
+    def test_cabecalho_com_ip_invalido_cai_para_o_remote_addr(self):
+        requisicao = RequestFactory().get('/', HTTP_X_FORWARDED_FOR='nao-e-um-ip', REMOTE_ADDR='198.51.100.1')
+
+        self.assertEqual(limitador.ip_do_cliente(requisicao), '198.51.100.1')
+
+    @override_settings(PROXY_IP_HEADER='HTTP_X_FORWARDED_FOR')
+    def test_ipv6_valido_no_cabecalho_e_aceito(self):
+        requisicao = RequestFactory().get('/', HTTP_X_FORWARDED_FOR='2001:db8::1', REMOTE_ADDR='198.51.100.1')
+
+        self.assertEqual(limitador.ip_do_cliente(requisicao), '2001:db8::1')
+
+    @override_settings(PROXY_IP_HEADER='HTTP_X_FORWARDED_FOR', PROXIES_CONFIAVEIS=2)
+    def test_com_dois_proxies_o_cliente_e_o_penultimo_valor(self):
+        # forjado pelo cliente, IP real (posto pelo 1º proxy), IP do 1º proxy (posto pelo 2º).
+        requisicao = RequestFactory().get(
+            '/', HTTP_X_FORWARDED_FOR='1.1.1.1, 203.0.113.9, 10.0.0.1', REMOTE_ADDR='10.0.0.2',
+        )
+
+        self.assertEqual(limitador.ip_do_cliente(requisicao), '203.0.113.9')
+
+    @override_settings(PROXY_IP_HEADER='HTTP_X_FORWARDED_FOR', PROXIES_CONFIAVEIS=2)
+    def test_cabecalho_mais_curto_que_os_proxies_cai_para_o_remote_addr(self):
+        requisicao = RequestFactory().get('/', HTTP_X_FORWARDED_FOR='203.0.113.9', REMOTE_ADDR='198.51.100.1')
+
+        self.assertEqual(limitador.ip_do_cliente(requisicao), '198.51.100.1')
 
     def test_api_tambem_e_limitada(self):
         corpo = {'email': 'ong@exemplo.com', 'senha': 'errada'}

@@ -19,7 +19,6 @@ def _emitir(usuario, tipo, validade):
     payload = {
         'sub': str(usuario.pk),
         'tipo': tipo,
-        'perfil': usuario.tipo_perfil,
         'jti': uuid4().hex,
         'iat': agora,
         'exp': agora + validade,
