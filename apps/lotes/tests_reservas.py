@@ -306,7 +306,7 @@ class FotoDoLoteTests(TestCase):
         dados = {
             'alimento': self.tomate.pk, 'categoria': '', 'descricao': 'Tomates com foto',
             'modalidade': 'venda', 'preco': '12.50', 'quantidade': '5',
-            'unidade': 'kg', 'peso_kg': '', 'data_validade': amanha.isoformat(),
+            'unidade': 'kg', 'peso_kg': '5', 'data_validade': amanha.isoformat(),
             'retirada_dias': amanha.isoformat(), 'retirada_hora_inicio': '09:00', 'retirada_hora_fim': '11:00',
         }
         dados.update(alteracoes)

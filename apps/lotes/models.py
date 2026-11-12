@@ -115,7 +115,7 @@ class Lote(models.Model):
     preco = models.DecimalField('preço', max_digits=8, decimal_places=2, null=True, blank=True)
     quantidade = models.DecimalField(max_digits=8, decimal_places=2)
     unidade = models.CharField(max_length=2, choices=Unidade.choices, default=Unidade.UN)
-    peso_kg = models.DecimalField('peso (kg)', max_digits=9, decimal_places=3)
+    peso_kg = models.DecimalField('peso (kg)', max_digits=9, decimal_places=3, null=True, blank=True)
     data_validade = models.DateField()
     retirada_dias = models.JSONField('dias de retirada', default=list)
     retirada_inicio = models.DateTimeField()
@@ -152,6 +152,9 @@ class Lote(models.Model):
 
     @property
     def co2_evitado_kg(self):
+        # Lotes em unidades podem não informar o peso: sem ele não há CO₂ a calcular.
+        if self.peso_kg is None:
+            return Decimal('0')
         return self.peso_kg * self.fator_co2_kg
 
     @property

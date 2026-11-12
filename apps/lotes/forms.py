@@ -51,7 +51,7 @@ class LoteForm(forms.ModelForm):
             'alimento': 'Opcional. Define a categoria e o cálculo de CO₂ evitado.',
             'categoria': 'Obrigatória se nenhum alimento for escolhido.',
             'modalidade': 'Doações aparecem só para ONGs. Vendas aparecem para ONGs e consumidores.',
-            'peso_kg': 'Obrigatório para lotes em un. Para lotes em kg, deixe em branco para usar a quantidade.',
+            'peso_kg': 'Obrigatório para lotes em kg. Para lotes em un é opcional, mas sem o peso o lote não entra no cálculo de CO₂ evitado.',
             'foto': f'Opcional. JPG, PNG ou WebP de até {settings.FOTO_LOTE_MAX_MB} MB. Sem foto, a vitrine usa a imagem da categoria.',
         }
         widgets = {
@@ -146,9 +146,7 @@ class LoteForm(forms.ModelForm):
 
         peso = dados.get('peso_kg')
         if peso is None:
-            if dados.get('unidade') == Lote.Unidade.KG and dados.get('quantidade'):
-                dados['peso_kg'] = dados['quantidade']
-            elif dados.get('unidade') == Lote.Unidade.UN and 'peso_kg' not in self.errors:
+            if dados.get('unidade') == Lote.Unidade.KG and 'peso_kg' not in self.errors:
                 self.add_error('peso_kg', 'Informe o peso total do lote em kg.')
         elif peso <= Decimal('0'):
             self.add_error('peso_kg', 'Informe um peso maior que zero.')

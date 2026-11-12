@@ -223,7 +223,7 @@ class CadastroLoteTests(TestCase):
         amanha = timezone.localdate() + timedelta(days=1)
         dados = {
             'alimento': self.tomate.pk, 'categoria': '', 'descricao': 'Tomates maduros', 'modalidade': 'doacao',
-            'quantidade': '12', 'unidade': 'kg', 'peso_kg': '',
+            'quantidade': '12', 'unidade': 'kg', 'peso_kg': '12',
             'data_validade': amanha.isoformat(),
             'retirada_dias': amanha.isoformat(), 'retirada_hora_inicio': '09:00', 'retirada_hora_fim': '11:00',
         }
@@ -264,7 +264,7 @@ class CadastroLoteTests(TestCase):
         ontem = (timezone.localdate() - timedelta(days=1)).isoformat()
         casos = {
             'categoria': self._dados(alimento=''),
-            'peso_kg': self._dados(unidade='un'),
+            'peso_kg': self._dados(peso_kg=''),
             'quantidade': self._dados(quantidade='0'),
             'data_validade': self._dados(data_validade=ontem),
             'retirada_hora_fim': self._dados(retirada_hora_fim='09:00'),

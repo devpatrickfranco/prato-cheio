@@ -61,7 +61,7 @@ def retiradas_do_usuario(usuario):
         .order_by('-data_confirmacao')
     )
     return [
-        Retirada(reserva=r, quando=r.data_confirmacao, kg=r.lote.peso_kg, co2_kg=r.lote.co2_evitado_kg)
+        Retirada(reserva=r, quando=r.data_confirmacao, kg=r.lote.peso_kg or Decimal('0'), co2_kg=r.lote.co2_evitado_kg)
         for r in reservas
     ]
 
