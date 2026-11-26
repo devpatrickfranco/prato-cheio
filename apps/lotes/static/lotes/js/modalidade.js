@@ -2,11 +2,11 @@
 (function () {
     'use strict';
 
-    var modalidade = document.getElementById('id_modalidade');
-    var preco = document.getElementById('id_preco');
+    const modalidade = document.getElementById('id_modalidade');
+    const preco = document.getElementById('id_preco');
     if (!modalidade || !preco) { return; }
 
-    var campo = preco.closest('.field');
+    const campo = preco.closest('.field');
 
     function atualizar() {
         campo.hidden = modalidade.value !== 'venda';

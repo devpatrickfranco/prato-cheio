@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /senha/
+Disallow: /dashboard/
+Disallow: /relatorio/
+Disallow: /explore/
+Disallow: /minhas-reservas/
+Disallow: /meus-lotes/
+Disallow: /meu-estabelecimento/

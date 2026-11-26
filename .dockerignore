@@ -4,5 +4,6 @@ __pycache__
 .git
 .gitignore
 .env
-db.sqlite3media
+db.sqlite3
+media
 staticfiles

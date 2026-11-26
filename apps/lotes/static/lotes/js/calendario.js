@@ -3,8 +3,8 @@
 (function () {
     'use strict';
 
-    var MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
-    var SEMANA = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+    const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    const SEMANA = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
     function doisDigitos(numero) {
         return String(numero).padStart(2, '0');
@@ -15,33 +15,33 @@
     }
 
     function curta(data) {
-        var partes = data.split('-');
+        const partes = data.split('-');
         return partes[2] + '/' + partes[1];
     }
 
     function criar(tag, classe, texto) {
-        var elemento = document.createElement(tag);
+        const elemento = document.createElement(tag);
         elemento.className = classe;
         if (texto) { elemento.textContent = texto; }
         return elemento;
     }
 
     document.querySelectorAll('input[data-calendario]').forEach(function (campo) {
-        var validade = campo.form.elements.data_validade;
-        var agora = new Date();
-        var hoje = iso(agora.getFullYear(), agora.getMonth(), agora.getDate());
-        var dias = campo.value.split(',').map(function (dia) { return dia.trim(); }).filter(Boolean).sort();
-        var inicial = (dias[0] || hoje).split('-');
-        var ano = Number(inicial[0]);
-        var mes = Number(inicial[1]) - 1;
+        const validade = campo.form.elements.data_validade;
+        const agora = new Date();
+        const hoje = iso(agora.getFullYear(), agora.getMonth(), agora.getDate());
+        let dias = campo.value.split(',').map(function (dia) { return dia.trim(); }).filter(Boolean).sort();
+        const inicial = (dias[0] || hoje).split('-');
+        let ano = Number(inicial[0]);
+        let mes = Number(inicial[1]) - 1;
 
-        var caixa = criar('div', 'calendario');
-        var topo = criar('div', 'calendario-topo');
-        var anterior = criar('button', 'btn btn-secondary btn-pequeno', 'Anterior');
-        var proximo = criar('button', 'btn btn-secondary btn-pequeno', 'Próximo');
-        var titulo = criar('strong', 'calendario-mes');
-        var grade = criar('div', 'calendario-grade');
-        var resumo = criar('small', 'muted');
+        const caixa = criar('div', 'calendario');
+        const topo = criar('div', 'calendario-topo');
+        const anterior = criar('button', 'btn btn-secondary btn-pequeno', 'Anterior');
+        const proximo = criar('button', 'btn btn-secondary btn-pequeno', 'Próximo');
+        const titulo = criar('strong', 'calendario-mes');
+        const grade = criar('div', 'calendario-grade');
+        const resumo = criar('small', 'muted');
 
         anterior.type = 'button';
         proximo.type = 'button';
@@ -70,7 +70,7 @@
         }
 
         function alternar(data, botao) {
-            var posicao = dias.indexOf(data);
+            const posicao = dias.indexOf(data);
             if (posicao === -1) {
                 dias.push(data);
             } else {
@@ -88,18 +88,18 @@
             SEMANA.forEach(function (nome) {
                 grade.appendChild(criar('span', 'calendario-semana', nome));
             });
-            for (var vazio = new Date(ano, mes, 1).getDay(); vazio > 0; vazio -= 1) {
+            for (let vazio = new Date(ano, mes, 1).getDay(); vazio > 0; vazio -= 1) {
                 grade.appendChild(document.createElement('span'));
             }
-            var total = new Date(ano, mes + 1, 0).getDate();
-            for (var dia = 1; dia <= total; dia += 1) {
+            const total = new Date(ano, mes + 1, 0).getDate();
+            for (let dia = 1; dia <= total; dia += 1) {
                 grade.appendChild(botaoDoDia(dia));
             }
         }
 
         function botaoDoDia(dia) {
-            var data = iso(ano, mes, dia);
-            var botao = criar('button', 'calendario-dia', String(dia));
+            const data = iso(ano, mes, dia);
+            const botao = criar('button', 'calendario-dia', String(dia));
             botao.type = 'button';
             botao.disabled = !disponivel(data);
             botao.setAttribute('aria-pressed', dias.indexOf(data) !== -1 ? 'true' : 'false');
@@ -109,7 +109,7 @@
         }
 
         function mudarMes(passo) {
-            var alvo = new Date(ano, mes + passo, 1);
+            const alvo = new Date(ano, mes + passo, 1);
             ano = alvo.getFullYear();
             mes = alvo.getMonth();
             desenhar();

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% comment %}Layout das telas de acesso: painel da marca à esquerda, formulário à direita.{% endcomment %}
+
+{% block corpo %}
+    <a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+    <main id="conteudo" tabindex="-1">
+        <div class="page-center">
+            <div class="login-shell">
+                <aside class="brand-panel">
+                    <div>
+                        <p class="brand-row"><span class="brand">Prato Cheio</span></p>
+                        <h1><span class="linha">Menos desperdício,</span> <span class="linha">mais impacto.</span></h1>
+                        <p>Conectamos alimentos de qualidade a quem precisa, combatendo o desperdício no varejo alimentício.</p>
+                    </div>
+                    <ul class="benefits">
+                        <li class="benefit">Redução de emissões de CO₂</li>
+                        <li class="benefit">Aproveitamento de alimentos seguros</li>
+                        <li class="benefit">Impacto social e ambiental direto</li>
+                    </ul>
+                </aside>
+                <section class="login-panel">
+                    {% block painel_acesso %}{% endblock %}
+                </section>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,6 +1,6 @@
-# PAGAFARRA
+# Prato Cheio
 
-Prato Cheio — plataforma Web em Django (Python 3.13), executada com Docker e PostgreSQL. Projeto do grupo PAGAFARRA (PUC-Campinas).
+Plataforma Web em Django (Python 3.13), executada com Docker e PostgreSQL. Projeto do grupo PAGAFARRA (PUC-Campinas).
 
 ## 🌱 Sobre o projeto (Prato Cheio)
 
@@ -71,13 +71,18 @@ Antes de começar, instale o **Docker** e o **Docker Compose** no seu sistema:
 ## 🚀 Como Executar
 
 ### 1. Iniciar a aplicação
+Crie o arquivo `.env` a partir do exemplo (ele é obrigatório para o `docker compose`; o `.env.example` já traz
+`DJANGO_DEBUG=True` para uso local):
+```bash
+cp .env.example .env        # Windows (PowerShell): Copy-Item .env.example .env
+```
 Construa as imagens e inicie os containers em segundo plano:
 ```bash
 docker compose up -d --build
 ```
 
 As migrations são aplicadas automaticamente ao subir o container. Para criar as contas e lotes de
-demonstração (senha `prato123demo`):
+demonstração (senha `prato123demo`; o comando só roda com `DJANGO_DEBUG=True` ou com a flag `--forcar`):
 ```bash
 docker compose exec web python manage.py criar_dados_demo
 ```
@@ -91,25 +96,33 @@ docker compose down
 ```
 
 ### Execução local (sem Docker)
-Requer Python 3.13.
+Requer Python 3.13. O padrão de `DJANGO_DEBUG` é `False` (modo produção), então localmente é preciso defini-lo
+como `True` no ambiente, senão o app recusa subir:
 ```bash
 python -m venv .venv
 # Windows: .venv\Scripts\activate   |   Linux/macOS: source .venv/bin/activate
 pip install -r requirements.txt
+# Linux/macOS: export DJANGO_DEBUG=True   |   PowerShell: $env:DJANGO_DEBUG = "True"   |   cmd: set DJANGO_DEBUG=True
 python manage.py migrate
 python manage.py runserver
 ```
+Os testes também exigem a variável: `DJANGO_DEBUG=True python manage.py test` (PowerShell: defina `$env:DJANGO_DEBUG`
+antes). O Django não lê o `.env` sozinho; exporte as variáveis no terminal.
 
 ### Variáveis de ambiente
 As configurações sensíveis são lidas do ambiente; veja `.env.example` (`DJANGO_SECRET_KEY`,
 `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`, `DJANGO_CSRF_TRUSTED_ORIGINS`, JWT, e-mail e geocodificação).
-Sem elas, o projeto usa padrões de desenvolvimento. Nunca versione o arquivo `.env`; o
-`docker-compose.yml` o carrega sozinho (`env_file`, opcional).
+Variáveis ausentes caem nos padrões de `configuracao/configuracoes.py`, que são os de **produção** (`DJANGO_DEBUG=False`).
+Nunca versione o arquivo `.env`; o `docker-compose.yml` o carrega sozinho (`env_file`, obrigatório).
 
 **Produção** (`DJANGO_DEBUG=False`): o app **recusa subir** sem `DJANGO_SECRET_KEY` próprio (e chave JWT, se
 definida, que não seja o exemplo) e sem `DJANGO_ALLOWED_HOSTS`. Nesse modo, cookies de sessão/CSRF/JWT só
 trafegam por HTTPS; atrás de um proxy HTTPS defina `DJANGO_PROXY_SSL=True` (confia em `X-Forwarded-Proto` e
-redireciona http→https) e `DJANGO_CSRF_TRUSTED_ORIGINS=https://seu.dominio`. Para enviar e-mails reais
+é **obrigatório** atrás de proxy que termina TLS, senão `DJANGO_SSL_REDIRECT` (padrão `True`) causa laço de
+redirecionamento) e `DJANGO_CSRF_TRUSTED_ORIGINS=https://seu.dominio`. `DJANGO_HSTS_SECONDS` (padrão 3600) deve subir
+só depois de validado o HTTPS. Troque `DJANGO_ADMIN_URL` (padrão `admin/`) por um caminho difícil de adivinhar. A
+política CSP está em modo **só-relatório** (`SECURE_CSP_REPORT_ONLY`): observe o console do navegador e, sem
+violações, mova-a para `SECURE_CSP`. `/robots.txt` é servido pelo WhiteNoise a partir de `raiz/`. Para enviar e-mails reais
 (recuperação de senha), defina `DJANGO_EMAIL_HOST` e relacionados; sem isso eles saem no console do servidor.
 O container executa `migrate` e `collectstatic` ao iniciar (o volume `.:/app` oculta os estáticos gerados no
 build). Fotos enviadas ficam em `media/` (monte um volume persistente).
@@ -140,31 +153,33 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 
 ```
 .
-├── config/                 # Configurações do Django (settings, urls raiz, wsgi/asgi)
+├── configuracao/           # Configurações do Django (configuracoes.py, urls raiz, wsgi/asgi)
 ├── apps/
 │   ├── usuarios/           # Models Usuario (AUTH_USER_MODEL, login por e-mail) e Estabelecimento; seleção de perfil e cadastro
 │   │   ├── perfis.py       # Perfis Doador, Consumidor e ONG (iguais a Usuario.tipo_perfil)
-│   │   ├── forms.py        # Cadastro (CPF/CNPJ, senha) e estabelecimento
-│   │   ├── validators.py   # Dígitos verificadores de CPF/CNPJ e CEP
+│   │   ├── formularios.py  # Cadastro (CPF/CNPJ, senha) e estabelecimento
+│   │   ├── validadores.py  # Dígitos verificadores de CPF/CNPJ e CEP
 │   │   ├── geocodificacao.py  # Endereço/CEP → latitude/longitude (Nominatim/OpenStreetMap)
 │   │   ├── static/usuarios/js/cadastro.js  # Validação em tempo real do cadastro
 │   │   └── templates/usuarios/
 │   ├── lotes/              # Models Categoria, Alimento, Lote e Reserva; vitrine, reservas e gestão do doador
 │   │   ├── catalogo.py     # Categorias e classificação dos alimentos do CSV
-│   │   ├── geo.py          # Fórmula de Haversine
-│   │   ├── selectors.py    # Consulta da vitrine (validade, busca, categoria, bairro, distância e raio)
-│   │   ├── services.py     # Reservar, cancelar, confirmar retirada, expirar reservas/lotes, excluir
+│   │   ├── geografia.py    # Fórmula de Haversine
+│   │   ├── consultas.py    # Consulta da vitrine (validade, busca, categoria, bairro, distância e raio)
+│   │   ├── servicos.py     # Reservar, cancelar, confirmar retirada, expirar reservas/lotes, excluir
 │   │   ├── dados/pegadas_alimentos_brasil.csv   # Fonte das pegadas de CO₂, água e ecológica
 │   │   └── management/commands/criar_dados_demo.py
 │   ├── metricas/           # Painéis e relatório de impacto, calculados das retiradas confirmadas (servicos.py)
 │   └── auth/               # Login com JWT (páginas e API), recuperação de senha, revogação de tokens e limite de tentativas. Label `jwt_auth`, pois `auth` é do django.contrib.auth
 ├── templates/              # Templates compartilhados entre apps
 │   ├── base.html           # Esqueleto HTML de todas as páginas
-│   ├── layouts/acesso.html # Layout das telas de acesso (seleção de perfil e login)
-│   ├── layouts/app.html    # Layout das áreas logadas (sidebar + conteúdo)
-│   └── components/         # Componentes reutilizáveis (sidebar)
-├── static/css/style.css    # Folha de estilo global
-├── docs/                   # Documentação acadêmica, screenshots do protótipo e decisões arquiteturais (docs/adr/)
+│   ├── estruturas/acesso.html # Layout das telas de acesso (seleção de perfil e login)
+│   ├── estruturas/area_logada.html # Layout das áreas logadas (sidebar + conteúdo)
+│   └── componentes/        # Componentes reutilizáveis (menu_lateral.html, campo.html: campo de formulário acessível)
+├── static/css/estilo.css    # Folha de estilo global
+├── static/js/menu.js       # Abre e fecha o menu lateral no celular
+├── raiz/robots.txt         # Servido em /robots.txt pelo WhiteNoise (WHITENOISE_ROOT)
+├── documentacao/           # Índice em documentacao/README.md: escopo, decisões arquiteturais (decisoes/), auditoria e protótipo
 ├── media/                  # Fotos enviadas pelos doadores (não versionado)
 ├── Dockerfile / docker-compose.yml
 ├── manage.py
@@ -173,17 +188,17 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 
 ### Arquitetura
 
-- Cada app declara as próprias rotas em `urls.py` (com `app_name`), e `config/urls.py` apenas as inclui.
+- Cada app declara as próprias rotas em `urls.py` (com `app_name`), e `configuracao/urls.py` apenas as inclui.
   Rotas são referenciadas por namespace: `jwt_auth:login_doador`, `metricas:dashboard_doador`, `lotes:explorar`.
 - Templates de um app ficam em `apps/<app>/templates/<app>/`; a pasta global `templates/` guarda só o que
   é compartilhado (layout base, layout das áreas logadas e componentes).
 - Recursos estáticos específicos de um app ficam em `apps/<app>/static/<app>/`; o CSS global em `static/`.
 - Dependências entre apps: `auth`, `lotes` e `metricas` usam `apps.usuarios.perfis`; `lotes` e `metricas`
-  usam `apps.auth.decorators`; `usuarios` não importa outros apps.
+  usam `apps.auth.decoradores`; `usuarios` não importa outros apps.
 - Banco de dados: PostgreSQL 17 no serviço `db` do Docker Compose (selecionado por `POSTGRES_HOST`); sem essa variável, SQLite local (`db.sqlite3`, não versionado). O schema vem exclusivamente dos models;
   `python manage.py migrate` cria as tabelas e carrega categorias e alimentos a partir do CSV.
 - Os painéis de impacto vêm de dados reais: só lotes `retirado` (reserva confirmada pelo doador) contam.
-- Decisões arquiteturais ficam registradas em `docs/adr/` (ADRs).
+- Decisões arquiteturais ficam registradas em `documentacao/decisoes/` (ADRs).
 
 ### Perfis
 
@@ -212,7 +227,7 @@ alimento (fator específico) ou só a categoria (fator da categoria): `Lote.co2_
 ### Distância (fórmula de Haversine)
 
 A vitrine mostra a distância em linha reta até cada estabelecimento, calculada por
-`lotes.geo.haversine_km` a partir da localização do navegador (botão "Usar minha localização") ou, na
+`lotes.geografia.haversine_km` a partir da localização do navegador (botão "Usar minha localização") ou, na
 falta dela, das coordenadas do cadastro do usuário. O campo "Até x km" (`?raio=`) mantém apenas os lotes
 dentro do raio. Estabelecimentos e usuários sem `latitude`/`longitude` aparecem sem distância.
 
@@ -223,7 +238,7 @@ o administrador aprova ou recusa no Django Admin (filtro "status conta" + açõe
 permite trocar a senha). O consumidor informa **CPF** e a ONG **CNPJ** (validados pelos dígitos verificadores);
 o doador informa os dados do estabelecimento (CNPJ, endereço), que ele mesmo edita depois em **Meu
 Estabelecimento**. O formulário valida em tempo real (contador de caracteres, força da senha, erros por campo,
-sumário de erros acessível e botão habilitado só com tudo válido) e o servidor repete todas as validações.
+sumário de erros acessível; ao enviar com erros, o formulário mostra o que falta e foca o primeiro campo inválido) e o servidor repete todas as validações.
 
 O endereço/CEP é convertido em latitude/longitude automaticamente (Nominatim/OpenStreetMap, no cadastro e na
 edição). Se o serviço não responder, o cadastro segue sem coordenadas e o usuário aparece sem distância na
@@ -264,7 +279,7 @@ atual com o anterior, o gráfico mostra o CO₂ dos últimos 6 meses e **Ver Rel
 
 ### Autenticação JWT (`apps/auth`)
 
-As páginas depois do login são protegidas por `apps.auth.decorators.login_obrigatorio`: o login emite
+As páginas depois do login são protegidas por `apps.auth.decoradores.login_obrigatorio`: o login emite
 access e refresh tokens em cookies HttpOnly; com o access expirado, o refresh gera outro automaticamente;
 sem token válido, o usuário volta à seleção de perfil; com perfil errado, vai para o próprio painel.
 
@@ -279,20 +294,22 @@ Para clientes externos há uma API JSON:
 | `/auth/token/revogar/` | POST | `{"refresh": "..."}` (+ `Authorization: Bearer <access>` opcional) | revoga os tokens informados |
 
 Só contas ativas com `status_conta = aprovado` acessam. Para proteger uma rota da API, use
-`apps.auth.decorators.jwt_obrigatorio`. A validade dos tokens é configurada em `.env.example`.
+`apps.auth.decoradores.jwt_obrigatorio`. A validade dos tokens é configurada em `.env.example`.
 
 **Revogação:** cada token tem um `jti`; sair da conta (página ou `/auth/token/revogar/`) grava o `jti` em
 `TokenRevogado`, e tokens revogados deixam de valer mesmo antes de expirar (`limpar_auth` apaga os vencidos).
 **Força bruta:** 5 senhas erradas por e-mail ou 20 por IP em 15 minutos bloqueiam novos logins (HTTP 429),
-na página e na API; um login correto zera as falhas do e-mail. Atrás de proxy, defina `DJANGO_PROXY_IP_HEADER`
-para o limite por IP enxergar o cliente real.
+na página e na API; um login correto zera as falhas do e-mail. Atrás de proxy confiável, defina `DJANGO_PROXY_IP_HEADER`
+para o limite por IP enxergar o cliente real. Com mais de um proxy na frente do app (por exemplo CDN + nginx), informe
+quantos são em `DJANGO_PROXIES_CONFIAVEIS` (padrão 1); com o número errado, todos os clientes parecem ter o mesmo IP.
 
 ---
 
 ## 📝 Pendências
 
-Estado em 03/11/2026. As PRs #7 (refatoração em apps), #8 (cadastro, reservas e painéis) e #9 (volta ao PostgreSQL)
-já foram integradas à `main`.
+Estado em 12/11/2026. As PRs #7 (refatoração em apps), #8 (cadastro, reservas e painéis), #9 (volta ao PostgreSQL),
+#10 (README e ADR 0001 para PostgreSQL) e #11 (melhorias em lotes, reservas, fontes e responsividade) já foram
+integradas à `main`.
 
 ### Funcionalidades
 
@@ -327,7 +344,7 @@ já foram integradas à `main`.
 - [x] "Esqueceu a senha?".
 - [x] Admin do `Usuario`: troca de senha.
 
-**Escopo original ainda não iniciado (fora do MVP):** compra e venda com desconto, gamificação para PJ e comissão por venda.
+**Escopo original ainda não iniciado (fora do MVP):** gamificação para PJ e comissão por venda. A venda de lotes (com preço, sem pagamento) já está implementada; ver "Reservas e retirada".
 
 ### Técnico
 
@@ -349,49 +366,10 @@ já foram integradas à `main`.
 | `fix` | Correção de bug |
 | `refactor` | Melhorar/reorganizar código |
 | `perf` | Melhorar performance |
-| `docs` | Documentação |
+| `docs` | Documentação (pasta `documentacao/`) |
 | `test` | Testes |
 | `style` | Formatação/estilo |
 | `build` | Dependências/build |
 | `ci` | CI/CD |
 | `chore` | Manutenção geral |
 | `revert` | Desfazer commit |
-
-# ESCOPO
-
-Apps
-   - Usuarios
-   -- PJ / compra e venda, gamificação
-   -- PF / compra
-   -- ONG / Recebe doação
-   -- Localização
-
-   - Produto
-   -- categorias
-   -- cadastra
-   -- vender
-   -- doar
-   -- comprar
-   -- Retirada
-   -- prazo de vencimento
-   -- garantia de qualidade / imagem codigo de barra e vencimento
-   -- imagens
-   -- descrição
-   -- quantidade
-   -- unidade
-
-   - Metricas
-   -- CO2
-   -- Kg não desperdiçados
-
-Modelo de negocio
-
-   - Comissão por venda
-
-Metologia
-
-   - SCRUM
-   - KANBAN
-
-
-   joao@demo.com, esperanca@demo.com e mercado@demo.com. A senha de todos é prato123demo.

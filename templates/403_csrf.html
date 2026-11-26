@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block robots %}<meta name="robots" content="noindex, nofollow">{% endblock %}
+{% block titulo %}Sessão expirada{% endblock %}
+{% block descricao %}Não foi possível confirmar o envio do formulário.{% endblock %}
+
+{% block corpo %}
+    <main class="page-center">
+        <section class="panel erro-pagina">
+            <span class="brand">Prato Cheio</span>
+            <h1>Não foi possível confirmar o envio</h1>
+            <p class="muted">Sua sessão do formulário expirou ou o navegador bloqueou os cookies. Volte para o início, recarregue a página e tente novamente.</p>
+            <a class="btn btn-primary" href="{% url 'usuarios:index' %}">Ir para o início</a>
+        </section>
+    </main>
+{% endblock %}

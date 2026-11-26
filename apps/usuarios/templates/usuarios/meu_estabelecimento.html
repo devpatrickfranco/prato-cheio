@@ -1,4 +1,4 @@
-{% extends 'layouts/app.html' %}
+{% extends 'estruturas/area_logada.html' %}
 
 {% block titulo %}Meu Estabelecimento{% endblock %}
 {% block descricao %}Cadastro e edição dos dados do estabelecimento doador, usados na vitrine e no cálculo de distância.{% endblock %}
@@ -15,7 +15,7 @@
             {% csrf_token %}
             <fieldset>
                 <legend>Dados do estabelecimento</legend>
-                {% for campo in form %}{% include 'components/campo.html' %}{% endfor %}
+                {% for campo in form %}{% include 'componentes/campo.html' %}{% endfor %}
             </fieldset>
             <div class="actions">
                 <button class="btn btn-primary" type="submit">Salvar dados</button>
