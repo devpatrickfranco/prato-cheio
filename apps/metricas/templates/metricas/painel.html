@@ -1,11 +1,11 @@
-{% extends 'layouts/app.html' %}
+{% extends 'estruturas/area_logada.html' %}
 
 {% block titulo %}{{ titulo }}{% endblock %}
 {% block descricao %}{{ descricao }}{% endblock %}
 {% block cabecalho %}Painel de Impacto{% endblock %}
 
 {% block conteudo %}
-    <section class="metrics">
+    <section class="metrics" aria-label="Indicadores de impacto">
         {% for metrica in metricas %}
             <article class="metric">
                 <div class="metric-head">
@@ -45,15 +45,15 @@
             <div class="panel-title">
                 <h2>{{ titulo_atividades }}</h2>
             </div>
-            <div class="activity">
+            <ul class="activity">
                 {% for atividade in atividades %}
-                    <div class="activity-item"><span class="dot"></span>
+                    <li class="activity-item"><span class="dot"></span>
                         <div><strong>{{ atividade.titulo }}</strong><span>{{ atividade.texto }}</span><span>Há {{ atividade.quando|timesince }}</span></div>
-                    </div>
+                    </li>
                 {% empty %}
-                    <p class="muted">{{ texto_sem_atividades }}</p>
+                    <li class="muted">{{ texto_sem_atividades }}</li>
                 {% endfor %}
-            </div>
+            </ul>
         </article>
     </section>
 {% endblock %}

@@ -182,3 +182,7 @@ Contas que já estavam gravadas com maiúsculas continuam precisando do ajuste m
 `save()` só normaliza a partir da próxima gravação.
 
 Segue sem verificação: o build do Docker, o `docker compose up` e a execução do workflow no GitHub.
+
+---
+
+**Nota de 26/11/2026:** os caminhos citados acima são os da época da auditoria. Depois dela, pastas e arquivos foram traduzidos para português (por exemplo `config/settings.py` → `configuracao/configuracoes.py`, `static/css/style.css` → `static/css/estilo.css`, `templates/layouts/app.html` → `templates/estruturas/area_logada.html`, `apps/lotes/services.py` → `servicos.py`). Para a estrutura atual, consulte o README.

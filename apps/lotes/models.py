@@ -82,9 +82,9 @@ class Lote(models.Model):
 
     # Imagens de vitrine para lotes sem foto, por categoria.
     IMAGENS_PADRAO = {
-        'Hortifruti': 'lotes/img/hortifruti.jpg',
-        'Padaria': 'lotes/img/paes.jpg',
-        'Laticínio': 'lotes/img/laticinios.jpg',
+        'Hortifruti': 'lotes/imagens/hortifruti.jpg',
+        'Padaria': 'lotes/imagens/paes.jpg',
+        'Laticínio': 'lotes/imagens/laticinios.jpg',
     }
 
     class Unidade(models.TextChoices):

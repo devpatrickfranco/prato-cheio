@@ -1,7 +1,7 @@
 """Regras de negócio do ciclo de vida de lotes e reservas.
 
 Fluxo: disponível → reservado (reserva ativa) → retirado (reserva confirmada) ou
-não retirado (doador registra) ou, sem retirada até o fim da janela, a reserva expira e o
+volta a disponível (ou expirado, se vencido) quando o doador registra a não retirada ou, sem retirada até o fim da janela, a reserva expira e o
 lote volta a disponível. Lotes disponíveis cuja validade passou viram expirados.
 """
 from django.db import IntegrityError, transaction
@@ -107,12 +107,17 @@ def confirmar_retirada(doador, lote_id):
 
 
 def registrar_nao_retirada(doador, lote_id):
-    """O doador registra que ninguém retirou o lote reservado."""
+    """O doador registra que ninguém retirou o lote reservado.
+
+    A reserva fica como `nao_retirada` e o lote volta à vitrine se ainda estiver na validade;
+    vencido, vira `expirado`.
+    """
     with transaction.atomic():
         reserva = _reserva_ativa_do_doador(doador, lote_id)
         reserva.status = Reserva.Status.NAO_RETIRADA
         reserva.save(update_fields=['status'])
-        reserva.lote.status = Lote.Status.NAO_RETIRADO
+        vencido = reserva.lote.data_validade < timezone.localdate()
+        reserva.lote.status = Lote.Status.EXPIRADO if vencido else Lote.Status.DISPONIVEL
         reserva.lote.save(update_fields=['status'])
     return reserva
 

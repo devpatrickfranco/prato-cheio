@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from apps.lotes import services
+from apps.lotes import servicos
 
 
 class Command(BaseCommand):
@@ -11,5 +11,5 @@ class Command(BaseCommand):
     )
 
     def handle(self, *args, **options):
-        reservas, lotes = services.atualizar_pendencias()
+        reservas, lotes = servicos.atualizar_pendencias()
         self.stdout.write(self.style.SUCCESS(f'{reservas} reserva(s) expirada(s); {lotes} lote(s) expirado(s).'))

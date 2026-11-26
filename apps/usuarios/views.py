@@ -3,9 +3,9 @@ from django.contrib.auth import get_user_model
 from django.db import transaction
 from django.shortcuts import redirect, render
 
-from apps.auth.decorators import login_obrigatorio
+from apps.auth.decoradores import login_obrigatorio
 
-from .forms import CadastroUsuarioForm, EstabelecimentoForm
+from .formularios import CadastroUsuarioForm, EstabelecimentoForm
 from .geocodificacao import geocodificar
 from .models import Estabelecimento
 from .perfis import PERFIS

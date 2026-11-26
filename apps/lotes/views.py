@@ -2,14 +2,14 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
-from apps.auth.decorators import login_obrigatorio
+from apps.auth.decoradores import login_obrigatorio
 from apps.usuarios.models import Estabelecimento
 from apps.usuarios.perfis import PERFIS
 
-from . import services
-from .forms import LoteForm
+from . import servicos
+from .formularios import LoteForm
 from .models import Lote, Reserva
-from .selectors import lotes_na_vitrine, opcoes_de_filtro
+from .consultas import lotes_na_vitrine, opcoes_de_filtro
 
 
 def _numero(valor, minimo, maximo):
@@ -40,7 +40,7 @@ def _executar(request, acao, *args, sucesso):
     """Roda uma regra de negócio e converte o resultado em mensagem para o usuário."""
     try:
         acao(*args)
-    except services.RegraDeNegocio as erro:
+    except servicos.RegraDeNegocio as erro:
         messages.error(request, str(erro))
         return False
     messages.success(request, sucesso)
@@ -51,7 +51,7 @@ def _executar(request, acao, *args, sucesso):
 
 @login_obrigatorio('consumidor', 'ong')
 def explorar(request):
-    services.atualizar_pendencias()
+    servicos.atualizar_pendencias()
     origem, do_navegador = _origem(request)
     raio_km = _numero(request.GET.get('raio'), 0.1, 20000)
     busca = request.GET.get('q', '').strip()
@@ -79,14 +79,14 @@ def explorar(request):
 @login_obrigatorio('consumidor', 'ong')
 @require_POST
 def reservar(request, pk):
-    if _executar(request, services.reservar_lote, request.user, pk, sucesso='Lote reservado! Retire dentro da janela informada.'):
+    if _executar(request, servicos.reservar_lote, request.user, pk, sucesso='Lote reservado! Retire dentro da janela informada.'):
         return redirect('lotes:minhas_reservas')
     return redirect('lotes:explorar')
 
 
 @login_obrigatorio('consumidor', 'ong')
 def minhas_reservas(request):
-    services.atualizar_pendencias()
+    servicos.atualizar_pendencias()
     reservas = (
         Reserva.objects
         .filter(usuario=request.user)
@@ -100,7 +100,7 @@ def minhas_reservas(request):
 @login_obrigatorio('consumidor', 'ong')
 @require_POST
 def cancelar_reserva(request, pk):
-    _executar(request, services.cancelar_reserva, request.user, pk, sucesso='Reserva cancelada. O lote voltou para a vitrine.')
+    _executar(request, servicos.cancelar_reserva, request.user, pk, sucesso='Reserva cancelada. O lote voltou para a vitrine.')
     return redirect('lotes:minhas_reservas')
 
 
@@ -108,7 +108,7 @@ def cancelar_reserva(request, pk):
 
 @login_obrigatorio('doador')
 def meus_lotes(request):
-    services.atualizar_pendencias()
+    servicos.atualizar_pendencias()
     lotes = (
         Lote.objects
         .filter(estabelecimento__usuario=request.user)
@@ -118,7 +118,7 @@ def meus_lotes(request):
     )
     for lote in lotes:
         lote.reserva_ativa = next((r for r in lote.reservas.all() if r.status == Reserva.Status.ATIVA), None)
-        lote.excluivel = lote.status not in services.STATUS_NAO_EXCLUIVEIS
+        lote.excluivel = lote.status not in servicos.STATUS_NAO_EXCLUIVEIS
     contexto = {'perfil': PERFIS['doador'], 'ativo': 'meus_lotes', 'lotes': lotes}
     return render(request, 'lotes/meus_lotes.html', contexto)
 
@@ -164,8 +164,8 @@ def editar_lote(request, pk):
 @require_POST
 def excluir_lote(request, pk):
     try:
-        descricao = services.excluir_lote(request.user, pk)
-    except services.RegraDeNegocio as erro:
+        descricao = servicos.excluir_lote(request.user, pk)
+    except servicos.RegraDeNegocio as erro:
         messages.error(request, str(erro))
     else:
         messages.success(request, f'Lote "{descricao}" excluído.')
@@ -178,9 +178,9 @@ def registrar_retirada(request, pk):
     """O doador marca o lote reservado como retirado ou não retirado (campo `resultado`)."""
     resultado = request.POST.get('resultado')
     if resultado == 'retirado':
-        _executar(request, services.confirmar_retirada, request.user, pk, sucesso='Retirada confirmada. O lote já conta no seu impacto.')
+        _executar(request, servicos.confirmar_retirada, request.user, pk, sucesso='Retirada confirmada. O lote já conta no seu impacto.')
     elif resultado == 'nao_retirado':
-        _executar(request, services.registrar_nao_retirada, request.user, pk, sucesso='Registrado como não retirado.')
+        _executar(request, servicos.registrar_nao_retirada, request.user, pk, sucesso='Registrado como não retirado.')
     else:
         messages.error(request, 'Ação inválida.')
     return redirect('lotes:meus_lotes')

@@ -4,7 +4,7 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from django.utils.formats import number_format
 
-from apps.auth.decorators import login_obrigatorio
+from apps.auth.decoradores import login_obrigatorio
 from apps.usuarios.perfis import PERFIS, url_painel_do_usuario
 
 from . import servicos

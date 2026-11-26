@@ -1,4 +1,4 @@
-{% extends 'layouts/app.html' %}
+{% extends 'estruturas/area_logada.html' %}
 {% load static %}
 
 {% block titulo %}Lotes Disponíveis{% endblock %}
@@ -47,11 +47,11 @@
     {% if not origem %}
         <p class="muted">Use sua localização ou cadastre seu endereço para ver a distância até cada estabelecimento.</p>
     {% endif %}
-    <section class="cards">
+    <ul class="cards">
         {% for lote in lotes %}
-            <article class="food-card">
+            <li class="food-card-item"><article class="food-card">
                 {% if lote.imagem_enviada %}
-                    <img class="food-img" src="{{ lote.imagem_enviada }}" alt="" loading="lazy" width="400" height="190">
+                    <img class="food-img" src="{{ lote.imagem_enviada }}" alt="Foto de {{ lote.descricao }}" loading="lazy" width="400" height="190">
                 {% elif lote.imagem_padrao %}
                     <img class="food-img" src="{% static lote.imagem_padrao %}" alt="" loading="lazy" width="400" height="190">
                 {% endif %}
@@ -71,11 +71,11 @@
                         <button class="btn btn-primary" type="submit">Reservar Lote</button>
                     </form>
                 </div>
-            </article>
+            </article></li>
         {% empty %}
-            <p class="muted">Nenhum lote disponível{% if filtrando %} para os filtros escolhidos{% endif %} no momento.</p>
+            <li class="muted">Nenhum lote disponível{% if filtrando %} para os filtros escolhidos{% endif %} no momento.</li>
         {% endfor %}
-    </section>
+    </ul>
 {% endblock %}
 
 {% block scripts %}

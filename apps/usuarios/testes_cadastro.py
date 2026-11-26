@@ -10,9 +10,9 @@ from apps.auth.cookies import ACCESS_COOKIE
 from apps.auth.tokens import emitir_access
 
 from . import geocodificacao
-from .forms import EstabelecimentoForm
+from .formularios import EstabelecimentoForm
 from .models import Estabelecimento
-from .validators import cnpj_valido, cpf_valido
+from .validadores import cnpj_valido, cpf_valido
 
 SENHA = 'Senha-forte-123'
 CNPJ_VALIDO = '11222333000181'

@@ -1,12 +1,12 @@
-{% extends 'layouts/app.html' %}
+{% extends 'estruturas/area_logada.html' %}
 
-{% block titulo %}{{ titulo }}{% endblock %}
+{% block titulo %}{{ titulo }} – {{ perfil.nome }}{% endblock %}
 {% block descricao %}{{ descricao }}{% endblock %}
 {% block cabecalho %}{{ titulo }}{% endblock %}
 
 {% block conteudo %}
     <a class="back" href="{% url perfil.url_painel %}">Voltar ao painel</a>
-    <section class="metrics metrics-auto">
+    <section class="metrics metrics-auto" aria-label="Totais de impacto">
         <article class="metric"><p class="metric-label">Retiradas confirmadas</p><span class="metric-value">{{ total.retiradas }}</span></article>
         <article class="metric"><p class="metric-label">Alimentos salvos</p><span class="metric-value">{{ total.kg }}</span> <span class="metric-unit">kg</span></article>
         <article class="metric"><p class="metric-label">CO₂ evitado</p><span class="metric-value">{{ total.co2 }}</span> <span class="metric-unit">kg</span></article>

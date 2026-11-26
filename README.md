@@ -112,7 +112,7 @@ antes). O Django não lê o `.env` sozinho; exporte as variáveis no terminal.
 ### Variáveis de ambiente
 As configurações sensíveis são lidas do ambiente; veja `.env.example` (`DJANGO_SECRET_KEY`,
 `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`, `DJANGO_CSRF_TRUSTED_ORIGINS`, JWT, e-mail e geocodificação).
-Variáveis ausentes caem nos padrões de `config/settings.py`, que são os de **produção** (`DJANGO_DEBUG=False`).
+Variáveis ausentes caem nos padrões de `configuracao/configuracoes.py`, que são os de **produção** (`DJANGO_DEBUG=False`).
 Nunca versione o arquivo `.env`; o `docker-compose.yml` o carrega sozinho (`env_file`, obrigatório).
 
 **Produção** (`DJANGO_DEBUG=False`): o app **recusa subir** sem `DJANGO_SECRET_KEY` próprio (e chave JWT, se
@@ -153,33 +153,33 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 
 ```
 .
-├── config/                 # Configurações do Django (settings, urls raiz, wsgi/asgi)
+├── configuracao/           # Configurações do Django (configuracoes.py, urls raiz, wsgi/asgi)
 ├── apps/
 │   ├── usuarios/           # Models Usuario (AUTH_USER_MODEL, login por e-mail) e Estabelecimento; seleção de perfil e cadastro
 │   │   ├── perfis.py       # Perfis Doador, Consumidor e ONG (iguais a Usuario.tipo_perfil)
-│   │   ├── forms.py        # Cadastro (CPF/CNPJ, senha) e estabelecimento
-│   │   ├── validators.py   # Dígitos verificadores de CPF/CNPJ e CEP
+│   │   ├── formularios.py  # Cadastro (CPF/CNPJ, senha) e estabelecimento
+│   │   ├── validadores.py  # Dígitos verificadores de CPF/CNPJ e CEP
 │   │   ├── geocodificacao.py  # Endereço/CEP → latitude/longitude (Nominatim/OpenStreetMap)
 │   │   ├── static/usuarios/js/cadastro.js  # Validação em tempo real do cadastro
 │   │   └── templates/usuarios/
 │   ├── lotes/              # Models Categoria, Alimento, Lote e Reserva; vitrine, reservas e gestão do doador
 │   │   ├── catalogo.py     # Categorias e classificação dos alimentos do CSV
-│   │   ├── geo.py          # Fórmula de Haversine
-│   │   ├── selectors.py    # Consulta da vitrine (validade, busca, categoria, bairro, distância e raio)
-│   │   ├── services.py     # Reservar, cancelar, confirmar retirada, expirar reservas/lotes, excluir
+│   │   ├── geografia.py    # Fórmula de Haversine
+│   │   ├── consultas.py    # Consulta da vitrine (validade, busca, categoria, bairro, distância e raio)
+│   │   ├── servicos.py     # Reservar, cancelar, confirmar retirada, expirar reservas/lotes, excluir
 │   │   ├── dados/pegadas_alimentos_brasil.csv   # Fonte das pegadas de CO₂, água e ecológica
 │   │   └── management/commands/criar_dados_demo.py
 │   ├── metricas/           # Painéis e relatório de impacto, calculados das retiradas confirmadas (servicos.py)
 │   └── auth/               # Login com JWT (páginas e API), recuperação de senha, revogação de tokens e limite de tentativas. Label `jwt_auth`, pois `auth` é do django.contrib.auth
 ├── templates/              # Templates compartilhados entre apps
 │   ├── base.html           # Esqueleto HTML de todas as páginas
-│   ├── layouts/acesso.html # Layout das telas de acesso (seleção de perfil e login)
-│   ├── layouts/app.html    # Layout das áreas logadas (sidebar + conteúdo)
-│   └── components/         # Componentes reutilizáveis (sidebar, campo.html: campo de formulário acessível)
-├── static/css/style.css    # Folha de estilo global
+│   ├── estruturas/acesso.html # Layout das telas de acesso (seleção de perfil e login)
+│   ├── estruturas/area_logada.html # Layout das áreas logadas (sidebar + conteúdo)
+│   └── componentes/        # Componentes reutilizáveis (menu_lateral.html, campo.html: campo de formulário acessível)
+├── static/css/estilo.css    # Folha de estilo global
 ├── static/js/menu.js       # Abre e fecha o menu lateral no celular
 ├── raiz/robots.txt         # Servido em /robots.txt pelo WhiteNoise (WHITENOISE_ROOT)
-├── docs/                   # Documentação acadêmica, screenshots do protótipo e decisões arquiteturais (docs/adr/)
+├── documentacao/           # Índice em documentacao/README.md: escopo, decisões arquiteturais (decisoes/), auditoria e protótipo
 ├── media/                  # Fotos enviadas pelos doadores (não versionado)
 ├── Dockerfile / docker-compose.yml
 ├── manage.py
@@ -188,17 +188,17 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 
 ### Arquitetura
 
-- Cada app declara as próprias rotas em `urls.py` (com `app_name`), e `config/urls.py` apenas as inclui.
+- Cada app declara as próprias rotas em `urls.py` (com `app_name`), e `configuracao/urls.py` apenas as inclui.
   Rotas são referenciadas por namespace: `jwt_auth:login_doador`, `metricas:dashboard_doador`, `lotes:explorar`.
 - Templates de um app ficam em `apps/<app>/templates/<app>/`; a pasta global `templates/` guarda só o que
   é compartilhado (layout base, layout das áreas logadas e componentes).
 - Recursos estáticos específicos de um app ficam em `apps/<app>/static/<app>/`; o CSS global em `static/`.
 - Dependências entre apps: `auth`, `lotes` e `metricas` usam `apps.usuarios.perfis`; `lotes` e `metricas`
-  usam `apps.auth.decorators`; `usuarios` não importa outros apps.
+  usam `apps.auth.decoradores`; `usuarios` não importa outros apps.
 - Banco de dados: PostgreSQL 17 no serviço `db` do Docker Compose (selecionado por `POSTGRES_HOST`); sem essa variável, SQLite local (`db.sqlite3`, não versionado). O schema vem exclusivamente dos models;
   `python manage.py migrate` cria as tabelas e carrega categorias e alimentos a partir do CSV.
 - Os painéis de impacto vêm de dados reais: só lotes `retirado` (reserva confirmada pelo doador) contam.
-- Decisões arquiteturais ficam registradas em `docs/adr/` (ADRs).
+- Decisões arquiteturais ficam registradas em `documentacao/decisoes/` (ADRs).
 
 ### Perfis
 
@@ -227,7 +227,7 @@ alimento (fator específico) ou só a categoria (fator da categoria): `Lote.co2_
 ### Distância (fórmula de Haversine)
 
 A vitrine mostra a distância em linha reta até cada estabelecimento, calculada por
-`lotes.geo.haversine_km` a partir da localização do navegador (botão "Usar minha localização") ou, na
+`lotes.geografia.haversine_km` a partir da localização do navegador (botão "Usar minha localização") ou, na
 falta dela, das coordenadas do cadastro do usuário. O campo "Até x km" (`?raio=`) mantém apenas os lotes
 dentro do raio. Estabelecimentos e usuários sem `latitude`/`longitude` aparecem sem distância.
 
@@ -279,7 +279,7 @@ atual com o anterior, o gráfico mostra o CO₂ dos últimos 6 meses e **Ver Rel
 
 ### Autenticação JWT (`apps/auth`)
 
-As páginas depois do login são protegidas por `apps.auth.decorators.login_obrigatorio`: o login emite
+As páginas depois do login são protegidas por `apps.auth.decoradores.login_obrigatorio`: o login emite
 access e refresh tokens em cookies HttpOnly; com o access expirado, o refresh gera outro automaticamente;
 sem token válido, o usuário volta à seleção de perfil; com perfil errado, vai para o próprio painel.
 
@@ -294,7 +294,7 @@ Para clientes externos há uma API JSON:
 | `/auth/token/revogar/` | POST | `{"refresh": "..."}` (+ `Authorization: Bearer <access>` opcional) | revoga os tokens informados |
 
 Só contas ativas com `status_conta = aprovado` acessam. Para proteger uma rota da API, use
-`apps.auth.decorators.jwt_obrigatorio`. A validade dos tokens é configurada em `.env.example`.
+`apps.auth.decoradores.jwt_obrigatorio`. A validade dos tokens é configurada em `.env.example`.
 
 **Revogação:** cada token tem um `jti`; sair da conta (página ou `/auth/token/revogar/`) grava o `jti` em
 `TokenRevogado`, e tokens revogados deixam de valer mesmo antes de expirar (`limpar_auth` apaga os vencidos).
@@ -366,7 +366,7 @@ integradas à `main`.
 | `fix` | Correção de bug |
 | `refactor` | Melhorar/reorganizar código |
 | `perf` | Melhorar performance |
-| `docs` | Documentação |
+| `docs` | Documentação (pasta `documentacao/`) |
 | `test` | Testes |
 | `style` | Formatação/estilo |
 | `build` | Dependências/build |

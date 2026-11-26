@@ -16,9 +16,9 @@ from apps.auth.tokens import emitir_access
 from apps.usuarios.models import Estabelecimento
 
 from .catalogo import CATEGORIAS, categoria_do_alimento
-from .geo import RAIO_TERRA_KM, caixa_delimitadora, haversine_km
+from .geografia import RAIO_TERRA_KM, caixa_delimitadora, haversine_km
 from .models import Alimento, Categoria, Lote, Reserva
-from .selectors import lotes_na_vitrine
+from .consultas import lotes_na_vitrine
 
 BOSQUE = (-22.9096, -47.0626)
 CENTRO = (-22.9056, -47.0608)
@@ -285,6 +285,25 @@ class CadastroLoteTests(TestCase):
         self.assertRedirects(resposta, reverse('lotes:meus_lotes'))
         lote.refresh_from_db()
         self.assertEqual(lote.descricao, 'Lote editado')
+
+    def test_edicao_atualiza_a_categoria_ao_trocar_o_alimento(self):
+        lote = _criar_lote(self.estabelecimento, 'Lote antigo')
+        arroz = Alimento.objects.get(descricao='arroz integral')
+
+        self.client.post(reverse('lotes:editar_lote', args=[lote.pk]), self._dados(alimento=arroz.pk))
+
+        lote.refresh_from_db()
+        self.assertEqual(lote.categoria, arroz.categoria)
+
+    def test_edicao_atualiza_a_categoria_escolhida_diretamente(self):
+        lote = _criar_lote(self.estabelecimento, 'Lote antigo')
+        padaria = Categoria.objects.get(nome='Padaria')
+
+        # O formulário reenvia o alimento atual junto com a categoria nova.
+        self.client.post(reverse('lotes:editar_lote', args=[lote.pk]), self._dados(categoria=padaria.pk))
+
+        lote.refresh_from_db()
+        self.assertEqual(lote.categoria, padaria)
 
     def test_nao_edita_lote_de_outro_doador_nem_reservado(self):
         outro = _criar_lote(_criar_estabelecimento('outro@x.com', CENTRO, '22333444000172'), 'De outro')

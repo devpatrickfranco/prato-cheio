@@ -7,20 +7,18 @@
     <main id="conteudo" tabindex="-1">
         <div class="page-center">
             <div class="login-shell">
-                <div class="brand-panel">
+                <aside class="brand-panel">
                     <div>
-                        <div class="brand-row">
-                            <span class="brand">Prato Cheio</span>
-                        </div>
-                        <h1>Menos desperdício,<br>mais impacto.</h1>
+                        <p class="brand-row"><span class="brand">Prato Cheio</span></p>
+                        <h1><span class="linha">Menos desperdício,</span> <span class="linha">mais impacto.</span></h1>
                         <p>Conectamos alimentos de qualidade a quem precisa, combatendo o desperdício no varejo alimentício.</p>
                     </div>
-                    <div class="benefits">
-                        <div class="benefit"><span>Redução de emissões de CO₂</span></div>
-                        <div class="benefit"><span>Aproveitamento de alimentos seguros</span></div>
-                        <div class="benefit"><span>Impacto social e ambiental direto</span></div>
-                    </div>
-                </div>
+                    <ul class="benefits">
+                        <li class="benefit">Redução de emissões de CO₂</li>
+                        <li class="benefit">Aproveitamento de alimentos seguros</li>
+                        <li class="benefit">Impacto social e ambiental direto</li>
+                    </ul>
+                </aside>
                 <section class="login-panel">
                     {% block painel_acesso %}{% endblock %}
                 </section>
