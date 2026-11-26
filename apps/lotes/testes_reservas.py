@@ -15,10 +15,10 @@ from PIL import Image
 from apps.auth.cookies import ACCESS_COOKIE
 from apps.auth.tokens import emitir_access
 
-from . import services
+from . import servicos
 from .models import Alimento, Categoria, Lote, Reserva
-from .selectors import lotes_na_vitrine
-from .tests import CENTRO, _criar_estabelecimento, _criar_lote
+from .consultas import lotes_na_vitrine
+from .testes import CENTRO, _criar_estabelecimento, _criar_lote
 
 
 def _usuario(email, perfil):
@@ -80,13 +80,13 @@ class FluxoDeReservaTests(TestCase):
         self.lote.retirada_fim = timezone.now() - timedelta(hours=1)
         self.lote.save()
 
-        with self.assertRaisesMessage(services.RegraDeNegocio, 'janela de retirada'):
-            services.reservar_lote(self.consumidor, self.lote.pk)
-        with self.assertRaisesMessage(services.RegraDeNegocio, 'não encontrado'):
-            services.reservar_lote(self.consumidor, 999999)
+        with self.assertRaisesMessage(servicos.RegraDeNegocio, 'janela de retirada'):
+            servicos.reservar_lote(self.consumidor, self.lote.pk)
+        with self.assertRaisesMessage(servicos.RegraDeNegocio, 'não encontrado'):
+            servicos.reservar_lote(self.consumidor, 999999)
 
     def test_cancelar_devolve_o_lote_a_vitrine(self):
-        reserva = services.reservar_lote(self.consumidor, self.lote.pk)
+        reserva = servicos.reservar_lote(self.consumidor, self.lote.pk)
         self._logar(self.consumidor)
 
         resposta = self.client.post(reverse('lotes:cancelar_reserva', args=[reserva.pk]), follow=True)
@@ -97,7 +97,7 @@ class FluxoDeReservaTests(TestCase):
         self.assertEqual((reserva.status, self.lote.status), (Reserva.Status.CANCELADA, Lote.Status.DISPONIVEL))
 
     def test_nao_cancela_reserva_de_outra_pessoa(self):
-        reserva = services.reservar_lote(self.consumidor, self.lote.pk)
+        reserva = servicos.reservar_lote(self.consumidor, self.lote.pk)
         self._logar(self.ong)
 
         self.client.post(reverse('lotes:cancelar_reserva', args=[reserva.pk]))
@@ -106,7 +106,7 @@ class FluxoDeReservaTests(TestCase):
         self.assertEqual(reserva.status, Reserva.Status.ATIVA)
 
     def test_minhas_reservas_lista_somente_as_proprias(self):
-        services.reservar_lote(self.consumidor, self.lote.pk)
+        servicos.reservar_lote(self.consumidor, self.lote.pk)
         self._logar(self.ong)
 
         resposta = self.client.get(reverse('lotes:minhas_reservas'))
@@ -116,10 +116,10 @@ class FluxoDeReservaTests(TestCase):
         self.assertContains(self.client.get(reverse('lotes:minhas_reservas')), 'Kit hortifruti')
 
     def test_reserva_vencida_expira_e_o_lote_volta_a_disponivel(self):
-        reserva = services.reservar_lote(self.consumidor, self.lote.pk)
+        reserva = servicos.reservar_lote(self.consumidor, self.lote.pk)
         Reserva.objects.filter(pk=reserva.pk).update(data_expiracao=timezone.now() - timedelta(minutes=1))
 
-        expiradas, _ = services.atualizar_pendencias()
+        expiradas, _ = servicos.atualizar_pendencias()
 
         reserva.refresh_from_db()
         self.lote.refresh_from_db()
@@ -127,17 +127,17 @@ class FluxoDeReservaTests(TestCase):
         self.assertEqual((reserva.status, self.lote.status), (Reserva.Status.EXPIRADA, Lote.Status.DISPONIVEL))
 
     def test_reserva_vencida_de_lote_fora_da_validade_deixa_o_lote_expirado(self):
-        reserva = services.reservar_lote(self.consumidor, self.lote.pk)
+        reserva = servicos.reservar_lote(self.consumidor, self.lote.pk)
         Reserva.objects.filter(pk=reserva.pk).update(data_expiracao=timezone.now() - timedelta(minutes=1))
         Lote.objects.filter(pk=self.lote.pk).update(data_validade=timezone.localdate() - timedelta(days=1))
 
-        services.expirar_reservas()
+        servicos.expirar_reservas()
 
         self.lote.refresh_from_db()
         self.assertEqual(self.lote.status, Lote.Status.EXPIRADO)
 
     def test_vitrine_aplica_expiracao_ao_listar(self):
-        reserva = services.reservar_lote(self.consumidor, self.lote.pk)
+        reserva = servicos.reservar_lote(self.consumidor, self.lote.pk)
         Reserva.objects.filter(pk=reserva.pk).update(data_expiracao=timezone.now() - timedelta(minutes=1))
         Lote.objects.filter(pk=self.lote.pk).update(retirada_fim=timezone.now() + timedelta(hours=1))
         self._logar(self.ong)
@@ -149,7 +149,7 @@ class FluxoDeReservaTests(TestCase):
     def test_lote_disponivel_vencido_vira_expirado(self):
         vencido = _criar_lote(self.estabelecimento, 'Vencido', dias=-2)
 
-        self.assertEqual(services.expirar_lotes(), 1)
+        self.assertEqual(servicos.expirar_lotes(), 1)
 
         vencido.refresh_from_db()
         self.assertEqual(vencido.status, Lote.Status.EXPIRADO)
@@ -163,7 +163,7 @@ class FluxoDeReservaTests(TestCase):
         self.assertIn('1 lote(s) expirado(s)', saida.getvalue())
 
     def test_doador_confirma_retirada(self):
-        services.reservar_lote(self.consumidor, self.lote.pk)
+        servicos.reservar_lote(self.consumidor, self.lote.pk)
         self._logar(self.doador)
 
         resposta = self.client.post(reverse('lotes:registrar_retirada', args=[self.lote.pk]), {'resultado': 'retirado'}, follow=True)
@@ -175,17 +175,28 @@ class FluxoDeReservaTests(TestCase):
         self.assertIsNotNone(reserva.data_confirmacao)
 
     def test_doador_registra_nao_retirada(self):
-        services.reservar_lote(self.consumidor, self.lote.pk)
+        servicos.reservar_lote(self.consumidor, self.lote.pk)
         self._logar(self.doador)
 
         self.client.post(reverse('lotes:registrar_retirada', args=[self.lote.pk]), {'resultado': 'nao_retirado'})
 
         self.lote.refresh_from_db()
-        self.assertEqual(self.lote.status, Lote.Status.NAO_RETIRADO)
+        self.assertEqual(self.lote.status, Lote.Status.DISPONIVEL)
         self.assertEqual(Reserva.objects.get().status, Reserva.Status.NAO_RETIRADA)
+        self.assertIn(self.lote, lotes_na_vitrine('consumidor'))
+
+    def test_nao_retirada_de_lote_vencido_o_expira(self):
+        servicos.reservar_lote(self.consumidor, self.lote.pk)
+        Lote.objects.filter(pk=self.lote.pk).update(data_validade=timezone.localdate() - timedelta(days=1))
+        self._logar(self.doador)
+
+        self.client.post(reverse('lotes:registrar_retirada', args=[self.lote.pk]), {'resultado': 'nao_retirado'})
+
+        self.lote.refresh_from_db()
+        self.assertEqual(self.lote.status, Lote.Status.EXPIRADO)
 
     def test_outro_doador_nao_confirma_retirada(self):
-        services.reservar_lote(self.consumidor, self.lote.pk)
+        servicos.reservar_lote(self.consumidor, self.lote.pk)
         intruso = _criar_estabelecimento('intruso@x.com', CENTRO, '22333444000172').usuario
         self._logar(intruso)
 
@@ -196,7 +207,7 @@ class FluxoDeReservaTests(TestCase):
         self.assertEqual(self.lote.status, Lote.Status.RESERVADO)
 
     def test_meus_lotes_mostra_quem_reservou_e_os_botoes(self):
-        services.reservar_lote(self.consumidor, self.lote.pk)
+        servicos.reservar_lote(self.consumidor, self.lote.pk)
         self._logar(self.doador)
 
         resposta = self.client.get(reverse('lotes:meus_lotes'))

@@ -13,7 +13,7 @@ disponíveis. O projeto roda em um container web (gunicorn) com o banco no servi
 3. Regra aplicada ao listar (lazy) **mais** comando agendado opcional.
 
 ## Decisão
-Opção 3. `apps/lotes/services.py` concentra as regras (`reservar_lote`, `cancelar_reserva`,
+Opção 3. `apps/lotes/servicos.py` concentra as regras (`reservar_lote`, `cancelar_reserva`,
 `confirmar_retirada`, `registrar_nao_retirada`, `expirar_reservas`, `expirar_lotes`). A vitrine, "minhas
 reservas" e "meus lotes" chamam `atualizar_pendencias()` antes de listar; o comando `atualizar_status` faz o
 mesmo e pode ser agendado. A reserva vale até `Lote.retirada_fim`; a vitrine oculta lotes com janela encerrada.

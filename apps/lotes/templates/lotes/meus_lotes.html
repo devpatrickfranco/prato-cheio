@@ -1,4 +1,4 @@
-{% extends 'layouts/app.html' %}
+{% extends 'estruturas/area_logada.html' %}
 {% load static %}
 
 {% block titulo %}Gerenciar Meus Lotes{% endblock %}
@@ -34,7 +34,7 @@
                         <td>{{ lote.data_validade|date:"d/m/Y" }}</td>
                         <td>
                             <span class="status status-{{ lote.status }}">{{ lote.get_status_display }}</span>
-                            {% if lote.reserva_ativa %}<br><small class="muted">Reservado por {{ lote.reserva_ativa.usuario.nome }} até {{ lote.reserva_ativa.data_expiracao|date:"d/m H:i" }}</small>{% endif %}
+                            {% if lote.reserva_ativa %}<small class="muted bloco">Reservado por {{ lote.reserva_ativa.usuario.nome }} até {{ lote.reserva_ativa.data_expiracao|date:"d/m H:i" }}</small>{% endif %}
                         </td>
                         <td>
                             <div class="acoes-linha">

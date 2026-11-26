@@ -41,7 +41,7 @@ class PerfisTests(TestCase):
 
 class EstaticosCompartilhadosTests(TestCase):
     def test_folha_de_estilo_global_e_encontrada(self):
-        self.assertIsNotNone(finders.find('css/style.css'))
+        self.assertIsNotNone(finders.find('css/estilo.css'))
 
     def test_script_do_menu_mobile_e_encontrado(self):
         self.assertIsNotNone(finders.find('js/menu.js'))

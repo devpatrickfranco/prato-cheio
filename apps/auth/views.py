@@ -10,7 +10,7 @@ from apps.usuarios.perfis import PERFIS
 
 from . import limitador
 from .cookies import ACCESS_COOKIE, REFRESH_COOKIE, apagar_cookies, definir_cookies
-from .decorators import jwt_obrigatorio, usuario_do_token
+from .decoradores import jwt_obrigatorio, usuario_do_token
 from .tokens import REFRESH, emitir_access, emitir_tokens, revogar
 
 
@@ -45,8 +45,8 @@ def login(request, perfil):
             definir_cookies(resposta, usuario)
             return resposta
         contexto.update(erro=erro, email=email)
-        return render(request, 'jwt_auth/login.html', contexto, status=429 if status == 429 else 200)
-    return render(request, 'jwt_auth/login.html', contexto)
+        return render(request, 'autenticacao/login.html', contexto, status=429 if status == 429 else 200)
+    return render(request, 'autenticacao/login.html', contexto)
 
 
 @require_POST

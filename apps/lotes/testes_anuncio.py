@@ -13,10 +13,10 @@ from django.utils import timezone
 from apps.auth.cookies import ACCESS_COOKIE
 from apps.auth.tokens import emitir_access
 
-from . import services
+from . import servicos
 from .models import Alimento, Lote
-from .selectors import lotes_na_vitrine, opcoes_de_filtro
-from .tests import CENTRO, _criar_estabelecimento, _criar_lote
+from .consultas import lotes_na_vitrine, opcoes_de_filtro
+from .testes import CENTRO, _criar_estabelecimento, _criar_lote
 
 
 def _usuario(email, perfil):
@@ -68,20 +68,20 @@ class VisibilidadePorPerfilTests(TestCase):
         self.assertEqual(opcoes_de_filtro('ong')[1], ['Cambuí', 'Centro'])
 
     def test_consumidor_nao_reserva_doacao(self):
-        with self.assertRaisesMessage(services.RegraDeNegocio, 'doação exclusiva para ONGs'):
-            services.reservar_lote(self.consumidor, self.doacao.pk)
+        with self.assertRaisesMessage(servicos.RegraDeNegocio, 'doação exclusiva para ONGs'):
+            servicos.reservar_lote(self.consumidor, self.doacao.pk)
 
         self.doacao.refresh_from_db()
         self.assertEqual(self.doacao.status, Lote.Status.DISPONIVEL)
 
     def test_ong_reserva_doacao_e_venda(self):
-        services.reservar_lote(self.ong, self.doacao.pk)
-        services.reservar_lote(self.ong, self.venda.pk)
+        servicos.reservar_lote(self.ong, self.doacao.pk)
+        servicos.reservar_lote(self.ong, self.venda.pk)
 
         self.assertEqual(self.ong.reservas.count(), 2)
 
     def test_consumidor_reserva_venda(self):
-        self.assertEqual(services.reservar_lote(self.consumidor, self.venda.pk).lote, self.venda)
+        self.assertEqual(servicos.reservar_lote(self.consumidor, self.venda.pk).lote, self.venda)
 
     def test_banco_rejeita_preco_incoerente(self):
         casos = {'doacao': Decimal('5'), 'venda': None}

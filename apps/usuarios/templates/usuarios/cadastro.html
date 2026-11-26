@@ -1,4 +1,4 @@
-{% extends 'layouts/acesso.html' %}
+{% extends 'estruturas/acesso.html' %}
 {% load static %}
 
 {% block titulo %}Cadastro {{ perfil.nome }}{% endblock %}
@@ -24,12 +24,12 @@
         {% csrf_token %}
         <fieldset>
             <legend>Dados de acesso</legend>
-            {% for campo in form %}{% include 'components/campo.html' %}{% endfor %}
+            {% for campo in form %}{% include 'componentes/campo.html' %}{% endfor %}
         </fieldset>
         {% if form_estabelecimento %}
             <fieldset>
                 <legend>Estabelecimento</legend>
-                {% for campo in form_estabelecimento %}{% include 'components/campo.html' %}{% endfor %}
+                {% for campo in form_estabelecimento %}{% include 'componentes/campo.html' %}{% endfor %}
             </fieldset>
         {% endif %}
         <button class="btn btn-primary" type="submit">Criar conta</button>

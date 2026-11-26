@@ -8,9 +8,9 @@ from django.utils import timezone
 
 from apps.auth.cookies import ACCESS_COOKIE
 from apps.auth.tokens import emitir_access
-from apps.lotes import services
+from apps.lotes import servicos as servicos_lotes
 from apps.lotes.models import Alimento, Lote, Reserva
-from apps.lotes.tests import CENTRO, _criar_estabelecimento, _criar_lote
+from apps.lotes.testes import CENTRO, _criar_estabelecimento, _criar_lote
 
 from . import servicos
 
@@ -49,8 +49,8 @@ class PainelRealTests(TestCase):
     def _retirar(self, descricao, receptor, quando=None):
         """Lote de 15 kg de tomate (0,82 kg CO₂/kg = 12,30 kg) reservado e retirado."""
         lote = _criar_lote(self.estabelecimento, descricao, dias=1)
-        services.reservar_lote(receptor, lote.pk)
-        services.confirmar_retirada(self.doador, lote.pk)
+        servicos_lotes.reservar_lote(receptor, lote.pk)
+        servicos_lotes.confirmar_retirada(self.doador, lote.pk)
         if quando:
             Reserva.objects.filter(lote=lote).update(data_confirmacao=quando)
         return lote
@@ -80,10 +80,10 @@ class PainelRealTests(TestCase):
 
     def test_so_retiradas_confirmadas_contam(self):
         lote = _criar_lote(self.estabelecimento, 'Só reservado', dias=1)
-        services.reservar_lote(self.consumidor, lote.pk)
+        servicos_lotes.reservar_lote(self.consumidor, lote.pk)
         outro = _criar_lote(self.estabelecimento, 'Não retirado', dias=1)
-        services.reservar_lote(self.ong, outro.pk)
-        services.registrar_nao_retirada(self.doador, outro.pk)
+        servicos_lotes.reservar_lote(self.ong, outro.pk)
+        servicos_lotes.registrar_nao_retirada(self.doador, outro.pk)
 
         resposta = self._painel(self.doador, 'doador')
 

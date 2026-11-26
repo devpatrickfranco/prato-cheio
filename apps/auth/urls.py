@@ -14,21 +14,21 @@ urlpatterns = [
     path('sair/', views.sair, name='sair'),
     # Recuperação de senha (e-mail com link de uso único)
     path('senha/esqueci/', auth_views.PasswordResetView.as_view(
-        template_name='jwt_auth/senha_esqueci.html',
-        email_template_name='jwt_auth/email_redefinir_senha.txt',
-        subject_template_name='jwt_auth/email_redefinir_senha_assunto.txt',
+        template_name='autenticacao/senha_esqueci.html',
+        email_template_name='autenticacao/email_redefinir_senha.txt',
+        subject_template_name='autenticacao/email_redefinir_senha_assunto.txt',
         success_url=reverse_lazy('jwt_auth:senha_enviada'),
     ), name='senha_esqueci'),
     path('senha/enviada/', auth_views.PasswordResetDoneView.as_view(
-        template_name='jwt_auth/senha_enviada.html',
+        template_name='autenticacao/senha_enviada.html',
     ), name='senha_enviada'),
     path('senha/redefinir/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
-        template_name='jwt_auth/senha_redefinir.html',
+        template_name='autenticacao/senha_redefinir.html',
         extra_context={'senha_min': settings.SENHA_MIN_CARACTERES},
         success_url=reverse_lazy('jwt_auth:senha_redefinida'),
     ), name='senha_redefinir'),
     path('senha/redefinida/', auth_views.PasswordResetCompleteView.as_view(
-        template_name='jwt_auth/senha_redefinida.html',
+        template_name='autenticacao/senha_redefinida.html',
     ), name='senha_redefinida'),
     # API JSON
     path('auth/token/', views.obter_token, name='token'),

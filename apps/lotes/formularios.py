@@ -130,7 +130,17 @@ class LoteForm(forms.ModelForm):
     def clean(self):
         dados = super().clean()
         alimento = dados.get('alimento')
-        if alimento:
+        categoria = dados.get('categoria')
+        # Na edição, mudar só a categoria vale mais que o alimento antigo, que deixa de combinar com ela.
+        categoria_trocada = (
+            self.instance.pk and categoria and alimento
+            and alimento.pk == self.instance.alimento_id
+            and categoria.pk != self.instance.categoria_id
+            and categoria.pk != alimento.categoria_id
+        )
+        if categoria_trocada:
+            dados['alimento'] = None
+        elif alimento:
             dados['categoria'] = alimento.categoria
         elif not dados.get('categoria'):
             self.add_error('categoria', 'Escolha um alimento ou uma categoria.')

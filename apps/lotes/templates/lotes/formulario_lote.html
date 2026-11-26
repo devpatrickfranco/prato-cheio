@@ -1,8 +1,8 @@
-{% extends 'layouts/app.html' %}
+{% extends 'estruturas/area_logada.html' %}
 {% load static %}
 
 {% block titulo %}{{ titulo }}{% endblock %}
-{% block descricao %}Cadastro de lotes de alimentos pelo estabelecimento doador.{% endblock %}
+{% block descricao %}{{ titulo }}: formulário de lote de alimentos do estabelecimento doador, com modalidade, validade e janela de retirada.{% endblock %}
 {% block cabecalho %}{{ titulo }}{% endblock %}
 
 {% block conteudo %}
@@ -15,13 +15,13 @@
                     <fieldset>
                         <legend>Retirada</legend>
                         <div class="retirada-horas">
-                            {% include 'components/campo.html' with campo=form.retirada_hora_inicio %}
-                            {% include 'components/campo.html' with campo=form.retirada_hora_fim %}
+                            {% include 'componentes/campo.html' with campo=form.retirada_hora_inicio %}
+                            {% include 'componentes/campo.html' with campo=form.retirada_hora_fim %}
                         </div>
-                        {% include 'components/campo.html' %}
+                        {% include 'componentes/campo.html' %}
                     </fieldset>
                 {% elif campo.name != 'retirada_hora_inicio' and campo.name != 'retirada_hora_fim' %}
-                    {% include 'components/campo.html' %}
+                    {% include 'componentes/campo.html' %}
                 {% endif %}
             {% endfor %}
             <div class="actions">

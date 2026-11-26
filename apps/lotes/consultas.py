@@ -2,7 +2,7 @@ import unicodedata
 
 from django.utils import timezone
 
-from .geo import caixa_delimitadora, haversine_km
+from .geografia import caixa_delimitadora, haversine_km
 from .models import Categoria, Lote
 
 
