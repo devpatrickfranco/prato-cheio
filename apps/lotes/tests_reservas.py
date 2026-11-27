@@ -18,7 +18,7 @@ from apps.auth.tokens import emitir_access
 from . import servicos
 from .models import Alimento, Categoria, Lote, Reserva
 from .consultas import lotes_na_vitrine
-from .testes import CENTRO, _criar_estabelecimento, _criar_lote
+from .tests import CENTRO, _criar_estabelecimento, _criar_lote
 
 
 def _usuario(email, perfil):

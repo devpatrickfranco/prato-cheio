@@ -7,7 +7,7 @@ from apps.usuarios.models import Estabelecimento
 from apps.usuarios.perfis import PERFIS
 
 from . import servicos
-from .formularios import LoteForm
+from .forms import LoteForm
 from .models import Lote, Reserva
 from .consultas import lotes_na_vitrine, opcoes_de_filtro
 

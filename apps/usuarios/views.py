@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 
 from apps.auth.decoradores import login_obrigatorio
 
-from .formularios import CadastroUsuarioForm, EstabelecimentoForm
+from .forms import CadastroUsuarioForm, EstabelecimentoForm
 from .geocodificacao import geocodificar
 from .models import Estabelecimento
 from .perfis import PERFIS

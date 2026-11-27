@@ -185,4 +185,4 @@ Segue sem verificação: o build do Docker, o `docker compose up` e a execução
 
 ---
 
-**Nota de 26/11/2026:** os caminhos citados acima são os da época da auditoria. Depois dela, pastas e arquivos foram traduzidos para português (por exemplo `config/settings.py` → `configuracao/configuracoes.py`, `static/css/style.css` → `static/css/estilo.css`, `templates/layouts/app.html` → `templates/estruturas/area_logada.html`, `apps/lotes/services.py` → `servicos.py`). Para a estrutura atual, consulte o README.
+**Nota de 27/11/2026:** os caminhos citados acima são os da época da auditoria e continuam válidos para `config/settings.py`, `static/css/style.css`, `templates/layouts/app.html` e os arquivos `tests*.py`, `forms.py` e `validators.py`. Só alguns nomes mudaram depois (por exemplo `apps/lotes/services.py` → `servicos.py`, `selectors.py` → `consultas.py`, `geo.py` → `geografia.py`, `templates/layouts/` → `templates/estruturas/`, `templates/components/` → `templates/componentes/`). Para a estrutura atual, consulte o README.

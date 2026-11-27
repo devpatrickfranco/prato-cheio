@@ -5,7 +5,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
 from .models import Estabelecimento
-from .validadores import validar_cep, validar_cnpj, validar_cpf
+from .validators import validar_cep, validar_cnpj, validar_cpf
 
 
 class CadastroUsuarioForm(forms.Form):

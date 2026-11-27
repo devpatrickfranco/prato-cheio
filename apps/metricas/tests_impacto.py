@@ -10,7 +10,7 @@ from apps.auth.cookies import ACCESS_COOKIE
 from apps.auth.tokens import emitir_access
 from apps.lotes import servicos as servicos_lotes
 from apps.lotes.models import Alimento, Lote, Reserva
-from apps.lotes.testes import CENTRO, _criar_estabelecimento, _criar_lote
+from apps.lotes.tests import CENTRO, _criar_estabelecimento, _criar_lote
 
 from . import servicos
 

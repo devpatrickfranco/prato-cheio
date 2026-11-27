@@ -112,7 +112,7 @@ antes). O Django não lê o `.env` sozinho; exporte as variáveis no terminal.
 ### Variáveis de ambiente
 As configurações sensíveis são lidas do ambiente; veja `.env.example` (`DJANGO_SECRET_KEY`,
 `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`, `DJANGO_CSRF_TRUSTED_ORIGINS`, JWT, e-mail e geocodificação).
-Variáveis ausentes caem nos padrões de `configuracao/configuracoes.py`, que são os de **produção** (`DJANGO_DEBUG=False`).
+Variáveis ausentes caem nos padrões de `config/settings.py`, que são os de **produção** (`DJANGO_DEBUG=False`).
 Nunca versione o arquivo `.env`; o `docker-compose.yml` o carrega sozinho (`env_file`, obrigatório).
 
 **Produção** (`DJANGO_DEBUG=False`): o app **recusa subir** sem `DJANGO_SECRET_KEY` próprio (e chave JWT, se
@@ -153,12 +153,12 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 
 ```
 .
-├── configuracao/           # Configurações do Django (configuracoes.py, urls raiz, wsgi/asgi)
+├── config/                 # Configurações do Django (settings.py, urls raiz, wsgi/asgi)
 ├── apps/
 │   ├── usuarios/           # Models Usuario (AUTH_USER_MODEL, login por e-mail) e Estabelecimento; seleção de perfil e cadastro
 │   │   ├── perfis.py       # Perfis Doador, Consumidor e ONG (iguais a Usuario.tipo_perfil)
-│   │   ├── formularios.py  # Cadastro (CPF/CNPJ, senha) e estabelecimento
-│   │   ├── validadores.py  # Dígitos verificadores de CPF/CNPJ e CEP
+│   │   ├── forms.py        # Cadastro (CPF/CNPJ, senha) e estabelecimento
+│   │   ├── validators.py   # Dígitos verificadores de CPF/CNPJ e CEP
 │   │   ├── geocodificacao.py  # Endereço/CEP → latitude/longitude (Nominatim/OpenStreetMap)
 │   │   ├── static/usuarios/js/cadastro.js  # Validação em tempo real do cadastro
 │   │   └── templates/usuarios/
@@ -179,7 +179,7 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 ├── static/css/estilo.css    # Folha de estilo global
 ├── static/js/menu.js       # Abre e fecha o menu lateral no celular
 ├── raiz/robots.txt         # Servido em /robots.txt pelo WhiteNoise (WHITENOISE_ROOT)
-├── documentacao/           # Índice em documentacao/README.md: escopo, decisões arquiteturais (decisoes/), auditoria e protótipo
+├── docs/                   # Índice em docs/README.md: escopo, decisões arquiteturais (adr/), auditoria e protótipo
 ├── media/                  # Fotos enviadas pelos doadores (não versionado)
 ├── Dockerfile / docker-compose.yml
 ├── manage.py
@@ -188,7 +188,7 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 
 ### Arquitetura
 
-- Cada app declara as próprias rotas em `urls.py` (com `app_name`), e `configuracao/urls.py` apenas as inclui.
+- Cada app declara as próprias rotas em `urls.py` (com `app_name`), e `config/urls.py` apenas as inclui.
   Rotas são referenciadas por namespace: `jwt_auth:login_doador`, `metricas:dashboard_doador`, `lotes:explorar`.
 - Templates de um app ficam em `apps/<app>/templates/<app>/`; a pasta global `templates/` guarda só o que
   é compartilhado (layout base, layout das áreas logadas e componentes).
@@ -198,7 +198,7 @@ Sem Docker, rode os mesmos comandos a partir de `python manage.py ...`.
 - Banco de dados: PostgreSQL 17 no serviço `db` do Docker Compose (selecionado por `POSTGRES_HOST`); sem essa variável, SQLite local (`db.sqlite3`, não versionado). O schema vem exclusivamente dos models;
   `python manage.py migrate` cria as tabelas e carrega categorias e alimentos a partir do CSV.
 - Os painéis de impacto vêm de dados reais: só lotes `retirado` (reserva confirmada pelo doador) contam.
-- Decisões arquiteturais ficam registradas em `documentacao/decisoes/` (ADRs).
+- Decisões arquiteturais ficam registradas em `docs/adr/` (ADRs).
 
 ### Perfis
 
@@ -366,7 +366,7 @@ integradas à `main`.
 | `fix` | Correção de bug |
 | `refactor` | Melhorar/reorganizar código |
 | `perf` | Melhorar performance |
-| `docs` | Documentação (pasta `documentacao/`) |
+| `docs` | Documentação (pasta `docs/`) |
 | `test` | Testes |
 | `style` | Formatação/estilo |
 | `build` | Dependências/build |
